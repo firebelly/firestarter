@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: en
+name: Firestarter
+primary: true
+siteGroup: a64493a9-3558-4984-82a5-446587987ba0 # Firestarter
+sortOrder: 1

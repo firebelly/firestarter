@@ -203,6 +203,7 @@ The structure is correct when:
 | 2026-01-24 | Task 3: Component structure | `/site/src/components/Button/*` | Button example with co-located story and CSS module |
 | 2026-01-24 | Task 4: Tokens and lib dirs | `/site/src/tokens/`, `/site/src/lib/` | Placeholder files establish structure |
 | 2026-01-24 | Task 5: .nvmrc and .gitignore | `/site/.nvmrc` | Node 24; .gitignore already covered Next.js + Storybook |
+| 2026-01-24 | Task 6: Scaffold Craft CMS | `/cms/*` | Used DDEV + PostgreSQL; Craft 5 + DDEV auto-inject CRAFT_DB_* vars locally (no db.php needed), but production requires them in .env. **Future work:** Create a repo-wide setup script to generate fresh license.key, CRAFT_APP_ID, CRAFT_SECURITY_KEY, and rename DDEV project for cloned projects. |
 
 ---
 

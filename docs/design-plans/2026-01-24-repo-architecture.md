@@ -202,6 +202,7 @@ The structure is correct when:
 | 2026-01-24 | Task 2: Configure Storybook | `/site/.storybook/*` | Storybook 10.2 used nextjs-vite framework (faster than planned nextjs) |
 | 2026-01-24 | Task 3: Component structure | `/site/src/components/Button/*` | Button example with co-located story and CSS module |
 | 2026-01-24 | Task 4: Tokens and lib dirs | `/site/src/tokens/`, `/site/src/lib/` | Placeholder files establish structure |
+| 2026-01-24 | Task 5: .nvmrc and .gitignore | `/site/.nvmrc` | Node 24; .gitignore already covered Next.js + Storybook |
 
 ---
 

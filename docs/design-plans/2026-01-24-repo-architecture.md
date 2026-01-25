@@ -196,11 +196,9 @@ The structure is correct when:
 
 ## Build Log
 
-*Filled in during `/build` phase*
-
 | Date | Task | Files | Notes |
 |------|------|-------|-------|
-| | | | |
+| 2026-01-24 | Task 1: Create Next.js app | `/site/*` | Used npx/npm initially, switched to pnpm |
 
 ---
 

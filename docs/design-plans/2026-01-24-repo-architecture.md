@@ -199,6 +199,7 @@ The structure is correct when:
 | Date | Task | Files | Notes |
 |------|------|-------|-------|
 | 2026-01-24 | Task 1: Create Next.js app | `/site/*` | Used npx/npm initially, switched to pnpm |
+| 2026-01-24 | Task 2: Configure Storybook | `/site/.storybook/*` | Storybook 10.2 used nextjs-vite framework (faster than planned nextjs) |
 
 ---
 

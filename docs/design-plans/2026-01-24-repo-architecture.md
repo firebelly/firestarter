@@ -201,6 +201,7 @@ The structure is correct when:
 | 2026-01-24 | Task 1: Create Next.js app | `/site/*` | Used npx/npm initially, switched to pnpm |
 | 2026-01-24 | Task 2: Configure Storybook | `/site/.storybook/*` | Storybook 10.2 used nextjs-vite framework (faster than planned nextjs) |
 | 2026-01-24 | Task 3: Component structure | `/site/src/components/Button/*` | Button example with co-located story and CSS module |
+| 2026-01-24 | Task 4: Tokens and lib dirs | `/site/src/tokens/`, `/site/src/lib/` | Placeholder files establish structure |
 
 ---
 

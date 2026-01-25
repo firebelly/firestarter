@@ -1,0 +1,275 @@
+# Craft CMS + Next.js Integration
+
+**Created:** 2026-01-25
+**Status:** Design
+
+---
+
+## Overview
+
+**What:** Connect Craft CMS (headless) to the Next.js frontend via GraphQL, with live preview and on-demand cache revalidation.
+
+**Why:** Establishes the foundational data layer for Firestarter — content authored in Craft rendered by Next.js. This proof of concept validates the end-to-end flow before building out the full component library.
+
+**Type:** Feature
+
+---
+
+## Requirements
+
+### Must Have
+- [ ] Craft GraphQL API enabled with public and private schemas
+- [ ] Homepage singleton section with heading and body fields
+- [ ] Pages structure section (2 levels) with heading and body fields
+- [ ] Next.js GraphQL client for fetching content
+- [ ] Homepage route (`/`) consuming Craft data
+- [ ] Catch-all pages route (`/[...slug]`) consuming Craft data
+- [ ] Live Preview via Draft Mode
+- [ ] On-demand cache revalidation via webhook
+- [ ] 404 handling for missing pages
+
+### Nice to Have
+- [ ] Preview bar UI showing "You are in preview mode" with exit link
+
+### Out of Scope
+- Full design system / component library
+- Matrix page builders
+- Navigation / menus
+- SEO / meta tags
+- Image / asset handling
+- Production hosting configuration
+- Pre-generation with `generateStaticParams`
+- Authentication / protected content
+
+---
+
+## Design Decisions
+
+### Data Fetching Approach
+**Options considered:**
+1. GraphQL (Craft built-in) — flexible queries, frontend requests only what it needs, industry standard
+2. Element API (plugin) — REST-like endpoints, simpler but less flexible, requires PHP config per endpoint
+
+**Decision:** GraphQL. Better fit for a component-based system where different components need different fields. No plugin dependency — built into Craft 5.
+
+---
+
+### GraphQL Client
+**Options considered:**
+1. Apollo Client — full-featured, caching, dev tools, but heavy
+2. urql — lighter than Apollo, still adds complexity
+3. Native fetch — no dependencies, works with Next.js App Router caching
+
+**Decision:** Native fetch with a thin wrapper. Keeps the stack simple, no extra dependencies, and App Router handles caching natively via ISR.
+
+---
+
+### Rendering Strategy
+**Options considered:**
+1. SSG — build-time only, requires redeploy for content changes
+2. ISR — static with automatic revalidation, best of both worlds
+3. SSR — always fresh but slower, higher server cost
+
+**Decision:** ISR with 24-hour fallback + on-demand revalidation. Pages are cached and fast; webhook from Craft invalidates cache on publish; time-based fallback is a safety net if webhook fails.
+
+---
+
+### URL Structure for Pages
+**Options considered:**
+1. Channel section with flat URLs (`/about`, `/contact`)
+2. Structure section with nested URLs (`/services`, `/services/web-design`)
+
+**Decision:** Structure section with 2 levels of nesting. Allows parent/child page relationships. URI format: `{slug}` for top-level, `{parent.uri}/{slug}` for nested. Next.js catches all depths with `[...slug]`.
+
+---
+
+### GraphQL Schema Security
+**Options considered:**
+1. Public schema (no token) for all queries
+2. Token required for all queries
+3. Public schema for published content, private schema for drafts
+
+**Decision:** Public schema for published content, private schema (token required) for preview/drafts. Published content is already visible on the website — no security benefit to hiding it behind a token. Draft content needs protection.
+
+---
+
+## Technical Design
+
+### Craft CMS Configuration
+
+**Sections:**
+
+| Section | Type | Handle | Entry Type | URI Format |
+|---------|------|--------|------------|------------|
+| Homepage | Single | `homepage` | `homepage` | `__home__` |
+| Pages | Structure | `pages` | `pages` | Top: `{slug}` / Nested: `{parent.uri}/{slug}` |
+
+**Fields:**
+
+| Field | Handle | Type | Sections |
+|-------|--------|------|----------|
+| Heading | `heading` | Plain Text | Homepage, Pages |
+| Body | `body` | CKEditor | Homepage, Pages |
+
+**GraphQL Schemas:**
+
+| Schema | Scope | Token |
+|--------|-------|-------|
+| Public | Published entries only | None required |
+| Private | Published + drafts | Required |
+
+**Preview Target (Pages section):**
+
+```
+Label: Web Preview
+URL Format: {alias('@webUrl')}/api/preview?token={token}&uri={uri}
+```
+
+**Webhook (on Entry save):**
+
+```
+URL: {frontend}/api/revalidate
+Method: POST
+Body: { "uri": "{entry.uri}", "secret": "{secret}" }
+```
+
+---
+
+### Next.js File Structure
+
+```
+site/src/
+├── app/
+│   ├── page.tsx                    # Homepage route
+│   ├── [...slug]/
+│   │   └── page.tsx                # Catch-all pages route
+│   └── api/
+│       ├── preview/
+│       │   └── route.ts            # Enable Draft Mode
+│       ├── exit-preview/
+│       │   └── route.ts            # Disable Draft Mode
+│       └── revalidate/
+│           └── route.ts            # On-demand cache invalidation
+└── lib/
+    └── graphql/
+        ├── client.ts               # GraphQL fetch wrapper
+        ├── queries.ts              # Query definitions
+        └── types.ts                # TypeScript types
+```
+
+---
+
+### Environment Variables
+
+| Variable | Purpose | Example |
+|----------|---------|---------|
+| `CRAFT_GRAPHQL_URL` | Craft GraphQL endpoint | `https://firestarter.ddev.site/api` |
+| `CRAFT_PREVIEW_TOKEN` | Token for draft/preview queries | (generated in Craft) |
+| `REVALIDATION_SECRET` | Shared secret for webhook validation | (random string) |
+
+---
+
+### Caching Strategy
+
+| Trigger | Behavior |
+|---------|----------|
+| Normal request | Serve from ISR cache |
+| Cache > 24 hours old | Next request triggers background rebuild |
+| Content published | Webhook invalidates that page's cache immediately |
+| New deployment | Fresh cache, pages build on first request |
+| Preview mode | Bypasses cache, fetches drafts directly |
+
+---
+
+### GraphQL Queries
+
+**Homepage:**
+```graphql
+query Homepage {
+  entry(section: "homepage") {
+    title
+    ... on homepage_homepage_Entry {
+      heading
+      body
+    }
+  }
+}
+```
+
+**Page by URI:**
+```graphql
+query PageByUri($uri: [String]) {
+  entry(section: "pages", uri: $uri) {
+    title
+    uri
+    ... on pages_pages_Entry {
+      heading
+      body
+    }
+  }
+}
+```
+
+---
+
+## Acceptance Criteria
+
+- [ ] Craft GraphQL endpoint responds to queries at `/api`
+- [ ] Homepage section exists with heading and body fields
+- [ ] Pages structure section exists with heading and body fields, supports nesting
+- [ ] Next.js homepage (`/`) displays content from Craft Homepage entry
+- [ ] Next.js page (`/about`) displays content from Craft Pages entry
+- [ ] Nested page (`/services/web-design`) displays correctly
+- [ ] Non-existent page (`/does-not-exist`) returns 404
+- [ ] Live Preview shows unpublished changes in Craft's preview iframe
+- [ ] Publishing an entry triggers webhook and updates the live site within seconds
+- [ ] Preview mode can be exited via `/api/exit-preview`
+
+---
+
+## Files to Create/Modify
+
+### Craft CMS (manual configuration in Control Panel)
+```
+- Create Homepage section (Single)
+- Create Pages section (Structure, 2 levels max)
+- Create Heading field (Plain Text)
+- Create Body field (CKEditor)
+- Configure GraphQL schemas (public + private)
+- Configure preview targets
+- Install/configure webhook plugin (or custom module)
+```
+
+### Next.js (code changes)
+```
+site/src/lib/graphql/client.ts      # GraphQL fetch wrapper
+site/src/lib/graphql/queries.ts     # Query definitions
+site/src/lib/graphql/types.ts       # TypeScript types
+site/src/app/page.tsx               # Update homepage to fetch from Craft
+site/src/app/[...slug]/page.tsx     # New catch-all route for pages
+site/src/app/api/preview/route.ts   # New preview entry route
+site/src/app/api/exit-preview/route.ts  # New exit preview route
+site/src/app/api/revalidate/route.ts    # New revalidation webhook route
+site/.env.local                     # Environment variables
+```
+
+---
+
+## Build Log
+
+*Filled in during `/build` phase*
+
+| Date | Task | Files | Notes |
+|------|------|-------|-------|
+| | | | |
+
+---
+
+## Completion
+
+**Completed:** [Date]
+**Final Status:** [Complete | Partial | Abandoned]
+
+**Summary:** [Brief description of what was actually built]
+
+**Deviations from Plan:** [Any significant changes from original design]

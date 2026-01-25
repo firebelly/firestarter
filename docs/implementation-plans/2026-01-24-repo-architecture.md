@@ -232,16 +232,16 @@ Note: This is scaffolding only. Headless configuration (disabling front-end rout
 
 ## Verification Checklist
 
-- [ ] `cd site && pnpm dev` — Next.js runs at localhost:3000
-- [ ] `cd site && pnpm storybook` — Storybook runs at localhost:6006
-- [ ] Button component visible in Storybook with both variants
-- [ ] `/site/src/app/` contains App Router files
-- [ ] `/site/src/components/` contains Button with co-located story
-- [ ] `/site/src/tokens/` and `/site/src/lib/` directories exist
-- [ ] `/site/.nvmrc` contains Node version
-- [ ] `/cms/craft` CLI executable exists
-- [ ] `/cms/config/` directory exists with Craft config files
-- [ ] Root `.gitignore` includes `.env`
+- [x] `cd site && pnpm dev` — Next.js runs at localhost:3000
+- [x] `cd site && pnpm storybook` — Storybook runs at localhost:6006
+- [x] Button component visible in Storybook with both variants
+- [x] `/site/src/app/` contains App Router files
+- [x] `/site/src/components/` contains Button with co-located story
+- [x] `/site/src/tokens/` and `/site/src/lib/` directories exist
+- [x] `/site/.nvmrc` contains Node version
+- [x] `/cms/craft` CLI executable exists
+- [x] `/cms/config/` directory exists with Craft config files
+- [x] ~~Root `.gitignore` includes `.env`~~ — Skipped: covered by per-directory .gitignore strategy
 
 ---
 

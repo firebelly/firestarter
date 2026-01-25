@@ -1,7 +1,7 @@
 # Repo Architecture
 
 **Created:** 2026-01-24
-**Status:** Design
+**Status:** Complete
 
 ---
 
@@ -210,9 +210,15 @@ The structure is correct when:
 
 ## Completion
 
-**Completed:** [Date]
-**Final Status:** [Complete | Partial | Abandoned]
+**Completed:** 2026-01-24
+**Final Status:** Complete
 
-**Summary:** [Brief description of what was actually built]
+**Summary:** Established the foundational monorepo structure with `/site` (Next.js 15 + Storybook 10.2) and `/cms` (Craft CMS 5 via DDEV). The frontend includes a working component architecture with a Button example demonstrating co-located stories and CSS modules. Design token and utility directories are scaffolded with placeholder files. Craft is configured with PostgreSQL through DDEV's auto-injection of database credentials.
 
-**Deviations from Plan:** [Any significant changes from original design]
+**Deviations from Plan:**
+- Used `nextjs-vite` Storybook framework instead of `nextjs` — Storybook 10.2 default, provides faster builds
+- Node 24 instead of 22 — updated to current version
+- Craft installed via DDEV rather than vanilla Composer — provides local development environment with PostgreSQL
+- Task 7 (root .gitignore update) skipped — both `/site` and `/cms` already ignore `.env` per the per-directory strategy
+
+**Future Work:** See [docs/backlog.md](../backlog.md) — Repo clone setup script

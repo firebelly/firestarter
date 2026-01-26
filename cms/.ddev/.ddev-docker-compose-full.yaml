@@ -27,7 +27,7 @@ services:
         container_name: ddev-cms-db
         environment:
             BITNAMI_VOLUME_DIR: ""
-            COLUMNS: "223"
+            COLUMNS: "111"
             DDEV_DATABASE: postgres:17
             DDEV_DATABASE_FAMILY: postgres
             DDEV_GOARCH: amd64
@@ -123,7 +123,7 @@ services:
             - /pre-start.sh
         container_name: ddev-cms-web
         environment:
-            COLUMNS: "223"
+            COLUMNS: "111"
             COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
             COREPACK_HOME: /mnt/ddev-global-cache/corepack
             CRAFT_DB_DATABASE: db
@@ -178,7 +178,7 @@ services:
             PGPASSWORD: db
             PGUSER: db
             PHP_IDE_CONFIG: serverName=cms.ddev.site
-            PRIMARY_SITE_URL: https://cms.ddev.site
+            PRIMARY_SITE_URL: http://localhost:3000
             SSH_AUTH_SOCK: /home/.ssh-agent/socket
             START_SCRIPT_TIMEOUT: "30"
             TZ: America/Chicago

@@ -262,6 +262,7 @@ site/.env.local                     # Environment variables
 | Date | Task | Files | Notes |
 |------|------|-------|-------|
 | 2026-01-25 | Task 1: Create Content Fields | `cms/config/project/fields/heading--*.yaml`, `cms/config/project/fields/body--*.yaml` | Deviated: Had to install CKEditor plugin first (not in plan) |
+| 2026-01-25 | Task 2: Create Homepage Section | `cms/config/project/sections/homepage--*.yaml`, `cms/config/project/entryTypes/homepage--*.yaml` | Deviated: GraphQL type is `homepage_Entry` not `homepage_homepage_Entry` (Craft 5 simplified naming) |
 
 ---
 

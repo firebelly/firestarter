@@ -1,14 +1,17 @@
-dateModified: 1769399170
+dateModified: 1769399585
 email:
   fromEmail: developer@firebellydesign.com
   fromName: Firestarter
   transportType: craft\mail\transportadapters\Sendmail
 meta:
   __names__:
+    851c9ce6-5d2d-4557-8b85-d9456fbe5b60: Homepage # Homepage
     8062c823-6463-47c9-9282-6a418395d03f: Heading # Heading
     31861c7c-e659-40f7-ad0e-98ecdba93de8: Firestarter # Firestarter
     93884659-5d48-4374-bcb2-a3ffd332fc83: Simple # Simple
+    a928f07b-2e93-414a-ac32-39a0f05ceacf: Homepage # Homepage
     a64493a9-3558-4984-82a5-446587987ba0: Firestarter # Firestarter
+    bd170d86-9f68-495a-8855-8ff0af7db2b0: 'Public Schema' # Public Schema
     d760b96a-0f1c-40a2-90be-76015cca0ef8: Body # Body
 plugins:
   ckeditor:

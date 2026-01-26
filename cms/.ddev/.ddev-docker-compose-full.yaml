@@ -15,7 +15,7 @@ services:
                 gid: "999"
                 uid: "502"
                 username: tylernford
-            context: /Users/tylernford/sites/_firebelly/firestarter/cms/.ddev/.dbimageBuild
+            context: /Users/tylernford/Sites/_firebelly/firestarter/cms/.ddev/.dbimageBuild
             dockerfile: Dockerfile
         cap_add:
             - SYS_NICE
@@ -27,7 +27,7 @@ services:
         container_name: ddev-cms-db
         environment:
             BITNAMI_VOLUME_DIR: ""
-            COLUMNS: "111"
+            COLUMNS: "223"
             DDEV_DATABASE: postgres:17
             DDEV_DATABASE_FAMILY: postgres
             DDEV_GOARCH: amd64
@@ -47,7 +47,7 @@ services:
             DOCKER_IP: 127.0.0.1
             HOST_DOCKER_INTERNAL_IP: ""
             IS_DDEV_PROJECT: "true"
-            LINES: "60"
+            LINES: "59"
             MYSQL_HISTFILE: /mnt/ddev-global-cache/mysqlhistory/cms-db/mysql_history
             PGDATABASE: db
             PGHOST: 127.0.0.1
@@ -71,7 +71,7 @@ services:
         image: postgres:17-cms-built
         labels:
             com.ddev.app-type: craftcms
-            com.ddev.approot: /Users/tylernford/sites/_firebelly/firestarter/cms
+            com.ddev.approot: /Users/tylernford/Sites/_firebelly/firestarter/cms
             com.ddev.platform: ddev
             com.ddev.site-name: cms
         networks:
@@ -93,12 +93,12 @@ services:
                 nocopy: true
             - bind:
                 create_host_path: true
-              source: /Users/tylernford/sites/_firebelly/firestarter/cms/.ddev
+              source: /Users/tylernford/Sites/_firebelly/firestarter/cms/.ddev
               target: /mnt/ddev_config
               type: bind
             - bind:
                 create_host_path: true
-              source: /Users/tylernford/sites/_firebelly/firestarter/cms/.ddev/db_snapshots
+              source: /Users/tylernford/Sites/_firebelly/firestarter/cms/.ddev/db_snapshots
               target: /mnt/snapshots
               type: bind
             - source: ddev-global-cache
@@ -115,7 +115,7 @@ services:
                 gid: "20"
                 uid: "502"
                 username: tylernford
-            context: /Users/tylernford/sites/_firebelly/firestarter/cms/.ddev/.webimageBuild
+            context: /Users/tylernford/Sites/_firebelly/firestarter/cms/.ddev/.webimageBuild
             dockerfile: Dockerfile
         cap_add:
             - SYS_PTRACE
@@ -123,7 +123,7 @@ services:
             - /pre-start.sh
         container_name: ddev-cms-web
         environment:
-            COLUMNS: "111"
+            COLUMNS: "223"
             COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
             COREPACK_HOME: /mnt/ddev-global-cache/corepack
             CRAFT_DB_DATABASE: db
@@ -168,7 +168,7 @@ services:
             HTTP_EXPOSE: 80:80,8025:8025
             HTTPS_EXPOSE: 443:80,8026:8025
             IS_DDEV_PROJECT: "true"
-            LINES: "60"
+            LINES: "59"
             MAILPIT_SMTP_HOSTNAME: 127.0.0.1
             MAILPIT_SMTP_PORT: "1025"
             MYSQL_HISTFILE: /mnt/ddev-global-cache/mysqlhistory/cms-web/mysql_history
@@ -197,7 +197,7 @@ services:
         image: ddev/ddev-webserver:v1.24.5-cms-built
         labels:
             com.ddev.app-type: craftcms
-            com.ddev.approot: /Users/tylernford/sites/_firebelly/firestarter/cms
+            com.ddev.approot: /Users/tylernford/Sites/_firebelly/firestarter/cms
             com.ddev.platform: ddev
             com.ddev.site-name: cms
         networks:
@@ -220,18 +220,18 @@ services:
         user: "502:20"
         volumes:
             - consistency: cached
-              source: /Users/tylernford/sites/_firebelly/firestarter/cms
+              source: /Users/tylernford/Sites/_firebelly/firestarter/cms
               target: /var/www/html
               type: bind
             - bind:
                 create_host_path: true
               read_only: true
-              source: /Users/tylernford/sites/_firebelly/firestarter/cms/.ddev
+              source: /Users/tylernford/Sites/_firebelly/firestarter/cms/.ddev
               target: /mnt/ddev_config
               type: bind
             - bind:
                 create_host_path: true
-              source: /Users/tylernford/sites/_firebelly/firestarter/cms/.ddev/xhprof
+              source: /Users/tylernford/Sites/_firebelly/firestarter/cms/.ddev/xhprof
               target: /usr/local/bin/xhprof
               type: bind
             - source: ddev-global-cache
@@ -260,7 +260,7 @@ services:
             XHGUI_SAVE_HANDLER: pdo
         image: ddev/ddev-xhgui:v1.24.5
         labels:
-            com.ddev.approot: /Users/tylernford/sites/_firebelly/firestarter/cms
+            com.ddev.approot: /Users/tylernford/Sites/_firebelly/firestarter/cms
             com.ddev.site-name: cms
         links:
             - db

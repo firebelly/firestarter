@@ -102,6 +102,61 @@ GraphQL uses POST even for "read" operations because queries go in the request b
 
 ---
 
+## GraphQL Inline Fragments
+
+When a query could return different types, use fragments to specify type-specific fields:
+
+```graphql
+query Homepage {
+  entry(section: "homepage") {
+    title                      # common to all entries
+    ... on homepage_Entry {    # only for this type
+      heading
+      body
+    }
+  }
+}
+```
+
+Craft 5 uses simplified type naming: `{section}_Entry` (not `{section}_{entryType}_Entry`).
+
+---
+
+## entry() vs entries()
+
+- **`entry()`** — returns single entry or null
+- **`entries()`** — returns array of entries
+
+```graphql
+# Single entry by URI
+entry(section: "pages", uri: ["about"]) { title }
+
+# All entries in section
+entries(section: "pages") { title }
+```
+
+The `[String]` array type is for flexible matching, not multiple returns.
+
+---
+
+## Barrel Exports
+
+An `index.ts` that re-exports from sibling files:
+
+```typescript
+// queries/index.ts
+export { HOMEPAGE_QUERY } from './homepage';
+export { PAGE_BY_URI_QUERY } from './pages';
+```
+
+Allows cleaner imports:
+```typescript
+import { HOMEPAGE_QUERY } from '@/lib/graphql/queries';
+// instead of '@/lib/graphql/queries/homepage'
+```
+
+---
+
 ## TypeScript Interfaces
 
 Interfaces define the shape of objects:

@@ -17,3 +17,25 @@ Established the foundational monorepo structure for Firestarter with a Next.js +
 - `/site/src/tokens/` — Design tokens directory (placeholder)
 - `/site/src/lib/` — Utilities directory (placeholder)
 - `/cms/` — Craft CMS 5 with DDEV configuration
+
+---
+
+## 2026-01-25: Craft CMS Content Setup
+
+Configured Craft CMS for headless operation with Next.js. Created Homepage singleton and Pages structure sections with Heading/Body fields. Set up GraphQL public/private schemas with token authentication for draft access. Configured preview targets using the official Pixel & Tonic starter pattern.
+
+This is **Plan 1 of 2** for the Craft + Next.js integration. Plan 2 (Next.js frontend code) will follow.
+
+**Design:** [docs/design-plans/2026-01-25-craft-nextjs-integration.md](design-plans/2026-01-25-craft-nextjs-integration.md)
+**Plan:** [docs/implementation-plans/2026-01-25-craft-cms-content-setup.md](implementation-plans/2026-01-25-craft-cms-content-setup.md)
+
+**Key files:**
+- `cms/config/project/fields/` — Heading and Body field definitions
+- `cms/config/project/sections/` — Homepage and Pages section configs
+- `cms/config/project/entryTypes/` — Entry type definitions with field layouts
+- `cms/config/project/graphql/schemas/` — Public and Private schema configs
+- `cms/.env` — Environment variables for preview and webhooks
+
+**Learnings:**
+- [Craft CMS Headless Setup](learnings/2026-01-25-craft-headless-setup.md)
+- [Next.js + Craft Fundamentals](learnings/2026-01-25-next-craft-fundamentals.md)

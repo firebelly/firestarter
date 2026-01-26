@@ -1,7 +1,7 @@
 # Craft CMS + Next.js Integration
 
 **Created:** 2026-01-25
-**Status:** Design
+**Status:** Complete
 
 ---
 
@@ -283,3 +283,7 @@ site/.env.local                     # Environment variables
 - GraphQL endpoint is `/actions/graphql/api` in headless mode (custom routes disabled)
 - Preview targets simplified to `{url}` using `PRIMARY_SITE_URL` pattern from official starter
 - Task 6 deferred — webhook configuration requires Next.js endpoint to test
+
+**Learnings documented:**
+- [Craft CMS Headless Setup](../learnings/2026-01-25-craft-headless-setup.md) — GraphQL types, headless mode gotchas, schema permissions, site URL configuration
+- [Next.js + Craft Fundamentals](../learnings/2026-01-25-next-craft-fundamentals.md) — Rendering strategies, ISR patterns, preview flow, catch-all routes

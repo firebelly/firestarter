@@ -271,6 +271,7 @@ site/.env.local                     # Environment variables
 | 2026-01-26 | Plan 2, Task 2: Create GraphQL Client | `site/src/lib/graphql/client.ts` | Used `/actions/graphql/api` endpoint per Plan 1 learnings (headless mode disables custom routes). |
 | 2026-01-26 | Plan 2, Task 3: Create TypeScript Types | `site/src/lib/graphql/types.ts` | BaseEntry, HomepageEntry, PageEntry, EntryResponse<T>. Fields nullable per Craft schema. |
 | 2026-01-26 | Plan 2, Task 4: Create GraphQL Queries | `site/src/lib/graphql/queries/*.ts` | HOMEPAGE_QUERY, PAGE_BY_URI_QUERY. Used Craft 5 type naming: `homepage_Entry`, `page_Entry`. |
+| 2026-01-26 | Plan 2, Task 6 (Part 1): Update Homepage Route | `site/src/app/page.tsx`, `types.ts`, `queries/*.ts` | Deviated: Reordered tasks to test live before adding preview. Discoveries: (1) Use HTTP not HTTPS for local DDEV (Node rejects self-signed certs), (2) CKEditor fields need sub-selection `body { html }` not just `body`. Added CKEditorField type. |
 
 ---
 

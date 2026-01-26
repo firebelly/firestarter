@@ -5,7 +5,9 @@ export const PAGE_BY_URI_QUERY = `
       uri
       ... on page_Entry {
         heading
-        body
+        body {
+          html
+        }
       }
     }
   }

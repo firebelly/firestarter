@@ -5,7 +5,9 @@ export const HOMEPAGE_QUERY = `
       uri
       ... on homepage_Entry {
         heading
-        body
+        body {
+          html
+        }
       }
     }
   }

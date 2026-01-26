@@ -102,6 +102,28 @@ GraphQL uses POST even for "read" operations because queries go in the request b
 
 ---
 
+## TypeScript Interfaces
+
+Interfaces define the shape of objects:
+
+```typescript
+interface BaseEntry {
+  title: string;
+  uri: string | null;  // nullable — Craft fields can be empty
+}
+
+interface HomepageEntry extends BaseEntry {
+  heading: string | null;
+  body: string | null;
+}
+```
+
+- **`extends`** — inherit fields from another interface (avoids repetition)
+- **`string | null`** — union type, can be either. Forces you to handle null cases
+- **Separate similar types** — `HomepageEntry` and `PageEntry` are identical now but represent different Craft sections. Keeps code readable and allows them to diverge later
+
+---
+
 ## Quick Syntax Reference
 
 ```typescript

@@ -272,6 +272,7 @@ site/.env.local                     # Environment variables
 | 2026-01-26 | Plan 2, Task 3: Create TypeScript Types | `site/src/lib/graphql/types.ts` | BaseEntry, HomepageEntry, PageEntry, EntryResponse<T>. Fields nullable per Craft schema. |
 | 2026-01-26 | Plan 2, Task 4: Create GraphQL Queries | `site/src/lib/graphql/queries/*.ts` | HOMEPAGE_QUERY, PAGE_BY_URI_QUERY. Used Craft 5 type naming: `homepage_Entry`, `page_Entry`. |
 | 2026-01-26 | Plan 2, Task 6 (Part 1): Update Homepage Route | `site/src/app/page.tsx`, `types.ts`, `queries/*.ts` | Deviated: Reordered tasks to test live before adding preview. Discoveries: (1) Use HTTP not HTTPS for local DDEV (Node rejects self-signed certs), (2) CKEditor fields need sub-selection `body { html }` not just `body`. Added CKEditorField type. |
+| 2026-01-26 | Preview Config Setup | `cms/.env`, `site/package.json` | Required for Craft→Next.js preview iframe: (1) Set `PRIMARY_SITE_URL=https://localhost:3000` in `cms/.env` (overrides DDEV default), (2) Removed `CRAFT_BASE_CP_URL` (not needed), (3) Added `--experimental-https` to dev script in package.json. HTTPS required to avoid mixed-content blocking. |
 
 ---
 

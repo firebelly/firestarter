@@ -268,6 +268,7 @@ site/.env.local                     # Environment variables
 | 2026-01-25 | Task 5: Configure Preview Targets | `cms/.env`, `cms/config/project/sections/*.yaml` | Simplified: Using `{url}` as preview target (per official starter). Set `CRAFT_BASE_CP_URL=https://cms.ddev.site`. Set `PRIMARY_SITE_URL=http://localhost:3000`. Full testing deferred to Plan 2. |
 | 2026-01-25 | Task 6: Configure Revalidation Webhook | — | **Deferred to Plan 2.** No endpoint to receive webhook yet. Will configure when building Next.js frontend. |
 | 2026-01-26 | Plan 2, Task 1: Set Up Environment Variables | `site/.env.example`, `site/.env.local`, `site/.gitignore` | Created env files. Updated .gitignore to track .env.example but not .env.local. Deviated: CRAFT_URL is `https://cms.ddev.site` not `https://cms.firestarter.ddev.site` (implementation plan had wrong DDEV project name). |
+| 2026-01-26 | Plan 2, Task 2: Create GraphQL Client | `site/src/lib/graphql/client.ts` | Used `/actions/graphql/api` endpoint per Plan 1 learnings (headless mode disables custom routes). |
 
 ---
 

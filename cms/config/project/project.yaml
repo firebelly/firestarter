@@ -1,4 +1,4 @@
-dateModified: 1769400773
+dateModified: 1769402927
 email:
   fromEmail: developer@firebellydesign.com
   fromName: Firestarter
@@ -14,6 +14,7 @@ meta:
     a928f07b-2e93-414a-ac32-39a0f05ceacf: Homepage # Homepage
     a64493a9-3558-4984-82a5-446587987ba0: Firestarter # Firestarter
     bd170d86-9f68-495a-8855-8ff0af7db2b0: 'Public Schema' # Public Schema
+    d1b9705e-df80-4160-859a-e37f574d4ea4: 'Private Schema' # Private Schema
     d760b96a-0f1c-40a2-90be-76015cca0ef8: Body # Body
 plugins:
   ckeditor:

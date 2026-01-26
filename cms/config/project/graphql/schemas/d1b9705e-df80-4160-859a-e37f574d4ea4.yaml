@@ -1,7 +1,9 @@
-isPublic: true
-name: 'Public Schema'
+isPublic: false
+name: 'Private Schema'
 scope:
   - 'sites.31861c7c-e659-40f7-ad0e-98ecdba93de8:read' # Firestarter
+  - 'elements.drafts:read'
+  - 'elements.revisions:read'
   - 'sections.851c9ce6-5d2d-4557-8b85-d9456fbe5b60:read' # Homepage
   - 'sections.311403d1-3dae-4f9e-aaed-871f09bd6c25:read' # Pages
   - 'nestedentryfields.d760b96a-0f1c-40a2-90be-76015cca0ef8:read' # Body

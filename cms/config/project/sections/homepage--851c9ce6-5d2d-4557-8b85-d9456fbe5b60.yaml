@@ -6,6 +6,11 @@ entryTypes:
 handle: homepage
 maxAuthors: 1
 name: Homepage
+previewTargets:
+  -
+    label: Homepage
+    refresh: '1'
+    urlFormat: '{url}'
 propagationMethod: all
 siteSettings:
   31861c7c-e659-40f7-ad0e-98ecdba93de8: # Firestarter

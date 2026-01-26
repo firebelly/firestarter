@@ -261,7 +261,7 @@ site/.env.local                     # Environment variables
 
 | Date | Task | Files | Notes |
 |------|------|-------|-------|
-| | | | |
+| 2026-01-25 | Task 1: Create Content Fields | `cms/config/project/fields/heading--*.yaml`, `cms/config/project/fields/body--*.yaml` | Deviated: Had to install CKEditor plugin first (not in plan) |
 
 ---
 

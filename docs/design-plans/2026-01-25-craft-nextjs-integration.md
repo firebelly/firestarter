@@ -266,14 +266,20 @@ site/.env.local                     # Environment variables
 | 2026-01-25 | Task 3: Create Pages Section | `cms/config/project/sections/pages--*.yaml`, `cms/config/project/entryTypes/page--*.yaml` | Completed as planned. GraphQL type is `page_Entry`. |
 | 2026-01-25 | Task 4: Configure GraphQL Schemas | `cms/config/project/graphql/schemas/*.yaml` | Public Schema built-in (not renamed). Created "Private Schema" with drafts/revisions access + token. Deviated: In headless mode, GraphQL endpoint is `/actions/graphql/api` (custom routes disabled). Verified: Public rejects drafts, Private returns them with token. |
 | 2026-01-25 | Task 5: Configure Preview Targets | `cms/.env`, `cms/config/project/sections/*.yaml` | Simplified: Using `{url}` as preview target (per official starter). Set `CRAFT_BASE_CP_URL=https://cms.ddev.site`. Set `PRIMARY_SITE_URL=http://localhost:3000`. Full testing deferred to Plan 2. |
+| 2026-01-25 | Task 6: Configure Revalidation Webhook | — | **Deferred to Plan 2.** No endpoint to receive webhook yet. Will configure when building Next.js frontend. |
 
 ---
 
 ## Completion
 
-**Completed:** [Date]
-**Final Status:** [Complete | Partial | Abandoned]
+**Completed:** 2026-01-25
+**Final Status:** Partial (5/6 tasks — Task 6 deferred)
 
-**Summary:** [Brief description of what was actually built]
+**Summary:** Configured Craft CMS for headless operation with Next.js. Created Homepage singleton and Pages structure sections with Heading/Body fields. Set up GraphQL public/private schemas with token authentication. Configured preview targets using official starter pattern. Task 6 (webhooks) deferred to Plan 2 when Next.js endpoint exists.
 
-**Deviations from Plan:** [Any significant changes from original design]
+**Deviations from Plan:**
+- CKEditor required plugin installation (not built-in)
+- GraphQL types use simplified naming in Craft 5: `{section}_Entry` not `{section}_{entryType}_Entry`
+- GraphQL endpoint is `/actions/graphql/api` in headless mode (custom routes disabled)
+- Preview targets simplified to `{url}` using `PRIMARY_SITE_URL` pattern from official starter
+- Task 6 deferred — webhook configuration requires Next.js endpoint to test

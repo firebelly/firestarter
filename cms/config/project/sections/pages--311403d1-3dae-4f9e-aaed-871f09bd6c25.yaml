@@ -1,0 +1,19 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 57911354-86d0-4e1a-bd4c-fc02d49d5e69 # Page
+handle: pages
+maxAuthors: 1
+name: Pages
+propagationMethod: all
+siteSettings:
+  31861c7c-e659-40f7-ad0e-98ecdba93de8: # Firestarter
+    enabledByDefault: true
+    hasUrls: true
+    template: null
+    uriFormat: '{parent.uri}/{slug}'
+structure:
+  maxLevels: 2
+  uid: ea107710-ad3d-4a07-83fc-f0e0c9ec8f62
+type: structure

@@ -282,22 +282,25 @@ site/.env.local                     # Environment variables
 | 2026-01-27 | Plan 2, Task 8: Create Revalidation API Route | `site/src/app/api/revalidate/route.ts` | Completed as planned. Validates shared secret, converts `__home__` to `/`, calls `revalidatePath()`. Learning: [On-Demand Revalidation](../learnings/2026-01-27-on-demand-revalidation.md) |
 | 2026-01-27 | Plan 2, Task 9: Configure Craft Webhook | Craft CP config, `cms/.env` | Installed craftcms/webhooks plugin. Created "Revalidate Next.js" webhook on `elements.entry.afterSave`. **Deviation:** Reverted to HTTP for local dev — DDEV can't reach Next.js HTTPS (self-signed cert rejected). Webhook URL: `http://host.docker.internal:3000/api/revalidate`. Production will use proper HTTPS. Learning: [Local vs Production Config](../learnings/2026-01-27-local-vs-production-config.md) |
 | 2026-01-27 | Discovery: Unused Private Schema | — | **Documentation cleanup needed.** Design planned for Private Schema + `CRAFT_PREVIEW_TOKEN` to access drafts during preview. Implementation pivoted to using Craft's dynamic per-session preview token (from URL params) instead. Result: Private Schema configured but unused, `CRAFT_PREVIEW_TOKEN` env var is dead code. Docs referencing it: design plan, implementation plan, learnings, `.env.example`. Needs cleanup in `/document` phase. |
+| 2026-01-27 | Plan 2, Task 10: Add Preview Bar Component | — | **Skipped.** Nice-to-have feature deprioritized. Can be added later if needed. |
 
 ---
 
 ## Completion
 
-**Completed:** 2026-01-25
-**Final Status:** Partial (5/6 tasks — Task 6 deferred)
+**Completed:** 2026-01-27
+**Final Status:** Complete (9/10 tasks — Task 10 skipped as nice-to-have)
 
-**Summary:** Configured Craft CMS for headless operation with Next.js. Created Homepage singleton and Pages structure sections with Heading/Body fields. Set up GraphQL public/private schemas with token authentication. Configured preview targets using official starter pattern. Task 6 (webhooks) deferred to Plan 2 when Next.js endpoint exists.
+**Summary:** End-to-end Craft CMS + Next.js integration complete. Content authored in Craft renders on the Next.js frontend via GraphQL. Live preview works for both iframe and view-link modes. On-demand cache revalidation via webhook ensures content updates propagate within seconds.
 
 **Deviations from Plan:**
 - CKEditor required plugin installation (not built-in)
 - GraphQL types use simplified naming in Craft 5: `{section}_Entry` not `{section}_{entryType}_Entry`
 - GraphQL endpoint is `/actions/graphql/api` in headless mode (custom routes disabled)
 - Preview targets simplified to `{url}` using `PRIMARY_SITE_URL` pattern from official starter
-- Task 6 deferred — webhook configuration requires Next.js endpoint to test
+- Preview uses Craft's per-session token (URL params) instead of Private Schema + `CRAFT_PREVIEW_TOKEN`
+- Draft Mode approach abandoned due to cross-origin iframe cookie blocking
+- Task 10 (Preview Bar) skipped — nice-to-have, can be added later
 
 **Learnings documented:**
 - [Craft CMS Headless Setup](../learnings/2026-01-25-craft-headless-setup.md) — GraphQL types, headless mode gotchas, schema permissions, site URL configuration

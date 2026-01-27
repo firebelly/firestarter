@@ -278,6 +278,7 @@ site/.env.local                     # Environment variables
 | 2026-01-26 | Architectural Pivot: Draft Mode | — | **Major deviation:** Query param preview works but opts page into dynamic rendering (no static caching for normal visitors). Decided to pivot to Draft Mode approach: API routes (`/api/preview`, `/api/exit-preview`) set cookies, page checks `draftMode()`. This keeps pages static for visitors while allowing dynamic preview for editors. Will revert `searchParams` changes and implement Draft Mode. See `docs/learnings/2026-01-26-preview-mode-patterns.md`. |
 | 2026-01-27 | Draft Mode Abandoned | — | Cross-origin iframe cookie blocking made Draft Mode unworkable. Browsers block third-party cookies regardless of `SameSite=None; Secure` settings. Published tutorials confirm this is a known unsolved problem. Reverted to query param approach. |
 | 2026-01-27 | Plan 2, Task 6: Update Homepage Route | `site/src/app/page.tsx`, `site/src/lib/preview.ts`, `site/src/lib/graphql/client.ts` | Final implementation uses query params (`searchParams`). Preview token passed to GraphQL as `?token=xxx`. Updated `isPreviewMode()` to detect both `x-craft-live-preview` (iframe) and `x-craft-preview` (view link). Both preview modes working. |
+| 2026-01-27 | Plan 2, Task 7: Create Catch-All Pages Route | `site/src/app/[...slug]/page.tsx` | Completed as planned. Uses same preview pattern as homepage. Slug array joined to URI string for Craft GraphQL lookup. |
 
 ---
 

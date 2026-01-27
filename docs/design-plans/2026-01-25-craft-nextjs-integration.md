@@ -18,18 +18,18 @@
 ## Requirements
 
 ### Must Have
-- [ ] Craft GraphQL API enabled with public and private schemas
-- [ ] Homepage singleton section with heading and body fields
-- [ ] Pages structure section (2 levels) with heading and body fields
-- [ ] Next.js GraphQL client for fetching content
-- [ ] Homepage route (`/`) consuming Craft data
-- [ ] Catch-all pages route (`/[...slug]`) consuming Craft data
-- [ ] Live Preview via Draft Mode
-- [ ] On-demand cache revalidation via webhook
-- [ ] 404 handling for missing pages
+- [x] Craft GraphQL API enabled with public and private schemas
+- [x] Homepage singleton section with heading and body fields
+- [x] Pages structure section (2 levels) with heading and body fields
+- [x] Next.js GraphQL client for fetching content
+- [x] Homepage route (`/`) consuming Craft data
+- [x] Catch-all pages route (`/[...slug]`) consuming Craft data
+- [x] Live Preview (via query params — Draft Mode was abandoned, see Deviations)
+- [x] On-demand cache revalidation via webhook
+- [x] 404 handling for missing pages
 
 ### Nice to Have
-- [ ] Preview bar UI showing "You are in preview mode" with exit link
+- [ ] Preview bar UI showing "You are in preview mode" with exit link (skipped)
 
 ### Out of Scope
 - Full design system / component library
@@ -163,9 +163,10 @@ site/src/
 
 | Variable | Purpose | Example |
 |----------|---------|---------|
-| `CRAFT_GRAPHQL_URL` | Craft GraphQL endpoint | `https://firestarter.ddev.site/api` |
-| `CRAFT_PREVIEW_TOKEN` | Token for draft/preview queries | (generated in Craft) |
+| `CRAFT_URL` | Craft CMS base URL | `http://cms.ddev.site` |
 | `REVALIDATION_SECRET` | Shared secret for webhook validation | (random string) |
+
+*Note: Original design included `CRAFT_PREVIEW_TOKEN` for Private Schema access. Implementation pivoted to using Craft's per-session preview token (passed via URL params), so this env var is not needed.*
 
 ---
 
@@ -188,9 +189,9 @@ site/src/
 query Homepage {
   entry(section: "homepage") {
     title
-    ... on homepage_homepage_Entry {
+    ... on homepage_Entry {
       heading
-      body
+      body { html }
     }
   }
 }
@@ -202,13 +203,15 @@ query PageByUri($uri: [String]) {
   entry(section: "pages", uri: $uri) {
     title
     uri
-    ... on pages_pages_Entry {
+    ... on page_Entry {
       heading
-      body
+      body { html }
     }
   }
 }
 ```
+
+*Note: Uses Craft 5 simplified type naming (`homepage_Entry`, `page_Entry`). CKEditor fields require `body { html }` sub-selection.*
 
 ---
 
@@ -281,7 +284,8 @@ site/.env.local                     # Environment variables
 | 2026-01-27 | Plan 2, Task 7: Create Catch-All Pages Route | `site/src/app/[...slug]/page.tsx` | Completed as planned. Uses same preview pattern as homepage. Slug array joined to URI string for Craft GraphQL lookup. |
 | 2026-01-27 | Plan 2, Task 8: Create Revalidation API Route | `site/src/app/api/revalidate/route.ts` | Completed as planned. Validates shared secret, converts `__home__` to `/`, calls `revalidatePath()`. Learning: [On-Demand Revalidation](../learnings/2026-01-27-on-demand-revalidation.md) |
 | 2026-01-27 | Plan 2, Task 9: Configure Craft Webhook | Craft CP config, `cms/.env` | Installed craftcms/webhooks plugin. Created "Revalidate Next.js" webhook on `elements.entry.afterSave`. **Deviation:** Reverted to HTTP for local dev — DDEV can't reach Next.js HTTPS (self-signed cert rejected). Webhook URL: `http://host.docker.internal:3000/api/revalidate`. Production will use proper HTTPS. Learning: [Local vs Production Config](../learnings/2026-01-27-local-vs-production-config.md) |
-| 2026-01-27 | Discovery: Unused Private Schema | — | **Documentation cleanup needed.** Design planned for Private Schema + `CRAFT_PREVIEW_TOKEN` to access drafts during preview. Implementation pivoted to using Craft's dynamic per-session preview token (from URL params) instead. Result: Private Schema configured but unused, `CRAFT_PREVIEW_TOKEN` env var is dead code. Docs referencing it: design plan, implementation plan, learnings, `.env.example`. Needs cleanup in `/document` phase. |
+| 2026-01-27 | Discovery: Unused Private Schema | — | Design planned for Private Schema + `CRAFT_PREVIEW_TOKEN` to access drafts during preview. Implementation pivoted to using Craft's dynamic per-session preview token (from URL params) instead. Private Schema remains configured (can be useful for future API integrations). |
+| 2026-01-27 | Phase 4: Documentation Cleanup | `site/.env.example` | Removed unused `CRAFT_PREVIEW_TOKEN` from `.env.example`. Learnings docs retained — they explain *why* the schema token approach wasn't used, which is valuable context. |
 | 2026-01-27 | Plan 2, Task 10: Add Preview Bar Component | — | **Skipped.** Nice-to-have feature deprioritized. Can be added later if needed. |
 
 ---
@@ -308,3 +312,13 @@ site/.env.local                     # Environment variables
 - [Preview Mode Patterns](../learnings/2026-01-26-preview-mode-patterns.md) — Token types, searchParams vs Draft Mode, static rendering tradeoffs
 - [On-Demand Revalidation](../learnings/2026-01-27-on-demand-revalidation.md) — Webhook flow, route handler anatomy, revalidatePath behavior, debugging tips
 - [Local vs Production Config](../learnings/2026-01-27-local-vs-production-config.md) — Environment URLs, HTTP/HTTPS tradeoff, GraphQL endpoint, quick reference checklists
+
+**Retrospective:**
+
+This design was too large. Ten tasks spanning Craft CMS configuration and Next.js integration, with multiple architectural pivots along the way, made it difficult to track state between build sessions. Key issues:
+
+1. **Scope creep risk** — The Draft Mode pivot mid-build created documentation drift; original specs became stale while we explored alternatives.
+2. **Cross-session continuity** — Without running `/document` between plans, assumptions in Plan 2 (e.g., `CRAFT_PREVIEW_TOKEN`) were based on Plan 1's *design* rather than its *actual outcome*.
+3. **10-step builds are fragile** — Each deviation compounds; by Task 9, multiple docs were out of sync.
+
+**Recommendation for future designs:** Keep designs to 5 tasks max. If a feature naturally splits (like "Craft setup" + "Next.js code"), treat them as separate design docs with their own `/document` phases. The documentation phase is what catches drift — skipping it between related work is risky.

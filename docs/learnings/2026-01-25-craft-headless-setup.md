@@ -37,8 +37,10 @@ When `headlessMode(true)` is enabled in `config/general.php`:
 
 **For Next.js integration:**
 ```
-CRAFT_GRAPHQL_URL=https://cms.ddev.site/actions/graphql/api
+CRAFT_URL=http://cms.ddev.site
 ```
+
+The GraphQL client appends `/actions/graphql/api` to this base URL.
 
 ---
 
@@ -89,19 +91,23 @@ To query drafts, use `drafts: true` — not status filters.
 
 ## Site URL Configuration for Headless
 
-In a headless setup, you need **two separate URLs** in your `.env`:
+In a headless setup with Craft and Next.js:
 
+**Craft CMS (`cms/.env`):**
 ```bash
-# Where Craft's Control Panel is accessed
-CRAFT_BASE_CP_URL="https://cms.ddev.site"
-
 # The site's base URL (used for entry URLs, preview targets)
 PRIMARY_SITE_URL="http://localhost:3000"
 ```
 
-| Variable | Purpose | Points To |
-|----------|---------|-----------|
-| `CRAFT_BASE_CP_URL` | Craft admin/CP access | Craft backend |
-| `PRIMARY_SITE_URL` | Entry URLs (`{url}`), preview targets | Next.js frontend |
+**Next.js (`site/.env.local`):**
+```bash
+# Craft CMS base URL
+CRAFT_URL="http://cms.ddev.site"
+```
+
+| Variable | Location | Purpose |
+|----------|----------|---------|
+| `PRIMARY_SITE_URL` | `cms/.env` | Entry URLs (`{url}`), preview targets |
+| `CRAFT_URL` | `site/.env.local` | GraphQL endpoint base URL |
 
 **Key insight:** Setting `PRIMARY_SITE_URL` to your frontend means `{url}` on entries automatically generates frontend URLs. This is the official Craft + Next.js starter pattern — preview targets can simply use `{url}` instead of complex alias syntax.

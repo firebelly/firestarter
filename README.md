@@ -81,6 +81,36 @@ This pattern keeps related files together and ensures Storybook documents the ac
 
 Design tokens from Figma live in `/site/src/tokens/`. These are consumed by components and available in Storybook.
 
+## Craft + Next.js Integration
+
+The frontend fetches content from Craft CMS via GraphQL. The integration includes:
+
+- **GraphQL data fetching** — `site/src/lib/graphql/client.ts` wraps fetch with caching
+- **Live preview** — Editors see draft changes in Craft's preview iframe
+- **Cache revalidation** — Webhook from Craft invalidates Next.js cache on publish
+
+### Environment Variables
+
+Copy the example file and fill in values:
+
+```bash
+cd site
+cp .env.example .env.local
+```
+
+| Variable | Purpose |
+|----------|---------|
+| `CRAFT_URL` | Craft CMS URL (e.g., `http://cms.ddev.site`) |
+| `REVALIDATION_SECRET` | Shared secret for webhook validation |
+
+The CMS also needs `REVALIDATION_SECRET` in `cms/.env` (same value).
+
+### Local Development Notes
+
+- Use HTTP (not HTTPS) for `CRAFT_URL` locally — Node rejects self-signed certs
+- For preview testing, run `pnpm dev:https` and update `PRIMARY_SITE_URL` in `cms/.env`
+- See `docs/learnings/2026-01-27-local-vs-production-config.md` for details
+
 ## Key Principles
 
 - **Client safety** — CMS structured so clients can manage content without breaking layouts

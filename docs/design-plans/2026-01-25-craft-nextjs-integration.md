@@ -274,6 +274,10 @@ site/.env.local                     # Environment variables
 | 2026-01-26 | Plan 2, Task 6 (Part 1): Update Homepage Route | `site/src/app/page.tsx`, `types.ts`, `queries/*.ts` | Deviated: Reordered tasks to test live before adding preview. Discoveries: (1) Use HTTP not HTTPS for local DDEV (Node rejects self-signed certs), (2) CKEditor fields need sub-selection `body { html }` not just `body`. Added CKEditorField type. |
 | 2026-01-26 | Preview Config Setup | `cms/.env`, `site/package.json` | Required for Craft→Next.js preview iframe: (1) Set `PRIMARY_SITE_URL=https://localhost:3000` in `cms/.env` (overrides DDEV default), (2) Removed `CRAFT_BASE_CP_URL` (not needed), (3) Added `--experimental-https` to dev script in package.json. HTTPS required to avoid mixed-content blocking. |
 | 2026-01-26 | Plan 2, Task 5: Create Preview Utility | `site/src/lib/preview.ts` | Created `isPreviewMode()` and `getPreviewToken()` helpers. Detects Craft preview via URL params. |
+| 2026-01-26 | Plan 2, Task 6: Update Homepage Route | `site/src/app/page.tsx`, `site/src/lib/graphql/client.ts` | Added preview support. **Deviated:** Preview token must be passed as query param to GraphQL endpoint (`?token=xxx`), NOT as Authorization header. The preview token authorizes access to a specific draft, different from schema tokens. |
+| 2026-01-26 | Architectural Pivot: Draft Mode | — | **Major deviation:** Query param preview works but opts page into dynamic rendering (no static caching for normal visitors). Decided to pivot to Draft Mode approach: API routes (`/api/preview`, `/api/exit-preview`) set cookies, page checks `draftMode()`. This keeps pages static for visitors while allowing dynamic preview for editors. Will revert `searchParams` changes and implement Draft Mode. See `docs/learnings/2026-01-26-preview-mode-patterns.md`. |
+| 2026-01-27 | Draft Mode Abandoned | — | Cross-origin iframe cookie blocking made Draft Mode unworkable. Browsers block third-party cookies regardless of `SameSite=None; Secure` settings. Published tutorials confirm this is a known unsolved problem. Reverted to query param approach. |
+| 2026-01-27 | Plan 2, Task 6: Update Homepage Route | `site/src/app/page.tsx`, `site/src/lib/preview.ts`, `site/src/lib/graphql/client.ts` | Final implementation uses query params (`searchParams`). Preview token passed to GraphQL as `?token=xxx`. Updated `isPreviewMode()` to detect both `x-craft-live-preview` (iframe) and `x-craft-preview` (view link). Both preview modes working. |
 
 ---
 
@@ -294,3 +298,4 @@ site/.env.local                     # Environment variables
 **Learnings documented:**
 - [Craft CMS Headless Setup](../learnings/2026-01-25-craft-headless-setup.md) — GraphQL types, headless mode gotchas, schema permissions, site URL configuration
 - [Next.js + Craft Fundamentals](../learnings/2026-01-25-next-craft-fundamentals.md) — Rendering strategies, ISR patterns, preview flow, catch-all routes
+- [Preview Mode Patterns](../learnings/2026-01-26-preview-mode-patterns.md) — Token types, searchParams vs Draft Mode, static rendering tradeoffs

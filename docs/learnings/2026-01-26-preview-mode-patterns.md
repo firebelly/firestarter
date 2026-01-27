@@ -115,4 +115,21 @@ The key difference: Draft Mode routes through an API endpoint first, which sets 
 | Production site, want static + preview | Draft Mode with API routes |
 | Need edge flexibility, complex routing | Middleware + Draft Mode |
 
-**Firestarter uses Draft Mode** — static pages for visitors, dynamic preview for editors.
+**Firestarter uses query params** — simpler, works in all environments.
+
+---
+
+## Future Consideration: Draft Mode in Production
+
+The cookie blocking we encountered is specific to **local development** with mismatched domains (`cms.ddev.site` → `localhost:3000`).
+
+In production with subdomains of the same root domain, Draft Mode would work:
+
+| Setup | Cookie context | Draft Mode works? |
+|-------|---------------|-------------------|
+| `cms.ddev.site` → `localhost:3000` | Cross-site | ❌ No |
+| `cms.firestarter.com` → `firestarter.com` | Same-site | ✅ Yes |
+
+Browsers treat subdomains of the same root domain as "same-site" for cookie purposes. You could set the cookie domain to `.firestarter.com` to share across all subdomains.
+
+**If static rendering becomes important:** Consider a hybrid approach — Draft Mode for production (static pages), query params as fallback for local dev. But this adds complexity and is only worth it if performance becomes a real issue.

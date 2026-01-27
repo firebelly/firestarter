@@ -115,16 +115,27 @@ In Craft CP → Settings → Webhooks:
 |-------|-------|
 | Name | Revalidate Next.js |
 | Event | `elements.entry.afterSave` |
-| URL | `http://localhost:3000/api/revalidate` |
+| URL | `$REVALIDATION_URL` |
 | Method | POST |
 | Headers | `Content-Type: application/json` |
 
-**Payload:**
-```json
-{
-  "secret": "{{ getenv('REVALIDATION_SECRET') }}",
-  "uri": "{{ entry.uri ?? '__home__' }}"
-}
+**Payload (Twig template):**
+```twig
+{% set entryUri = event.sender.uri %}
+{% set revalidationSecret = getenv('REVALIDATION_SECRET') %}
+
+{{
+  {
+    secret: revalidationSecret,
+    uri: entryUri
+  }|json_encode|raw
+}}
+```
+
+**Required environment variables in `cms/.env`:**
+```bash
+REVALIDATION_SECRET=your-random-string
+REVALIDATION_URL=http://host.docker.internal:3000/api/revalidate  # local dev
 ```
 
 ---

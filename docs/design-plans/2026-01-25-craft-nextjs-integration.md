@@ -280,6 +280,8 @@ site/.env.local                     # Environment variables
 | 2026-01-27 | Plan 2, Task 6: Update Homepage Route | `site/src/app/page.tsx`, `site/src/lib/preview.ts`, `site/src/lib/graphql/client.ts` | Final implementation uses query params (`searchParams`). Preview token passed to GraphQL as `?token=xxx`. Updated `isPreviewMode()` to detect both `x-craft-live-preview` (iframe) and `x-craft-preview` (view link). Both preview modes working. |
 | 2026-01-27 | Plan 2, Task 7: Create Catch-All Pages Route | `site/src/app/[...slug]/page.tsx` | Completed as planned. Uses same preview pattern as homepage. Slug array joined to URI string for Craft GraphQL lookup. |
 | 2026-01-27 | Plan 2, Task 8: Create Revalidation API Route | `site/src/app/api/revalidate/route.ts` | Completed as planned. Validates shared secret, converts `__home__` to `/`, calls `revalidatePath()`. Learning: [On-Demand Revalidation](../learnings/2026-01-27-on-demand-revalidation.md) |
+| 2026-01-27 | Plan 2, Task 9: Configure Craft Webhook | Craft CP config, `cms/.env` | Installed craftcms/webhooks plugin. Created "Revalidate Next.js" webhook on `elements.entry.afterSave`. **Deviation:** Reverted to HTTP for local dev — DDEV can't reach Next.js HTTPS (self-signed cert rejected). Webhook URL: `http://host.docker.internal:3000/api/revalidate`. Production will use proper HTTPS. Learning: [Local vs Production Config](../learnings/2026-01-27-local-vs-production-config.md) |
+| 2026-01-27 | Discovery: Unused Private Schema | — | **Documentation cleanup needed.** Design planned for Private Schema + `CRAFT_PREVIEW_TOKEN` to access drafts during preview. Implementation pivoted to using Craft's dynamic per-session preview token (from URL params) instead. Result: Private Schema configured but unused, `CRAFT_PREVIEW_TOKEN` env var is dead code. Docs referencing it: design plan, implementation plan, learnings, `.env.example`. Needs cleanup in `/document` phase. |
 
 ---
 
@@ -301,3 +303,5 @@ site/.env.local                     # Environment variables
 - [Craft CMS Headless Setup](../learnings/2026-01-25-craft-headless-setup.md) — GraphQL types, headless mode gotchas, schema permissions, site URL configuration
 - [Next.js + Craft Fundamentals](../learnings/2026-01-25-next-craft-fundamentals.md) — Rendering strategies, ISR patterns, preview flow, catch-all routes
 - [Preview Mode Patterns](../learnings/2026-01-26-preview-mode-patterns.md) — Token types, searchParams vs Draft Mode, static rendering tradeoffs
+- [On-Demand Revalidation](../learnings/2026-01-27-on-demand-revalidation.md) — Webhook flow, route handler anatomy, revalidatePath behavior, debugging tips
+- [Local vs Production Config](../learnings/2026-01-27-local-vs-production-config.md) — Environment URLs, HTTP/HTTPS tradeoff, GraphQL endpoint, quick reference checklists

@@ -1,4 +1,4 @@
-dateModified: 1769447659
+dateModified: 1769538656
 email:
   fromEmail: developer@firebellydesign.com
   fromName: Firestarter
@@ -21,6 +21,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 3.0.0.0
+  webhooks:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.4.0
 system:
   edition: solo
   live: true

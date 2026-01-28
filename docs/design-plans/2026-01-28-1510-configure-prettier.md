@@ -120,6 +120,7 @@ site/eslint.config.mjs    # add eslint-config-prettier to config
 | Date | Task | Files | Notes |
 |------|------|-------|-------|
 | 2026-01-28 | Task 1 | `.prettierrc`, `.prettierignore`, `package.json` | Deviated: added `cms/vendor/`, `cms/.ddev/`, `cms/config/`, `cms/storage/`, `cms/web/`, `.claude/`, `CLAUDE.md`, `docs/` to `.prettierignore` — not in original plan |
+| 2026-01-28 | Task 2 | `site/package.json`, `site/eslint.config.mjs` | No deviations |
 
 ---
 

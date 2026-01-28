@@ -19,9 +19,6 @@ cms/web/
 .claude/
 CLAUDE.md
 
-# Docs
-docs/
-
 # Package manager
 pnpm-lock.yaml
 

@@ -168,13 +168,13 @@ pre-commit:
 
 ## Verification Checklist
 
-- [ ] `prettier` listed in root `package.json` devDependencies
-- [ ] `.prettierrc` exists at repo root with explicit config values
-- [ ] `.prettierignore` exists at repo root, excluding generated files
-- [ ] `pnpm prettier --check .` passes from repo root
-- [ ] `eslint-config-prettier` installed in `/site` and last in ESLint config
-- [ ] Lefthook pre-commit runs Prettier first, then typecheck, then lint
-- [ ] Committing an unformatted file results in auto-format and clean commit
+- [x] `prettier` listed in root `package.json` devDependencies
+- [x] `.prettierrc` exists at repo root with explicit config values
+- [x] `.prettierignore` exists at repo root, excluding generated files
+- [x] `pnpm prettier --check .` passes from repo root
+- [x] `eslint-config-prettier` installed in `/site` and last in ESLint config
+- [x] Lefthook pre-commit runs Prettier first, then typecheck, then lint
+- [x] Committing an unformatted file results in auto-format and clean commit
 
 ---
 

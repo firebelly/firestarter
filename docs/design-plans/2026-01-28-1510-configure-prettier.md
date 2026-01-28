@@ -123,14 +123,15 @@ site/eslint.config.mjs    # add eslint-config-prettier to config
 | 2026-01-28 | Task 2 | `site/package.json`, `site/eslint.config.mjs` | No deviations |
 | 2026-01-28 | Task 3a | `package.json` | Deviated: split Task 3 into two commits — scripts separate from format pass |
 | 2026-01-28 | Task 3b | 25 files formatted | No deviations |
+| 2026-01-28 | Task 4 | `lefthook.yml` | No deviations |
 
 ---
 
 ## Completion
 
-**Completed:** TBD
-**Final Status:** TBD
+**Completed:** 2026-01-28
+**Final Status:** Complete
 
-**Summary:** TBD
+**Summary:** Prettier installed repo-wide with explicit config, eslint-config-prettier added to prevent conflicts, all existing files formatted, and Lefthook pre-commit pipeline updated to auto-format on commit.
 
-**Deviations from Plan:** TBD
+**Deviations from Plan:** `.prettierignore` expanded beyond original plan to include CMS directories, Claude files, and docs. Task 3 split into two commits (scripts + format pass).

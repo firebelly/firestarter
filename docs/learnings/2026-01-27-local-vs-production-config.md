@@ -57,16 +57,8 @@ Configuration differences between local development and production for Craft CMS
 
 Switch between modes as needed:
 
-```json
-// package.json
-"scripts": {
-  "dev": "next dev",
-  "dev:https": "next dev --experimental-https"
-}
-```
-
 - **Testing webhooks/content updates:** `pnpm dev` (HTTP)
-- **Testing preview mode:** `pnpm dev:https` (HTTPS)
+- **Testing live preview:** `pnpm dev --experimental-https` (HTTPS)
 
 When using HTTPS, also update `PRIMARY_SITE_URL` in `cms/.env`:
 ```bash
@@ -114,6 +106,6 @@ The `craftFetch` client uses:
 
 1. Stop Next.js
 2. Change `cms/.env`: `PRIMARY_SITE_URL=https://localhost:3000`
-3. Start Next.js with `pnpm dev:https`
+3. Start Next.js with `pnpm dev --experimental-https`
 4. Test preview in Craft CP
 5. Revert when done (webhooks won't work in HTTPS mode)

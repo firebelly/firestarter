@@ -108,7 +108,7 @@ The CMS also needs `REVALIDATION_SECRET` in `cms/.env` (same value).
 ### Local Development Notes
 
 - Use HTTP (not HTTPS) for `CRAFT_URL` locally — Node rejects self-signed certs
-- For preview testing, run `pnpm dev:https` and update `PRIMARY_SITE_URL` in `cms/.env`
+- To test Craft's live preview feature, you need HTTPS (the CP iframe won't load HTTP content). Run `pnpm dev --experimental-https` and update `PRIMARY_SITE_URL=https://localhost:3000` in `cms/.env`. Revert to HTTP when done — webhooks won't work over HTTPS locally.
 - See `docs/learnings/2026-01-27-local-vs-production-config.md` for details
 
 ## Key Principles

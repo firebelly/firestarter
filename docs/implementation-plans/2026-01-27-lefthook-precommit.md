@@ -122,11 +122,11 @@ pre-commit:
 
 After all tasks complete, verify acceptance criteria:
 
-- [ ] Running `pnpm install` at repo root automatically runs `lefthook install`
-- [ ] `.git/hooks/pre-commit` symlink exists after installation
-- [ ] Committing valid code: both checks pass, commit succeeds
-- [ ] Committing code with TypeScript errors: TypeScript fails, ESLint skipped, commit blocked
-- [ ] Committing code with ESLint errors (valid TypeScript): TypeScript passes, ESLint fails, commit blocked
+- [x] Running `pnpm install` at repo root automatically runs `lefthook install`
+- [x] `.git/hooks/pre-commit` symlink exists after installation
+- [x] Committing valid code: both checks pass, commit succeeds
+- [x] Committing code with TypeScript errors: TypeScript fails, ESLint skipped, commit blocked
+- [x] Committing code with ESLint errors (valid TypeScript): TypeScript passes, ESLint fails, commit blocked
 
 ---
 

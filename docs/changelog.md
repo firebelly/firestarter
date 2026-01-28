@@ -64,3 +64,20 @@ This is **Plan 2 of 2** for the Craft + Next.js integration, completing the feat
 - [Preview Mode Patterns](learnings/2026-01-26-preview-mode-patterns.md)
 - [On-Demand Revalidation](learnings/2026-01-27-on-demand-revalidation.md)
 - [Local vs Production Config](learnings/2026-01-27-local-vs-production-config.md)
+
+---
+
+## 2026-01-27: Lefthook Pre-commit Hooks
+
+Added Lefthook v2 pre-commit hooks for TypeScript type checking and ESLint. Hooks use piped execution (fail-fast): TypeScript runs first on the full project; if it passes, ESLint runs on staged files only. Non-code commits skip checks entirely (~0.08s).
+
+**Design:** [docs/design-plans/2026-01-27-lefthook-precommit.md](design-plans/2026-01-27-lefthook-precommit.md)
+**Plan:** [docs/implementation-plans/2026-01-27-lefthook-precommit.md](implementation-plans/2026-01-27-lefthook-precommit.md)
+
+**Key files:**
+- `package.json` — Root package with Lefthook dependency
+- `lefthook.yml` — Pre-commit hook configuration (v2 `jobs:` syntax)
+- `pnpm-workspace.yaml` — Workspace config with Lefthook build approval (pnpm v10 requirement)
+
+**Learnings:**
+- [Pre-commit Hooks & JavaScript Tooling](learnings/2026-01-27-precommit-hooks-and-tooling.md)

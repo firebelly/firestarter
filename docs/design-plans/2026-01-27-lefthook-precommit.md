@@ -1,7 +1,7 @@
 # Lefthook Pre-commit Hooks
 
 **Created:** 2026-01-27
-**Status:** Design
+**Status:** Complete
 
 ---
 
@@ -18,14 +18,14 @@
 ## Requirements
 
 ### Must Have
-- [ ] Lefthook installed at repo root with automatic setup via `postinstall` script
-- [ ] Pre-commit hook runs TypeScript type checking (`tsc --noEmit`)
-- [ ] Pre-commit hook runs ESLint on staged files
-- [ ] TypeScript runs first; if it fails, ESLint is skipped (fail-fast)
-- [ ] Commits are blocked when either check fails
+- [x] Lefthook installed at repo root with automatic setup via `postinstall` script
+- [x] Pre-commit hook runs TypeScript type checking (`tsc --noEmit`)
+- [x] Pre-commit hook runs ESLint on staged files
+- [x] TypeScript runs first; if it fails, ESLint is skipped (fail-fast)
+- [x] Commits are blocked when either check fails
 
 ### Nice to Have
-- [ ] Easy migration path to pnpm workspaces in the future
+- [x] Easy migration path to pnpm workspaces in the future
 
 ### Out of Scope
 - Other git hooks (pre-push, commit-msg, etc.)
@@ -71,11 +71,11 @@
 
 ## Acceptance Criteria
 
-- [ ] Running `pnpm install` at repo root automatically runs `lefthook install`
-- [ ] `.git/hooks/pre-commit` symlink exists after installation
-- [ ] Committing valid code: both checks pass, commit succeeds
-- [ ] Committing code with TypeScript errors: TypeScript fails, ESLint skipped, commit blocked
-- [ ] Committing code with ESLint errors (valid TypeScript): TypeScript passes, ESLint fails, commit blocked
+- [x] Running `pnpm install` at repo root automatically runs `lefthook install`
+- [x] `.git/hooks/pre-commit` symlink exists after installation
+- [x] Committing valid code: both checks pass, commit succeeds
+- [x] Committing code with TypeScript errors: TypeScript fails, ESLint skipped, commit blocked
+- [x] Committing code with ESLint errors (valid TypeScript): TypeScript passes, ESLint fails, commit blocked
 
 ---
 

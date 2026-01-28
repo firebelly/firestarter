@@ -46,6 +46,14 @@ Figma Design System → Storybook → Craft CMS (headless) → Next.js Frontend
 - DDEV (for local Craft development)
 - Composer
 
+### Initial Setup
+
+```bash
+pnpm install         # Install Lefthook (sets up pre-commit hooks)
+```
+
+This installs Lefthook at the repo root, which automatically configures pre-commit hooks for TypeScript and ESLint checks.
+
 ### Frontend (Next.js + Storybook)
 
 ```bash
@@ -110,6 +118,21 @@ The CMS also needs `REVALIDATION_SECRET` in `cms/.env` (same value).
 - Use HTTP (not HTTPS) for `CRAFT_URL` locally — Node rejects self-signed certs
 - To test Craft's live preview feature, you need HTTPS (the CP iframe won't load HTTP content). Run `pnpm dev --experimental-https` and update `PRIMARY_SITE_URL=https://localhost:3000` in `cms/.env`. Revert to HTTP when done — webhooks won't work over HTTPS locally.
 - See `docs/learnings/2026-01-27-local-vs-production-config.md` for details
+
+## Pre-commit Hooks
+
+Lefthook runs automated checks before each commit:
+
+1. **TypeScript** — Full project type check (`tsc --noEmit`)
+2. **ESLint** — Lints staged JS/TS files only
+
+If TypeScript fails, ESLint is skipped (fail-fast). Non-code commits (markdown, JSON, etc.) skip checks entirely.
+
+To bypass hooks temporarily (use sparingly):
+
+```bash
+git commit --no-verify -m "message"
+```
 
 ## Key Principles
 

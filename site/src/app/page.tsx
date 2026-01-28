@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import { craftFetch } from '@/lib/graphql/client';
 import { HOMEPAGE_QUERY } from '@/lib/graphql/queries';
 import { EntryResponse, HomepageEntry } from '@/lib/graphql/types';
@@ -14,7 +15,7 @@ export default async function HomePage(props: PageProps<'/'>) {
   const entry = data.entry;
 
   if (!entry) {
-    return <div>Homepage not found</div>;
+    notFound();
   }
 
   return (

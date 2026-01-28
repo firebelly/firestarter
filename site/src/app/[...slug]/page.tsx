@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import { craftFetch } from '@/lib/graphql/client';
 import { PAGE_BY_URI_QUERY } from '@/lib/graphql/queries';
 import { EntryResponse, PageEntry } from '@/lib/graphql/types';
@@ -22,7 +23,7 @@ export default async function Page(props: PageProps<'/[...slug]'>) {
   const entry = data.entry;
 
   if (!entry) {
-    return <div>Page not found</div>;
+    notFound();
   }
 
   return (

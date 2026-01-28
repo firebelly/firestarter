@@ -2,7 +2,7 @@
 
 **Created:** 2026-01-28
 **Status:** Design
-**Implementation Plan Doc:** TBD
+**Implementation Plan Doc:** docs/implementation-plans/2026-01-28-1510-configure-prettier.md
 
 ---
 

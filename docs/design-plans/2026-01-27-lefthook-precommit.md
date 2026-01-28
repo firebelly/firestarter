@@ -135,14 +135,23 @@ pre-commit:
 | 2026-01-27 | Task 1 | package.json, pnpm-lock.yaml, pnpm-workspace.yaml, .gitignore | Created root package.json with Lefthook ^2.0.16. pnpm v10 blocks postinstall scripts by default; ran `pnpm approve-builds` which created pnpm-workspace.yaml with `onlyBuiltDependencies: [lefthook]`. Lefthook v2's own postinstall runs `lefthook install` automatically—no manual postinstall script needed (differs from v1). Added /node_modules to .gitignore. |
 | 2026-01-27 | Task 2 | lefthook.yml | Configured pre-commit hooks for typecheck and lint. Used v2 `jobs:` array syntax instead of `commands:` object for explicit ordering with `piped: true`. |
 | 2026-01-27 | Task 3 | — | Verified .git/hooks/pre-commit exists. Skipped adding .lefthook-local.yml to .gitignore (not needed currently; can add later if override use case arises). |
+| 2026-01-27 | Verification | — | Confirmed hooks block commits on TypeScript errors and skip ESLint (piped fail-fast works). Note: GitHub Desktop shows garbled hook output in its popup dialog—ANSI codes and terminal formatting don't render properly. Errors are readable in terminal; GUI clients show messy output but hooks still function correctly. |
+| 2026-01-27 | Verification | — | All 5 acceptance criteria verified. Smart skipping works: non-code files (md, json) skip checks entirely (0.08s). Valid code commits pass both checks (~12-16s). Pre-existing TS error in Button.stories.tsx (missing @storybook/react) temporarily worked around by renaming file. |
 
 ---
 
 ## Completion
 
-**Completed:** [Date]
-**Final Status:** [Complete | Partial | Abandoned]
+**Completed:** 2026-01-27
+**Final Status:** Complete
 
-**Summary:** [Brief description of what was actually built]
+**Summary:** Lefthook v2.0.16 installed at repo root with pre-commit hooks for TypeScript type checking and ESLint. Hooks use piped execution (fail-fast) with v2 `jobs:` array syntax. Smart skipping ensures non-code commits are instant.
 
-**Deviations from Plan:** [Any significant changes from original design]
+**Deviations from Plan:**
+- Used Lefthook v2 `jobs:` syntax instead of v1 `commands:` for explicit ordering
+- Skipped `.lefthook-local.yml` gitignore entry (not needed currently)
+- No manual `postinstall` script needed—Lefthook v2 handles hook installation automatically
+
+**Known Issues:**
+- Pre-existing TypeScript error in `Button.stories.tsx` (missing `@storybook/react`) needs resolution
+- GitHub Desktop shows garbled hook output; use terminal for readable errors

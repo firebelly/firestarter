@@ -13,13 +13,13 @@ Even with dynamic page rendering (via `searchParams`), Next.js still caches at t
 
 ```typescript
 // In craftFetch()
-next: preview ? { revalidate: 0 } : { revalidate: 86400 }
+next: preview ? { revalidate: 0 } : { revalidate: 86400 };
 ```
 
-| Cache Layer | What's Cached | Affected by searchParams? |
-|-------------|---------------|---------------------------|
-| Full Route Cache | Rendered HTML | Yes — disabled when using searchParams |
-| Data Cache | fetch() responses | No — still caches for `revalidate` duration |
+| Cache Layer      | What's Cached     | Affected by searchParams?                   |
+| ---------------- | ----------------- | ------------------------------------------- |
+| Full Route Cache | Rendered HTML     | Yes — disabled when using searchParams      |
+| Data Cache       | fetch() responses | No — still caches for `revalidate` duration |
 
 **Without on-demand revalidation:** Content changes take up to 24 hours to appear (the `revalidate` window).
 
@@ -55,9 +55,9 @@ next: preview ? { revalidate: 0 } : { revalidate: 86400 }
 In Next.js route handlers, the exported function name determines which HTTP method it handles:
 
 ```typescript
-export function GET() { }   // Handles GET requests
-export function POST() { }  // Handles POST requests
-export function PUT() { }   // Handles PUT requests
+export function GET() {} // Handles GET requests
+export function POST() {} // Handles POST requests
+export function PUT() {} // Handles PUT requests
 ```
 
 You can export multiple methods from one `route.ts`.
@@ -66,11 +66,11 @@ You can export multiple methods from one `route.ts`.
 
 `revalidatePath()` doesn't immediately rebuild the page. It marks the cache as stale:
 
-| Step | What Happens |
-|------|--------------|
-| `revalidatePath('/about')` called | Cache marked stale |
-| Next request to `/about` | Next.js sees stale, fetches fresh data |
-| Response returned | Fresh data cached |
+| Step                              | What Happens                           |
+| --------------------------------- | -------------------------------------- |
+| `revalidatePath('/about')` called | Cache marked stale                     |
+| Next request to `/about`          | Next.js sees stale, fetches fresh data |
+| Response returned                 | Fresh data cached                      |
 
 This avoids unnecessary work for pages that aren't visited often.
 
@@ -78,10 +78,10 @@ This avoids unnecessary work for pages that aren't visited often.
 
 Craft and Next.js have different homepage conventions:
 
-| Craft URI | Next.js Path |
-|-----------|--------------|
-| `__home__` | `/` |
-| `about` | `/about` |
+| Craft URI             | Next.js Path           |
+| --------------------- | ---------------------- |
+| `__home__`            | `/`                    |
+| `about`               | `/about`               |
 | `services/web-design` | `/services/web-design` |
 
 ---
@@ -99,11 +99,11 @@ Without this, anyone could POST to `/api/revalidate` and purge your cache.
 
 ### Response Status Codes
 
-| Status | Meaning |
-|--------|---------|
-| 200 | Success — cache purged |
-| 400 | Bad Request — missing URI |
-| 401 | Unauthorized — invalid secret |
+| Status | Meaning                       |
+| ------ | ----------------------------- |
+| 200    | Success — cache purged        |
+| 400    | Bad Request — missing URI     |
+| 401    | Unauthorized — invalid secret |
 
 ---
 
@@ -111,15 +111,16 @@ Without this, anyone could POST to `/api/revalidate` and purge your cache.
 
 In Craft CP → Settings → Webhooks:
 
-| Field | Value |
-|-------|-------|
-| Name | Revalidate Next.js |
-| Event | `elements.entry.afterSave` |
-| URL | `$REVALIDATION_URL` |
-| Method | POST |
+| Field   | Value                            |
+| ------- | -------------------------------- |
+| Name    | Revalidate Next.js               |
+| Event   | `elements.entry.afterSave`       |
+| URL     | `$REVALIDATION_URL`              |
+| Method  | POST                             |
 | Headers | `Content-Type: application/json` |
 
 **Payload (Twig template):**
+
 ```twig
 {% set entryUri = event.sender.uri %}
 {% set revalidationSecret = getenv('REVALIDATION_SECRET') %}
@@ -133,6 +134,7 @@ In Craft CP → Settings → Webhooks:
 ```
 
 **Required environment variables in `cms/.env`:**
+
 ```bash
 REVALIDATION_SECRET=your-random-string
 REVALIDATION_URL=http://host.docker.internal:3000/api/revalidate  # local dev
@@ -145,6 +147,7 @@ REVALIDATION_URL=http://host.docker.internal:3000/api/revalidate  # local dev
 1. **Check Craft webhook logs:** CP → Utilities → Webhooks shows request/response history
 
 2. **Test manually with curl:**
+
    ```bash
    curl -X POST http://localhost:3000/api/revalidate \
      -H "Content-Type: application/json" \

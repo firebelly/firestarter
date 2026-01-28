@@ -18,9 +18,11 @@ Set up the foundational monorepo structure for Firestarter: a Next.js + Storyboo
 - [x] Root `.gitignore` is minimal — Verified: only contains `.DS_Store`
 
 **Patterns to leverage:**
+
 - None — this is foundational scaffolding
 
 **Discrepancies found:**
+
 - `/docs/implementation-plans/` did not exist (created with this plan)
 - Root `.gitignore` needs `.env` added per design doc
 - Design doc shows `app/` at root level, but we're using `src/app/` (standard Next.js `src/` convention)
@@ -34,15 +36,18 @@ Set up the foundational monorepo structure for Firestarter: a Next.js + Storyboo
 **Description:** Initialize a new Next.js app with TypeScript and App Router in the `/site` directory using `create-next-app`.
 
 **Files:**
+
 - `/site/*` — create (Next.js scaffolding)
 
 **Commands:**
+
 ```bash
 cd /Users/tylernford/Sites/_firebelly/firestarter
 pnpm create next-app site --typescript --app --use-pnpm --src-dir
 ```
 
 Note: When prompted, use these options:
+
 - TypeScript: Yes
 - ESLint: Yes
 - Tailwind CSS: No (design tokens will handle styling)
@@ -61,11 +66,13 @@ Note: When prompted, use these options:
 **Description:** Add Storybook with the `@storybook/nextjs` framework. Configure `.storybook/main.ts` and `.storybook/preview.ts`.
 
 **Files:**
+
 - `/site/.storybook/main.ts` — create
 - `/site/.storybook/preview.ts` — create
 - `/site/package.json` — modify (Storybook deps added)
 
 **Commands:**
+
 ```bash
 cd /Users/tylernford/Sites/_firebelly/firestarter/site
 pnpm dlx storybook@latest init --type nextjs
@@ -82,22 +89,24 @@ pnpm dlx storybook@latest init --type nextjs
 **Description:** Create the component directory structure and add one example Button component with a co-located story. This establishes the pattern for all future components.
 
 **Files:**
+
 - `/site/src/components/Button/Button.tsx` — create
 - `/site/src/components/Button/Button.stories.tsx` — create
 - `/site/src/components/Button/Button.module.css` — create
 
 **Code example:**
+
 ```tsx
 // Button.tsx
-import styles from './Button.module.css';
+import styles from "./Button.module.css";
 
 interface ButtonProps {
   label: string;
-  variant?: 'primary' | 'secondary';
+  variant?: "primary" | "secondary";
   onClick?: () => void;
 }
 
-export function Button({ label, variant = 'primary', onClick }: ButtonProps) {
+export function Button({ label, variant = "primary", onClick }: ButtonProps) {
   return (
     <button className={`${styles.button} ${styles[variant]}`} onClick={onClick}>
       {label}
@@ -108,11 +117,11 @@ export function Button({ label, variant = 'primary', onClick }: ButtonProps) {
 
 ```tsx
 // Button.stories.tsx
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: "Components/Button",
   component: Button,
 };
 
@@ -121,15 +130,15 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: {
-    label: 'Button',
-    variant: 'primary',
+    label: "Button",
+    variant: "primary",
   },
 };
 
 export const Secondary: Story = {
   args: {
-    label: 'Button',
-    variant: 'secondary',
+    label: "Button",
+    variant: "secondary",
   },
 };
 ```
@@ -145,10 +154,12 @@ export const Secondary: Story = {
 **Description:** Set up the tokens and lib directories with placeholder files to establish the structure.
 
 **Files:**
+
 - `/site/src/tokens/index.ts` — create
 - `/site/src/lib/index.ts` — create
 
 **Code example:**
+
 ```ts
 // tokens/index.ts
 // Design tokens will be added here
@@ -175,10 +186,12 @@ export {};
 **Description:** Add `.nvmrc` with current LTS Node version. Verify the `.gitignore` created by Next.js covers necessary patterns.
 
 **Files:**
+
 - `/site/.nvmrc` — create
 - `/site/.gitignore` — verify/modify if needed
 
 **Code example:**
+
 ```
 # .nvmrc
 22
@@ -195,9 +208,11 @@ export {};
 **Description:** Create the Craft CMS directory structure using Composer. Standard installation configured for headless use.
 
 **Files:**
+
 - `/cms/*` — create (Craft scaffolding)
 
 **Commands:**
+
 ```bash
 cd /Users/tylernford/Sites/_firebelly/firestarter
 composer create-project craftcms/craft cms
@@ -216,9 +231,11 @@ Note: This is scaffolding only. Headless configuration (disabling front-end rout
 **Description:** Add `.env` to the root `.gitignore` so environment files are ignored repo-wide.
 
 **Files:**
+
 - `/.gitignore` — modify
 
 **Code example:**
+
 ```
 .DS_Store
 .env

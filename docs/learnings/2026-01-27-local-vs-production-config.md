@@ -11,26 +11,28 @@ Configuration differences between local development and production for Craft CMS
 
 ### Local Development
 
-| Variable | Location | Value |
-|----------|----------|-------|
-| `PRIMARY_SITE_URL` | `cms/.env` | `http://localhost:3000` |
-| `CRAFT_URL` | `site/.env.local` | `http://cms.ddev.site` |
-| `REVALIDATION_URL` | `cms/.env` | `http://host.docker.internal:3000/api/revalidate` |
+| Variable           | Location          | Value                                             |
+| ------------------ | ----------------- | ------------------------------------------------- |
+| `PRIMARY_SITE_URL` | `cms/.env`        | `http://localhost:3000`                           |
+| `CRAFT_URL`        | `site/.env.local` | `http://cms.ddev.site`                            |
+| `REVALIDATION_URL` | `cms/.env`        | `http://host.docker.internal:3000/api/revalidate` |
 
 **Notes:**
+
 - Use HTTP (not HTTPS) for local dev
 - `host.docker.internal` allows DDEV (Docker) to reach Next.js on the host machine
 - `localhost` from inside Docker refers to the container, not your Mac
 
 ### Production
 
-| Variable | Location | Value |
-|----------|----------|-------|
-| `PRIMARY_SITE_URL` | `cms/.env` | `https://www.example.com` |
-| `CRAFT_URL` | `site/.env.local` | `https://cms.example.com` |
-| `REVALIDATION_URL` | `cms/.env` | `https://www.example.com/api/revalidate` |
+| Variable           | Location          | Value                                    |
+| ------------------ | ----------------- | ---------------------------------------- |
+| `PRIMARY_SITE_URL` | `cms/.env`        | `https://www.example.com`                |
+| `CRAFT_URL`        | `site/.env.local` | `https://cms.example.com`                |
+| `REVALIDATION_URL` | `cms/.env`        | `https://www.example.com/api/revalidate` |
 
 **Notes:**
+
 - Use HTTPS with valid certificates
 - No Docker networking workarounds needed
 - Both domains should have proper SSL
@@ -41,17 +43,17 @@ Configuration differences between local development and production for Craft CMS
 
 **The problem:** Craft's live preview loads the Next.js site in an iframe. Browsers block mixed content (HTTPS iframe loading HTTP content).
 
-| Craft CP | Next.js | Preview Works? |
-|----------|---------|----------------|
-| `https://cms.ddev.site` | `http://localhost:3000` | ❌ Mixed content blocked |
-| `https://cms.ddev.site` | `https://localhost:3000` | ✅ Works |
+| Craft CP                | Next.js                  | Preview Works?           |
+| ----------------------- | ------------------------ | ------------------------ |
+| `https://cms.ddev.site` | `http://localhost:3000`  | ❌ Mixed content blocked |
+| `https://cms.ddev.site` | `https://localhost:3000` | ✅ Works                 |
 
 **The tradeoff:**
 
-| Next.js Mode | Preview | Webhooks |
-|--------------|---------|----------|
-| HTTP (`next dev`) | ❌ Broken | ✅ Works |
-| HTTPS (`next dev --experimental-https`) | ✅ Works | ❌ DDEV can't reach (self-signed cert) |
+| Next.js Mode                            | Preview   | Webhooks                               |
+| --------------------------------------- | --------- | -------------------------------------- |
+| HTTP (`next dev`)                       | ❌ Broken | ✅ Works                               |
+| HTTPS (`next dev --experimental-https`) | ✅ Works  | ❌ DDEV can't reach (self-signed cert) |
 
 ### Workaround for Local Dev
 
@@ -61,6 +63,7 @@ Switch between modes as needed:
 - **Testing live preview:** `pnpm dev --experimental-https` (HTTPS)
 
 When using HTTPS, also update `PRIMARY_SITE_URL` in `cms/.env`:
+
 ```bash
 PRIMARY_SITE_URL=https://localhost:3000
 ```
@@ -68,6 +71,7 @@ PRIMARY_SITE_URL=https://localhost:3000
 ### Production
 
 In production, both preview and webhooks work because:
+
 - Both Craft and Next.js use valid HTTPS certificates
 - No mixed-content issues
 - No self-signed certificate rejections
@@ -78,14 +82,15 @@ In production, both preview and webhooks work because:
 
 Craft in headless mode uses a different GraphQL endpoint:
 
-| Mode | Endpoint |
-|------|----------|
-| Normal Craft | `/api` (custom route) |
+| Mode           | Endpoint               |
+| -------------- | ---------------------- |
+| Normal Craft   | `/api` (custom route)  |
 | Headless Craft | `/actions/graphql/api` |
 
 The `craftFetch` client uses:
+
 ```typescript
-`${process.env.CRAFT_URL}/actions/graphql/api`
+`${process.env.CRAFT_URL}/actions/graphql/api`;
 ```
 
 ---

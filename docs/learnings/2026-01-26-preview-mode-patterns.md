@@ -9,10 +9,10 @@ Learnings from implementing and then rethinking the preview approach for Craft C
 
 ## Two Types of Craft Tokens
 
-| Token Type | What It Is | Where It Lives | What It Authorizes |
-|------------|------------|----------------|-------------------|
-| **Schema Token** | Static token for Private GraphQL Schema | `CRAFT_PREVIEW_TOKEN` env var | Access to *all* drafts via Private Schema |
-| **Preview Token** | Dynamic per-session token | URL param `?token=xxx` | Access to *specific* draft being previewed |
+| Token Type        | What It Is                              | Where It Lives                | What It Authorizes                         |
+| ----------------- | --------------------------------------- | ----------------------------- | ------------------------------------------ |
+| **Schema Token**  | Static token for Private GraphQL Schema | `CRAFT_PREVIEW_TOKEN` env var | Access to _all_ drafts via Private Schema  |
+| **Preview Token** | Dynamic per-session token               | URL param `?token=xxx`        | Access to _specific_ draft being previewed |
 
 **Key insight:** These are different things. The schema token goes in an `Authorization` header. The preview token goes as a query param to the GraphQL endpoint.
 
@@ -46,17 +46,19 @@ Using `searchParams` in a Next.js page opts into **dynamic rendering**:
 ```tsx
 // This makes the entire page dynamic
 export default async function Page({ searchParams }: Props) {
-  const params = await searchParams;  // ← Dynamic API
+  const params = await searchParams; // ← Dynamic API
   // ...
 }
 ```
 
 **What "dynamic" means:**
+
 - Page won't be pre-built at build time
 - Page component runs on every request
 - Full Route Cache is disabled
 
 **What's still cached:**
+
 - Individual `fetch()` calls with `revalidate` are cached in the Data Cache
 - So data fetching is fast, but page rendering happens per-request
 
@@ -80,10 +82,10 @@ Draft Mode uses a **cookie** instead of query params, allowing the page to stay 
 
 ### Why It's Better
 
-| Approach | Normal Visitors | Editors |
-|----------|-----------------|---------|
+| Approach     | Normal Visitors              | Editors |
+| ------------ | ---------------------------- | ------- |
 | searchParams | Dynamic (per-request render) | Dynamic |
-| Draft Mode | Static (cached HTML) | Dynamic |
+| Draft Mode   | Static (cached HTML)         | Dynamic |
 
 **The page component doesn't need `searchParams`** — it only checks `draftMode()`, which returns quickly for normal visitors.
 
@@ -92,12 +94,14 @@ Draft Mode uses a **cookie** instead of query params, allowing the page to stay 
 ## Craft Preview Target Configuration
 
 ### For Query Param Approach (dynamic)
+
 ```
 {url}
 → https://localhost:3000/about?token=xxx&x-craft-live-preview=yyy
 ```
 
 ### For Draft Mode Approach (static)
+
 ```
 {alias('@web')}/api/preview?uri={uri ?? '__home__'}
 → https://localhost:3000/api/preview?uri=about&token=xxx&x-craft-live-preview=yyy
@@ -109,11 +113,11 @@ The key difference: Draft Mode routes through an API endpoint first, which sets 
 
 ## Summary: When to Use What
 
-| Scenario | Approach |
-|----------|----------|
+| Scenario                                 | Approach                     |
+| ---------------------------------------- | ---------------------------- |
 | Quick prototype, don't care about static | Query param (`searchParams`) |
-| Production site, want static + preview | Draft Mode with API routes |
-| Need edge flexibility, complex routing | Middleware + Draft Mode |
+| Production site, want static + preview   | Draft Mode with API routes   |
+| Need edge flexibility, complex routing   | Middleware + Draft Mode      |
 
 **Firestarter uses query params** — simpler, works in all environments.
 
@@ -125,10 +129,10 @@ The cookie blocking we encountered is specific to **local development** with mis
 
 In production with subdomains of the same root domain, Draft Mode would work:
 
-| Setup | Cookie context | Draft Mode works? |
-|-------|---------------|-------------------|
-| `cms.ddev.site` → `localhost:3000` | Cross-site | ❌ No |
-| `cms.firestarter.com` → `firestarter.com` | Same-site | ✅ Yes |
+| Setup                                     | Cookie context | Draft Mode works? |
+| ----------------------------------------- | -------------- | ----------------- |
+| `cms.ddev.site` → `localhost:3000`        | Cross-site     | ❌ No             |
+| `cms.firestarter.com` → `firestarter.com` | Same-site      | ✅ Yes            |
 
 Browsers treat subdomains of the same root domain as "same-site" for cookie purposes. You could set the cookie domain to `.firestarter.com` to share across all subdomains.
 

@@ -3,10 +3,12 @@
 ## The Problem
 
 The studio has a gap between two offerings:
+
 - **High-end:** Full custom Craft CMS builds ($100k+) — strategy, design, development
 - **Budget-friendly:** Squarespace/Framer sites — faster, cheaper, but limited
 
 The budget option has real drawbacks:
+
 1. **Design constraints** — Designers are locked into template structures, not studio-quality decisions
 2. **Growth ceiling** — Clients hit platform limitations when they want to expand
 3. **No upgrade path** — Moving from Squarespace to custom means starting from scratch

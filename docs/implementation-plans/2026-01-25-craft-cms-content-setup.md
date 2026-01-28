@@ -15,17 +15,19 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. All tasks are manua
 
 ## Codebase Verification
 
-*Confirm assumptions from design doc match actual codebase*
+_Confirm assumptions from design doc match actual codebase_
 
 - [x] Craft CMS 5 installed in `/cms` directory - Verified: Yes
 - [x] DDEV configured for local development - Verified: Yes
 - [x] No existing content sections configured - Verified: Correct, fresh install
 
 **Patterns to leverage:**
+
 - Craft's Project Config (`config/project/`) will store all configuration as YAML, making it version-controllable
 - Reference: Pixel & Tonic starter at `starter-next-main/backend/config/project/` for YAML structure examples
 
 **Discrepancies found:**
+
 - None. Fresh Craft install ready for configuration.
 
 ---
@@ -42,12 +44,13 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. All tasks are manua
 2. Create field group "Page Content"
 3. Create fields:
 
-| Field Name | Handle | Type | Settings |
-|------------|--------|------|----------|
-| Heading | `heading` | Plain Text | - |
-| Body | `body` | CKEditor | Default config, allow headings/lists/links |
+| Field Name | Handle    | Type       | Settings                                   |
+| ---------- | --------- | ---------- | ------------------------------------------ |
+| Heading    | `heading` | Plain Text | -                                          |
+| Body       | `body`    | CKEditor   | Default config, allow headings/lists/links |
 
 **Done when:**
+
 - Fields appear in Settings → Fields
 - Project Config files created at `cms/config/project/fields/`
 
@@ -84,6 +87,7 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. All tasks are manua
    - **Body:** A paragraph of placeholder text
 
 **Done when:**
+
 - Homepage entry exists with content
 - GraphQL query returns data:
   ```graphql
@@ -128,14 +132,15 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. All tasks are manua
 
 6. Navigate to **Entries** and create sample pages:
 
-| Title | Slug | Parent | Heading |
-|-------|------|--------|---------|
-| About | `about` | — | "About Us" |
-| Services | `services` | — | "Our Services" |
+| Title      | Slug         | Parent   | Heading               |
+| ---------- | ------------ | -------- | --------------------- |
+| About      | `about`      | —        | "About Us"            |
+| Services   | `services`   | —        | "Our Services"        |
 | Web Design | `web-design` | Services | "Web Design Services" |
-| Contact | `contact` | — | "Get in Touch" |
+| Contact    | `contact`    | —        | "Get in Touch"        |
 
 **Done when:**
+
 - Pages structure exists with 4 sample entries (1 nested)
 - GraphQL query returns data:
   ```graphql
@@ -200,6 +205,7 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. All tasks are manua
    - Test private schema (with token): Query should return drafts too
 
 **Done when:**
+
 - Public schema responds without authentication
 - Private schema requires Bearer token
 - Draft content only visible with private schema
@@ -214,6 +220,7 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. All tasks are manua
 **Description:** Set up preview targets so editors can preview content in the Next.js frontend.
 
 **Reference:** Pixel & Tonic starter uses query parameter approach:
+
 ```
 {url}?token={token}&x-craft-live-preview=true
 ```
@@ -246,6 +253,7 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. All tasks are manua
      ```
 
 **Done when:**
+
 - Clicking "Preview" on Homepage opens `http://localhost:3000?token=...&x-craft-live-preview=true`
 - Clicking "Preview" on a Page opens `http://localhost:3000/about?token=...&x-craft-live-preview=true`
 
@@ -258,12 +266,14 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. All tasks are manua
 **Description:** Set up a webhook that fires when entries are saved, triggering Next.js cache invalidation.
 
 **Options:**
+
 1. **Craft Webhooks Plugin** (recommended for simplicity)
 2. **Custom Module** (more control, no plugin dependency)
 
 **Work in Craft CP (using Webhooks plugin):**
 
 1. Install the Webhooks plugin:
+
    ```bash
    cd cms && ddev composer require craftcms/webhooks && ddev craft plugin/install webhooks
    ```
@@ -298,6 +308,7 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. All tasks are manua
      ```
 
 **Done when:**
+
 - Saving an entry in Craft triggers a POST request
 - Request includes the entry's URI and secret
 - (Full verification requires Next.js endpoint — tested in Plan 2)
@@ -311,6 +322,7 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. All tasks are manua
 After all tasks complete, verify in Craft's GraphiQL explorer:
 
 - [ ] Homepage query returns title, heading, body
+
   ```graphql
   {
     entry(section: "homepage") {
@@ -324,6 +336,7 @@ After all tasks complete, verify in Craft's GraphiQL explorer:
   ```
 
 - [ ] Pages query returns data for top-level page
+
   ```graphql
   {
     entry(section: "pages", uri: ["about"]) {
@@ -338,6 +351,7 @@ After all tasks complete, verify in Craft's GraphiQL explorer:
   ```
 
 - [ ] Pages query returns data for nested page
+
   ```graphql
   {
     entry(section: "pages", uri: ["services/web-design"]) {

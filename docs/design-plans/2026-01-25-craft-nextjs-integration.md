@@ -18,6 +18,7 @@
 ## Requirements
 
 ### Must Have
+
 - [x] Craft GraphQL API enabled with public and private schemas
 - [x] Homepage singleton section with heading and body fields
 - [x] Pages structure section (2 levels) with heading and body fields
@@ -29,9 +30,11 @@
 - [x] 404 handling for missing pages
 
 ### Nice to Have
+
 - [ ] Preview bar UI showing "You are in preview mode" with exit link (skipped)
 
 ### Out of Scope
+
 - Full design system / component library
 - Matrix page builders
 - Navigation / menus
@@ -46,7 +49,9 @@
 ## Design Decisions
 
 ### Data Fetching Approach
+
 **Options considered:**
+
 1. GraphQL (Craft built-in) — flexible queries, frontend requests only what it needs, industry standard
 2. Element API (plugin) — REST-like endpoints, simpler but less flexible, requires PHP config per endpoint
 
@@ -55,7 +60,9 @@
 ---
 
 ### GraphQL Client
+
 **Options considered:**
+
 1. Apollo Client — full-featured, caching, dev tools, but heavy
 2. urql — lighter than Apollo, still adds complexity
 3. Native fetch — no dependencies, works with Next.js App Router caching
@@ -65,7 +72,9 @@
 ---
 
 ### Rendering Strategy
+
 **Options considered:**
+
 1. SSG — build-time only, requires redeploy for content changes
 2. ISR — static with automatic revalidation, best of both worlds
 3. SSR — always fresh but slower, higher server cost
@@ -75,7 +84,9 @@
 ---
 
 ### URL Structure for Pages
+
 **Options considered:**
+
 1. Channel section with flat URLs (`/about`, `/contact`)
 2. Structure section with nested URLs (`/services`, `/services/web-design`)
 
@@ -84,7 +95,9 @@
 ---
 
 ### GraphQL Schema Security
+
 **Options considered:**
+
 1. Public schema (no token) for all queries
 2. Token required for all queries
 3. Public schema for published content, private schema for drafts
@@ -99,24 +112,24 @@
 
 **Sections:**
 
-| Section | Type | Handle | Entry Type | URI Format |
-|---------|------|--------|------------|------------|
-| Homepage | Single | `homepage` | `homepage` | `__home__` |
-| Pages | Structure | `pages` | `pages` | Top: `{slug}` / Nested: `{parent.uri}/{slug}` |
+| Section  | Type      | Handle     | Entry Type | URI Format                                    |
+| -------- | --------- | ---------- | ---------- | --------------------------------------------- |
+| Homepage | Single    | `homepage` | `homepage` | `__home__`                                    |
+| Pages    | Structure | `pages`    | `pages`    | Top: `{slug}` / Nested: `{parent.uri}/{slug}` |
 
 **Fields:**
 
-| Field | Handle | Type | Sections |
-|-------|--------|------|----------|
+| Field   | Handle    | Type       | Sections        |
+| ------- | --------- | ---------- | --------------- |
 | Heading | `heading` | Plain Text | Homepage, Pages |
-| Body | `body` | CKEditor | Homepage, Pages |
+| Body    | `body`    | CKEditor   | Homepage, Pages |
 
 **GraphQL Schemas:**
 
-| Schema | Scope | Token |
-|--------|-------|-------|
-| Public | Published entries only | None required |
-| Private | Published + drafts | Required |
+| Schema  | Scope                  | Token         |
+| ------- | ---------------------- | ------------- |
+| Public  | Published entries only | None required |
+| Private | Published + drafts     | Required      |
 
 **Preview Target (Pages section):**
 
@@ -161,43 +174,47 @@ site/src/
 
 ### Environment Variables
 
-| Variable | Purpose | Example |
-|----------|---------|---------|
-| `CRAFT_URL` | Craft CMS base URL | `http://cms.ddev.site` |
-| `REVALIDATION_SECRET` | Shared secret for webhook validation | (random string) |
+| Variable              | Purpose                              | Example                |
+| --------------------- | ------------------------------------ | ---------------------- |
+| `CRAFT_URL`           | Craft CMS base URL                   | `http://cms.ddev.site` |
+| `REVALIDATION_SECRET` | Shared secret for webhook validation | (random string)        |
 
-*Note: Original design included `CRAFT_PREVIEW_TOKEN` for Private Schema access. Implementation pivoted to using Craft's per-session preview token (passed via URL params), so this env var is not needed.*
+_Note: Original design included `CRAFT_PREVIEW_TOKEN` for Private Schema access. Implementation pivoted to using Craft's per-session preview token (passed via URL params), so this env var is not needed._
 
 ---
 
 ### Caching Strategy
 
-| Trigger | Behavior |
-|---------|----------|
-| Normal request | Serve from ISR cache |
-| Cache > 24 hours old | Next request triggers background rebuild |
-| Content published | Webhook invalidates that page's cache immediately |
-| New deployment | Fresh cache, pages build on first request |
-| Preview mode | Bypasses cache, fetches drafts directly |
+| Trigger              | Behavior                                          |
+| -------------------- | ------------------------------------------------- |
+| Normal request       | Serve from ISR cache                              |
+| Cache > 24 hours old | Next request triggers background rebuild          |
+| Content published    | Webhook invalidates that page's cache immediately |
+| New deployment       | Fresh cache, pages build on first request         |
+| Preview mode         | Bypasses cache, fetches drafts directly           |
 
 ---
 
 ### GraphQL Queries
 
 **Homepage:**
+
 ```graphql
 query Homepage {
   entry(section: "homepage") {
     title
     ... on homepage_Entry {
       heading
-      body { html }
+      body {
+        html
+      }
     }
   }
 }
 ```
 
 **Page by URI:**
+
 ```graphql
 query PageByUri($uri: [String]) {
   entry(section: "pages", uri: $uri) {
@@ -205,13 +222,15 @@ query PageByUri($uri: [String]) {
     uri
     ... on page_Entry {
       heading
-      body { html }
+      body {
+        html
+      }
     }
   }
 }
 ```
 
-*Note: Uses Craft 5 simplified type naming (`homepage_Entry`, `page_Entry`). CKEditor fields require `body { html }` sub-selection.*
+_Note: Uses Craft 5 simplified type naming (`homepage_Entry`, `page_Entry`). CKEditor fields require `body { html }` sub-selection._
 
 ---
 
@@ -233,6 +252,7 @@ query PageByUri($uri: [String]) {
 ## Files to Create/Modify
 
 ### Craft CMS (manual configuration in Control Panel)
+
 ```
 - Create Homepage section (Single)
 - Create Pages section (Structure, 2 levels max)
@@ -244,6 +264,7 @@ query PageByUri($uri: [String]) {
 ```
 
 ### Next.js (code changes)
+
 ```
 site/src/lib/graphql/client.ts      # GraphQL fetch wrapper
 site/src/lib/graphql/queries.ts     # Query definitions
@@ -260,33 +281,33 @@ site/.env.local                     # Environment variables
 
 ## Build Log
 
-*Filled in during `/build` phase*
+_Filled in during `/build` phase_
 
-| Date | Task | Files | Notes |
-|------|------|-------|-------|
-| 2026-01-25 | Task 1: Create Content Fields | `cms/config/project/fields/heading--*.yaml`, `cms/config/project/fields/body--*.yaml` | Deviated: Had to install CKEditor plugin first (not in plan) |
-| 2026-01-25 | Task 2: Create Homepage Section | `cms/config/project/sections/homepage--*.yaml`, `cms/config/project/entryTypes/homepage--*.yaml` | Deviated: GraphQL type is `homepage_Entry` not `homepage_homepage_Entry` (Craft 5 simplified naming) |
-| 2026-01-25 | Task 3: Create Pages Section | `cms/config/project/sections/pages--*.yaml`, `cms/config/project/entryTypes/page--*.yaml` | Completed as planned. GraphQL type is `page_Entry`. |
-| 2026-01-25 | Task 4: Configure GraphQL Schemas | `cms/config/project/graphql/schemas/*.yaml` | Public Schema built-in (not renamed). Created "Private Schema" with drafts/revisions access + token. Deviated: In headless mode, GraphQL endpoint is `/actions/graphql/api` (custom routes disabled). Verified: Public rejects drafts, Private returns them with token. |
-| 2026-01-25 | Task 5: Configure Preview Targets | `cms/.env`, `cms/config/project/sections/*.yaml` | Simplified: Using `{url}` as preview target (per official starter). Set `CRAFT_BASE_CP_URL=https://cms.ddev.site`. Set `PRIMARY_SITE_URL=http://localhost:3000`. Full testing deferred to Plan 2. |
-| 2026-01-25 | Task 6: Configure Revalidation Webhook | — | **Deferred to Plan 2.** No endpoint to receive webhook yet. Will configure when building Next.js frontend. |
-| 2026-01-26 | Plan 2, Task 1: Set Up Environment Variables | `site/.env.example`, `site/.env.local`, `site/.gitignore` | Created env files. Updated .gitignore to track .env.example but not .env.local. Deviated: CRAFT_URL is `https://cms.ddev.site` not `https://cms.firestarter.ddev.site` (implementation plan had wrong DDEV project name). |
-| 2026-01-26 | Plan 2, Task 2: Create GraphQL Client | `site/src/lib/graphql/client.ts` | Used `/actions/graphql/api` endpoint per Plan 1 learnings (headless mode disables custom routes). |
-| 2026-01-26 | Plan 2, Task 3: Create TypeScript Types | `site/src/lib/graphql/types.ts` | BaseEntry, HomepageEntry, PageEntry, EntryResponse<T>. Fields nullable per Craft schema. |
-| 2026-01-26 | Plan 2, Task 4: Create GraphQL Queries | `site/src/lib/graphql/queries/*.ts` | HOMEPAGE_QUERY, PAGE_BY_URI_QUERY. Used Craft 5 type naming: `homepage_Entry`, `page_Entry`. |
-| 2026-01-26 | Plan 2, Task 6 (Part 1): Update Homepage Route | `site/src/app/page.tsx`, `types.ts`, `queries/*.ts` | Deviated: Reordered tasks to test live before adding preview. Discoveries: (1) Use HTTP not HTTPS for local DDEV (Node rejects self-signed certs), (2) CKEditor fields need sub-selection `body { html }` not just `body`. Added CKEditorField type. |
-| 2026-01-26 | Preview Config Setup | `cms/.env`, `site/package.json` | Required for Craft→Next.js preview iframe: (1) Set `PRIMARY_SITE_URL=https://localhost:3000` in `cms/.env` (overrides DDEV default), (2) Removed `CRAFT_BASE_CP_URL` (not needed), (3) Added `--experimental-https` to dev script in package.json. HTTPS required to avoid mixed-content blocking. |
-| 2026-01-26 | Plan 2, Task 5: Create Preview Utility | `site/src/lib/preview.ts` | Created `isPreviewMode()` and `getPreviewToken()` helpers. Detects Craft preview via URL params. |
-| 2026-01-26 | Plan 2, Task 6: Update Homepage Route | `site/src/app/page.tsx`, `site/src/lib/graphql/client.ts` | Added preview support. **Deviated:** Preview token must be passed as query param to GraphQL endpoint (`?token=xxx`), NOT as Authorization header. The preview token authorizes access to a specific draft, different from schema tokens. |
-| 2026-01-26 | Architectural Pivot: Draft Mode | — | **Major deviation:** Query param preview works but opts page into dynamic rendering (no static caching for normal visitors). Decided to pivot to Draft Mode approach: API routes (`/api/preview`, `/api/exit-preview`) set cookies, page checks `draftMode()`. This keeps pages static for visitors while allowing dynamic preview for editors. Will revert `searchParams` changes and implement Draft Mode. See `docs/learnings/2026-01-26-preview-mode-patterns.md`. |
-| 2026-01-27 | Draft Mode Abandoned | — | Cross-origin iframe cookie blocking made Draft Mode unworkable. Browsers block third-party cookies regardless of `SameSite=None; Secure` settings. Published tutorials confirm this is a known unsolved problem. Reverted to query param approach. |
-| 2026-01-27 | Plan 2, Task 6: Update Homepage Route | `site/src/app/page.tsx`, `site/src/lib/preview.ts`, `site/src/lib/graphql/client.ts` | Final implementation uses query params (`searchParams`). Preview token passed to GraphQL as `?token=xxx`. Updated `isPreviewMode()` to detect both `x-craft-live-preview` (iframe) and `x-craft-preview` (view link). Both preview modes working. |
-| 2026-01-27 | Plan 2, Task 7: Create Catch-All Pages Route | `site/src/app/[...slug]/page.tsx` | Completed as planned. Uses same preview pattern as homepage. Slug array joined to URI string for Craft GraphQL lookup. |
-| 2026-01-27 | Plan 2, Task 8: Create Revalidation API Route | `site/src/app/api/revalidate/route.ts` | Completed as planned. Validates shared secret, converts `__home__` to `/`, calls `revalidatePath()`. Learning: [On-Demand Revalidation](../learnings/2026-01-27-on-demand-revalidation.md) |
-| 2026-01-27 | Plan 2, Task 9: Configure Craft Webhook | Craft CP config, `cms/.env` | Installed craftcms/webhooks plugin. Created "Revalidate Next.js" webhook on `elements.entry.afterSave`. **Deviation:** Reverted to HTTP for local dev — DDEV can't reach Next.js HTTPS (self-signed cert rejected). Webhook URL: `http://host.docker.internal:3000/api/revalidate`. Production will use proper HTTPS. Learning: [Local vs Production Config](../learnings/2026-01-27-local-vs-production-config.md) |
-| 2026-01-27 | Discovery: Unused Private Schema | — | Design planned for Private Schema + `CRAFT_PREVIEW_TOKEN` to access drafts during preview. Implementation pivoted to using Craft's dynamic per-session preview token (from URL params) instead. Private Schema remains configured (can be useful for future API integrations). |
-| 2026-01-27 | Phase 4: Documentation Cleanup | `site/.env.example` | Removed unused `CRAFT_PREVIEW_TOKEN` from `.env.example`. Learnings docs retained — they explain *why* the schema token approach wasn't used, which is valuable context. |
-| 2026-01-27 | Plan 2, Task 10: Add Preview Bar Component | — | **Skipped.** Nice-to-have feature deprioritized. Can be added later if needed. |
+| Date       | Task                                           | Files                                                                                            | Notes                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ---------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-01-25 | Task 1: Create Content Fields                  | `cms/config/project/fields/heading--*.yaml`, `cms/config/project/fields/body--*.yaml`            | Deviated: Had to install CKEditor plugin first (not in plan)                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 2026-01-25 | Task 2: Create Homepage Section                | `cms/config/project/sections/homepage--*.yaml`, `cms/config/project/entryTypes/homepage--*.yaml` | Deviated: GraphQL type is `homepage_Entry` not `homepage_homepage_Entry` (Craft 5 simplified naming)                                                                                                                                                                                                                                                                                                                                                                   |
+| 2026-01-25 | Task 3: Create Pages Section                   | `cms/config/project/sections/pages--*.yaml`, `cms/config/project/entryTypes/page--*.yaml`        | Completed as planned. GraphQL type is `page_Entry`.                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 2026-01-25 | Task 4: Configure GraphQL Schemas              | `cms/config/project/graphql/schemas/*.yaml`                                                      | Public Schema built-in (not renamed). Created "Private Schema" with drafts/revisions access + token. Deviated: In headless mode, GraphQL endpoint is `/actions/graphql/api` (custom routes disabled). Verified: Public rejects drafts, Private returns them with token.                                                                                                                                                                                                |
+| 2026-01-25 | Task 5: Configure Preview Targets              | `cms/.env`, `cms/config/project/sections/*.yaml`                                                 | Simplified: Using `{url}` as preview target (per official starter). Set `CRAFT_BASE_CP_URL=https://cms.ddev.site`. Set `PRIMARY_SITE_URL=http://localhost:3000`. Full testing deferred to Plan 2.                                                                                                                                                                                                                                                                      |
+| 2026-01-25 | Task 6: Configure Revalidation Webhook         | —                                                                                                | **Deferred to Plan 2.** No endpoint to receive webhook yet. Will configure when building Next.js frontend.                                                                                                                                                                                                                                                                                                                                                             |
+| 2026-01-26 | Plan 2, Task 1: Set Up Environment Variables   | `site/.env.example`, `site/.env.local`, `site/.gitignore`                                        | Created env files. Updated .gitignore to track .env.example but not .env.local. Deviated: CRAFT_URL is `https://cms.ddev.site` not `https://cms.firestarter.ddev.site` (implementation plan had wrong DDEV project name).                                                                                                                                                                                                                                              |
+| 2026-01-26 | Plan 2, Task 2: Create GraphQL Client          | `site/src/lib/graphql/client.ts`                                                                 | Used `/actions/graphql/api` endpoint per Plan 1 learnings (headless mode disables custom routes).                                                                                                                                                                                                                                                                                                                                                                      |
+| 2026-01-26 | Plan 2, Task 3: Create TypeScript Types        | `site/src/lib/graphql/types.ts`                                                                  | BaseEntry, HomepageEntry, PageEntry, EntryResponse<T>. Fields nullable per Craft schema.                                                                                                                                                                                                                                                                                                                                                                               |
+| 2026-01-26 | Plan 2, Task 4: Create GraphQL Queries         | `site/src/lib/graphql/queries/*.ts`                                                              | HOMEPAGE_QUERY, PAGE_BY_URI_QUERY. Used Craft 5 type naming: `homepage_Entry`, `page_Entry`.                                                                                                                                                                                                                                                                                                                                                                           |
+| 2026-01-26 | Plan 2, Task 6 (Part 1): Update Homepage Route | `site/src/app/page.tsx`, `types.ts`, `queries/*.ts`                                              | Deviated: Reordered tasks to test live before adding preview. Discoveries: (1) Use HTTP not HTTPS for local DDEV (Node rejects self-signed certs), (2) CKEditor fields need sub-selection `body { html }` not just `body`. Added CKEditorField type.                                                                                                                                                                                                                   |
+| 2026-01-26 | Preview Config Setup                           | `cms/.env`, `site/package.json`                                                                  | Required for Craft→Next.js preview iframe: (1) Set `PRIMARY_SITE_URL=https://localhost:3000` in `cms/.env` (overrides DDEV default), (2) Removed `CRAFT_BASE_CP_URL` (not needed), (3) Added `--experimental-https` to dev script in package.json. HTTPS required to avoid mixed-content blocking.                                                                                                                                                                     |
+| 2026-01-26 | Plan 2, Task 5: Create Preview Utility         | `site/src/lib/preview.ts`                                                                        | Created `isPreviewMode()` and `getPreviewToken()` helpers. Detects Craft preview via URL params.                                                                                                                                                                                                                                                                                                                                                                       |
+| 2026-01-26 | Plan 2, Task 6: Update Homepage Route          | `site/src/app/page.tsx`, `site/src/lib/graphql/client.ts`                                        | Added preview support. **Deviated:** Preview token must be passed as query param to GraphQL endpoint (`?token=xxx`), NOT as Authorization header. The preview token authorizes access to a specific draft, different from schema tokens.                                                                                                                                                                                                                               |
+| 2026-01-26 | Architectural Pivot: Draft Mode                | —                                                                                                | **Major deviation:** Query param preview works but opts page into dynamic rendering (no static caching for normal visitors). Decided to pivot to Draft Mode approach: API routes (`/api/preview`, `/api/exit-preview`) set cookies, page checks `draftMode()`. This keeps pages static for visitors while allowing dynamic preview for editors. Will revert `searchParams` changes and implement Draft Mode. See `docs/learnings/2026-01-26-preview-mode-patterns.md`. |
+| 2026-01-27 | Draft Mode Abandoned                           | —                                                                                                | Cross-origin iframe cookie blocking made Draft Mode unworkable. Browsers block third-party cookies regardless of `SameSite=None; Secure` settings. Published tutorials confirm this is a known unsolved problem. Reverted to query param approach.                                                                                                                                                                                                                     |
+| 2026-01-27 | Plan 2, Task 6: Update Homepage Route          | `site/src/app/page.tsx`, `site/src/lib/preview.ts`, `site/src/lib/graphql/client.ts`             | Final implementation uses query params (`searchParams`). Preview token passed to GraphQL as `?token=xxx`. Updated `isPreviewMode()` to detect both `x-craft-live-preview` (iframe) and `x-craft-preview` (view link). Both preview modes working.                                                                                                                                                                                                                      |
+| 2026-01-27 | Plan 2, Task 7: Create Catch-All Pages Route   | `site/src/app/[...slug]/page.tsx`                                                                | Completed as planned. Uses same preview pattern as homepage. Slug array joined to URI string for Craft GraphQL lookup.                                                                                                                                                                                                                                                                                                                                                 |
+| 2026-01-27 | Plan 2, Task 8: Create Revalidation API Route  | `site/src/app/api/revalidate/route.ts`                                                           | Completed as planned. Validates shared secret, converts `__home__` to `/`, calls `revalidatePath()`. Learning: [On-Demand Revalidation](../learnings/2026-01-27-on-demand-revalidation.md)                                                                                                                                                                                                                                                                             |
+| 2026-01-27 | Plan 2, Task 9: Configure Craft Webhook        | Craft CP config, `cms/.env`                                                                      | Installed craftcms/webhooks plugin. Created "Revalidate Next.js" webhook on `elements.entry.afterSave`. **Deviation:** Reverted to HTTP for local dev — DDEV can't reach Next.js HTTPS (self-signed cert rejected). Webhook URL: `http://host.docker.internal:3000/api/revalidate`. Production will use proper HTTPS. Learning: [Local vs Production Config](../learnings/2026-01-27-local-vs-production-config.md)                                                    |
+| 2026-01-27 | Discovery: Unused Private Schema               | —                                                                                                | Design planned for Private Schema + `CRAFT_PREVIEW_TOKEN` to access drafts during preview. Implementation pivoted to using Craft's dynamic per-session preview token (from URL params) instead. Private Schema remains configured (can be useful for future API integrations).                                                                                                                                                                                         |
+| 2026-01-27 | Phase 4: Documentation Cleanup                 | `site/.env.example`                                                                              | Removed unused `CRAFT_PREVIEW_TOKEN` from `.env.example`. Learnings docs retained — they explain _why_ the schema token approach wasn't used, which is valuable context.                                                                                                                                                                                                                                                                                               |
+| 2026-01-27 | Plan 2, Task 10: Add Preview Bar Component     | —                                                                                                | **Skipped.** Nice-to-have feature deprioritized. Can be added later if needed.                                                                                                                                                                                                                                                                                                                                                                                         |
 
 ---
 
@@ -298,6 +319,7 @@ site/.env.local                     # Environment variables
 **Summary:** End-to-end Craft CMS + Next.js integration complete. Content authored in Craft renders on the Next.js frontend via GraphQL. Live preview works for both iframe and view-link modes. On-demand cache revalidation via webhook ensures content updates propagate within seconds.
 
 **Deviations from Plan:**
+
 - CKEditor required plugin installation (not built-in)
 - GraphQL types use simplified naming in Craft 5: `{section}_Entry` not `{section}_{entryType}_Entry`
 - GraphQL endpoint is `/actions/graphql/api` in headless mode (custom routes disabled)
@@ -307,6 +329,7 @@ site/.env.local                     # Environment variables
 - Task 10 (Preview Bar) skipped — nice-to-have, can be added later
 
 **Learnings documented:**
+
 - [Craft CMS Headless Setup](../learnings/2026-01-25-craft-headless-setup.md) — GraphQL types, headless mode gotchas, schema permissions, site URL configuration
 - [Next.js + Craft Fundamentals](../learnings/2026-01-25-next-craft-fundamentals.md) — Rendering strategies, ISR patterns, preview flow, catch-all routes
 - [Preview Mode Patterns](../learnings/2026-01-26-preview-mode-patterns.md) — Token types, searchParams vs Draft Mode, static rendering tradeoffs
@@ -318,7 +341,7 @@ site/.env.local                     # Environment variables
 This design was too large. Ten tasks spanning Craft CMS configuration and Next.js integration, with multiple architectural pivots along the way, made it difficult to track state between build sessions. Key issues:
 
 1. **Scope creep risk** — The Draft Mode pivot mid-build created documentation drift; original specs became stale while we explored alternatives.
-2. **Cross-session continuity** — Without running `/document` between plans, assumptions in Plan 2 (e.g., `CRAFT_PREVIEW_TOKEN`) were based on Plan 1's *design* rather than its *actual outcome*.
+2. **Cross-session continuity** — Without running `/document` between plans, assumptions in Plan 2 (e.g., `CRAFT_PREVIEW_TOKEN`) were based on Plan 1's _design_ rather than its _actual outcome_.
 3. **10-step builds are fragile** — Each deviation compounds; by Task 9, multiple docs were out of sync.
 
 **Recommendation for future designs:** Keep designs to 5 tasks max. If a feature naturally splits (like "Craft setup" + "Next.js code"), treat them as separate design docs with their own `/document` phases. The documentation phase is what catches drift — skipping it between related work is risky.

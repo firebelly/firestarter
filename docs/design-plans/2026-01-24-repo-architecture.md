@@ -29,7 +29,9 @@
 ## Design Decisions
 
 ### Directory Naming
+
 **Options considered:**
+
 1. `/web` + `/cms` — generic, tech-agnostic
 2. `/frontend` + `/craft` — role + tech explicit
 3. `/site` + `/cms` — clear, website-focused
@@ -39,7 +41,9 @@
 ---
 
 ### Storybook Placement
+
 **Options considered:**
+
 1. Sibling directory (`/storybook`) — separate from Next.js
 2. Inside Next.js (`/site/.storybook`) — Storybook views the same components
 
@@ -48,7 +52,9 @@
 ---
 
 ### Stories Structure
+
 **Options considered:**
+
 1. Co-located — `Button/Button.stories.tsx` next to component
 2. Separate folder — `/site/stories/Button.stories.tsx`
 
@@ -57,7 +63,9 @@
 ---
 
 ### Design Tokens Location
+
 **Options considered:**
+
 1. Shared package (`/packages/tokens`) — if multiple consumers need raw tokens
 2. Inside `/site` (`/site/src/tokens/`) — simpler, frontend-owned
 
@@ -66,7 +74,9 @@
 ---
 
 ### Package Manager
+
 **Options considered:**
+
 1. pnpm with workspaces — root coordinates multiple packages
 2. pnpm without workspaces — each app manages its own dependencies
 
@@ -75,7 +85,9 @@
 ---
 
 ### .gitignore Strategy
+
 **Options considered:**
+
 1. Single root `.gitignore` — one file, verbose paths
 2. Per-directory `.gitignore` — each app self-contained
 
@@ -84,7 +96,9 @@
 ---
 
 ### Node Version Management
+
 **Options considered:**
+
 1. `.nvmrc` at root
 2. `.nvmrc` in `/site`
 
@@ -177,34 +191,34 @@ The structure is correct when:
 
 ## Structure Reference
 
-| Path | Purpose |
-|------|---------|
-| `/site` | Next.js + Storybook (frontend) |
-| `/site/.storybook` | Storybook configuration |
-| `/site/app` | Next.js App Router pages and API routes |
-| `/site/src/components` | Shared components with co-located stories |
-| `/site/src/tokens` | Design tokens from Figma |
-| `/site/src/lib` | Utilities, API helpers |
-| `/cms` | Craft CMS (headless) |
-| `/cms/config` | Craft configuration and project config |
-| `/cms/modules` | Custom Craft modules |
-| `/cms/templates` | Twig templates (minimal for headless) |
-| `/docs` | Design docs, implementation plans, templates |
-| `/.claude` | Claude workflow commands |
+| Path                   | Purpose                                      |
+| ---------------------- | -------------------------------------------- |
+| `/site`                | Next.js + Storybook (frontend)               |
+| `/site/.storybook`     | Storybook configuration                      |
+| `/site/app`            | Next.js App Router pages and API routes      |
+| `/site/src/components` | Shared components with co-located stories    |
+| `/site/src/tokens`     | Design tokens from Figma                     |
+| `/site/src/lib`        | Utilities, API helpers                       |
+| `/cms`                 | Craft CMS (headless)                         |
+| `/cms/config`          | Craft configuration and project config       |
+| `/cms/modules`         | Custom Craft modules                         |
+| `/cms/templates`       | Twig templates (minimal for headless)        |
+| `/docs`                | Design docs, implementation plans, templates |
+| `/.claude`             | Claude workflow commands                     |
 
 ---
 
 ## Build Log
 
-| Date | Task | Files | Notes |
-|------|------|-------|-------|
-| 2026-01-24 | Task 1: Create Next.js app | `/site/*` | Used npx/npm initially, switched to pnpm |
-| 2026-01-24 | Task 2: Configure Storybook | `/site/.storybook/*` | Storybook 10.2 used nextjs-vite framework (faster than planned nextjs) |
-| 2026-01-24 | Task 3: Component structure | `/site/src/components/Button/*` | Button example with co-located story and CSS module |
-| 2026-01-24 | Task 4: Tokens and lib dirs | `/site/src/tokens/`, `/site/src/lib/` | Placeholder files establish structure |
-| 2026-01-24 | Task 5: .nvmrc and .gitignore | `/site/.nvmrc` | Node 24; .gitignore already covered Next.js + Storybook |
-| 2026-01-24 | Task 6: Scaffold Craft CMS | `/cms/*` | Used DDEV + PostgreSQL; Craft 5 + DDEV auto-inject CRAFT_DB_* vars locally (no db.php needed), but production requires them in .env. **Future work:** Create a repo-wide setup script to generate fresh license.key, CRAFT_APP_ID, CRAFT_SECURITY_KEY, and rename DDEV project for cloned projects. |
-| 2026-01-24 | Task 7: Root .gitignore | Skipped | Both /site and /cms already ignore .env; root addition unnecessary per "per-directory .gitignore" principle |
+| Date       | Task                          | Files                                 | Notes                                                                                                                                                                                                                                                                                                |
+| ---------- | ----------------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-01-24 | Task 1: Create Next.js app    | `/site/*`                             | Used npx/npm initially, switched to pnpm                                                                                                                                                                                                                                                             |
+| 2026-01-24 | Task 2: Configure Storybook   | `/site/.storybook/*`                  | Storybook 10.2 used nextjs-vite framework (faster than planned nextjs)                                                                                                                                                                                                                               |
+| 2026-01-24 | Task 3: Component structure   | `/site/src/components/Button/*`       | Button example with co-located story and CSS module                                                                                                                                                                                                                                                  |
+| 2026-01-24 | Task 4: Tokens and lib dirs   | `/site/src/tokens/`, `/site/src/lib/` | Placeholder files establish structure                                                                                                                                                                                                                                                                |
+| 2026-01-24 | Task 5: .nvmrc and .gitignore | `/site/.nvmrc`                        | Node 24; .gitignore already covered Next.js + Storybook                                                                                                                                                                                                                                              |
+| 2026-01-24 | Task 6: Scaffold Craft CMS    | `/cms/*`                              | Used DDEV + PostgreSQL; Craft 5 + DDEV auto-inject CRAFT*DB*\* vars locally (no db.php needed), but production requires them in .env. **Future work:** Create a repo-wide setup script to generate fresh license.key, CRAFT_APP_ID, CRAFT_SECURITY_KEY, and rename DDEV project for cloned projects. |
+| 2026-01-24 | Task 7: Root .gitignore       | Skipped                               | Both /site and /cms already ignore .env; root addition unnecessary per "per-directory .gitignore" principle                                                                                                                                                                                          |
 
 ---
 
@@ -216,6 +230,7 @@ The structure is correct when:
 **Summary:** Established the foundational monorepo structure with `/site` (Next.js 15 + Storybook 10.2) and `/cms` (Craft CMS 5 via DDEV). The frontend includes a working component architecture with a Button example demonstrating co-located stories and CSS modules. Design token and utility directories are scaffolded with placeholder files. Craft is configured with PostgreSQL through DDEV's auto-injection of database credentials.
 
 **Deviations from Plan:**
+
 - Used `nextjs-vite` Storybook framework instead of `nextjs` — Storybook 10.2 default, provides faster builds
 - Node 24 instead of 22 — updated to current version
 - Craft installed via DDEV rather than vanilla Composer — provides local development environment with PostgreSQL

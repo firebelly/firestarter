@@ -20,10 +20,12 @@ Add Prettier as a repo-wide code formatter with explicit config, ESLint conflict
 - [x] Site uses `pnpm` as package manager — Verified
 
 **Patterns to leverage:**
+
 - Lefthook piped job structure already established in `lefthook.yml`
 - ESLint flat config pattern with spread arrays in `site/eslint.config.mjs`
 
 **Discrepancies found:**
+
 - None
 
 ---
@@ -31,9 +33,11 @@ Add Prettier as a repo-wide code formatter with explicit config, ESLint conflict
 ## Tasks
 
 ### Task 1: Install Prettier and create config files
+
 **Description:** Install `prettier` as a root devDependency. Create `.prettierrc` with explicit defaults and `.prettierignore` for generated/vendored files.
 
 **Files:**
+
 - `package.json` — modified by install
 - `.prettierrc` — create
 - `.prettierignore` — create
@@ -41,6 +45,7 @@ Add Prettier as a repo-wide code formatter with explicit config, ESLint conflict
 **Code example:**
 
 `.prettierrc`:
+
 ```json
 {
   "semi": true,
@@ -52,6 +57,7 @@ Add Prettier as a repo-wide code formatter with explicit config, ESLint conflict
 ```
 
 `.prettierignore`:
+
 ```
 # Dependencies
 node_modules/
@@ -78,27 +84,25 @@ pnpm-lock.yaml
 ---
 
 ### Task 2: Install eslint-config-prettier and update ESLint config
+
 **Description:** Install `eslint-config-prettier` as a devDependency in `/site`. Import it and add it as the last entry in the ESLint flat config so it disables any rules that conflict with Prettier.
 
 **Files:**
+
 - `site/package.json` — modified by install
 - `site/eslint.config.mjs` — modify
 
 **Code example:**
 
 Add to `site/eslint.config.mjs`:
+
 ```js
 import prettierConfig from "eslint-config-prettier";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  globalIgnores([
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
+  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
   ...storybook.configs["flat/recommended"],
   prettierConfig,
 ]);
@@ -111,15 +115,18 @@ const eslintConfig = defineConfig([
 ---
 
 ### Task 3: Run Prettier across repo and add format script
+
 **Description:** Run `pnpm prettier --write .` from repo root to format all existing files. Add `format` and `format:check` scripts to root `package.json` for manual use.
 
 **Files:**
+
 - `package.json` — modify (add scripts)
 - Various files — auto-formatted by Prettier
 
 **Code example:**
 
 Root `package.json` scripts:
+
 ```json
 {
   "scripts": {
@@ -136,12 +143,15 @@ Root `package.json` scripts:
 ---
 
 ### Task 4: Add Prettier to Lefthook pre-commit pipeline
+
 **Description:** Add a `prettier` job as the first step in the piped pre-commit in `lefthook.yml`. It should format staged files and re-stage them before typecheck and lint run.
 
 **Files:**
+
 - `lefthook.yml` — modify
 
 **Code example:**
+
 ```yaml
 pre-commit:
   piped: true

@@ -13,7 +13,7 @@ Add Lefthook to run TypeScript type checking and ESLint on pre-commit. TypeScrip
 
 ## Codebase Verification
 
-*Confirmed assumptions from design doc match actual codebase*
+_Confirmed assumptions from design doc match actual codebase_
 
 - [x] No root `package.json` exists - Verified: yes
 - [x] No `lefthook.yml` exists - Verified: yes
@@ -23,11 +23,13 @@ Add Lefthook to run TypeScript type checking and ESLint on pre-commit. TypeScrip
 - [x] `.gitignore` exists at root - Verified: currently contains only `.DS_Store`
 
 **Patterns to leverage:**
+
 - pnpm package manager (v10.28.2) already configured in site/
 - Existing `lint` script in site/package.json: `"lint": "eslint"`
 - TypeScript already configured with `noEmit: true`
 
 **Discrepancies found:**
+
 - None
 
 ---
@@ -39,9 +41,11 @@ Add Lefthook to run TypeScript type checking and ESLint on pre-commit. TypeScrip
 **Description:** Create a minimal `package.json` at the repository root with Lefthook as a dev dependency and a `postinstall` script that automatically runs `lefthook install`.
 
 **Files:**
+
 - `package.json` - create
 
 **Code example:**
+
 ```json
 {
   "name": "firestarter",
@@ -56,6 +60,7 @@ Add Lefthook to run TypeScript type checking and ESLint on pre-commit. TypeScrip
 ```
 
 **Done when:**
+
 - `package.json` exists at repo root
 - Running `pnpm install` at root installs Lefthook to `node_modules/`
 
@@ -68,9 +73,11 @@ Add Lefthook to run TypeScript type checking and ESLint on pre-commit. TypeScrip
 **Description:** Create the Lefthook configuration file with pre-commit hooks for TypeScript type checking and ESLint. Use `piped: true` for fail-fast behavior (TypeScript runs first; if it fails, ESLint is skipped).
 
 **Files:**
+
 - `lefthook.yml` - create
 
 **Code example:**
+
 ```yaml
 pre-commit:
   piped: true
@@ -86,6 +93,7 @@ pre-commit:
 ```
 
 **Done when:**
+
 - `lefthook.yml` exists at repo root
 - Configuration matches design spec
 
@@ -98,9 +106,11 @@ pre-commit:
 **Description:** Add `.lefthook-local.yml` to `.gitignore` to allow developers to override hook behavior locally without committing changes. Then run `pnpm install` to trigger the postinstall script and verify everything works.
 
 **Files:**
+
 - `.gitignore` - modify
 
 **Code example:**
+
 ```
 .DS_Store
 
@@ -109,6 +119,7 @@ pre-commit:
 ```
 
 **Done when:**
+
 - `.gitignore` contains `.lefthook-local.yml`
 - `pnpm install` at root completes successfully
 - `lefthook install` runs automatically (via postinstall)

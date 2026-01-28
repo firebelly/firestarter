@@ -9,14 +9,15 @@
 
 Craft 5 simplifies GraphQL type names when a section has only one entry type:
 
-| Scenario | Type Name |
-|----------|-----------|
-| Single entry type | `{sectionHandle}_Entry` |
+| Scenario             | Type Name                                 |
+| -------------------- | ----------------------------------------- |
+| Single entry type    | `{sectionHandle}_Entry`                   |
 | Multiple entry types | `{sectionHandle}_{entryTypeHandle}_Entry` |
 
 **Example:** Homepage section with one entry type → `homepage_Entry` (not `homepage_homepage_Entry`)
 
 Use `__typename` in queries to discover the actual type name:
+
 ```graphql
 {
   entry(section: "homepage") {
@@ -36,6 +37,7 @@ When `headlessMode(true)` is enabled in `config/general.php`:
 - Cannot use `/api` shortcut without disabling headless mode
 
 **For Next.js integration:**
+
 ```
 CRAFT_URL=http://cms.ddev.site
 ```
@@ -69,12 +71,12 @@ curl -s -X POST 'https://cms.ddev.site/actions/graphql/api' \
 
 These are **different concepts** in Craft:
 
-| Concept | Description | GraphQL Parameter |
-|---------|-------------|-------------------|
-| **Enabled** | Published, live content | Default behavior |
-| **Disabled** | Entry exists but hidden | `status: null` or `status: ["disabled"]` |
-| **Draft** | Unpublished working copy | `drafts: true` |
-| **Revision** | Historical snapshot | `revisions: true` |
+| Concept      | Description              | GraphQL Parameter                        |
+| ------------ | ------------------------ | ---------------------------------------- |
+| **Enabled**  | Published, live content  | Default behavior                         |
+| **Disabled** | Entry exists but hidden  | `status: null` or `status: ["disabled"]` |
+| **Draft**    | Unpublished working copy | `drafts: true`                           |
+| **Revision** | Historical snapshot      | `revisions: true`                        |
 
 To query drafts, use `drafts: true` — not status filters.
 
@@ -94,20 +96,22 @@ To query drafts, use `drafts: true` — not status filters.
 In a headless setup with Craft and Next.js:
 
 **Craft CMS (`cms/.env`):**
+
 ```bash
 # The site's base URL (used for entry URLs, preview targets)
 PRIMARY_SITE_URL="http://localhost:3000"
 ```
 
 **Next.js (`site/.env.local`):**
+
 ```bash
 # Craft CMS base URL
 CRAFT_URL="http://cms.ddev.site"
 ```
 
-| Variable | Location | Purpose |
-|----------|----------|---------|
-| `PRIMARY_SITE_URL` | `cms/.env` | Entry URLs (`{url}`), preview targets |
-| `CRAFT_URL` | `site/.env.local` | GraphQL endpoint base URL |
+| Variable           | Location          | Purpose                               |
+| ------------------ | ----------------- | ------------------------------------- |
+| `PRIMARY_SITE_URL` | `cms/.env`        | Entry URLs (`{url}`), preview targets |
+| `CRAFT_URL`        | `site/.env.local` | GraphQL endpoint base URL             |
 
 **Key insight:** Setting `PRIMARY_SITE_URL` to your frontend means `{url}` on entries automatically generates frontend URLs. This is the official Craft + Next.js starter pattern — preview targets can simply use `{url}` instead of complex alias syntax.

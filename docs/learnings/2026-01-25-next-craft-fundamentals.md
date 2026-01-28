@@ -10,12 +10,14 @@ Foundational concepts for the headless architecture. Reference this when onboard
 ## Data Fetching: GraphQL vs Element API
 
 ### GraphQL (Craft Built-in)
+
 - Single endpoint (`/api`) handles all queries
 - Frontend requests exactly the fields it needs
 - Schema auto-generates from your content model
 - Industry standard, transferable knowledge
 
 ### Element API (Plugin)
+
 - REST-like endpoints defined in PHP config
 - Each endpoint returns a fixed shape
 - Simpler mental model but less flexible
@@ -38,11 +40,11 @@ Foundational concepts for the headless architecture. Reference this when onboard
  Redeploy to update          Self-healing cache                  No cache
 ```
 
-| Strategy | When Page Renders | Good For |
-|----------|-------------------|----------|
-| **SSG** | Build time only | Docs, sites that rarely change |
-| **ISR** | Build + background refresh | CMS-driven content, blogs |
-| **SSR** | Every request | User-specific data, real-time dashboards |
+| Strategy | When Page Renders          | Good For                                 |
+| -------- | -------------------------- | ---------------------------------------- |
+| **SSG**  | Build time only            | Docs, sites that rarely change           |
+| **ISR**  | Build + background refresh | CMS-driven content, blogs                |
+| **SSR**  | Every request              | User-specific data, real-time dashboards |
 
 **Firestarter uses ISR** — static performance with automatic freshness.
 
@@ -66,11 +68,11 @@ ISR doesn't block visitors while rebuilding. The pattern:
 
 ## Caching Strategy Layers
 
-| Layer | Mechanism | Purpose |
-|-------|-----------|---------|
-| **Primary** | On-demand webhook | Instant cache invalidation on publish |
-| **Fallback** | Time-based revalidation (24hr) | Safety net if webhook fails |
-| **Reset** | New deployment | Fresh cache, all pages rebuild |
+| Layer        | Mechanism                      | Purpose                               |
+| ------------ | ------------------------------ | ------------------------------------- |
+| **Primary**  | On-demand webhook              | Instant cache invalidation on publish |
+| **Fallback** | Time-based revalidation (24hr) | Safety net if webhook fails           |
+| **Reset**    | New deployment                 | Fresh cache, all pages rebuild        |
 
 The time-based fallback is "disaster recovery" — if everything works correctly (webhooks fire), you'll never hit it.
 
@@ -80,11 +82,11 @@ The time-based fallback is "disaster recovery" — if everything works correctly
 
 For variable-depth URLs from a CMS:
 
-| Pattern | Matches | Doesn't Match |
-|---------|---------|---------------|
-| `[slug]` | `/about` (single segment) | `/about/team` |
-| `[...slug]` | `/about`, `/about/team`, `/a/b/c` | `/` (root) |
-| `[[...slug]]` | `/`, `/about`, `/about/team` | — |
+| Pattern       | Matches                           | Doesn't Match |
+| ------------- | --------------------------------- | ------------- |
+| `[slug]`      | `/about` (single segment)         | `/about/team` |
+| `[...slug]`   | `/about`, `/about/team`, `/a/b/c` | `/` (root)    |
+| `[[...slug]]` | `/`, `/about`, `/about/team`      | —             |
 
 The double brackets `[[...slug]]` make the segment **optional**.
 
@@ -131,12 +133,12 @@ Editor in preview:  Draft Mode → Bypass cache → Fetch drafts from Craft
 
 ## GraphQL Schema Security
 
-| Schema | Token | Can Query |
-|--------|-------|-----------|
-| **Public** | None | Published content only |
-| **Private** | Required | Published + drafts |
+| Schema      | Token    | Can Query              |
+| ----------- | -------- | ---------------------- |
+| **Public**  | None     | Published content only |
+| **Private** | Required | Published + drafts     |
 
-**Why public is okay:** The content is already visible on your website. No security benefit to hiding it behind a token. The token protects *unpublished* content.
+**Why public is okay:** The content is already visible on your website. No security benefit to hiding it behind a token. The token protects _unpublished_ content.
 
 ---
 
@@ -147,6 +149,7 @@ Editor in preview:  Draft Mode → Bypass cache → Fetch drafts from Craft
 ### What about mixed versions?
 
 Modern platforms (Vercel, Netlify) handle this:
+
 - Deployments are immutable and atomic
 - Traffic switches all at once (no mixing)
 - Next.js detects JS mismatches and forces reload
@@ -155,10 +158,10 @@ You won't see a Frankenstein mix of old frontend and new frontend.
 
 ### Build-time vs On-demand Generation
 
-| Approach | When Pages Build | Deploy Speed |
-|----------|------------------|--------------|
-| `generateStaticParams()` | At build time | Slower |
-| No pre-generation | On first request | Fast |
+| Approach                 | When Pages Build | Deploy Speed |
+| ------------------------ | ---------------- | ------------ |
+| `generateStaticParams()` | At build time    | Slower       |
+| No pre-generation        | On first request | Fast         |
 
 For small sites, pre-generation is fine. For large sites, on-demand makes sense.
 
@@ -166,10 +169,10 @@ For small sites, pre-generation is fine. For large sites, on-demand makes sense.
 
 ## Environment Variables
 
-| Variable | Purpose |
-|----------|---------|
-| `CRAFT_GRAPHQL_URL` | Craft's GraphQL endpoint |
-| `CRAFT_PREVIEW_TOKEN` | Token for draft/preview queries |
+| Variable              | Purpose                                 |
+| --------------------- | --------------------------------------- |
+| `CRAFT_GRAPHQL_URL`   | Craft's GraphQL endpoint                |
+| `CRAFT_PREVIEW_TOKEN` | Token for draft/preview queries         |
 | `REVALIDATION_SECRET` | Shared secret to validate webhook calls |
 
 The revalidation secret prevents abuse — without it, anyone could POST to `/api/revalidate` and force cache invalidation.

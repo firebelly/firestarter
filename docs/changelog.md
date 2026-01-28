@@ -12,6 +12,7 @@ Established the foundational monorepo structure for Firestarter with a Next.js +
 **Plan:** [docs/implementation-plans/2026-01-24-repo-architecture.md](implementation-plans/2026-01-24-repo-architecture.md)
 
 **Key files:**
+
 - `/site/` — Next.js 15 app with Storybook 10.2
 - `/site/src/components/Button/` — Example component with co-located story
 - `/site/src/tokens/` — Design tokens directory (placeholder)
@@ -30,6 +31,7 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. Plan 2 (Next.js fro
 **Plan:** [docs/implementation-plans/2026-01-25-craft-cms-content-setup.md](implementation-plans/2026-01-25-craft-cms-content-setup.md)
 
 **Key files:**
+
 - `cms/config/project/fields/` — Heading and Body field definitions
 - `cms/config/project/sections/` — Homepage and Pages section configs
 - `cms/config/project/entryTypes/` — Entry type definitions with field layouts
@@ -37,6 +39,7 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. Plan 2 (Next.js fro
 - `cms/.env` — Environment variables for preview and webhooks
 
 **Learnings:**
+
 - [Craft CMS Headless Setup](learnings/2026-01-25-craft-headless-setup.md)
 - [Next.js + Craft Fundamentals](learnings/2026-01-25-next-craft-fundamentals.md)
 
@@ -52,6 +55,7 @@ This is **Plan 2 of 2** for the Craft + Next.js integration, completing the feat
 **Plan:** [docs/implementation-plans/2026-01-26-nextjs-craft-integration.md](implementation-plans/2026-01-26-nextjs-craft-integration.md)
 
 **Key files:**
+
 - `site/src/lib/graphql/client.ts` — GraphQL fetch wrapper with preview support
 - `site/src/lib/graphql/queries/` — Homepage and Pages queries
 - `site/src/lib/graphql/types.ts` — TypeScript types for Craft entries
@@ -61,6 +65,7 @@ This is **Plan 2 of 2** for the Craft + Next.js integration, completing the feat
 - `site/src/app/api/revalidate/route.ts` — Webhook endpoint for cache invalidation
 
 **Learnings:**
+
 - [Preview Mode Patterns](learnings/2026-01-26-preview-mode-patterns.md)
 - [On-Demand Revalidation](learnings/2026-01-27-on-demand-revalidation.md)
 - [Local vs Production Config](learnings/2026-01-27-local-vs-production-config.md)
@@ -75,11 +80,13 @@ Added Lefthook v2 pre-commit hooks for TypeScript type checking and ESLint. Hook
 **Plan:** [docs/implementation-plans/2026-01-27-lefthook-precommit.md](implementation-plans/2026-01-27-lefthook-precommit.md)
 
 **Key files:**
+
 - `package.json` — Root package with Lefthook dependency
 - `lefthook.yml` — Pre-commit hook configuration (v2 `jobs:` syntax)
 - `pnpm-workspace.yaml` — Workspace config with Lefthook build approval (pnpm v10 requirement)
 
 **Learnings:**
+
 - [Pre-commit Hooks & JavaScript Tooling](learnings/2026-01-27-precommit-hooks-and-tooling.md)
 
 ---
@@ -92,6 +99,7 @@ Added Prettier as a repo-wide code formatter with explicit config defaults. Inte
 **Plan:** [docs/implementation-plans/2026-01-28-1510-configure-prettier.md](implementation-plans/2026-01-28-1510-configure-prettier.md)
 
 **Key files:**
+
 - `.prettierrc` — Formatter config with explicit defaults
 - `.prettierignore` — Ignore patterns for generated/vendored files
 - `lefthook.yml` — Pre-commit pipeline with Prettier as first job

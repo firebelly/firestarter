@@ -11,7 +11,7 @@ Generics (`<T>`) are type placeholders filled in at call time:
 
 ```typescript
 // Function signature
-async function craftFetch<T>(query: string): Promise<T>
+async function craftFetch<T>(query: string): Promise<T>;
 
 // Call with specific type
 const data = await craftFetch<EntryResponse<HomepageEntry>>(HOMEPAGE_QUERY);
@@ -28,15 +28,24 @@ Variables parameterize queries for reusability:
 
 ```graphql
 # Hardcoded (bad - need separate query per page)
-query { entry(uri: ["about"]) { title } }
+query {
+  entry(uri: ["about"]) {
+    title
+  }
+}
 
 # Variables (good - one query, pass different values)
-query PageByUri($uri: [String]) { entry(uri: $uri) { title } }
+query PageByUri($uri: [String]) {
+  entry(uri: $uri) {
+    title
+  }
+}
 ```
 
 Pass values separately when calling:
+
 ```typescript
-craftFetch(PAGE_BY_URI_QUERY, { variables: { uri: ["about"] } })
+craftFetch(PAGE_BY_URI_QUERY, { variables: { uri: ["about"] } });
 ```
 
 ---
@@ -64,10 +73,10 @@ Next.js extends native `fetch` with caching options:
 ```typescript
 fetch(url, {
   next: {
-    revalidate: 86400,  // ISR: cache 24 hours
-    tags: ['homepage']  // For tag-based invalidation
-  }
-})
+    revalidate: 86400, // ISR: cache 24 hours
+    tags: ["homepage"], // For tag-based invalidation
+  },
+});
 ```
 
 - `revalidate: 0` — no cache (preview mode)
@@ -109,8 +118,9 @@ When a query could return different types, use fragments to specify type-specifi
 ```graphql
 query Homepage {
   entry(section: "homepage") {
-    title                      # common to all entries
-    ... on homepage_Entry {    # only for this type
+    title # common to all entries
+    ... on homepage_Entry {
+      # only for this type
       heading
       body
     }
@@ -145,13 +155,14 @@ An `index.ts` that re-exports from sibling files:
 
 ```typescript
 // queries/index.ts
-export { HOMEPAGE_QUERY } from './homepage';
-export { PAGE_BY_URI_QUERY } from './pages';
+export { HOMEPAGE_QUERY } from "./homepage";
+export { PAGE_BY_URI_QUERY } from "./pages";
 ```
 
 Allows cleaner imports:
+
 ```typescript
-import { HOMEPAGE_QUERY } from '@/lib/graphql/queries';
+import { HOMEPAGE_QUERY } from "@/lib/graphql/queries";
 // instead of '@/lib/graphql/queries/homepage'
 ```
 
@@ -164,7 +175,7 @@ Interfaces define the shape of objects:
 ```typescript
 interface BaseEntry {
   title: string;
-  uri: string | null;  // nullable — Craft fields can be empty
+  uri: string | null; // nullable — Craft fields can be empty
 }
 
 interface HomepageEntry extends BaseEntry {
@@ -183,11 +194,11 @@ interface HomepageEntry extends BaseEntry {
 
 ```typescript
 // Object shorthand: { query } === { query: query }
-body: JSON.stringify({ query, variables })
+body: JSON.stringify({ query, variables });
 
 // Nullish coalescing: use left if exists, else right
-json.errors[0]?.message ?? 'GraphQL Error'
+json.errors[0]?.message ?? "GraphQL Error";
 
 // Ternary in object
-next: preview ? { revalidate: 0 } : { revalidate }
+next: preview ? { revalidate: 0 } : { revalidate };
 ```

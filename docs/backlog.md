@@ -20,3 +20,13 @@ When cloning Firestarter for a new project, several values need to be regenerate
 A setup script would automate this process, making "clone and go" truly seamless.
 
 ---
+
+## Code Quality and Formatting
+
+- Prettier format on save
+- ESLint import statement order
+- Stylelint for CSS linting (property order)
+
+---
+
+## DELETE site/pnpm-lock.yaml

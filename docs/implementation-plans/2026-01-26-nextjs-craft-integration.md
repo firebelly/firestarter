@@ -15,7 +15,7 @@ This is **Plan 2 of 2** for the Craft + Next.js integration. Plan 1 (Craft CMS c
 
 ## Codebase Verification
 
-*Confirmed assumptions from design doc match actual codebase*
+_Confirmed assumptions from design doc match actual codebase_
 
 - [x] Next.js App Router in use — Verified: `site/src/app/` exists
 - [x] No existing GraphQL client — Verified: Clean slate
@@ -25,14 +25,17 @@ This is **Plan 2 of 2** for the Craft + Next.js integration. Plan 1 (Craft CMS c
 - [x] No environment files — Verified: Need to create `.env.local`
 
 **Patterns to leverage:**
+
 - CSS Modules (established in `Button/Button.module.css`)
 - Path aliases (`@/lib`, `@/components`)
 - TypeScript interfaces (used in Button component)
 
 **Discrepancies found:**
+
 - None. Codebase matches expectations.
 
 **Design change from Plan 2 Brief:**
+
 - Using query parameter preview (simpler) instead of Draft Mode cookies
 - No `/api/preview` or `/api/exit-preview` routes needed
 
@@ -45,10 +48,12 @@ This is **Plan 2 of 2** for the Craft + Next.js integration. Plan 1 (Craft CMS c
 **Description:** Create environment configuration for Craft CMS connection.
 
 **Files:**
+
 - `site/.env.example` — create
 - `site/.env.local` — create (gitignored)
 
 **Code example:**
+
 ```bash
 # site/.env.example
 
@@ -63,6 +68,7 @@ REVALIDATION_SECRET=""
 ```
 
 **Done when:**
+
 - `.env.example` exists with placeholder values
 - `.env.local` exists with real values from Craft setup
 - Variables accessible in Next.js
@@ -76,9 +82,11 @@ REVALIDATION_SECRET=""
 **Description:** Build a type-safe fetch wrapper for Craft's GraphQL API with preview and caching support.
 
 **Files:**
+
 - `site/src/lib/graphql/client.ts` — create
 
 **Code example:**
+
 ```typescript
 type FetchOptions = {
   variables?: Record<string, unknown>;
@@ -88,20 +96,20 @@ type FetchOptions = {
 
 export async function craftFetch<T>(
   query: string,
-  options: FetchOptions = {}
+  options: FetchOptions = {},
 ): Promise<T> {
   const { variables, preview = false, revalidate = 86400 } = options;
 
   const headers: HeadersInit = {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   };
 
   if (preview) {
-    headers['Authorization'] = `Bearer ${process.env.CRAFT_PREVIEW_TOKEN}`;
+    headers["Authorization"] = `Bearer ${process.env.CRAFT_PREVIEW_TOKEN}`;
   }
 
   const res = await fetch(`${process.env.CRAFT_URL}/api`, {
-    method: 'POST',
+    method: "POST",
     headers,
     body: JSON.stringify({ query, variables }),
     next: preview ? { revalidate: 0 } : { revalidate },
@@ -110,7 +118,7 @@ export async function craftFetch<T>(
   const json = await res.json();
 
   if (json.errors) {
-    throw new Error(json.errors[0]?.message ?? 'GraphQL Error');
+    throw new Error(json.errors[0]?.message ?? "GraphQL Error");
   }
 
   return json.data;
@@ -118,6 +126,7 @@ export async function craftFetch<T>(
 ```
 
 **Done when:**
+
 - Client exports `craftFetch<T>()` function
 - Supports `preview: boolean` option (adds auth header)
 - Supports `revalidate: number` option (ISR timing)
@@ -132,9 +141,11 @@ export async function craftFetch<T>(
 **Description:** Define types for Craft CMS entry responses.
 
 **Files:**
+
 - `site/src/lib/graphql/types.ts` — create
 
 **Code example:**
+
 ```typescript
 // Base entry fields
 export interface BaseEntry {
@@ -161,6 +172,7 @@ export interface EntryResponse<T> {
 ```
 
 **Done when:**
+
 - Types match Craft's GraphQL schema
 - Types use correct nullability (Craft fields can be null)
 
@@ -173,11 +185,13 @@ export interface EntryResponse<T> {
 **Description:** Define queries for Homepage and Pages sections.
 
 **Files:**
+
 - `site/src/lib/graphql/queries/homepage.ts` — create
 - `site/src/lib/graphql/queries/pages.ts` — create
 - `site/src/lib/graphql/queries/index.ts` — create
 
 **Code example (homepage.ts):**
+
 ```typescript
 export const HOMEPAGE_QUERY = `
   query Homepage {
@@ -194,6 +208,7 @@ export const HOMEPAGE_QUERY = `
 ```
 
 **Code example (pages.ts):**
+
 ```typescript
 export const PAGE_BY_URI_QUERY = `
   query PageByUri($uri: [String]) {
@@ -212,6 +227,7 @@ export const PAGE_BY_URI_QUERY = `
 **Note:** Uses Craft 5 simplified type naming (`homepage_Entry`, `page_Entry`) per learnings from Plan 1.
 
 **Done when:**
+
 - Queries return expected data when tested against Craft GraphQL endpoint
 - Queries use correct fragment types for Craft 5
 
@@ -224,25 +240,26 @@ export const PAGE_BY_URI_QUERY = `
 **Description:** Build helper to detect preview mode from URL search params.
 
 **Files:**
+
 - `site/src/lib/preview.ts` — create
 
 **Code example:**
+
 ```typescript
 type SearchParams = { [key: string]: string | string[] | undefined };
 
 export function isPreviewMode(searchParams: SearchParams): boolean {
-  return Boolean(
-    searchParams?.token && searchParams['x-craft-live-preview']
-  );
+  return Boolean(searchParams?.token && searchParams["x-craft-live-preview"]);
 }
 
 export function getPreviewToken(searchParams: SearchParams): string | null {
   const token = searchParams?.token;
-  return typeof token === 'string' ? token : null;
+  return typeof token === "string" ? token : null;
 }
 ```
 
 **Done when:**
+
 - `isPreviewMode()` returns `true` when both params present
 - `isPreviewMode()` returns `false` otherwise
 - `getPreviewToken()` extracts token string
@@ -256,9 +273,11 @@ export function getPreviewToken(searchParams: SearchParams): string | null {
 **Description:** Connect homepage to Craft CMS data.
 
 **Files:**
+
 - `site/src/app/page.tsx` — modify (replace boilerplate)
 
 **Code example:**
+
 ```typescript
 import { craftFetch } from '@/lib/graphql/client';
 import { HOMEPAGE_QUERY } from '@/lib/graphql/queries';
@@ -296,6 +315,7 @@ export default async function HomePage({ searchParams }: Props) {
 ```
 
 **Done when:**
+
 - Homepage displays Craft content at `http://localhost:3000`
 - Preview mode works with `?token=xxx&x-craft-live-preview=true`
 - Content updates when Craft entry changes (after revalidation)
@@ -309,9 +329,11 @@ export default async function HomePage({ searchParams }: Props) {
 **Description:** Build dynamic route for all Pages section entries.
 
 **Files:**
+
 - `site/src/app/[...slug]/page.tsx` — create
 
 **Code example:**
+
 ```typescript
 import { notFound } from 'next/navigation';
 import { craftFetch } from '@/lib/graphql/client';
@@ -358,6 +380,7 @@ export default async function Page({ params, searchParams }: Props) {
 ```
 
 **Done when:**
+
 - `/about` displays About page content
 - `/services/web-design` displays nested page content
 - `/does-not-exist` returns 404 page
@@ -372,12 +395,14 @@ export default async function Page({ params, searchParams }: Props) {
 **Description:** Build webhook endpoint for on-demand cache invalidation.
 
 **Files:**
+
 - `site/src/app/api/revalidate/route.ts` — create
 
 **Code example:**
+
 ```typescript
-import { revalidatePath } from 'next/cache';
-import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from "next/cache";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
@@ -385,22 +410,16 @@ export async function POST(request: NextRequest) {
 
   // Validate secret
   if (secret !== process.env.REVALIDATION_SECRET) {
-    return NextResponse.json(
-      { message: 'Invalid secret' },
-      { status: 401 }
-    );
+    return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
   // Validate URI
   if (!uri) {
-    return NextResponse.json(
-      { message: 'Missing uri' },
-      { status: 400 }
-    );
+    return NextResponse.json({ message: "Missing uri" }, { status: 400 });
   }
 
   // Revalidate the path
-  const path = uri === '__home__' ? '/' : `/${uri}`;
+  const path = uri === "__home__" ? "/" : `/${uri}`;
   revalidatePath(path);
 
   return NextResponse.json({
@@ -412,6 +431,7 @@ export async function POST(request: NextRequest) {
 ```
 
 **Done when:**
+
 - POST to `/api/revalidate` with valid secret returns 200
 - Invalid secret returns 401
 - Missing URI returns 400
@@ -428,6 +448,7 @@ export async function POST(request: NextRequest) {
 **Work in Craft CP:**
 
 1. Install webhooks plugin (if not already):
+
    ```bash
    cd cms && ddev composer require craftcms/webhooks && ddev craft plugin/install webhooks
    ```
@@ -457,6 +478,7 @@ export async function POST(request: NextRequest) {
    (Use same value as `site/.env.local`)
 
 **Done when:**
+
 - Saving an entry in Craft triggers POST to Next.js
 - Next.js logs show revalidation occurring
 - Site content updates within seconds of publish
@@ -470,11 +492,13 @@ export async function POST(request: NextRequest) {
 **Description:** Show a visual indicator when in preview mode with an exit link.
 
 **Files:**
+
 - `site/src/components/PreviewBar/PreviewBar.tsx` — create
 - `site/src/components/PreviewBar/PreviewBar.module.css` — create
 - `site/src/app/layout.tsx` — modify
 
 **Code example (PreviewBar.tsx):**
+
 ```typescript
 'use client';
 
@@ -505,6 +529,7 @@ export function PreviewBar() {
 ```
 
 **Code example (PreviewBar.module.css):**
+
 ```css
 .bar {
   position: fixed;
@@ -529,6 +554,7 @@ export function PreviewBar() {
 ```
 
 **Done when:**
+
 - Preview bar appears at bottom of page in preview mode
 - "Exit Preview" link removes preview params
 - Bar does not appear in normal mode
@@ -555,6 +581,7 @@ After all tasks complete, verify:
 ## Environment Variables Summary
 
 **site/.env.local:**
+
 ```bash
 CRAFT_URL="https://cms.firestarter.ddev.site"
 CRAFT_PREVIEW_TOKEN="<from Craft GraphQL settings>"
@@ -562,6 +589,7 @@ REVALIDATION_SECRET="<shared secret>"
 ```
 
 **cms/.env (add):**
+
 ```bash
 REVALIDATION_SECRET="<same shared secret>"
 ```

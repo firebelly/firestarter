@@ -74,8 +74,8 @@ export function createPage<T>(
 ```typescript
 // app/[...slug]/page.tsx
 export default createPage(PAGE_QUERY, transformPage, {
-  variables: ({ params }) => ({ uri: params.slug?.join('/') || '' })
-})
+  variables: ({ params }) => ({ uri: params.slug?.join("/") || "" }),
+});
 ```
 
 ---
@@ -86,23 +86,24 @@ Client component that re-fetches when preview params are present:
 
 ```typescript
 // components/Preview/Preview.tsx
-'use client'
+"use client";
 
 export function Preview({ initialData, query, variables, children }) {
-  const [data, setData] = useState(initialData)
-  const searchParams = useSearchParams()
+  const [data, setData] = useState(initialData);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    const token = searchParams.get('token')
-    const isPreview = searchParams.has('x-craft-live-preview')
+    const token = searchParams.get("token");
+    const isPreview = searchParams.has("x-craft-live-preview");
 
     if (isPreview && token) {
-      craftFetch(query, variables, { preview: true, token })
-        .then(newData => setData(transform(newData)))
+      craftFetch(query, variables, { preview: true, token }).then((newData) =>
+        setData(transform(newData)),
+      );
     }
-  }, [searchParams])
+  }, [searchParams]);
 
-  return children(data)
+  return children(data);
 }
 ```
 
@@ -147,29 +148,29 @@ lib/graphql/
 
 ## What We're Keeping From Original Design
 
-| Pattern | Why Keep It |
-|---------|-------------|
+| Pattern                  | Why Keep It                                                                |
+| ------------------------ | -------------------------------------------------------------------------- |
 | **Webhook revalidation** | P&T only uses time-based (1hr). Our webhook approach = seconds, not hours. |
-| **TypeScript** | P&T uses plain JS. We want type safety for Craft entries. |
-| **24hr time fallback** | Safety net if webhook fails. |
-| **Preview bar UI** | P&T has no clean exit-preview UX. We'll add one. |
+| **TypeScript**           | P&T uses plain JS. We want type safety for Craft entries.                  |
+| **24hr time fallback**   | Safety net if webhook fails.                                               |
+| **Preview bar UI**       | P&T has no clean exit-preview UX. We'll add one.                           |
 
 ---
 
 ## Plan 2 Task List
 
-| # | Task | Files | Notes |
-|---|------|-------|-------|
-| 1 | Create GraphQL client | `lib/graphql/client.ts` | Native fetch, preview support, caching |
-| 2 | Create TypeScript types | `lib/graphql/types.ts` | Entry types for Homepage, Page |
-| 3 | Create GraphQL queries | `lib/graphql/queries/homepage.ts`, `pages.ts` | With directives |
-| 4 | Set up environment variables | `.env.example`, `.env.local` | CRAFT_URL, CRAFT_PREVIEW_TOKEN, REVALIDATION_SECRET |
-| 5 | Create page factory | `lib/createPage.tsx` | Adopt P&T pattern |
-| 6 | Create Preview component | `components/Preview/Preview.tsx` | Client-side live updates |
-| 7 | Update homepage route | `app/page.tsx` | Use factory |
-| 8 | Create catch-all route | `app/[...slug]/page.tsx` | Use factory, handle 404 |
-| 9 | Create revalidation API | `app/api/revalidate/route.ts` | Webhook endpoint |
-| 10 | Add preview bar UI | `components/PreviewBar/` | Nice to have |
+| #   | Task                         | Files                                         | Notes                                               |
+| --- | ---------------------------- | --------------------------------------------- | --------------------------------------------------- |
+| 1   | Create GraphQL client        | `lib/graphql/client.ts`                       | Native fetch, preview support, caching              |
+| 2   | Create TypeScript types      | `lib/graphql/types.ts`                        | Entry types for Homepage, Page                      |
+| 3   | Create GraphQL queries       | `lib/graphql/queries/homepage.ts`, `pages.ts` | With directives                                     |
+| 4   | Set up environment variables | `.env.example`, `.env.local`                  | CRAFT_URL, CRAFT_PREVIEW_TOKEN, REVALIDATION_SECRET |
+| 5   | Create page factory          | `lib/createPage.tsx`                          | Adopt P&T pattern                                   |
+| 6   | Create Preview component     | `components/Preview/Preview.tsx`              | Client-side live updates                            |
+| 7   | Update homepage route        | `app/page.tsx`                                | Use factory                                         |
+| 8   | Create catch-all route       | `app/[...slug]/page.tsx`                      | Use factory, handle 404                             |
+| 9   | Create revalidation API      | `app/api/revalidate/route.ts`                 | Webhook endpoint                                    |
+| 10  | Add preview bar UI           | `components/PreviewBar/`                      | Nice to have                                        |
 
 ---
 
@@ -224,13 +225,13 @@ site/src/
 
 When creating Plan 2, reference these for patterns:
 
-| File | What to Learn |
-|------|---------------|
-| `starter-next-main/frontend/src/lib/graphql.js` | Fetch wrapper with caching |
-| `starter-next-main/frontend/src/lib/createPage.js` | Page factory pattern |
-| `starter-next-main/frontend/src/components/Preview.jsx` | Live preview component |
-| `starter-next-main/frontend/src/queries/pages.mjs` | Query structure |
-| `starter-next-main/frontend/src/app/[...slug]/page.jsx` | Catch-all usage |
+| File                                                    | What to Learn              |
+| ------------------------------------------------------- | -------------------------- |
+| `starter-next-main/frontend/src/lib/graphql.js`         | Fetch wrapper with caching |
+| `starter-next-main/frontend/src/lib/createPage.js`      | Page factory pattern       |
+| `starter-next-main/frontend/src/components/Preview.jsx` | Live preview component     |
+| `starter-next-main/frontend/src/queries/pages.mjs`      | Query structure            |
+| `starter-next-main/frontend/src/app/[...slug]/page.jsx` | Catch-all usage            |
 
 ---
 

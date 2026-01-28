@@ -35,12 +35,12 @@
 Figma Design System → Storybook → Craft CMS (headless) → Next.js Frontend
 ```
 
-| Layer | Role |
-|-------|------|
-| **Figma** | Design system source of truth — tokens, components, layouts, page types |
+| Layer         | Role                                                                                         |
+| ------------- | -------------------------------------------------------------------------------------------- |
+| **Figma**     | Design system source of truth — tokens, components, layouts, page types                      |
 | **Storybook** | Component library — tightly integrated with Figma tokens; designers review, developers build |
 | **Craft CMS** | Headless CMS — content modeling matches design system components; client-managed post-launch |
-| **Next.js** | Frontend — App Router, Server/Client Components, consumes Craft via API |
+| **Next.js**   | Frontend — App Router, Server/Client Components, consumes Craft via API                      |
 
 ### Integration Points (Requiring Research)
 
@@ -55,12 +55,12 @@ Figma Design System → Storybook → Craft CMS (headless) → Next.js Frontend
 
 ### Structure
 
-| Layer | Contents |
-|-------|----------|
-| **Tokens** | Typography, color, spacing, icons |
-| **Elements** | Buttons, images, text groups |
+| Layer          | Contents                                               |
+| -------------- | ------------------------------------------------------ |
+| **Tokens**     | Typography, color, spacing, icons                      |
+| **Elements**   | Buttons, images, text groups                           |
 | **Components** | Navigation, heroes, CTAs, card grids, filters, footers |
-| **Pages** | Assembled layouts |
+| **Pages**      | Assembled layouts                                      |
 
 ### Principle
 
@@ -143,6 +143,7 @@ The CMS must be structured so clients can manage content independently without b
 ### Design Token Pipeline
 
 **Options considered:**
+
 1. Tokens Studio + Style Dictionary — well-established, good community support, requires manual export or paid sync
 2. Figma Variables API + Custom Pipeline — uses native Figma features, requires custom tooling to build/maintain
 
@@ -155,6 +156,7 @@ The CMS must be structured so clients can manage content independently without b
 ### Next.js Rendering Strategy
 
 **Options considered:**
+
 1. SSG — fastest, requires full rebuilds for content changes
 2. ISR — near-static performance, pages regenerate on-demand
 3. SSR — always fresh, simpler preview, higher server cost
@@ -165,13 +167,13 @@ The CMS must be structured so clients can manage content independently without b
 
 ## Open Questions
 
-| Area | Question |
-|------|----------|
-| Figma → Storybook sync | Tokens Studio + Style Dictionary vs. Figma Variables API + custom? What level of component-level sync is feasible? |
-| Craft → Next.js data fetching | GraphQL vs. Element API? |
-| Rendering strategy | SSG vs. ISR vs. SSR — what fits content update needs and preview experience? |
-| Hosting | Where to host frontend, Craft + DB, and Storybook? Cost and workflow considerations. |
-| Live preview | How to enable content editors to preview changes before publishing? |
+| Area                          | Question                                                                                                           |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Figma → Storybook sync        | Tokens Studio + Style Dictionary vs. Figma Variables API + custom? What level of component-level sync is feasible? |
+| Craft → Next.js data fetching | GraphQL vs. Element API?                                                                                           |
+| Rendering strategy            | SSG vs. ISR vs. SSR — what fits content update needs and preview experience?                                       |
+| Hosting                       | Where to host frontend, Craft + DB, and Storybook? Cost and workflow considerations.                               |
+| Live preview                  | How to enable content editors to preview changes before publishing?                                                |
 
 ---
 
@@ -196,28 +198,28 @@ The CMS must be structured so clients can manage content independently without b
 
 ## Users
 
-| Role | Touchpoints |
-|------|-------------|
+| Role        | Touchpoints                                         |
+| ----------- | --------------------------------------------------- |
 | Strategists | Light involvement — page types, structure decisions |
-| Designers | Figma (primary), Storybook (review) |
-| Developers | Storybook (build), codebase, hosting, deployment |
-| Clients | Craft CMS (content management post-handoff) |
+| Designers   | Figma (primary), Storybook (review)                 |
+| Developers  | Storybook (build), codebase, hosting, deployment    |
+| Clients     | Craft CMS (content management post-handoff)         |
 
 ---
 
 ## Files to Create/Modify
 
-*To be determined during implementation planning*
+_To be determined during implementation planning_
 
 ---
 
 ## Build Log
 
-*Filled in during `/build` phase*
+_Filled in during `/build` phase_
 
 | Date | Task | Files | Notes |
-|------|------|-------|-------|
-| | | | |
+| ---- | ---- | ----- | ----- |
+|      |      |       |       |
 
 ---
 

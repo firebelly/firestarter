@@ -18,7 +18,7 @@ These tools complement each other — they catch different classes of problems.
 
 ```typescript
 // TypeScript catches this:
-const userName = user.nmae;  // ❌ 'nmae' doesn't exist on type User
+const userName = user.nmae; // ❌ 'nmae' doesn't exist on type User
 ```
 
 ### ESLint
@@ -62,12 +62,13 @@ Next.js projects come with ESLint pre-configured via `create-next-app`.
 
 ### `next lint` vs `eslint`
 
-| Command | Behavior |
-|---------|----------|
+| Command     | Behavior                                                                                                                                                                 |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `next lint` | Next.js wrapper around ESLint. Auto-detects config, only lints specific directories by default (`pages/`, `app/`, `components/`, `lib/`, `src/`), provides guided setup. |
-| `eslint` | Standard ESLint CLI. Lints whatever you tell it, requires config to exist, more explicit control. |
+| `eslint`    | Standard ESLint CLI. Lints whatever you tell it, requires config to exist, more explicit control.                                                                        |
 
 **When to use which:**
+
 - Use `next lint` if you want Next.js to manage ESLint setup with its directory-scoping defaults
 - Use `eslint` directly when you want explicit control or have non-Next tooling (like Storybook) in the mix
 
@@ -83,14 +84,15 @@ You might think: "I only changed one file, why check the whole project?"
 
 ```typescript
 // fileA.ts imports from fileB.ts
-import { User } from './fileB';
+import { User } from "./fileB";
 
-const name = user.name;  // Is this valid? Depends on fileB's User type
+const name = user.name; // Is this valid? Depends on fileB's User type
 ```
 
 To know if `fileA.ts` is valid, TypeScript needs to read `fileB.ts` (and everything it imports). You can't type-check in isolation.
 
 **Why it's still fast:**
+
 - TypeScript uses **incremental compilation** (`"incremental": true` in tsconfig)
 - It caches previous results in `.tsbuildinfo`
 - Subsequent runs only re-check what actually changed
@@ -106,7 +108,7 @@ Lefthook can run commands in parallel or in sequence. The `piped: true` option e
 
 ```yaml
 pre-commit:
-  piped: true  # Commands run in sequence; stop on first failure
+  piped: true # Commands run in sequence; stop on first failure
   commands:
     typecheck:
       run: pnpm tsc --noEmit
@@ -115,11 +117,13 @@ pre-commit:
 ```
 
 **Without `piped: true`:**
+
 - Both commands run (potentially in parallel)
 - Both report their errors
 - Commit blocked if either fails
 
 **With `piped: true`:**
+
 - Commands run in defined order (typecheck → lint)
 - If typecheck fails, lint is skipped entirely
 - Saves time — no point linting code that won't compile
@@ -158,7 +162,7 @@ project/
 ```yaml
 # pnpm-workspace.yaml
 packages:
-  - 'site'
+  - "site"
 ```
 
 - Single `pnpm install` at root installs everything

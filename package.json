@@ -2,6 +2,7 @@
   "name": "firestarter",
   "private": true,
   "devDependencies": {
-    "lefthook": "^2.0.16"
+    "lefthook": "^2.0.16",
+    "prettier": "^3.8.1"
   }
 }

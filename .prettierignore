@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+cms/vendor/
+
+# Build output
+.next/
+out/
+build/
+dist/
+storybook-static/
+
+# CMS (Craft/DDEV)
+cms/.ddev/
+cms/config/
+cms/storage/
+cms/web/
+
+# Claude
+.claude/
+CLAUDE.md
+
+# Docs
+docs/
+
+# Package manager
+pnpm-lock.yaml
+
+# Generated
+*.min.js
+*.min.css

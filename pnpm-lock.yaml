@@ -11,6 +11,9 @@ importers:
       lefthook:
         specifier: ^2.0.16
         version: 2.0.16
+      prettier:
+        specifier: ^3.8.1
+        version: 3.8.1
 
 packages:
 
@@ -68,6 +71,11 @@ packages:
     resolution: {integrity: sha512-ABs3M5V9c4nqxFnZO509HXuQTu8GM8hmqc9ruV0acQ81yKlxEq70MRoYP5Z1dr5le326X8vA5qj3arJA36yE3A==}
     hasBin: true
 
+  prettier@3.8.1:
+    resolution: {integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==}
+    engines: {node: '>=14'}
+    hasBin: true
+
 snapshots:
 
   lefthook-darwin-arm64@2.0.16:
@@ -112,3 +120,5 @@ snapshots:
       lefthook-openbsd-x64: 2.0.16
       lefthook-windows-arm64: 2.0.16
       lefthook-windows-x64: 2.0.16
+
+  prettier@3.8.1: {}

@@ -70,7 +70,7 @@ Skip this step if the approach is obvious or already decided.
 
 Create the design document at:
 ```
-docs/design-plans/YYYY-MM-DD-feature-name.md
+docs/design-plans/YYYY-MM-DD-HHMM-feature-name.md
 ```
 
 Use the template at `docs/templates/design-doc.md` as your guide.
@@ -91,7 +91,7 @@ When the design document is written, announce:
 ```
 **Phase 1: Design** | Complete
 
-Design document created at: docs/design-plans/YYYY-MM-DD-feature-name.md
+Design document created at: docs/design-plans/YYYY-MM-DD-HHMM-feature-name.md
 
 **Commit checkpoint:** Commit the design document before ending this session.
 

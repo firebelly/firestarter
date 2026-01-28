@@ -59,14 +59,30 @@ Example Build Log entry:
 
 ---
 
+## Verification Checklist
+
+After all tasks are complete, run the verification checklist from the implementation plan:
+
+1. **Prompt** - Ask user: "All tasks complete. Run verification checklist before completing phase?"
+2. **Wait for confirmation** - User must confirm to proceed
+3. **For each checklist item:**
+   - Present the item
+   - Verify with user (pass/fail)
+   - If pass: Mark `[x]` in implementation plan
+   - If fail: Fix the issue, log deviation in Build Log, re-verify
+4. **All items must pass** before proceeding to Phase Complete
+
+---
+
 ## Phase Complete
 
-When all tasks are done, announce:
+When all tasks are done and verification checklist passes, announce:
 
 ```
 **Phase 3: Build** | Complete
 
 All [N] tasks completed.
+Verification checklist passed.
 Build Log updated in: docs/design-plans/YYYY-MM-DD-feature-name.md
 
 **Commit checkpoint:** Ensure all tasks have been committed before ending this session.

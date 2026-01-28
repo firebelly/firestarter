@@ -72,10 +72,17 @@ Present tasks to user for review. Adjust based on feedback.
 
 Create the implementation plan at:
 ```
-docs/implementation-plans/YYYY-MM-DD-feature-name.md
+docs/implementation-plans/YYYY-MM-DD-HHMM-feature-name.md
 ```
 
 Use the template at `docs/templates/implementation-plan.md` as your guide.
+
+---
+
+## Update Design Doc
+
+After creating the implementation plan, update the design doc's header:
+- Replace `[link to implementation plan doc]` with the actual path to the implementation plan (e.g., `docs/implementation-plans/YYYY-MM-DD-HHMM-feature-name.md`)
 
 ---
 
@@ -86,7 +93,7 @@ When the implementation plan is written, announce:
 ```
 **Phase 2: Plan** | Complete
 
-Implementation plan created at: docs/implementation-plans/YYYY-MM-DD-feature-name.md
+Implementation plan created at: docs/implementation-plans/YYYY-MM-DD-HHMM-feature-name.md
 
 **Commit checkpoint:** Commit the implementation plan before ending this session.
 

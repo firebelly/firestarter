@@ -1,0 +1,7 @@
+{
+  "name": "firestarter",
+  "private": true,
+  "devDependencies": {
+    "lefthook": "^2.0.16"
+  }
+}

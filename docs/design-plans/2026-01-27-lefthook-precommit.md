@@ -132,7 +132,7 @@ pre-commit:
 
 | Date | Task | Files | Notes |
 |------|------|-------|-------|
-| | | | |
+| 2026-01-27 | Task 1 | package.json, pnpm-lock.yaml, pnpm-workspace.yaml, .gitignore | Created root package.json with Lefthook ^2.0.16. pnpm v10 blocks postinstall scripts by default; ran `pnpm approve-builds` which created pnpm-workspace.yaml with `onlyBuiltDependencies: [lefthook]`. Lefthook v2's own postinstall runs `lefthook install` automatically—no manual postinstall script needed (differs from v1). Added /node_modules to .gitignore. |
 
 ---
 

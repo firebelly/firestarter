@@ -9,7 +9,7 @@ type SearchParams = { [key: string]: string | string[] | undefined };
 export function isPreviewMode(searchParams: SearchParams): boolean {
   const hasToken = Boolean(searchParams?.token);
   const hasPreviewFlag = Boolean(
-    searchParams?.['x-craft-live-preview'] || searchParams?.['x-craft-preview']
+    searchParams?.["x-craft-live-preview"] || searchParams?.["x-craft-preview"],
   );
   return hasToken && hasPreviewFlag;
 }
@@ -18,9 +18,11 @@ export function isPreviewMode(searchParams: SearchParams): boolean {
  * Extract the preview token from search params.
  * Returns undefined if no token is present.
  */
-export function getPreviewToken(searchParams: SearchParams): string | undefined {
+export function getPreviewToken(
+  searchParams: SearchParams,
+): string | undefined {
   const token = searchParams?.token;
-  return typeof token === 'string' ? token : undefined;
+  return typeof token === "string" ? token : undefined;
 }
 
 /**

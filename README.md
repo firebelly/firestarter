@@ -8,12 +8,12 @@ A duplicatable starter system for mid-tier client projects. Bridges the gap betw
 Figma Design System → Storybook → Craft CMS (headless) → Next.js Frontend
 ```
 
-| Layer | Tool | Purpose |
-|-------|------|---------|
-| Design | Figma | Design system source of truth |
-| Components | Storybook | Component library with Figma tokens |
-| CMS | Craft CMS 5 | Headless content management |
-| Frontend | Next.js 15 | App Router, Server/Client Components |
+| Layer      | Tool        | Purpose                              |
+| ---------- | ----------- | ------------------------------------ |
+| Design     | Figma       | Design system source of truth        |
+| Components | Storybook   | Component library with Figma tokens  |
+| CMS        | Craft CMS 5 | Headless content management          |
+| Frontend   | Next.js 15  | App Router, Server/Client Components |
 
 ## Directory Structure
 
@@ -106,10 +106,10 @@ cd site
 cp .env.example .env.local
 ```
 
-| Variable | Purpose |
-|----------|---------|
-| `CRAFT_URL` | Craft CMS URL (e.g., `http://cms.ddev.site`) |
-| `REVALIDATION_SECRET` | Shared secret for webhook validation |
+| Variable              | Purpose                                      |
+| --------------------- | -------------------------------------------- |
+| `CRAFT_URL`           | Craft CMS URL (e.g., `http://cms.ddev.site`) |
+| `REVALIDATION_SECRET` | Shared secret for webhook validation         |
 
 The CMS also needs `REVALIDATION_SECRET` in `cms/.env` (same value).
 

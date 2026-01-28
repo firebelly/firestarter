@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Button } from './Button';
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: "Components/Button",
   component: Button,
 };
 
@@ -11,14 +11,14 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: {
-    label: 'Button',
-    variant: 'primary',
+    label: "Button",
+    variant: "primary",
   },
 };
 
 export const Secondary: Story = {
   args: {
-    label: 'Button',
-    variant: 'secondary',
+    label: "Button",
+    variant: "secondary",
   },
 };

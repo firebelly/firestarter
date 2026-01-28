@@ -121,6 +121,8 @@ site/eslint.config.mjs    # add eslint-config-prettier to config
 |------|------|-------|-------|
 | 2026-01-28 | Task 1 | `.prettierrc`, `.prettierignore`, `package.json` | Deviated: added `cms/vendor/`, `cms/.ddev/`, `cms/config/`, `cms/storage/`, `cms/web/`, `.claude/`, `CLAUDE.md`, `docs/` to `.prettierignore` — not in original plan |
 | 2026-01-28 | Task 2 | `site/package.json`, `site/eslint.config.mjs` | No deviations |
+| 2026-01-28 | Task 3a | `package.json` | Deviated: split Task 3 into two commits — scripts separate from format pass |
+| 2026-01-28 | Task 3b | 25 files formatted | No deviations |
 
 ---
 

@@ -7,12 +7,17 @@ type FetchOptions = {
 
 export async function craftFetch<T>(
   query: string,
-  options: FetchOptions = {}
+  options: FetchOptions = {},
 ): Promise<T> {
-  const { variables, preview = false, previewToken, revalidate = 86400 } = options;
+  const {
+    variables,
+    preview = false,
+    previewToken,
+    revalidate = 86400,
+  } = options;
 
   const headers: HeadersInit = {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   };
 
   // Build the GraphQL endpoint URL
@@ -26,7 +31,7 @@ export async function craftFetch<T>(
   }
 
   const res = await fetch(endpoint, {
-    method: 'POST',
+    method: "POST",
     headers,
     body: JSON.stringify({ query, variables }),
     next: preview ? { revalidate: 0 } : { revalidate },
@@ -35,7 +40,7 @@ export async function craftFetch<T>(
   const json = await res.json();
 
   if (json.errors) {
-    throw new Error(json.errors[0]?.message ?? 'GraphQL Error');
+    throw new Error(json.errors[0]?.message ?? "GraphQL Error");
   }
 
   return json.data;

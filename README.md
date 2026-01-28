@@ -49,10 +49,10 @@ Figma Design System → Storybook → Craft CMS (headless) → Next.js Frontend
 ### Initial Setup
 
 ```bash
-pnpm install         # Install Lefthook (sets up pre-commit hooks)
+pnpm install         # Install Lefthook + Prettier (sets up pre-commit hooks)
 ```
 
-This installs Lefthook at the repo root, which automatically configures pre-commit hooks for TypeScript and ESLint checks.
+This installs Lefthook and Prettier at the repo root, which automatically configures pre-commit hooks for formatting, type checking, and linting.
 
 ### Frontend (Next.js + Storybook)
 
@@ -123,10 +123,18 @@ The CMS also needs `REVALIDATION_SECRET` in `cms/.env` (same value).
 
 Lefthook runs automated checks before each commit:
 
-1. **TypeScript** — Full project type check (`tsc --noEmit`)
-2. **ESLint** — Lints staged JS/TS files only
+1. **Prettier** — Auto-formats staged files and re-stages them
+2. **TypeScript** — Full project type check (`tsc --noEmit`)
+3. **ESLint** — Lints staged JS/TS files only
 
-If TypeScript fails, ESLint is skipped (fail-fast). Non-code commits (markdown, JSON, etc.) skip checks entirely.
+Steps run in order (fail-fast). Prettier runs on all supported file types; TypeScript and ESLint only run on JS/TS files in `/site`.
+
+To format the entire repo manually:
+
+```bash
+pnpm format          # Format all files
+pnpm format:check    # Check without writing
+```
 
 To bypass hooks temporarily (use sparingly):
 

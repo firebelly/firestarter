@@ -81,3 +81,19 @@ Added Lefthook v2 pre-commit hooks for TypeScript type checking and ESLint. Hook
 
 **Learnings:**
 - [Pre-commit Hooks & JavaScript Tooling](learnings/2026-01-27-precommit-hooks-and-tooling.md)
+
+---
+
+## 2026-01-28: Configure Prettier
+
+Added Prettier as a repo-wide code formatter with explicit config defaults. Integrated into the Lefthook pre-commit pipeline so all code is auto-formatted on commit. Added `eslint-config-prettier` to prevent ESLint/Prettier rule conflicts.
+
+**Design:** [docs/design-plans/2026-01-28-1510-configure-prettier.md](design-plans/2026-01-28-1510-configure-prettier.md)
+**Plan:** [docs/implementation-plans/2026-01-28-1510-configure-prettier.md](implementation-plans/2026-01-28-1510-configure-prettier.md)
+
+**Key files:**
+- `.prettierrc` — Formatter config with explicit defaults
+- `.prettierignore` — Ignore patterns for generated/vendored files
+- `lefthook.yml` — Pre-commit pipeline with Prettier as first job
+- `site/eslint.config.mjs` — ESLint config with `eslint-config-prettier` added last
+- `package.json` — Root scripts (`format`, `format:check`) and Prettier devDependency

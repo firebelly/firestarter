@@ -30,6 +30,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.4",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-storybook": "^10.2.0",
     "playwright": "^1.58.0",
     "storybook": "^10.2.0",

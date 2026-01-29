@@ -78,9 +78,9 @@ site/eslint.config.mjs     # add plugin and rules
 
 _Filled in during `/build` phase_
 
-| Date | Task | Files | Notes |
-| ---- | ---- | ----- | ----- |
-|      |      |       |       |
+| Date       | Task   | Files                  | Notes                                                                                                                               |
+| ---------- | ------ | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-01-28 | Task 1 | site/eslint.config.mjs | Deviated: `pnpm --filter site lint` doesn't work — pnpm-workspace.yaml has no `packages` field. Use `cd site && pnpm lint` instead. |
 
 ---
 

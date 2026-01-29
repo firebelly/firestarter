@@ -1,5 +1,6 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from "eslint-plugin-storybook";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
 import prettierConfig from "eslint-config-prettier";
 
 import { defineConfig, globalIgnores } from "eslint/config";
@@ -18,6 +19,15 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
   ]),
   ...storybook.configs["flat/recommended"],
+  {
+    plugins: {
+      "simple-import-sort": simpleImportSort,
+    },
+    rules: {
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
+    },
+  },
   prettierConfig,
 ]);
 

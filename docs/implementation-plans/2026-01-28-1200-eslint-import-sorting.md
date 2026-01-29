@@ -83,10 +83,10 @@ import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 ## Verification Checklist
 
-- [ ] `pnpm --filter site lint` passes with zero errors
-- [ ] `pnpm --filter site lint --fix` is idempotent (running it again changes nothing)
-- [ ] No conflicts with Next.js, Storybook, or Prettier ESLint configs
-- [ ] `pnpm --filter site build` still succeeds (imports not broken)
+- [x] `pnpm --filter site lint` passes with zero errors
+- [x] `pnpm --filter site lint --fix` is idempotent (running it again changes nothing)
+- [x] No conflicts with Next.js, Storybook, or Prettier ESLint configs
+- [x] `pnpm --filter site build` still succeeds (imports not broken)
 
 ---
 

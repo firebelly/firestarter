@@ -13,7 +13,7 @@ Figma Design System → Storybook → Craft CMS (headless) → Next.js Frontend
 | Design     | Figma       | Design system source of truth        |
 | Components | Storybook   | Component library with Figma tokens  |
 | CMS        | Craft CMS 5 | Headless content management          |
-| Frontend   | Next.js 15  | App Router, Server/Client Components |
+| Frontend   | Next.js 16  | App Router, Server/Client Components |
 
 ## Directory Structure
 
@@ -26,7 +26,6 @@ Figma Design System → Storybook → Craft CMS (headless) → Next.js Frontend
 │   │   ├── components/   # Components with co-located stories
 │   │   ├── tokens/       # Design tokens from Figma
 │   │   └── lib/          # Utilities and API helpers
-│   └── .nvmrc            # Node version (use with nvm)
 │
 ├── /cms                  # Craft CMS (headless)
 │   ├── config/           # Craft configuration
@@ -41,28 +40,33 @@ Figma Design System → Storybook → Craft CMS (headless) → Next.js Frontend
 
 ### Prerequisites
 
-- Node.js (see `/site/.nvmrc` for version)
-- pnpm
+- Node.js (see `.nvmrc` for version)
+- pnpm 10+ (`corepack enable` to use the version pinned in `package.json`)
 - DDEV (for local Craft development)
 - Composer
 
 ### Initial Setup
 
+This repo uses a **pnpm workspace** — the root `pnpm-workspace.yaml` defines `site` as a workspace package. A single install from the root handles everything:
+
 ```bash
-pnpm install         # Install Lefthook + Prettier (sets up pre-commit hooks)
+corepack enable      # Activates the pinned pnpm version
+pnpm install         # Installs all dependencies (root + site workspace)
 ```
 
-This installs Lefthook and Prettier at the repo root, which automatically configures pre-commit hooks for formatting, type checking, and linting.
+This installs Lefthook and Prettier at the root, site dependencies in `/site`, and automatically configures pre-commit hooks for formatting, type checking, and linting.
 
 ### Frontend (Next.js + Storybook)
 
 ```bash
-cd site
-nvm use              # Use correct Node version
-pnpm install         # Install dependencies
+nvm use              # Use correct Node version (from .nvmrc)
 pnpm dev             # Start Next.js at localhost:3000
+pnpm build           # Production build
+pnpm lint            # ESLint
 pnpm storybook       # Start Storybook at localhost:6006
 ```
+
+These root-level scripts proxy to the `site` workspace via `pnpm --filter site`. You can also run commands directly from `/site` if you prefer.
 
 ### CMS (Craft)
 

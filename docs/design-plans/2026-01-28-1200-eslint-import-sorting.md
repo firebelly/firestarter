@@ -81,6 +81,7 @@ _Filled in during `/build` phase_
 | Date       | Task   | Files                  | Notes                                                                                                                               |
 | ---------- | ------ | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | 2026-01-28 | Task 1 | site/eslint.config.mjs | Deviated: `pnpm --filter site lint` doesn't work — pnpm-workspace.yaml has no `packages` field. Use `cd site && pnpm lint` instead. |
+| 2026-01-28 | Task 2 | 12 files auto-fixed    | Clean lint pass. Pre-commit hook also verified working.                                                                             |
 
 ---
 

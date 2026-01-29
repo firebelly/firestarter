@@ -105,3 +105,17 @@ Added Prettier as a repo-wide code formatter with explicit config defaults. Inte
 - `lefthook.yml` — Pre-commit pipeline with Prettier as first job
 - `site/eslint.config.mjs` — ESLint config with `eslint-config-prettier` added last
 - `package.json` — Root scripts (`format`, `format:check`) and Prettier devDependency
+
+---
+
+## 2026-01-28: ESLint Import Sorting
+
+Added `eslint-plugin-simple-import-sort` to enforce consistent, auto-fixable import/export ordering across the `site/` codebase. Both rules set to `"error"` so violations fail CI. Auto-fixed 12 existing files.
+
+**Design:** [docs/design-plans/2026-01-28-1200-eslint-import-sorting.md](design-plans/2026-01-28-1200-eslint-import-sorting.md)
+**Plan:** [docs/implementation-plans/2026-01-28-1200-eslint-import-sorting.md](implementation-plans/2026-01-28-1200-eslint-import-sorting.md)
+
+**Key files:**
+
+- `site/eslint.config.mjs` — ESLint config with import sort plugin and rules
+- `site/package.json` — `eslint-plugin-simple-import-sort` dev dependency

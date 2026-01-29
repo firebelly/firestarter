@@ -1,7 +1,7 @@
 # ESLint Import Sorting
 
 **Created:** 2026-01-28
-**Status:** Design
+**Status:** Complete
 **Implementation Plan Doc:** docs/implementation-plans/2026-01-28-1200-eslint-import-sorting.md
 
 ---
@@ -87,9 +87,9 @@ _Filled in during `/build` phase_
 
 ## Completion
 
-**Completed:**
-**Final Status:**
+**Completed:** 2026-01-28
+**Final Status:** Complete
 
-**Summary:**
+**Summary:** Installed `eslint-plugin-simple-import-sort` and configured both `simple-import-sort/imports` and `simple-import-sort/exports` rules as `"error"` in `site/eslint.config.mjs`. Auto-fixed 12 existing files. Lint passes cleanly and the pre-commit hook catches unsorted imports.
 
-**Deviations from Plan:**
+**Deviations from Plan:** The design doc and implementation plan referenced `pnpm --filter site lint` for running lint, but this doesn't work because `pnpm-workspace.yaml` has no `packages` field. The working command is `cd site && pnpm lint`. No other deviations — all acceptance criteria met.

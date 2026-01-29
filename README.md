@@ -136,6 +136,14 @@ pnpm format          # Format all files
 pnpm format:check    # Check without writing
 ```
 
+To lint the frontend manually:
+
+```bash
+cd site
+pnpm lint          # Check for errors
+pnpm lint --fix    # Auto-fix (includes import sorting)
+```
+
 To bypass hooks temporarily (use sparingly):
 
 ```bash

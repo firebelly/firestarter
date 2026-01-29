@@ -2,7 +2,7 @@
 
 **Created:** 2026-01-28
 **Status:** Design
-**Implementation Plan Doc:** _TBD_
+**Implementation Plan Doc:** docs/implementation-plans/2026-01-28-1200-eslint-import-sorting.md
 
 ---
 

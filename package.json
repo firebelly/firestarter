@@ -2,6 +2,9 @@
   "name": "firestarter",
   "private": true,
   "scripts": {
+    "dev": "pnpm --filter site dev",
+    "build": "pnpm --filter site build",
+    "lint": "pnpm --filter site lint",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

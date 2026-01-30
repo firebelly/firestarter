@@ -74,6 +74,21 @@ This installs Lefthook and Prettier at the root, site dependencies in `/site`, a
 
 ### CMS (Craft)
 
+Change directory
+`cd cms`
+
+Create local env file
+`cp .env.example.dev .env`
+
+Start DDEV + install PHP dependencies (DDEV will also generate TLS certs in `cms/.ddev/traefik/certs/`)
+`ddev composer install`
+
+Install Craft (Set admin account, site name, etc. Leave Site URL blank if `PRIMARY_SITE_URL` is set in .env)
+`ddev craft install`
+
+Open Craft control panel in browser
+`ddev launch`
+
 ```bash
 # Change directory
 cd cms

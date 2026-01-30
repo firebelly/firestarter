@@ -105,6 +105,20 @@ ddev craft install
 # Open Craft control panel in browser
 ddev launch
 ```
+```bash
+cd cms # Change directory
+
+cp .env.example.dev .env # Create local env file
+
+ddev composer install    # Start DDEV + install PHP dependencies (DDEV will also
+                         # generate TLS certs in `cms/.ddev/traefik/certs/`)
+
+ddev craft install       # Install Craft (Set admin account, site name, etc. Leave
+                         # Site URL blank if `PRIMARY_SITE_URL` is set in .env)
+
+# Open Craft control panel in browser
+ddev launch
+```
 
 ### Frontend (Next.js + Storybook)
 

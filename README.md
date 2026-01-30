@@ -72,6 +72,25 @@ pnpm install         # Installs all dependencies (root + site workspace)
 
 This installs Lefthook and Prettier at the root, site dependencies in `/site`, and automatically configures pre-commit hooks for formatting, type checking, and linting.
 
+### CMS (Craft)
+
+```bash
+# Change directory
+cd cms
+
+# Create local env file
+cp .env.example.dev .env
+
+# Start DDEV + install PHP dependencies (DDEV will also generate TLS certs in `cms/.ddev/traefik/certs/`)
+ddev composer install
+
+# Install Craft (Set admin account, site name, etc. Leave Site URL blank if `PRIMARY_SITE_URL` is set in .env)
+ddev craft install
+
+# Open Craft control panel in browser
+ddev launch
+```
+
 ### Frontend (Next.js + Storybook)
 
 ```bash
@@ -83,14 +102,6 @@ pnpm storybook       # Start Storybook at localhost:6006
 ```
 
 These root-level scripts proxy to the `site` workspace via `pnpm --filter site`. You can also run commands directly from `/site` if you prefer.
-
-### CMS (Craft)
-
-```bash
-cd cms
-ddev start           # Start DDEV environment
-ddev launch          # Open Craft in browser
-```
 
 ## Component Structure
 

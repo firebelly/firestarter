@@ -195,6 +195,12 @@ pnpm lint --fix
 > git commit --no-verify -m "message"
 > ```
 
+> [!NOTE]
+> To bypass hooks temporarily (use sparingly):
+> ```bash
+> git commit --no-verify -m "message"
+> ```
+
 ## Key Principles
 
 - **Client safety** — CMS structured so clients can manage content without breaking layouts

@@ -81,7 +81,7 @@ ddev craft install
 ddev launch
 ```
 
-##### Craft CMS License Key
+#### Craft CMS License Key
 
 Craft CMS generates a `license.key` file in `cms/config/` that pairs a website to its purchased Craft CMS and plugin licenses. This file is not committed to the Firestarter repo.
 
@@ -106,12 +106,6 @@ cp .env.example .env.local
 
 # Start Next.js at localhost:3000
 pnpm dev
-
-# Production build
-pnpm build
-
-# ESLint
-pnpm lint
 
 # Start Storybook at localhost:6006
 pnpm storybook
@@ -174,21 +168,26 @@ Lefthook runs automated checks before each commit:
 2. **TypeScript** — Full project type check (`tsc --noEmit`)
 3. **ESLint** — Lints staged JS/TS files only
 
-Steps run in order (fail-fast). Prettier runs on all supported file types; TypeScript and ESLint only run on JS/TS files in `/site`.
+Jobs run in order. Prettier runs on all supported file types; TypeScript and ESLint only run on JS/TS files in `/site`.
 
 To format the entire repo manually:
 
 ```bash
-pnpm format          # Format all files
-pnpm format:check    # Check without writing
+# Format all files
+pnpm format
+
+# Check without writing
+pnpm format:check
 ```
 
 To lint the frontend manually:
 
 ```bash
-cd site
-pnpm lint          # Check for errors
-pnpm lint --fix    # Auto-fix (includes import sorting)
+# Check for errors
+pnpm lint
+
+# Auto-fix (includes import sorting)
+pnpm lint --fix
 ```
 
 To bypass hooks temporarily (use sparingly):

@@ -81,10 +81,12 @@ cd cms
 # Create local env file
 cp .env.example.dev .env
 
-# Start DDEV + install PHP dependencies (DDEV will also generate TLS certs in `cms/.ddev/traefik/certs/`)
+# Start DDEV + install PHP dependencies (DDEV will also
+# generate TLS certs in `cms/.ddev/traefik/certs/`)
 ddev composer install
 
-# Install Craft (Set admin account, site name, etc. Leave Site URL blank if `PRIMARY_SITE_URL` is set in .env)
+# Install Craft (Set admin account, site name, etc. Leave
+# Site URL blank if `PRIMARY_SITE_URL` is set in .env)
 ddev craft install
 
 # Open Craft control panel in browser
@@ -94,11 +96,20 @@ ddev launch
 ### Frontend (Next.js + Storybook)
 
 ```bash
-nvm use              # Use correct Node version (from .nvmrc)
-pnpm dev             # Start Next.js at localhost:3000
-pnpm build           # Production build
-pnpm lint            # ESLint
-pnpm storybook       # Start Storybook at localhost:6006
+# Use correct Node version (from .nvmrc)
+nvm use
+
+# Start Next.js at localhost:3000
+pnpm dev
+
+# Production build
+pnpm build
+
+# ESLint
+pnpm lint
+
+# Start Storybook at localhost:6006
+pnpm storybook
 ```
 
 These root-level scripts proxy to the `site` workspace via `pnpm --filter site`. You can also run commands directly from `/site` if you prefer.

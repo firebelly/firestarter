@@ -95,30 +95,8 @@ ddev craft install
 # Open Craft control panel in browser
 ddev launch
 ```
-```bash
-cd cms                    # Change directory
-
-cp .env.example.dev .env  # Create local env file
-
-ddev composer install     # Start DDEV + install PHP dependencies (DDEV will also
-                          # generate TLS certs in `cms/.ddev/traefik/certs/`)
-
-ddev craft install        # Install Craft (Set admin account, site name, etc. Leave
-                          # Site URL blank if `PRIMARY_SITE_URL` is set in .env)
-
-ddev launch               # Open Craft control panel in browser
-```
 
 ### Frontend (Next.js + Storybook)
-
-```bash
-nvm use              # Use correct Node version (from .nvmrc)
-pnpm dev             # Start Next.js at localhost:3000
-pnpm build           # Production build
-pnpm lint            # ESLint
-pnpm storybook       # Start Storybook at localhost:6006
-```
-
 
 ```bash
 # Use correct Node version (from .nvmrc)

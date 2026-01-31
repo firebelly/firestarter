@@ -191,9 +191,9 @@ pnpm lint --fix
 ```
 
 > To bypass hooks temporarily (use sparingly):
-```bash
-git commit --no-verify -m "message"
-```
+> ```bash
+> git commit --no-verify -m "message"
+> ```
 
 ## Key Principles
 

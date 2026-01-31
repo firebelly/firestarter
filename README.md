@@ -48,6 +48,9 @@ Figma Design System → Storybook → Craft CMS (headless) → Next.js Frontend
 This repo uses a **pnpm workspace** — the root `pnpm-workspace.yaml` defines `site` as a workspace package. A single install from the root handles everything:
 
 ```bash
+# Set correct Node version
+nvm use
+
 # Activate the pinned pnpm version
 corepack enable
 
@@ -99,7 +102,6 @@ cd site
 
 # Create local env file from example env (Add the Craft URL
 # to CRAFT_URL)
-# # (Set admin account, site name, etc. Leave Site URL blank
 cp .env.example .env.local
 
 # Start Next.js at localhost:3000

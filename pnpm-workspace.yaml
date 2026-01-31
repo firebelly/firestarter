@@ -1,4 +1,8 @@
 packages:
   - site
+
 onlyBuiltDependencies:
+  - esbuild
   - lefthook
+  - sharp
+  - unrs-resolver

@@ -116,6 +116,24 @@ pnpm lint            # ESLint
 pnpm storybook       # Start Storybook at localhost:6006
 ```
 
+
+```bash
+# Use correct Node version (from .nvmrc)
+nvm use
+
+# Start Next.js at localhost:3000
+pnpm dev
+
+# Production build
+pnpm build
+
+# ESLint
+pnpm lint
+
+# Start Storybook at localhost:6006
+pnpm storybook
+```
+
 These root-level scripts proxy to the `site` workspace via `pnpm --filter site`. You can also run commands directly from `/site` if you prefer.
 
 ## Component Structure

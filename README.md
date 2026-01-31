@@ -41,17 +41,21 @@ Figma Design System → Storybook → Craft CMS (headless) → Next.js Frontend
 ### Prerequisites
 
 - Node.js (see `.nvmrc` for version)
-- pnpm 10+ (`corepack enable` to use the version pinned in `package.json`)
 - DDEV (for local Craft development)
-- Composer
 
 ### Install Dependencies
 
 This repo uses a **pnpm workspace** — the root `pnpm-workspace.yaml` defines `site` as a workspace package. A single install from the root handles everything:
 
 ```bash
-corepack enable      # Activates the pinned pnpm version
-pnpm install         # Installs all dependencies (root + site workspace)
+# Set correct Node version
+nvm use
+
+# Activate the pinned pnpm version
+corepack enable
+
+# Installs all dependencies (root + site workspace)
+pnpm install
 ```
 
 This installs Lefthook and Prettier at the root, site dependencies in `/site`, and automatically configures pre-commit hooks for formatting, type checking, and linting.
@@ -59,18 +63,18 @@ This installs Lefthook and Prettier at the root, site dependencies in `/site`, a
 ### CMS (Craft)
 
 ```bash
-# Change directory
 cd cms
 
-# Create local env file
+# Create local env file from example env
 cp .env.example.dev .env
 
 # Start DDEV + install PHP dependencies (DDEV will also
 # generate TLS certs in `cms/.ddev/traefik/certs/`)
 ddev composer install
 
-# Install Craft (Set admin account, site name, etc. Leave
-# Site URL blank if `PRIMARY_SITE_URL` is set in .env)
+# Install Craft + generate application id and security key
+# (Set admin account, site name, etc. Leave Site URL blank
+# if `PRIMARY_SITE_URL` is set in .env)
 ddev craft install
 
 # Open Craft control panel in browser
@@ -94,17 +98,14 @@ echo "cms/config/license.key" >> .git/info/exclude
 ### Frontend (Next.js + Storybook)
 
 ```bash
-# Use correct Node version (from .nvmrc)
-nvm use
+cd site
+
+# Create local env file from example env (Add the Craft URL
+# to CRAFT_URL)
+cp .env.example .env.local
 
 # Start Next.js at localhost:3000
 pnpm dev
-
-# Production build
-pnpm build
-
-# ESLint
-pnpm lint
 
 # Start Storybook at localhost:6006
 pnpm storybook
@@ -167,21 +168,26 @@ Lefthook runs automated checks before each commit:
 2. **TypeScript** — Full project type check (`tsc --noEmit`)
 3. **ESLint** — Lints staged JS/TS files only
 
-Steps run in order (fail-fast). Prettier runs on all supported file types; TypeScript and ESLint only run on JS/TS files in `/site`.
+Jobs run in order. Prettier runs on all supported file types; TypeScript and ESLint only run on JS/TS files in `/site`.
 
 To format the entire repo manually:
 
 ```bash
-pnpm format          # Format all files
-pnpm format:check    # Check without writing
+# Format all files
+pnpm format
+
+# Check without writing
+pnpm format:check
 ```
 
 To lint the frontend manually:
 
 ```bash
-cd site
-pnpm lint          # Check for errors
-pnpm lint --fix    # Auto-fix (includes import sorting)
+# Check for errors
+pnpm lint
+
+# Auto-fix (includes import sorting)
+pnpm lint --fix
 ```
 
 To bypass hooks temporarily (use sparingly):
@@ -196,6 +202,3 @@ git commit --no-verify -m "message"
 - **Off-the-shelf components** — Most projects use existing components, few custom additions
 - **Clear separation** — Frontend and CMS are distinct, self-contained directories
 - **Clone and go** — New projects clone the repo; no complex setup or shared dependencies
-
-
-

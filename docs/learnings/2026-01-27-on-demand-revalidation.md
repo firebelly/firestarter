@@ -111,13 +111,14 @@ Without this, anyone could POST to `/api/revalidate` and purge your cache.
 
 In Craft CP → Settings → Webhooks:
 
-| Field   | Value                            |
-| ------- | -------------------------------- |
-| Name    | Revalidate Next.js               |
-| Event   | `elements.entry.afterSave`       |
-| URL     | `$REVALIDATION_URL`              |
-| Method  | POST                             |
-| Headers | `Content-Type: application/json` |
+| Field        | Value                            |
+| ------------ | -------------------------------- |
+| Name         | Revalidate Next.js               |
+| Sender Class | `craft\elements\Entry`           |
+| Event Name   | `afterSave`                      |
+| URL          | `$REVALIDATION_URL`              |
+| Method       | POST                             |
+| Headers      | `Content-Type: application/json` |
 
 **Payload (Twig template):**
 

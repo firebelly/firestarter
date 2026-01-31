@@ -138,6 +138,44 @@ The frontend fetches content from Craft CMS via GraphQL. The integration include
 - **Live preview** — Editors see draft changes in Craft's preview iframe
 - **Cache revalidation** — Webhook from Craft invalidates Next.js cache on publish
 
+### Webhook Setup (Cache Revalidation)
+
+When an editor publishes content in Craft, a webhook POSTs to Next.js to purge the cached data so the next visitor sees fresh content.
+
+**1. Add environment variables to `cms/.env`:**
+
+```bash
+REVALIDATION_SECRET=your-random-string
+REVALIDATION_URL=http://host.docker.internal:3000/api/revalidate  # local dev
+```
+
+**2. Configure the webhook in Craft CP → Settings → Webhooks:**
+
+| Field        | Value                            |
+| ------------ | -------------------------------- |
+| Name         | Revalidate Next.js               |
+| Sender Class | `craft\elements\Entry`           |
+| Event Name   | `afterSave`                      |
+| URL          | `$REVALIDATION_URL`              |
+| Method       | POST                             |
+| Headers      | `Content-Type: application/json` |
+
+**3. Set the webhook payload (Twig template):**
+
+```twig
+{% set entryUri = event.sender.uri %}
+{% set revalidationSecret = getenv('REVALIDATION_SECRET') %}
+
+{{
+  {
+    secret: revalidationSecret,
+    uri: entryUri
+  }|json_encode|raw
+}}
+```
+
+You can verify the webhook is working in Craft CP → Utilities → Webhooks, which shows request/response history. See `docs/learnings/2026-01-27-on-demand-revalidation.md` for details on how revalidation works under the hood.
+
 ### Environment Variables
 
 Copy the example file and fill in values:

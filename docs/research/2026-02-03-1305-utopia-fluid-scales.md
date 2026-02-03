@@ -1,0 +1,268 @@
+# Design Token Scales
+
+How the spacing, type, and line height scales are generated using utopia-core.
+
+---
+
+## Quick Reference
+
+### The Three Scales
+
+**Spacing** — Fixed multipliers applied to a base size. You define exactly what each step is (e.g., 1.5×, 2×, 3× the base).
+Output: `--space-3xs` through `--space-6xl`, plus pairs like `--space-s-l`
+
+**Type (Font Sizes)** — Compounding ratios applied to a base size. Each step multiplies the previous — the scale accelerates as it goes up.
+Output: `--step--5` through `--step-8`
+
+**Line Height** — Designer-defined min/max values for each step. No algorithm — you set what looks right for each font size at small and large viewports.
+Output: `--lh-0-body`, `--lh-0-heading`, etc.
+
+### How They Scale
+
+All three use the same fluid behavior: values interpolate smoothly between min viewport (320px) and max viewport (1820px). No breakpoints.
+
+- At 320px → values are at their minimum
+- At 1820px → values are at their maximum
+- In between → values scale proportionally
+
+### Key Inputs (from Figma)
+
+| Scale | What the designer sets |
+|-------|------------------------|
+| Spacing | Base size (15/20), multipliers (0.25, 0.5, 0.75, 1, 1.5, 2, 3...) |
+| Type | Base size (15/20), scale ratios (1.1472/1.27537), number of steps |
+| Line height | Min and max value for each step (body and heading variants) |
+
+### Space Pairs
+
+Pairs let spacing jump from one step to another across viewports:
+
+- `--space-s-m` — starts at `s` on mobile, ends at `m` on desktop
+- `--space-s-l` — bigger jump, more dramatic scaling
+
+**Reverse pairs** go the other direction (more space on mobile, less on desktop) for push/pull layouts.
+
+---
+
+## Spacing Scale
+
+**Method:** `calculateSpaceScale()`
+
+The spacing scale is generated from a base size and a set of fixed multipliers. Unlike the type scale (which uses compounding ratios), each spacing step is simply the base multiplied by a specific value you define.
+
+**Inputs:**
+- Viewport range (minWidth, maxWidth)
+- Base size at min/max viewports
+- Positive steps (multipliers: 1.5, 2, 3, 4, 6, 8, 10, 12)
+- Negative steps (multipliers: 0.75, 0.5, 0.25)
+- Custom pairs (e.g., s-l, 2xl-4xl)
+
+**Output:** Clamp values for each size (3xs–6xl), one-up pairs (3xs-2xs, 2xs-xs, etc.), and custom pairs.
+
+---
+
+## Type Scale (Font Sizes)
+
+**Method:** `calculateTypeScale()`
+
+The type scale is generated algorithmically from parameters. A base font size is compounded up and down by a ratio to produce each step.
+
+**Inputs:**
+- Viewport range (minWidth, maxWidth)
+- Base font size at min/max viewports (15px / 20px)
+- Scale ratios at min/max viewports (1.1472 / 1.27537)
+- Number of positive steps (8)
+- Number of negative steps (5)
+
+**Output:** Clamp values for each step (step-8 down to step--5). Step-0 equals the base size.
+
+**Note:** The scale ratios must be exact — rounded values (1.125 / 1.25) produce different results.
+
+---
+
+## Line Height Scale
+
+**Method:** `calculateClamp()` for each step
+
+Line heights are *not* generated algorithmically. The designer manually sets min and max values for each step, choosing what looks right in relation to the corresponding font size. The build then interpolates between those values across the viewport range.
+
+**Inputs:**
+- Viewport range (minWidth, maxWidth)
+- Min value for each step (designer-set, shared between body and heading)
+- Max value for each step (designer-set, separate for body and heading)
+
+**Output:** Clamp values for each step, for both body and heading variants.
+
+**Why it works this way:** The line-height-to-font-size ratio isn't constant — designers use tighter ratios on large headings and looser ratios on small text. Both scales interpolate across the same viewport range, so they stay in sync.
+
+---
+
+## How the Calculations Work
+
+### The Core Concept: Linear Interpolation
+
+![Fluid type scale visualisation](https://utopia.fyi/images/fluid-type-scale-visualisation.png)
+
+All fluid values are linear interpolation between two points:
+
+- **Point A**: the size at min viewport (e.g., 15px at 320px)
+- **Point B**: the size at max viewport (e.g., 20px at 1820px)
+
+Think of it as a line on a graph — viewport width on the X axis, size on the Y axis. At any viewport width, the value is wherever that line is.
+
+The question "what size at 700px viewport?" becomes "where is Y when X is 700?"
+
+### Breaking Down the Math
+
+**Step 1: How far along are we?**
+
+At 700px viewport, what percentage of the way from 320 to 1820 are we?
+
+```
+progress = (700 - 320) / (1820 - 320)
+progress = 380 / 1500
+progress = 0.253 (25.3%)
+```
+
+**Step 2: What value is 25.3% along the line?**
+
+```
+size = 15 + (20 - 15) × 0.253
+size = 15 + 1.27
+size = 16.27px
+```
+
+That's it. For any viewport, calculate the progress, then find the corresponding size.
+
+### Slope and Base
+
+CSS can't do division of length units directly, so the formula gets rearranged into slope-intercept form: `y = mx + b`
+
+**Slope (m):** How much does the size change per pixel of viewport?
+
+```
+slope = (maxSize - minSize) / (maxWidth - minWidth)
+slope = (20 - 15) / (1820 - 320)
+slope = 5 / 1500
+slope = 0.00333px per viewport pixel
+```
+
+For every 1px the viewport grows, the size grows by 0.00333px.
+
+In vw units (where 1vw = 1% of viewport), and converting to rem:
+
+```
+slopeVw = (0.00333 × 100) / 16 ≈ 0.0208rem per 1vw
+```
+
+**Base (b):** If you extend the line backwards to 0px viewport, what value do you hit?
+
+```
+base = minSize - (slope × minWidth)
+base = 15 - (0.00333 × 320)
+base = 15 - 1.067
+base = 13.93px (or 0.8708rem)
+```
+
+### The Clamp Formula
+
+Putting slope and base together:
+
+```
+clamp(minRem, baseRem + slopeVw, maxRem)
+```
+
+Example for 15px→20px across 320→1820:
+
+```
+clamp(0.9375rem, 0.8708rem + 0.3333vw, 1.25rem)
+        ↑              ↑         ↑         ↑
+    min (15px)    base (13.93)  slope    max (20px)
+```
+
+**At 320px viewport:**
+- 0.3333vw = 0.3333% of 320px = 1.07px = 0.067rem
+- 0.8708 + 0.067 = 0.9375rem ✓ (hits the min)
+
+**At 1820px viewport:**
+- 0.3333vw = 0.3333% of 1820px = 6.07px = 0.379rem
+- 0.8708 + 0.379 = 1.25rem ✓ (hits the max)
+
+The clamp adds guardrails — if the calculated value goes below min or above max, it stops there.
+
+### Type Scale vs Spacing Scale: Key Difference
+
+The type and spacing scales both generate fluid values, but they calculate their steps differently:
+
+| | Type Scale | Spacing Scale |
+|---|---|---|
+| **Method** | Compounding ratios | Fixed multipliers |
+| **Formula** | `base × ratio^n` | `base × multiplier` |
+| **Steps defined by** | A ratio that compounds | Explicit multiplier for each step |
+| **Gap between steps** | Grows as you go up (accelerating) | Whatever you define (controlled) |
+
+**Why the difference?** Typography benefits from a consistent mathematical relationship between sizes — a modular scale where each step has the same proportional relationship to the next. Spacing is more practical — you want specific values that work for your grid and components, not a strict mathematical progression.
+
+### Type Scale: Ratio Compounding
+
+The type scale uses a modular scale — each step is the previous step multiplied by a ratio.
+
+```
+step[n] = baseSize × ratio^n
+```
+
+For example, with base 15px and ratio 1.1472:
+- step-0 = 15 × 1.1472⁰ = 15px
+- step-1 = 15 × 1.1472¹ = 17.21px
+- step-2 = 15 × 1.1472² = 19.74px
+- step-3 = 15 × 1.1472³ = 22.65px
+
+Negative steps divide instead of multiply:
+- step--1 = 15 ÷ 1.1472¹ = 13.08px
+
+The gaps between steps grow as you go up: step-0 to step-1 is +2.21px, but step-2 to step-3 is +2.91px. The scale accelerates.
+
+The min and max viewports use different ratios (1.1472 vs 1.27537), so the scale spreads wider at larger viewports — small sizes stay relatively stable while large sizes grow significantly.
+
+### Spacing Scale: Direct Multipliers
+
+The spacing scale uses fixed multipliers — you tell it exactly what multiple of the base you want for each step.
+
+```
+size = baseSize × multiplier
+```
+
+With base 15px at min viewport:
+- 3xs = 15 × 0.25 = 3.75px (rounded to 4px)
+- 2xs = 15 × 0.5 = 7.5px (rounded to 8px)
+- xs = 15 × 0.75 = 11.25px (rounded to 11px)
+- s = 15 × 1 = 15px (base)
+- m = 15 × 1.5 = 22.5px (rounded to 23px)
+- l = 15 × 2 = 30px
+- xl = 15 × 3 = 45px
+
+The gaps between steps depend on the multipliers you choose. With multipliers [1, 1.5, 2, 3]: s to m is +7.5px, m to l is +7.5px, l to xl is +15px. Different multipliers would produce different gaps.
+
+The same multipliers apply to the max viewport base (20px), producing the max values.
+
+### One-Up Pairs and Custom Pairs
+
+Space pairs interpolate from one size to another across the viewport:
+
+- `--space-s-m`: starts at `s` (min viewport), ends at `m` (max viewport)
+- `--space-s-l`: starts at `s`, ends at `l` (a bigger jump)
+
+This lets designers use more dramatic spacing changes on larger screens while keeping things tight on mobile.
+
+### Reverse Pairs
+
+The scales are just linear interpolation between two values — there's no requirement that those values go small→large. If the design needs more space on mobile and less on desktop, you flip the direction:
+
+- `--space-3xl-2xs`: starts at `3xl` (120px at min viewport), ends at `2xs` (10px at max viewport)
+- `--space-2xs-3xs`: starts at `2xs` (8px), ends at `3xs` (5px)
+
+The math is identical — the clamp formula doesn't care which value is larger. It just interpolates between them.
+
+**Use case:** Fluid push/pull layouts. When an element has a standard scale applied (space grows with viewport), a related element might need a reverse scale (space shrinks with viewport) to create visual tension or adjust positioning. This maintains the fluid philosophy without falling back to static values at breakpoints.
+
+For example: a decorative element that overlaps content might need to pull up more on desktop (where there's room) and less on mobile (where space is tight). Pairing a standard margin with a reverse negative margin keeps the relationship fluid across all viewport sizes.

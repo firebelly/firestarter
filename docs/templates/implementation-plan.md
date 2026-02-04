@@ -60,7 +60,7 @@ _Confirm assumptions from design doc match actual codebase_
 
 ---
 
-## Verification Checklist
+## Acceptance Criteria
 
 - [ ] [How to test the feature works]
 - [ ] [Edge case to verify]

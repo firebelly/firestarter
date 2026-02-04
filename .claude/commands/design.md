@@ -68,6 +68,8 @@ Skip this step if the approach is obvious or already decided.
 
 ### Step 5: Write Design Document
 
+Before creating the file, run `date +%Y-%m-%d-%H%M` to get the current timestamp.
+
 Create the design document at:
 ```
 docs/design-plans/YYYY-MM-DD-HHMM-feature-name.md

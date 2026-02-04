@@ -12,11 +12,9 @@ Execute the implementation plan task by task, with commits at each checkpoint. Y
 
 ## Prerequisite
 
-An implementation plan must exist in `docs/implementation-plans/`.
-
 If the user does not provide an implementation plan path, ask them for the file path.
 
-A design document must also exist in `docs/design-plans/` for the Build Log. If the user does not provide a design doc path, ask them for the file path.
+Also ask for the design doc path (needed for the Build Log).
 
 ---
 
@@ -41,6 +39,17 @@ Every response must begin with:
 6. **Log** - Add entry to Build Log in design doc
 7. **Pause** - Ask user: "Anything to note? (discoveries, surprises, context for later)" Then wait for confirmation before next task.
 
+### After All Tasks: Acceptance Criteria
+
+1. **Prompt** - Ask user: "All tasks complete. Run acceptance criteria before completing phase?"
+2. **Wait for confirmation** - User must confirm to proceed
+3. **For each checklist item:**
+   - Present the item
+   - Verify with user (pass/fail)
+   - If pass: Mark `[x]` in implementation plan
+   - If fail: Fix the issue, log deviation in Build Log, re-verify
+4. **All items must pass** before proceeding to Phase Complete
+
 ---
 
 ## Handling Deviations
@@ -59,21 +68,6 @@ Example Build Log entry:
 
 ---
 
-## Verification Checklist
-
-After all tasks are complete, run the verification checklist from the implementation plan:
-
-1. **Prompt** - Ask user: "All tasks complete. Run verification checklist before completing phase?"
-2. **Wait for confirmation** - User must confirm to proceed
-3. **For each checklist item:**
-   - Present the item
-   - Verify with user (pass/fail)
-   - If pass: Mark `[x]` in implementation plan
-   - If fail: Fix the issue, log deviation in Build Log, re-verify
-4. **All items must pass** before proceeding to Phase Complete
-
----
-
 ## Phase Complete
 
 When all tasks are done and verification checklist passes, announce:
@@ -82,7 +76,7 @@ When all tasks are done and verification checklist passes, announce:
 **Phase 3: Build** | Complete
 
 All [N] tasks completed.
-Verification checklist passed.
+Acceptance criteria passed.
 Build Log updated in: docs/design-plans/YYYY-MM-DD-feature-name.md
 
 **Commit checkpoint:** Ensure all tasks have been committed before ending this session.

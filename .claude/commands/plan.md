@@ -14,8 +14,6 @@ Break the design into atomic, executable tasks with clear commit points. You pro
 
 ## Prerequisite
 
-A design document must exist in `docs/design-plans/`.
-
 If the user does not provide a design doc path, ask them for the file path.
 
 ---
@@ -69,6 +67,8 @@ Present tasks to user for review. Adjust based on feedback.
 ---
 
 ## Write Implementation Plan
+
+Before creating the file, run `date +%Y-%m-%d-%H%M` to get the current timestamp.
 
 Create the implementation plan at:
 ```

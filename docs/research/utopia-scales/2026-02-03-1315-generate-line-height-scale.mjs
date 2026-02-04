@@ -1,14 +1,16 @@
-import { calculateClamp } from 'utopia-core';
-import { readFileSync } from 'fs';
+import { calculateClamp } from "utopia-core";
+import { readFileSync } from "fs";
 
-const tokens = JSON.parse(readFileSync('./src/tokens/design.tokens.json', 'utf-8'));
+const tokens = JSON.parse(
+  readFileSync("./src/tokens/design.tokens.json", "utf-8"),
+);
 
 const minWidth = 320;
 const maxWidth = 1820;
 
-const lhMin = tokens['type-primitives']['Line height @min'];
-const lhMaxBody = tokens['type-primitives']['Line height body @max'];
-const lhMaxHeading = tokens['type-primitives']['Line height heading @max'];
+const lhMin = tokens["type-primitives"]["Line height @min"];
+const lhMaxBody = tokens["type-primitives"]["Line height body @max"];
+const lhMaxHeading = tokens["type-primitives"]["Line height heading @max"];
 
 const steps = [8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5];
 
@@ -36,8 +38,8 @@ const headingScale = steps.map((step) => {
   };
 });
 
-console.log('Body:');
+console.log("Body:");
 console.dir(bodyScale, { depth: null });
 
-console.log('\nHeading:');
+console.log("\nHeading:");
 console.dir(headingScale, { depth: null });

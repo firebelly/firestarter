@@ -29,11 +29,11 @@ All three use the same fluid behavior: values interpolate smoothly between min v
 
 ### Key Inputs (from Figma)
 
-| Scale | What the designer sets |
-|-------|------------------------|
-| Spacing | Base size (15/20), multipliers (0.25, 0.5, 0.75, 1, 1.5, 2, 3...) |
-| Type | Base size (15/20), scale ratios (1.1472/1.27537), number of steps |
-| Line height | Min and max value for each step (body and heading variants) |
+| Scale       | What the designer sets                                            |
+| ----------- | ----------------------------------------------------------------- |
+| Spacing     | Base size (15/20), multipliers (0.25, 0.5, 0.75, 1, 1.5, 2, 3...) |
+| Type        | Base size (15/20), scale ratios (1.1472/1.27537), number of steps |
+| Line height | Min and max value for each step (body and heading variants)       |
 
 ### Space Pairs
 
@@ -53,6 +53,7 @@ Pairs let spacing jump from one step to another across viewports:
 The spacing scale is generated from a base size and a set of fixed multipliers. Unlike the type scale (which uses compounding ratios), each spacing step is simply the base multiplied by a specific value you define.
 
 **Inputs:**
+
 - Viewport range (minWidth, maxWidth)
 - Base size at min/max viewports
 - Positive steps (multipliers: 1.5, 2, 3, 4, 6, 8, 10, 12)
@@ -70,6 +71,7 @@ The spacing scale is generated from a base size and a set of fixed multipliers. 
 The type scale is generated algorithmically from parameters. A base font size is compounded up and down by a ratio to produce each step.
 
 **Inputs:**
+
 - Viewport range (minWidth, maxWidth)
 - Base font size at min/max viewports (15px / 20px)
 - Scale ratios at min/max viewports (1.1472 / 1.27537)
@@ -86,9 +88,10 @@ The type scale is generated algorithmically from parameters. A base font size is
 
 **Method:** `calculateClamp()` for each step
 
-Line heights are *not* generated algorithmically. The designer manually sets min and max values for each step, choosing what looks right in relation to the corresponding font size. The build then interpolates between those values across the viewport range.
+Line heights are _not_ generated algorithmically. The designer manually sets min and max values for each step, choosing what looks right in relation to the corresponding font size. The build then interpolates between those values across the viewport range.
 
 **Inputs:**
+
 - Viewport range (minWidth, maxWidth)
 - Min value for each step (designer-set, shared between body and heading)
 - Max value for each step (designer-set, separate for body and heading)
@@ -183,10 +186,12 @@ clamp(0.9375rem, 0.8708rem + 0.3333vw, 1.25rem)
 ```
 
 **At 320px viewport:**
+
 - 0.3333vw = 0.3333% of 320px = 1.07px = 0.067rem
 - 0.8708 + 0.067 = 0.9375rem ✓ (hits the min)
 
 **At 1820px viewport:**
+
 - 0.3333vw = 0.3333% of 1820px = 6.07px = 0.379rem
 - 0.8708 + 0.379 = 1.25rem ✓ (hits the max)
 
@@ -196,12 +201,12 @@ The clamp adds guardrails — if the calculated value goes below min or above ma
 
 The type and spacing scales both generate fluid values, but they calculate their steps differently:
 
-| | Type Scale | Spacing Scale |
-|---|---|---|
-| **Method** | Compounding ratios | Fixed multipliers |
-| **Formula** | `base × ratio^n` | `base × multiplier` |
-| **Steps defined by** | A ratio that compounds | Explicit multiplier for each step |
-| **Gap between steps** | Grows as you go up (accelerating) | Whatever you define (controlled) |
+|                       | Type Scale                        | Spacing Scale                     |
+| --------------------- | --------------------------------- | --------------------------------- |
+| **Method**            | Compounding ratios                | Fixed multipliers                 |
+| **Formula**           | `base × ratio^n`                  | `base × multiplier`               |
+| **Steps defined by**  | A ratio that compounds            | Explicit multiplier for each step |
+| **Gap between steps** | Grows as you go up (accelerating) | Whatever you define (controlled)  |
 
 **Why the difference?** Typography benefits from a consistent mathematical relationship between sizes — a modular scale where each step has the same proportional relationship to the next. Spacing is more practical — you want specific values that work for your grid and components, not a strict mathematical progression.
 
@@ -214,12 +219,14 @@ step[n] = baseSize × ratio^n
 ```
 
 For example, with base 15px and ratio 1.1472:
+
 - step-0 = 15 × 1.1472⁰ = 15px
 - step-1 = 15 × 1.1472¹ = 17.21px
 - step-2 = 15 × 1.1472² = 19.74px
 - step-3 = 15 × 1.1472³ = 22.65px
 
 Negative steps divide instead of multiply:
+
 - step--1 = 15 ÷ 1.1472¹ = 13.08px
 
 The gaps between steps grow as you go up: step-0 to step-1 is +2.21px, but step-2 to step-3 is +2.91px. The scale accelerates.
@@ -235,6 +242,7 @@ size = baseSize × multiplier
 ```
 
 With base 15px at min viewport:
+
 - 3xs = 15 × 0.25 = 3.75px (rounded to 4px)
 - 2xs = 15 × 0.5 = 7.5px (rounded to 8px)
 - xs = 15 × 0.75 = 11.25px (rounded to 11px)

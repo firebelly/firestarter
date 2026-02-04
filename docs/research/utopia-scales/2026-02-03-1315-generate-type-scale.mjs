@@ -1,4 +1,4 @@
-import { calculateTypeScale } from 'utopia-core';
+import { calculateTypeScale } from "utopia-core";
 
 const typeScale = calculateTypeScale({
   minWidth: 320,

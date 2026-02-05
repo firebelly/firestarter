@@ -8,7 +8,11 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { calculateSpaceScale, calculateClamp } from "utopia-core";
+import {
+  calculateSpaceScale,
+  calculateClamp,
+  calculateTypeScale,
+} from "utopia-core";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -62,6 +66,19 @@ for (const pair of spaceScale.oneUpPairs) {
   css += `  --space-${pair.label}: ${pair.clamp};\n`;
 }
 
+// Type config
+const typeConfig = themeDeclarations["Type Boundaries"];
+const typeScale = calculateTypeScale({
+  minWidth,
+  maxWidth,
+  minFontSize: parseFloat(typeConfig["Min size"]["$value"]),
+  maxFontSize: parseFloat(typeConfig["Max size"]["$value"]),
+  minTypeScale: parseFloat(typeConfig["Min scale"]["$value"]),
+  maxTypeScale: parseFloat(typeConfig["Max scale"]["$value"]),
+  positiveSteps: parseInt(typeConfig["Positive steps"]["$value"], 10),
+  negativeSteps: parseInt(typeConfig["Negative steps"]["$value"], 10),
+});
+
 // Custom space pairs
 const customSpacesRaw = spaceConfig["Custom spaces"]["$value"];
 if (customSpacesRaw) {
@@ -91,6 +108,13 @@ if (customSpacesRaw) {
       css += `  --space-${label}: ${clamp};\n`;
     }
   }
+}
+
+// Font sizes
+css += "\n";
+css += "  /* Font sizes */\n";
+for (const step of typeScale) {
+  css += `  --step-${step.step}: ${step.clamp};\n`;
 }
 
 css += "}\n";

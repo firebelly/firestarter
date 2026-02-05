@@ -5,7 +5,7 @@
  * using utopia-core for space and type scale calculations.
  */
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync,readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -176,6 +176,6 @@ css += generateLineHeights(
 css += "}\n";
 
 // Write to file
-const outputPath = join(__dirname, "fluid-tokens.css");
-writeFileSync(outputPath, css);
-console.log(`Generated ${outputPath}`);
+const outputPath = join(__dirname, "tokens.css");
+appendFileSync(outputPath, css);
+console.log(`Appended fluid tokens to ${outputPath}`);

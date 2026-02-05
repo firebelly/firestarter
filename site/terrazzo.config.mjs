@@ -1,11 +1,13 @@
 import { defineConfig } from '@terrazzo/cli';
 import css from '@terrazzo/plugin-css';
 export default defineConfig({
-  tokens: ['./tokens.json'],
+  tokens: ['./src/tokens/design.tokens.json'],
   plugins: [
-    css(),
+    css({
+      exclude: ['_fluid-tokens.*', '_theme-declarations.*', 'space-primitives.*', 'type-primitives.Font size*', 'type-primitives.Line height*'],
+    }),
   ],
-  outDir: './dist/',
+  outDir: './src/tokens/',
   lint: {
     /** @see https://terrazzo.app/docs/cli/lint */
   },

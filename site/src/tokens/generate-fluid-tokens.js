@@ -8,7 +8,7 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { calculateSpaceScale } from "utopia-core";
+import { calculateSpaceScale, calculateClamp } from "utopia-core";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -60,6 +60,37 @@ css += "\n";
 css += "  /* Space one-up pairs */\n";
 for (const pair of spaceScale.oneUpPairs) {
   css += `  --space-${pair.label}: ${pair.clamp};\n`;
+}
+
+// Custom space pairs
+const customSpacesRaw = spaceConfig["Custom spaces"]["$value"];
+if (customSpacesRaw) {
+  css += "\n";
+  css += "  /* Space custom pairs */\n";
+
+  // Build a lookup from label to size object
+  const sizeLookup = {};
+  for (const size of spaceScale.sizes) {
+    sizeLookup[size.label.toUpperCase()] = size;
+  }
+
+  const customPairs = customSpacesRaw.split(",").map((s) => s.trim());
+  for (const pair of customPairs) {
+    const [fromLabel, toLabel] = pair.split("-").map((s) => s.trim());
+    const fromSize = sizeLookup[fromLabel.toUpperCase()];
+    const toSize = sizeLookup[toLabel.toUpperCase()];
+
+    if (fromSize && toSize) {
+      const clamp = calculateClamp({
+        minWidth,
+        maxWidth,
+        minSize: fromSize.minSize,
+        maxSize: toSize.maxSize,
+      });
+      const label = `${fromLabel.toLowerCase()}-${toLabel.toLowerCase()}`;
+      css += `  --space-${label}: ${clamp};\n`;
+    }
+  }
 }
 
 css += "}\n";

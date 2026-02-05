@@ -331,6 +331,7 @@ _Filled in during `/build` phase_
 | Date | Task | Files | Notes |
 | ---- | ---- | ----- | ----- |
 | 2026-02-04 | Task 1 | src/tokens/generate-fluid-tokens.js | Created script with space scale generation |
+| 2026-02-04 | Task 2 | src/tokens/generate-fluid-tokens.js | Added custom space pairs; fixed NaN bug — size objects use `minSize`/`maxSize` not `min`/`max` |
 
 ---
 

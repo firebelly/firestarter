@@ -537,9 +537,7 @@
           "$type": "dimension",
           "$value": "{_fluid-tokens.space-size.S}",
           "$description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "$extensions": {
             "mode": {
               "Min": "{_fluid-tokens.space-size.S}",
@@ -554,9 +552,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step 8}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step 8}",
@@ -568,9 +564,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step 7}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step 7}",
@@ -582,9 +576,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step 6}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step 6}",
@@ -596,9 +588,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step 5}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step 5}",
@@ -610,9 +600,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step 4}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step 4}",
@@ -624,9 +612,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step 3}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step 3}",
@@ -638,9 +624,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step 2}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step 2}",
@@ -652,9 +636,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step 1}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step 1}",
@@ -666,9 +648,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step 0}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step 0}",
@@ -680,9 +660,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step -1}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step -1}",
@@ -694,9 +672,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step -2}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step -2}",
@@ -708,9 +684,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step -3}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step -3}",
@@ -722,9 +696,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step -4}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step -4}",
@@ -736,9 +708,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Font size @min.Step -5}",
         "$description": "",
-        "scopes": [
-          "FONT_SIZE"
-        ],
+        "scopes": ["FONT_SIZE"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Font size @min.Step -5}",
@@ -752,9 +722,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Space @min.S}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Space @min.S}",
@@ -766,9 +734,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid.Column @min}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid.Column @min}",
@@ -780,9 +746,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid @min.Viewport}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid @min.Viewport}",
@@ -794,9 +758,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid @min.Whole}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid @min.Whole}",
@@ -808,9 +770,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid @min.Three quarters}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid @min.Three quarters}",
@@ -822,9 +782,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid @min.Whole}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid @min.Whole}",
@@ -836,9 +794,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid @min.Two thirds}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid @min.Two thirds}",
@@ -850,9 +806,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid @min.Whole}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid @min.Whole}",
@@ -864,9 +818,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid @min.Half}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid @min.Half}",
@@ -878,9 +830,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid @min.Whole}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid @min.Whole}",
@@ -892,9 +842,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid @min.Third}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid @min.Third}",
@@ -906,9 +854,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid @min.Whole}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid @min.Whole}",
@@ -920,9 +866,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid @min.Quarter}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid @min.Quarter}",
@@ -934,9 +878,7 @@
         "$type": "dimension",
         "$value": "{space-primitives.Grid @min.Whole}",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {
             "Min": "{space-primitives.Grid @min.Whole}",
@@ -950,9 +892,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 8}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 8}",
@@ -964,9 +904,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 7}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 7}",
@@ -978,9 +916,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 6}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 6}",
@@ -992,9 +928,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 5}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 5}",
@@ -1006,9 +940,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 4}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 4}",
@@ -1020,9 +952,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 3}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 3}",
@@ -1034,9 +964,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 2}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 2}",
@@ -1048,9 +976,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 1}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 1}",
@@ -1062,9 +988,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 0}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 0}",
@@ -1076,9 +1000,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step -1}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step -1}",
@@ -1090,9 +1012,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step -2}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step -2}",
@@ -1104,9 +1024,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step -3}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step -3}",
@@ -1118,9 +1036,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step -4}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step -4}",
@@ -1132,9 +1048,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step -5}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step -5}",
@@ -1148,9 +1062,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 8}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 8}",
@@ -1162,9 +1074,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 7}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 7}",
@@ -1176,9 +1086,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 6}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 6}",
@@ -1190,9 +1098,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 5}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 5}",
@@ -1204,9 +1110,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 4}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 4}",
@@ -1218,9 +1122,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 3}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 3}",
@@ -1232,9 +1134,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 2}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 2}",
@@ -1246,9 +1146,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 1}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 1}",
@@ -1260,9 +1158,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step 0}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step 0}",
@@ -1274,9 +1170,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step -1}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step -1}",
@@ -1288,9 +1182,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step -2}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step -2}",
@@ -1302,9 +1194,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step -3}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step -3}",
@@ -1316,9 +1206,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step -4}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step -4}",
@@ -1330,9 +1218,7 @@
         "$type": "dimension",
         "$value": "{type-primitives.Line height @min.Step -5}",
         "$description": "",
-        "scopes": [
-          "LINE_HEIGHT"
-        ],
+        "scopes": ["LINE_HEIGHT"],
         "$extensions": {
           "mode": {
             "Min": "{type-primitives.Line height @min.Step -5}",
@@ -1368,9 +1254,7 @@
         "$type": "boolean",
         "$value": true,
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -1435,9 +1319,7 @@
         "$type": "boolean",
         "$value": true,
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -1493,9 +1375,7 @@
         "$type": "boolean",
         "$value": true,
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -1550,9 +1430,7 @@
       "$type": "color",
       "$value": "{color-primitives.gray.001}",
       "$description": "",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": ["ALL_SCOPES"],
       "$extensions": {
         "mode": {}
       }
@@ -2192,9 +2070,7 @@
         "$type": "string",
         "$value": "Inter",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2203,9 +2079,7 @@
         "$type": "string",
         "$value": "Platform",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2216,9 +2090,7 @@
         "$type": "string",
         "$value": "Medium",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2227,9 +2099,7 @@
         "$type": "string",
         "$value": "Bold",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2626,9 +2496,7 @@
         "$type": "color",
         "$value": "hsla(0, 0%, 100%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2637,9 +2505,7 @@
         "$type": "color",
         "$value": "hsla(60, 4%, 91%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2648,9 +2514,7 @@
         "$type": "color",
         "$value": "hsla(233, 7%, 75%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2659,9 +2523,7 @@
         "$type": "color",
         "$value": "hsla(233, 8%, 43%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2670,9 +2532,7 @@
         "$type": "color",
         "$value": "hsla(234, 16%, 24%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2681,9 +2541,7 @@
         "$type": "color",
         "$value": "hsla(235, 51%, 15%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2692,9 +2550,7 @@
         "$type": "color",
         "$value": "hsla(0, 0%, 100%, 0.5)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2705,9 +2561,7 @@
         "$type": "color",
         "$value": "hsla(225, 41%, 85%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2716,9 +2570,7 @@
         "$type": "color",
         "$value": "hsla(234, 79%, 64%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2727,9 +2579,7 @@
         "$type": "color",
         "$value": "hsla(248, 88%, 36%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2738,9 +2588,7 @@
         "$type": "color",
         "$value": "hsla(235, 51%, 15%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2751,9 +2599,7 @@
         "$type": "color",
         "$value": "hsla(327, 84%, 83%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2762,9 +2608,7 @@
         "$type": "color",
         "$value": "hsla(325, 89%, 43%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2773,9 +2617,7 @@
         "$type": "color",
         "$value": "hsla(328, 88%, 26%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2784,9 +2626,7 @@
         "$type": "color",
         "$value": "hsla(328, 83%, 14%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2797,9 +2637,7 @@
         "$type": "color",
         "$value": "hsla(183, 85%, 92%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2808,9 +2646,7 @@
         "$type": "color",
         "$value": "hsla(178, 85%, 66%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2819,9 +2655,7 @@
         "$type": "color",
         "$value": "hsla(187, 72%, 37%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2830,9 +2664,7 @@
         "$type": "color",
         "$value": "hsla(186, 90%, 19%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2843,9 +2675,7 @@
         "$type": "color",
         "$value": "hsla(58, 80%, 88%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2854,9 +2684,7 @@
         "$type": "color",
         "$value": "hsla(56, 93%, 48%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2865,9 +2693,7 @@
         "$type": "color",
         "$value": "hsla(42, 100%, 40%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }
@@ -2876,9 +2702,7 @@
         "$type": "color",
         "$value": "hsla(34, 100%, 28%, 1)",
         "$description": "",
-        "scopes": [
-          "ALL_SCOPES"
-        ],
+        "scopes": ["ALL_SCOPES"],
         "$extensions": {
           "mode": {}
         }

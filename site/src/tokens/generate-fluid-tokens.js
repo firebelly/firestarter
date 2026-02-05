@@ -6,11 +6,12 @@
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
 import {
-  calculateSpaceScale,
   calculateClamp,
+  calculateSpaceScale,
   calculateTypeScale,
 } from "utopia-core";
 
@@ -25,8 +26,14 @@ const tokens = JSON.parse(readFileSync(tokensPath, "utf-8"));
 const themeDeclarations = tokens["_theme-declarations"];
 
 // Viewport config
-const minWidth = parseInt(themeDeclarations.Viewport["Min width"]["$value"], 10);
-const maxWidth = parseInt(themeDeclarations.Viewport["Max width"]["$value"], 10);
+const minWidth = parseInt(
+  themeDeclarations.Viewport["Min width"]["$value"],
+  10,
+);
+const maxWidth = parseInt(
+  themeDeclarations.Viewport["Max width"]["$value"],
+  10,
+);
 
 // Space config
 const spaceConfig = themeDeclarations["Space Boundaries"];
@@ -135,9 +142,16 @@ function generateLineHeights(group, maxGroup, prefix) {
   for (const key of Object.keys(group)) {
     // Map "step 8" → "Step 8", "step -1" → "Step -1"
     const primitiveKey = "Step " + key.replace("step ", "");
-    const minVal = parsePixelValue(typePrimitives["Line height @min"][primitiveKey]);
+    const minVal = parsePixelValue(
+      typePrimitives["Line height @min"][primitiveKey],
+    );
     const maxVal = parsePixelValue(typePrimitives[maxGroup][primitiveKey]);
-    const clamp = calculateClamp({ minWidth, maxWidth, minSize: minVal, maxSize: maxVal });
+    const clamp = calculateClamp({
+      minWidth,
+      maxWidth,
+      minSize: minVal,
+      maxSize: maxVal,
+    });
     output += `  --${prefix}-${formatStepName(key)}: ${clamp};\n`;
   }
   return output;

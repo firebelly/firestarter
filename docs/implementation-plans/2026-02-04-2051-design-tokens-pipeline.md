@@ -165,16 +165,16 @@ Build a token pipeline that generates fluid CSS custom properties from Figma des
 
 ## Acceptance Criteria
 
-- [ ] Running `npm run tokens:fluid` generates `site/src/tokens/fluid-tokens.css`
-- [ ] `fluid-tokens.css` contains space sizes with names matching utopia convention (`--space-3xs`, `--space-s`, etc.)
-- [ ] `fluid-tokens.css` contains one-up pairs (`--space-3xs-2xs`, `--space-s-m`, etc.)
-- [ ] `fluid-tokens.css` contains custom pairs from config (`--space-s-l`)
-- [ ] `fluid-tokens.css` contains font size steps (`--step-0`, `--step-8`, `--step--1`, etc.)
-- [ ] `fluid-tokens.css` contains line heights for body and heading variants
-- [ ] All clamp values use viewport range from config (320px–1820px)
-- [ ] Running `npm run tokens:terrazzo` generates color and font tokens
-- [ ] Running `npm run tokens` executes both builds
-- [ ] Number of tokens in each scale is driven by config values, not hardcoded
+- [x] Running `npm run tokens:fluid` generates `site/src/tokens/fluid-tokens.css`
+- [x] `fluid-tokens.css` contains space sizes with names matching utopia convention (`--space-3xs`, `--space-s`, etc.)
+- [x] `fluid-tokens.css` contains one-up pairs (`--space-3xs-2xs`, `--space-s-m`, etc.)
+- [x] `fluid-tokens.css` contains custom pairs from config (`--space-s-l`)
+- [x] `fluid-tokens.css` contains font size steps (`--step-0`, `--step-8`, `--step--1`, etc.)
+- [x] `fluid-tokens.css` contains line heights for body and heading variants
+- [x] All clamp values use viewport range from config (320px–1820px)
+- [x] Running `npm run tokens:terrazzo` generates color and font tokens
+- [x] Running `npm run tokens` executes both builds
+- [x] Number of tokens in each scale is driven by config values, not hardcoded
 
 ---
 

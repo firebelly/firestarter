@@ -75,10 +75,11 @@ site/src/tokens/terrazzo-tokens.css            # delete
 
 _Filled in during `/build` phase_
 
-| Date       | Task   | Files                                    | Notes                                                                    |
-| ---------- | ------ | ---------------------------------------- | ------------------------------------------------------------------------ |
-| 2026-02-05 | Task 1 | site/terrazzo.config.mjs                 | Changed output filename from `terrazzo-tokens.css` to `tokens.css`       |
-| 2026-02-05 | Task 2 | site/src/tokens/generate-fluid-tokens.js | Changed `writeFileSync` to `appendFileSync`, output path to `tokens.css` |
+| Date       | Task   | Files                                                             | Notes                                                                    |
+| ---------- | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| 2026-02-05 | Task 1 | site/terrazzo.config.mjs                                          | Changed output filename from `terrazzo-tokens.css` to `tokens.css`       |
+| 2026-02-05 | Task 2 | site/src/tokens/generate-fluid-tokens.js                          | Changed `writeFileSync` to `appendFileSync`, output path to `tokens.css` |
+| 2026-02-05 | Task 3 | site/package.json, deleted fluid-tokens.css & terrazzo-tokens.css | Consolidated to single `tokens` script, removed old output files         |
 
 ---
 

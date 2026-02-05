@@ -1,7 +1,7 @@
 # Design Tokens Pipeline
 
 **Created:** 2026-02-04
-**Status:** Design
+**Status:** Complete
 **Implementation Plan Doc:** docs/implementation-plans/2026-02-04-2051-design-tokens-pipeline.md
 
 ---
@@ -20,17 +20,17 @@
 
 ### Must Have
 
-- [ ] Script that reads `design.tokens.json` and generates fluid CSS using utopia-core
-- [ ] Space scale output: sizes (`--space-3xs` through `--space-6xl`), one-up pairs, custom pairs
-- [ ] Type scale output: font sizes (`--step--5` through `--step-8`)
-- [ ] Line height output: body and heading variants (`--lh-body-step-{n}`, `--lh-heading-step-{n}`)
-- [ ] Terrazzo configured to output color and font tokens
-- [ ] npm scripts to run both builds
-- [ ] Figma rename specification documented
+- [x] Script that reads `design.tokens.json` and generates fluid CSS using utopia-core
+- [x] Space scale output: sizes (`--space-3xs` through `--space-6xl`), one-up pairs, custom pairs
+- [x] Type scale output: font sizes (`--step--5` through `--step-8`)
+- [x] Line height output: body and heading variants (`--lh-body-step-{n}`, `--lh-heading-step-{n}`)
+- [x] Terrazzo configured to output color and font tokens
+- [x] npm scripts to run both builds
+- [x] Figma rename specification documented
 
 ### Nice to Have
 
-- [ ] Comments in CSS output organizing sections
+- [x] Comments in CSS output organizing sections
 
 ### Out of Scope
 
@@ -287,15 +287,15 @@ Variables to rename in Figma to match utopia output:
 
 ## Acceptance Criteria
 
-- [ ] Running `npm run tokens:fluid` generates `src/tokens/fluid-tokens.css`
-- [ ] `fluid-tokens.css` contains all space sizes (`--space-3xs` through `--space-6xl`)
-- [ ] `fluid-tokens.css` contains all one-up pairs (`--space-3xs-2xs` through `--space-5xl-6xl`)
-- [ ] `fluid-tokens.css` contains custom pairs from config (`--space-s-l`)
-- [ ] `fluid-tokens.css` contains all font size steps (`--step--5` through `--step-8`)
-- [ ] `fluid-tokens.css` contains all line heights for body and heading variants
-- [ ] All clamp values use correct viewport range (320px–1820px)
-- [ ] Running `npm run tokens:terrazzo` generates color and font tokens
-- [ ] Running `npm run tokens` executes both builds
+- [x] Running `npm run tokens:fluid` generates `src/tokens/fluid-tokens.css`
+- [x] `fluid-tokens.css` contains all space sizes (`--space-3xs` through `--space-6xl`)
+- [x] `fluid-tokens.css` contains all one-up pairs (`--space-3xs-2xs` through `--space-5xl-6xl`)
+- [x] `fluid-tokens.css` contains custom pairs from config (`--space-s-l`)
+- [x] `fluid-tokens.css` contains all font size steps (`--step--5` through `--step-8`)
+- [x] `fluid-tokens.css` contains all line heights for body and heading variants
+- [x] All clamp values use correct viewport range (320px–1820px)
+- [x] Running `npm run tokens:terrazzo` generates color and font tokens
+- [x] Running `npm run tokens` executes both builds
 - [ ] Figma variables renamed per specification (manual task)
 
 ---

@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "tokens:fluid": "node src/tokens/generate-fluid-tokens.js",
+    "tokens:terrazzo": "terrazzo build",
+    "tokens": "npm run tokens:fluid && npm run tokens:terrazzo"
   },
   "dependencies": {
     "next": "16.1.4",

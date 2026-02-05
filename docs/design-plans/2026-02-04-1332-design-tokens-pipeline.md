@@ -334,6 +334,7 @@ _Filled in during `/build` phase_
 | 2026-02-04 | Task 2 | src/tokens/generate-fluid-tokens.js | Added custom space pairs; fixed NaN bug — size objects use `minSize`/`maxSize` not `min`/`max` |
 | 2026-02-04 | Task 3 | src/tokens/generate-fluid-tokens.js | Added type scale generation (8 positive + 5 negative steps) |
 | 2026-02-04 | Task 4 | src/tokens/generate-fluid-tokens.js | Added line height generation (14 body + 14 heading steps) |
+| 2026-02-04 | Task 5 | generate-fluid-tokens.js, package.json | Added file write output and npm scripts |
 
 ---
 

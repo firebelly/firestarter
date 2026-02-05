@@ -75,9 +75,9 @@ site/src/tokens/terrazzo-tokens.css            # delete
 
 _Filled in during `/build` phase_
 
-| Date | Task | Files | Notes |
-| ---- | ---- | ----- | ----- |
-|      |      |       |       |
+| Date       | Task   | Files                    | Notes                                                              |
+| ---------- | ------ | ------------------------ | ------------------------------------------------------------------ |
+| 2026-02-05 | Task 1 | site/terrazzo.config.mjs | Changed output filename from `terrazzo-tokens.css` to `tokens.css` |
 
 ---
 

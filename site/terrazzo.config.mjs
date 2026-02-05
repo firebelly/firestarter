@@ -4,7 +4,7 @@ export default defineConfig({
   tokens: ["./src/tokens/design.tokens.json"],
   plugins: [
     css({
-      filename: "terrazzo-tokens.css",
+      filename: "tokens.css",
       exclude: [
         "_fluid-tokens.*",
         "_theme-declarations.*",

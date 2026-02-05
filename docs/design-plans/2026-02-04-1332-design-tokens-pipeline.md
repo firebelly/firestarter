@@ -65,12 +65,12 @@
 
 **Decision:** CSS output uses utopia's default naming:
 
-| Token type | Format |
-|------------|--------|
-| Font sizes | `--step-8`, `--step-0`, `--step--2` |
+| Token type    | Format                                    |
+| ------------- | ----------------------------------------- |
+| Font sizes    | `--step-8`, `--step-0`, `--step--2`       |
 | Spacing sizes | `--space-3xs`, `--space-s`, `--space-2xl` |
-| Spacing pairs | `--space-3xs-2xs`, `--space-s-l` |
-| Line heights | `--lh-body-step-8`, `--lh-heading-step-0` |
+| Spacing pairs | `--space-3xs-2xs`, `--space-s-l`          |
+| Line heights  | `--lh-body-step-8`, `--lh-heading-step-0` |
 
 No mapping in the build. Figma variables will be renamed to match.
 
@@ -213,70 +213,70 @@ Variables to rename in Figma to match utopia output:
 
 ### `_fluid-tokens.space-size`
 
-| Current | New |
-|---------|-----|
-| `3XS` | `3xs` |
-| `2XS` | `2xs` |
-| `XS` | `xs` |
-| `S` | `s` |
-| `M` | `m` |
-| `L` | `l` |
-| `XL` | `xl` |
-| `2XL` | `2xl` |
-| `3XL` | `3xl` |
-| `4XL` | `4xl` |
-| `5XL` | `5xl` |
-| `6XL` | `6xl` |
+| Current | New   |
+| ------- | ----- |
+| `3XS`   | `3xs` |
+| `2XS`   | `2xs` |
+| `XS`    | `xs`  |
+| `S`     | `s`   |
+| `M`     | `m`   |
+| `L`     | `l`   |
+| `XL`    | `xl`  |
+| `2XL`   | `2xl` |
+| `3XL`   | `3xl` |
+| `4XL`   | `4xl` |
+| `5XL`   | `5xl` |
+| `6XL`   | `6xl` |
 
 ### `_fluid-tokens.space-size-pairs`
 
-| Current | New |
-|---------|-----|
-| `3XS—2XS` | `3xs-2xs` |
-| `2XS—XS` | `2xs-xs` |
-| `XS—S` | `xs-s` |
-| `S—M` | `s-m` |
-| `M—L` | `m-l` |
-| `L—XL` | `l-xl` |
-| `XL—2XL` | `xl-2xl` |
-| `2XL—3XL` | `2xl-3xl` |
-| `3XL—4XL` | `3xl-4xl` |
-| `4XL—5XL` | `4xl-5xl` |
-| `5XL—6XL` | `5xl-6xl` |
+| Current            | New                             |
+| ------------------ | ------------------------------- |
+| `3XS—2XS`          | `3xs-2xs`                       |
+| `2XS—XS`           | `2xs-xs`                        |
+| `XS—S`             | `xs-s`                          |
+| `S—M`              | `s-m`                           |
+| `M—L`              | `m-l`                           |
+| `L—XL`             | `l-xl`                          |
+| `XL—2XL`           | `xl-2xl`                        |
+| `2XL—3XL`          | `2xl-3xl`                       |
+| `3XL—4XL`          | `3xl-4xl`                       |
+| `4XL—5XL`          | `4xl-5xl`                       |
+| `5XL—6XL`          | `5xl-6xl`                       |
 | `Custom pairs/S—L` | `s-l` (flatten, remove nesting) |
 
 ### `_fluid-tokens.font-size`
 
-| Current | New |
-|---------|-----|
-| `h1` | `step-8` |
-| `h2` | `step-7` |
-| `h3` | `step-6` |
-| `h4` | `step-5` |
-| `h5` | `step-4` |
-| `h6` | `step-3` |
-| `h7` | `step-2` |
-| `p0` | `step-1` |
-| `p1` | `step-0` |
-| `p2` | `step--1` |
+| Current        | New       |
+| -------------- | --------- |
+| `h1`           | `step-8`  |
+| `h2`           | `step-7`  |
+| `h3`           | `step-6`  |
+| `h4`           | `step-5`  |
+| `h5`           | `step-4`  |
+| `h6`           | `step-3`  |
+| `h7`           | `step-2`  |
+| `p0`           | `step-1`  |
+| `p1`           | `step-0`  |
+| `p2`           | `step--1` |
 | `p3-caption-1` | `step--2` |
-| `caption-2` | `step--3` |
-| `dot-1` | `step--4` |
-| `dot-2` | `step--5` |
+| `caption-2`    | `step--3` |
+| `dot-1`        | `step--4` |
+| `dot-2`        | `step--5` |
 
 ### `_fluid-tokens.line-height-body` and `_fluid-tokens.line-height-heading`
 
-| Current | New |
-|---------|-----|
-| `step 8` | `step-8` |
-| `step 7` | `step-7` |
-| `step 6` | `step-6` |
-| `step 5` | `step-5` |
-| `step 4` | `step-4` |
-| `step 3` | `step-3` |
-| `step 2` | `step-2` |
-| `step 1` | `step-1` |
-| `step 0` | `step-0` |
+| Current   | New       |
+| --------- | --------- |
+| `step 8`  | `step-8`  |
+| `step 7`  | `step-7`  |
+| `step 6`  | `step-6`  |
+| `step 5`  | `step-5`  |
+| `step 4`  | `step-4`  |
+| `step 3`  | `step-3`  |
+| `step 2`  | `step-2`  |
+| `step 1`  | `step-1`  |
+| `step 0`  | `step-0`  |
 | `step -1` | `step--1` |
 | `step -2` | `step--2` |
 | `step -3` | `step--3` |
@@ -328,14 +328,14 @@ A future design could consolidate the build into a single Terrazzo-orchestrated 
 
 _Filled in during `/build` phase_
 
-| Date | Task | Files | Notes |
-| ---- | ---- | ----- | ----- |
-| 2026-02-04 | Task 1 | src/tokens/generate-fluid-tokens.js | Created script with space scale generation |
-| 2026-02-04 | Task 2 | src/tokens/generate-fluid-tokens.js | Added custom space pairs; fixed NaN bug — size objects use `minSize`/`maxSize` not `min`/`max` |
-| 2026-02-04 | Task 3 | src/tokens/generate-fluid-tokens.js | Added type scale generation (8 positive + 5 negative steps) |
-| 2026-02-04 | Task 4 | src/tokens/generate-fluid-tokens.js | Added line height generation (14 body + 14 heading steps) |
-| 2026-02-04 | Task 5 | generate-fluid-tokens.js, package.json | Added file write output and npm scripts |
-| 2026-02-04 | Task 6 | terrazzo.config.mjs | Configured source path, output dir, and exclude filters for fluid/space/type primitives |
+| Date       | Task   | Files                                  | Notes                                                                                          |
+| ---------- | ------ | -------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| 2026-02-04 | Task 1 | src/tokens/generate-fluid-tokens.js    | Created script with space scale generation                                                     |
+| 2026-02-04 | Task 2 | src/tokens/generate-fluid-tokens.js    | Added custom space pairs; fixed NaN bug — size objects use `minSize`/`maxSize` not `min`/`max` |
+| 2026-02-04 | Task 3 | src/tokens/generate-fluid-tokens.js    | Added type scale generation (8 positive + 5 negative steps)                                    |
+| 2026-02-04 | Task 4 | src/tokens/generate-fluid-tokens.js    | Added line height generation (14 body + 14 heading steps)                                      |
+| 2026-02-04 | Task 5 | generate-fluid-tokens.js, package.json | Added file write output and npm scripts                                                        |
+| 2026-02-04 | Task 6 | terrazzo.config.mjs                    | Configured source path, output dir, and exclude filters for fluid/space/type primitives        |
 
 ---
 

@@ -1,0 +1,2902 @@
+{
+  "_fluid-tokens": {
+    "space-size": {
+      "3XS": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.3XS}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.3XS}",
+            "Max": "{space-primitives.Space @max.3XS}"
+          }
+        }
+      },
+      "2XS": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.2XS}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.2XS}",
+            "Max": "{space-primitives.Space @max.2XS}"
+          }
+        }
+      },
+      "XS": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.XS}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.XS}",
+            "Max": "{space-primitives.Space @max.XS}"
+          }
+        }
+      },
+      "S": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.S}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.S}",
+            "Max": "{space-primitives.Space @max.S}"
+          }
+        }
+      },
+      "M": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.M}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.M}",
+            "Max": "{space-primitives.Space @max.M}"
+          }
+        }
+      },
+      "L": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.L}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.L}",
+            "Max": "{space-primitives.Space @max.L}"
+          }
+        }
+      },
+      "XL": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.XL}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.XL}",
+            "Max": "{space-primitives.Space @max.XL}"
+          }
+        }
+      },
+      "2XL": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.2XL}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.2XL}",
+            "Max": "{space-primitives.Space @max.2XL}"
+          }
+        }
+      },
+      "3XL": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.3XL}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.3XL}",
+            "Max": "{space-primitives.Space @max.3XL}"
+          }
+        }
+      },
+      "4XL": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.4XL}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.4XL}",
+            "Max": "{space-primitives.Space @max.4XL}"
+          }
+        }
+      },
+      "5XL": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.5XL}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.5XL}",
+            "Max": "{space-primitives.Space @max.5XL}"
+          }
+        }
+      },
+      "6XL": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.6XL}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.6XL}",
+            "Max": "{space-primitives.Space @max.6XL}"
+          }
+        }
+      }
+    },
+    "space-size-pairs": {
+      "3XS—2XS": {
+        "$type": "dimension",
+        "$value": "{_fluid-tokens.space-size.3XS}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{_fluid-tokens.space-size.3XS}",
+            "Max": "{_fluid-tokens.space-size.2XS}"
+          }
+        }
+      },
+      "2XS—XS": {
+        "$type": "dimension",
+        "$value": "{_fluid-tokens.space-size.2XS}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{_fluid-tokens.space-size.2XS}",
+            "Max": "{_fluid-tokens.space-size.XS}"
+          }
+        }
+      },
+      "XS—S": {
+        "$type": "dimension",
+        "$value": "{_fluid-tokens.space-size.XS}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{_fluid-tokens.space-size.XS}",
+            "Max": "{_fluid-tokens.space-size.S}"
+          }
+        }
+      },
+      "S—M": {
+        "$type": "dimension",
+        "$value": "{_fluid-tokens.space-size.S}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{_fluid-tokens.space-size.S}",
+            "Max": "{_fluid-tokens.space-size.M}"
+          }
+        }
+      },
+      "M—L": {
+        "$type": "dimension",
+        "$value": "{_fluid-tokens.space-size.M}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{_fluid-tokens.space-size.M}",
+            "Max": "{_fluid-tokens.space-size.L}"
+          }
+        }
+      },
+      "L—XL": {
+        "$type": "dimension",
+        "$value": "{_fluid-tokens.space-size.L}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{_fluid-tokens.space-size.L}",
+            "Max": "{_fluid-tokens.space-size.XL}"
+          }
+        }
+      },
+      "XL—2XL": {
+        "$type": "dimension",
+        "$value": "{_fluid-tokens.space-size.XL}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{_fluid-tokens.space-size.XL}",
+            "Max": "{_fluid-tokens.space-size.2XL}"
+          }
+        }
+      },
+      "2XL—3XL": {
+        "$type": "dimension",
+        "$value": "{_fluid-tokens.space-size.2XL}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{_fluid-tokens.space-size.2XL}",
+            "Max": "{_fluid-tokens.space-size.3XL}"
+          }
+        }
+      },
+      "3XL—4XL": {
+        "$type": "dimension",
+        "$value": "{_fluid-tokens.space-size.3XL}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{_fluid-tokens.space-size.3XL}",
+            "Max": "{_fluid-tokens.space-size.4XL}"
+          }
+        }
+      },
+      "4XL—5XL": {
+        "$type": "dimension",
+        "$value": "{_fluid-tokens.space-size.4XL}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{_fluid-tokens.space-size.4XL}",
+            "Max": "{_fluid-tokens.space-size.5XL}"
+          }
+        }
+      },
+      "5XL—6XL": {
+        "$type": "dimension",
+        "$value": "{_fluid-tokens.space-size.5XL}",
+        "$description": "",
+        "scopes": [
+          "TEXT_CONTENT",
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY",
+          "PARAGRAPH_SPACING",
+          "PARAGRAPH_INDENT",
+          "FONT_VARIATIONS"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{_fluid-tokens.space-size.5XL}",
+            "Max": "{_fluid-tokens.space-size.6XL}"
+          }
+        }
+      },
+      "Custom pairs": {
+        "S—L": {
+          "$type": "dimension",
+          "$value": "{_fluid-tokens.space-size.S}",
+          "$description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "$extensions": {
+            "mode": {
+              "Min": "{_fluid-tokens.space-size.S}",
+              "Max": "{_fluid-tokens.space-size.L}"
+            }
+          }
+        }
+      }
+    },
+    "font-size": {
+      "h1": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step 8}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step 8}",
+            "Max": "{type-primitives.Font size @max.Step 8}"
+          }
+        }
+      },
+      "h2": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step 7}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step 7}",
+            "Max": "{type-primitives.Font size @max.Step 7}"
+          }
+        }
+      },
+      "h3": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step 6}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step 6}",
+            "Max": "{type-primitives.Font size @max.Step 6}"
+          }
+        }
+      },
+      "h4": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step 5}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step 5}",
+            "Max": "{type-primitives.Font size @max.Step 5}"
+          }
+        }
+      },
+      "h5": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step 4}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step 4}",
+            "Max": "{type-primitives.Font size @max.Step 4}"
+          }
+        }
+      },
+      "h6": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step 3}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step 3}",
+            "Max": "{type-primitives.Font size @max.Step 3}"
+          }
+        }
+      },
+      "h7": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step 2}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step 2}",
+            "Max": "{type-primitives.Font size @max.Step 2}"
+          }
+        }
+      },
+      "p0": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step 1}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step 1}",
+            "Max": "{type-primitives.Font size @max.Step 1}"
+          }
+        }
+      },
+      "p1": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step 0}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step 0}",
+            "Max": "{type-primitives.Font size @max.Step 0}"
+          }
+        }
+      },
+      "p2": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step -1}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step -1}",
+            "Max": "{type-primitives.Font size @max.Step -1}"
+          }
+        }
+      },
+      "p3-caption-1": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step -2}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step -2}",
+            "Max": "{type-primitives.Font size @max.Step -2}"
+          }
+        }
+      },
+      "caption-2": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step -3}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step -3}",
+            "Max": "{type-primitives.Font size @max.Step -3}"
+          }
+        }
+      },
+      "dot-1": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step -4}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step -4}",
+            "Max": "{type-primitives.Font size @max.Step -4}"
+          }
+        }
+      },
+      "dot-2": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Font size @min.Step -5}",
+        "$description": "",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Font size @min.Step -5}",
+            "Max": "{type-primitives.Font size @max.Step -5}"
+          }
+        }
+      }
+    },
+    "grid": {
+      "Gutter": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Space @min.S}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Space @min.S}",
+            "Max": "{space-primitives.Space @max.L}"
+          }
+        }
+      },
+      "Column": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid.Column @min}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid.Column @min}",
+            "Max": "{space-primitives.Space @max.2XL}"
+          }
+        }
+      },
+      "Viewport": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid @min.Viewport}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid @min.Viewport}",
+            "Max": "{space-primitives.Grid @max.Viewport}"
+          }
+        }
+      },
+      "Whole": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid @min.Whole}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid @min.Whole}",
+            "Max": "{space-primitives.Grid @max.Whole}"
+          }
+        }
+      },
+      "Three quarters": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid @min.Three quarters}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid @min.Three quarters}",
+            "Max": "{space-primitives.Grid @max.Three quarters}"
+          }
+        }
+      },
+      "Whole—Three quarters": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid @min.Whole}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid @min.Whole}",
+            "Max": "{space-primitives.Grid @max.Three quarters}"
+          }
+        }
+      },
+      "Two thirds": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid @min.Two thirds}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid @min.Two thirds}",
+            "Max": "{space-primitives.Grid @max.Two thirds}"
+          }
+        }
+      },
+      "Whole—Two thirds": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid @min.Whole}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid @min.Whole}",
+            "Max": "{space-primitives.Grid @max.Two thirds}"
+          }
+        }
+      },
+      "Half": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid @min.Half}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid @min.Half}",
+            "Max": "{space-primitives.Grid @max.Half}"
+          }
+        }
+      },
+      "Whole—Half": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid @min.Whole}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid @min.Whole}",
+            "Max": "{space-primitives.Grid @max.Half}"
+          }
+        }
+      },
+      "Third": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid @min.Third}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid @min.Third}",
+            "Max": "{space-primitives.Grid @max.Third}"
+          }
+        }
+      },
+      "Whole—Third": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid @min.Whole}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid @min.Whole}",
+            "Max": "{space-primitives.Grid @max.Third}"
+          }
+        }
+      },
+      "Quarter": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid @min.Quarter}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid @min.Quarter}",
+            "Max": "{space-primitives.Grid @max.Quarter}"
+          }
+        }
+      },
+      "Whole—Quarter": {
+        "$type": "dimension",
+        "$value": "{space-primitives.Grid @min.Whole}",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{space-primitives.Grid @min.Whole}",
+            "Max": "{space-primitives.Grid @max.Quarter}"
+          }
+        }
+      }
+    },
+    "line-height-body": {
+      "step 8": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 8}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 8}",
+            "Max": "{type-primitives.Line height body @max.Step 8}"
+          }
+        }
+      },
+      "step 7": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 7}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 7}",
+            "Max": "{type-primitives.Line height body @max.Step 7}"
+          }
+        }
+      },
+      "step 6": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 6}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 6}",
+            "Max": "{type-primitives.Line height body @max.Step 6}"
+          }
+        }
+      },
+      "step 5": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 5}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 5}",
+            "Max": "{type-primitives.Line height body @max.Step 5}"
+          }
+        }
+      },
+      "step 4": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 4}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 4}",
+            "Max": "{type-primitives.Line height body @max.Step 4}"
+          }
+        }
+      },
+      "step 3": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 3}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 3}",
+            "Max": "{type-primitives.Line height body @max.Step 3}"
+          }
+        }
+      },
+      "step 2": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 2}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 2}",
+            "Max": "{type-primitives.Line height body @max.Step 2}"
+          }
+        }
+      },
+      "step 1": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 1}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 1}",
+            "Max": "{type-primitives.Line height body @max.Step 1}"
+          }
+        }
+      },
+      "step 0": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 0}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 0}",
+            "Max": "{type-primitives.Line height body @max.Step 0}"
+          }
+        }
+      },
+      "step -1": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step -1}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step -1}",
+            "Max": "{type-primitives.Line height body @max.Step -1}"
+          }
+        }
+      },
+      "step -2": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step -2}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step -2}",
+            "Max": "{type-primitives.Line height body @max.Step -2}"
+          }
+        }
+      },
+      "step -3": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step -3}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step -3}",
+            "Max": "{type-primitives.Line height body @max.Step -3}"
+          }
+        }
+      },
+      "step -4": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step -4}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step -4}",
+            "Max": "{type-primitives.Line height body @max.Step -4}"
+          }
+        }
+      },
+      "step -5": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step -5}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step -5}",
+            "Max": "{type-primitives.Line height body @max.Step -5}"
+          }
+        }
+      }
+    },
+    "line-height-heading": {
+      "step 8": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 8}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 8}",
+            "Max": "{type-primitives.Line height heading @max.Step 8}"
+          }
+        }
+      },
+      "step 7": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 7}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 7}",
+            "Max": "{type-primitives.Line height heading @max.Step 7}"
+          }
+        }
+      },
+      "step 6": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 6}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 6}",
+            "Max": "{type-primitives.Line height heading @max.Step 6}"
+          }
+        }
+      },
+      "step 5": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 5}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 5}",
+            "Max": "{type-primitives.Line height heading @max.Step 5}"
+          }
+        }
+      },
+      "step 4": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 4}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 4}",
+            "Max": "{type-primitives.Line height heading @max.Step 4}"
+          }
+        }
+      },
+      "step 3": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 3}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 3}",
+            "Max": "{type-primitives.Line height heading @max.Step 3}"
+          }
+        }
+      },
+      "step 2": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 2}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 2}",
+            "Max": "{type-primitives.Line height heading @max.Step 2}"
+          }
+        }
+      },
+      "step 1": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 1}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 1}",
+            "Max": "{type-primitives.Line height heading @max.Step 1}"
+          }
+        }
+      },
+      "step 0": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step 0}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step 0}",
+            "Max": "{type-primitives.Line height heading @max.Step 0}"
+          }
+        }
+      },
+      "step -1": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step -1}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step -1}",
+            "Max": "{type-primitives.Line height heading @max.Step -1}"
+          }
+        }
+      },
+      "step -2": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step -2}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step -2}",
+            "Max": "{type-primitives.Line height heading @max.Step -2}"
+          }
+        }
+      },
+      "step -3": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step -3}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step -3}",
+            "Max": "{type-primitives.Line height heading @max.Step -3}"
+          }
+        }
+      },
+      "step -4": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step -4}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step -4}",
+            "Max": "{type-primitives.Line height heading @max.Step -4}"
+          }
+        }
+      },
+      "step -5": {
+        "$type": "dimension",
+        "$value": "{type-primitives.Line height @min.Step -5}",
+        "$description": "",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "$extensions": {
+          "mode": {
+            "Min": "{type-primitives.Line height @min.Step -5}",
+            "Max": "{type-primitives.Line height heading @max.Step -5}"
+          }
+        }
+      }
+    }
+  },
+  "_theme-declarations": {
+    "Viewport": {
+      "Min width": {
+        "$type": "string",
+        "$value": "320",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Max width": {
+        "$type": "string",
+        "$value": "1820",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Type Boundaries": {
+      "Active": {
+        "$type": "boolean",
+        "$value": true,
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Min size": {
+        "$type": "string",
+        "$value": "15",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Max size": {
+        "$type": "string",
+        "$value": "20",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Min scale": {
+        "$type": "string",
+        "$value": "1.1472",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Max scale": {
+        "$type": "string",
+        "$value": "1.27537",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Positive steps": {
+        "$type": "string",
+        "$value": "8",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Negative steps": {
+        "$type": "string",
+        "$value": "5",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Space Boundaries": {
+      "Active": {
+        "$type": "boolean",
+        "$value": true,
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Min size": {
+        "$type": "string",
+        "$value": "15",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Max size": {
+        "$type": "string",
+        "$value": "20",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Positive spaces": {
+        "$type": "string",
+        "$value": "1.5, 2, 3, 4, 6, 8, 10, 12",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Negative spaces": {
+        "$type": "string",
+        "$value": "0.75, 0.5, 0.25",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Custom spaces": {
+        "$type": "string",
+        "$value": "S-L",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Grid Boundaries": {
+      "Active": {
+        "$type": "boolean",
+        "$value": true,
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Columns": {
+        "$type": "string",
+        "$value": "12",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Max column": {
+        "$type": "string",
+        "$value": "2XL",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Min gutter": {
+        "$type": "string",
+        "$value": "S",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Max gutter": {
+        "$type": "string",
+        "$value": "L",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Rounding": {
+        "$type": "string",
+        "$value": "Nearest",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "background": {
+      "$type": "color",
+      "$value": "{color-primitives.gray.001}",
+      "$description": "",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "$extensions": {
+        "mode": {}
+      }
+    }
+  },
+  "space-primitives": {
+    "Space @min": {
+      "3XS": {
+        "$type": "dimension",
+        "$value": "4px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "2XS": {
+        "$type": "dimension",
+        "$value": "8px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "XS": {
+        "$type": "dimension",
+        "$value": "11px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "S": {
+        "$type": "dimension",
+        "$value": "15px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "M": {
+        "$type": "dimension",
+        "$value": "23px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "L": {
+        "$type": "dimension",
+        "$value": "30px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "XL": {
+        "$type": "dimension",
+        "$value": "45px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "2XL": {
+        "$type": "dimension",
+        "$value": "60px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "3XL": {
+        "$type": "dimension",
+        "$value": "90px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "4XL": {
+        "$type": "dimension",
+        "$value": "120px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "5XL": {
+        "$type": "dimension",
+        "$value": "150px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "6XL": {
+        "$type": "dimension",
+        "$value": "180px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Space @max": {
+      "3XS": {
+        "$type": "dimension",
+        "$value": "5px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "2XS": {
+        "$type": "dimension",
+        "$value": "10px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "XS": {
+        "$type": "dimension",
+        "$value": "15px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "S": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "M": {
+        "$type": "dimension",
+        "$value": "30px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "L": {
+        "$type": "dimension",
+        "$value": "40px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "XL": {
+        "$type": "dimension",
+        "$value": "60px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "2XL": {
+        "$type": "dimension",
+        "$value": "80px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "3XL": {
+        "$type": "dimension",
+        "$value": "120px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "4XL": {
+        "$type": "dimension",
+        "$value": "160px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "5XL": {
+        "$type": "dimension",
+        "$value": "200px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "6XL": {
+        "$type": "dimension",
+        "$value": "240px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Grid": {
+      "Column @min": {
+        "$type": "dimension",
+        "$value": "10px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Column count": {
+        "$type": "dimension",
+        "$value": "12px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Grid @min": {
+      "Viewport": {
+        "$type": "dimension",
+        "$value": "315px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Whole": {
+        "$type": "dimension",
+        "$value": "285px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Three quarters": {
+        "$type": "dimension",
+        "$value": "210px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Two thirds": {
+        "$type": "dimension",
+        "$value": "185px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Half": {
+        "$type": "dimension",
+        "$value": "135px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Third": {
+        "$type": "dimension",
+        "$value": "85px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Quarter": {
+        "$type": "dimension",
+        "$value": "60px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Grid @max": {
+      "Viewport": {
+        "$type": "dimension",
+        "$value": "1480px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Whole": {
+        "$type": "dimension",
+        "$value": "1400px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Three quarters": {
+        "$type": "dimension",
+        "$value": "1040px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Two thirds": {
+        "$type": "dimension",
+        "$value": "920px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Half": {
+        "$type": "dimension",
+        "$value": "680px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Third": {
+        "$type": "dimension",
+        "$value": "440px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Quarter": {
+        "$type": "dimension",
+        "$value": "320px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    }
+  },
+  "type-primitives": {
+    "Font size @min": {
+      "Step 8": {
+        "$type": "dimension",
+        "$value": "45px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 7": {
+        "$type": "dimension",
+        "$value": "39.225849px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 6": {
+        "$type": "dimension",
+        "$value": "34.192604px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 5": {
+        "$type": "dimension",
+        "$value": "29.805201px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 4": {
+        "$type": "dimension",
+        "$value": "25.980762px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 3": {
+        "$type": "dimension",
+        "$value": "22.647055px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 2": {
+        "$type": "dimension",
+        "$value": "19.74111px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 1": {
+        "$type": "dimension",
+        "$value": "17.20804px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 0": {
+        "$type": "dimension",
+        "$value": "15px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -1": {
+        "$type": "dimension",
+        "$value": "13.075283px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -2": {
+        "$type": "dimension",
+        "$value": "11.397535px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -3": {
+        "$type": "dimension",
+        "$value": "9.935067px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -4": {
+        "$type": "dimension",
+        "$value": "8.660254px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -5": {
+        "$type": "dimension",
+        "$value": "7.549018px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Font size @max": {
+      "Step 8": {
+        "$type": "dimension",
+        "$value": "140px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 7": {
+        "$type": "dimension",
+        "$value": "109.771797px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 6": {
+        "$type": "dimension",
+        "$value": "86.070343px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 5": {
+        "$type": "dimension",
+        "$value": "67.486404px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 4": {
+        "$type": "dimension",
+        "$value": "52.915028px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 3": {
+        "$type": "dimension",
+        "$value": "41.489841px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 2": {
+        "$type": "dimension",
+        "$value": "32.531532px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 1": {
+        "$type": "dimension",
+        "$value": "25.507462px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 0": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -1": {
+        "$type": "dimension",
+        "$value": "15.681685px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -2": {
+        "$type": "dimension",
+        "$value": "12.295763px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -3": {
+        "$type": "dimension",
+        "$value": "9.640915px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -4": {
+        "$type": "dimension",
+        "$value": "7.559289px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -5": {
+        "$type": "dimension",
+        "$value": "5.92712px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Font family": {
+      "Body": {
+        "$type": "string",
+        "$value": "Inter",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Heading": {
+        "$type": "string",
+        "$value": "Platform",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Font weight": {
+      "Medium": {
+        "$type": "string",
+        "$value": "Medium",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Bold": {
+        "$type": "string",
+        "$value": "Bold",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Line height body @max": {
+      "Step 8": {
+        "$type": "dimension",
+        "$value": "135px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 7": {
+        "$type": "dimension",
+        "$value": "111.8619px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 6": {
+        "$type": "dimension",
+        "$value": "92.689522px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 5": {
+        "$type": "dimension",
+        "$value": "76.803154px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 4": {
+        "$type": "dimension",
+        "$value": "63.63961px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 3": {
+        "$type": "dimension",
+        "$value": "52.732208px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 2": {
+        "$type": "dimension",
+        "$value": "43.69426px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 1": {
+        "$type": "dimension",
+        "$value": "36.205357px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 0": {
+        "$type": "dimension",
+        "$value": "30px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -1": {
+        "$type": "dimension",
+        "$value": "24.8582px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -2": {
+        "$type": "dimension",
+        "$value": "20.597672px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -3": {
+        "$type": "dimension",
+        "$value": "17.067368px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -4": {
+        "$type": "dimension",
+        "$value": "14.142136px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -5": {
+        "$type": "dimension",
+        "$value": "11.718268px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Line height @min": {
+      "Step 8": {
+        "$type": "dimension",
+        "$value": "38.486801px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 7": {
+        "$type": "dimension",
+        "$value": "40.66209px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 6": {
+        "$type": "dimension",
+        "$value": "36.742348px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 5": {
+        "$type": "dimension",
+        "$value": "33.200459px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 4": {
+        "$type": "dimension",
+        "$value": "30px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 3": {
+        "$type": "dimension",
+        "$value": "27.108061px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 2": {
+        "$type": "dimension",
+        "$value": "24.494898px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 1": {
+        "$type": "dimension",
+        "$value": "22.133638px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 0": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -1": {
+        "$type": "dimension",
+        "$value": "18.072041px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -2": {
+        "$type": "dimension",
+        "$value": "16.329931px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -3": {
+        "$type": "dimension",
+        "$value": "14.755759px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -4": {
+        "$type": "dimension",
+        "$value": "13.333333px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -5": {
+        "$type": "dimension",
+        "$value": "12.048027px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "Line height heading @max": {
+      "Step 8": {
+        "$type": "dimension",
+        "$value": "132px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 7": {
+        "$type": "dimension",
+        "$value": "105.512772px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 6": {
+        "$type": "dimension",
+        "$value": "84.339996px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 5": {
+        "$type": "dimension",
+        "$value": "67.410004px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 4": {
+        "$type": "dimension",
+        "$value": "53.888px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 3": {
+        "$type": "dimension",
+        "$value": "43.07px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 2": {
+        "$type": "dimension",
+        "$value": "34.431px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 1": {
+        "$type": "dimension",
+        "$value": "27.52px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step 0": {
+        "$type": "dimension",
+        "$value": "22px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -1": {
+        "$type": "dimension",
+        "$value": "17.585859px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -2": {
+        "$type": "dimension",
+        "$value": "14.06px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -3": {
+        "$type": "dimension",
+        "$value": "11.2361px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -4": {
+        "$type": "dimension",
+        "$value": "8.981px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Step -5": {
+        "$type": "dimension",
+        "$value": "7.1792px",
+        "$description": "",
+        "scopes": [],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    }
+  },
+  "color-primitives": {
+    "gray": {
+      "000": {
+        "$type": "color",
+        "$value": "hsla(0, 0%, 100%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "001": {
+        "$type": "color",
+        "$value": "hsla(60, 4%, 91%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "002": {
+        "$type": "color",
+        "$value": "hsla(233, 7%, 75%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "003": {
+        "$type": "color",
+        "$value": "hsla(233, 8%, 43%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "004": {
+        "$type": "color",
+        "$value": "hsla(234, 16%, 24%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "005": {
+        "$type": "color",
+        "$value": "hsla(235, 51%, 15%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "000-50": {
+        "$type": "color",
+        "$value": "hsla(0, 0%, 100%, 0.5)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "blue": {
+      "101": {
+        "$type": "color",
+        "$value": "hsla(225, 41%, 85%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "102": {
+        "$type": "color",
+        "$value": "hsla(234, 79%, 64%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "103": {
+        "$type": "color",
+        "$value": "hsla(248, 88%, 36%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "104": {
+        "$type": "color",
+        "$value": "hsla(235, 51%, 15%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "magenta": {
+      "201": {
+        "$type": "color",
+        "$value": "hsla(327, 84%, 83%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "202": {
+        "$type": "color",
+        "$value": "hsla(325, 89%, 43%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "203": {
+        "$type": "color",
+        "$value": "hsla(328, 88%, 26%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "204": {
+        "$type": "color",
+        "$value": "hsla(328, 83%, 14%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "teal": {
+      "401": {
+        "$type": "color",
+        "$value": "hsla(183, 85%, 92%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "402": {
+        "$type": "color",
+        "$value": "hsla(178, 85%, 66%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "403": {
+        "$type": "color",
+        "$value": "hsla(187, 72%, 37%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "404": {
+        "$type": "color",
+        "$value": "hsla(186, 90%, 19%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    },
+    "lemon": {
+      "301": {
+        "$type": "color",
+        "$value": "hsla(58, 80%, 88%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "302": {
+        "$type": "color",
+        "$value": "hsla(56, 93%, 48%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "303": {
+        "$type": "color",
+        "$value": "hsla(42, 100%, 40%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "304": {
+        "$type": "color",
+        "$value": "hsla(34, 100%, 28%, 1)",
+        "$description": "",
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    }
+  },
+  "$extensions": {
+    "tokens-bruecke-meta": {
+      "useDTCGKeys": true,
+      "colorMode": "hsla-css",
+      "variableCollections": [
+        "_fluid-tokens",
+        "_theme-declarations",
+        "space-primitives",
+        "type-primitives",
+        "color-primitives"
+      ],
+      "createdAt": "2026-02-05T02:53:44.394Z"
+    }
+  }
+}

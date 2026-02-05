@@ -117,6 +117,48 @@ for (const step of typeScale) {
   css += `  --step-${step.step}: ${step.clamp};\n`;
 }
 
+// Line heights
+const typePrimitives = tokens["type-primitives"];
+const fluidTokens = tokens["_fluid-tokens"];
+
+function parsePixelValue(token) {
+  return parseFloat(token["$value"].replace("px", ""));
+}
+
+function formatStepName(key) {
+  // "step 8" → "step-8", "step -1" → "step--1"
+  return key.replace("step ", "step-");
+}
+
+function generateLineHeights(group, maxGroup, prefix) {
+  let output = "";
+  for (const key of Object.keys(group)) {
+    // Map "step 8" → "Step 8", "step -1" → "Step -1"
+    const primitiveKey = "Step " + key.replace("step ", "");
+    const minVal = parsePixelValue(typePrimitives["Line height @min"][primitiveKey]);
+    const maxVal = parsePixelValue(typePrimitives[maxGroup][primitiveKey]);
+    const clamp = calculateClamp({ minWidth, maxWidth, minSize: minVal, maxSize: maxVal });
+    output += `  --${prefix}-${formatStepName(key)}: ${clamp};\n`;
+  }
+  return output;
+}
+
+css += "\n";
+css += "  /* Line heights - body */\n";
+css += generateLineHeights(
+  fluidTokens["line-height-body"],
+  "Line height body @max",
+  "lh-body",
+);
+
+css += "\n";
+css += "  /* Line heights - heading */\n";
+css += generateLineHeights(
+  fluidTokens["line-height-heading"],
+  "Line height heading @max",
+  "lh-heading",
+);
+
 css += "}\n";
 
 // Output to console

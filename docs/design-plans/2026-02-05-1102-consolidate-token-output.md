@@ -85,9 +85,9 @@ _Filled in during `/build` phase_
 
 ## Completion
 
-**Completed:** _TBD_
-**Final Status:** _TBD_
+**Completed:** 2026-02-05
+**Final Status:** Done
 
-**Summary:** _TBD_
+**Summary:** Consolidated two token CSS outputs into a single `tokens.css` file. Terrazzo writes first, fluid token generator appends. Three npm scripts replaced with one.
 
-**Deviations from Plan:** _TBD_
+**Deviations from Plan:** None

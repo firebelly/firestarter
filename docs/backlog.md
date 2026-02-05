@@ -25,3 +25,9 @@ A setup script would automate this process, making "clone and go" truly seamless
 
 - Prettier format on save
 - Stylelint for CSS linting (property order)
+
+---
+
+## Update set up flow
+
+- lefthook pre-commits didn't run after a fresh install. Manually ran "lefthook install" when I realized this.

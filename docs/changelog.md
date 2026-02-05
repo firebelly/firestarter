@@ -119,3 +119,22 @@ Added `eslint-plugin-simple-import-sort` to enforce consistent, auto-fixable imp
 
 - `site/eslint.config.mjs` — ESLint config with import sort plugin and rules
 - `site/package.json` — `eslint-plugin-simple-import-sort` dev dependency
+
+---
+
+## 2026-02-04: Design Tokens Pipeline
+
+Installed utopia-core and Terrazzo (@terrazzo/cli + @terrazzo/plugin-css), then built a fluid token pipeline that generates CSS custom properties from Figma design tokens. Uses utopia-core for fluid space scale, type scale, and line heights. Terrazzo handles color and font tokens separately. Two parallel builds unified under `npm run tokens`.
+
+**Design:** [docs/design-plans/2026-02-04-1332-design-tokens-pipeline.md](design-plans/2026-02-04-1332-design-tokens-pipeline.md)
+**Plan:** [docs/implementation-plans/2026-02-04-2051-design-tokens-pipeline.md](implementation-plans/2026-02-04-2051-design-tokens-pipeline.md)
+
+**Key files:**
+
+- `site/src/tokens/generate-fluid-tokens.js` — Fluid token generator (space, type, line heights)
+- `site/src/tokens/fluid-tokens.css` — Generated fluid CSS output
+- `site/src/tokens/terrazzo-tokens.css` — Terrazzo-generated color and font tokens
+- `site/terrazzo.config.mjs` — Terrazzo configuration with exclude filters
+- `site/package.json` — npm scripts (`tokens:fluid`, `tokens:terrazzo`, `tokens`)
+
+---

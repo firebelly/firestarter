@@ -138,3 +138,13 @@ Installed utopia-core and Terrazzo (@terrazzo/cli + @terrazzo/plugin-css), then 
 - `site/package.json` — npm scripts (`tokens:fluid`, `tokens:terrazzo`, `tokens`)
 
 ---
+
+## 2026-02-05: ESLint Auto-fix in Pre-commit
+
+Updated the ESLint pre-commit hook to auto-fix lint issues and re-stage corrected files, matching the existing Prettier hook pattern.
+
+**Key files:**
+
+- `lefthook.yml` — Added `--fix` flag and `git add` re-stage to lint job
+
+---

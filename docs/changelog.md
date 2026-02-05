@@ -148,3 +148,16 @@ Updated the ESLint pre-commit hook to auto-fix lint issues and re-stage correcte
 - `lefthook.yml` — Added `--fix` flag and `git add` re-stage to lint job
 
 ---
+
+## 2026-02-05: Consolidate Token Output
+
+Merged the two token pipeline outputs (`fluid-tokens.css` and `terrazzo-tokens.css`) into a single `tokens.css` file. Terrazzo writes first, then the fluid token generator appends. Three npm scripts consolidated into one.
+
+**Design:** [docs/design-plans/2026-02-05-1102-consolidate-token-output.md](design-plans/2026-02-05-1102-consolidate-token-output.md)
+**Plan:** [docs/implementation-plans/2026-02-05-1107-consolidate-token-output.md](implementation-plans/2026-02-05-1107-consolidate-token-output.md)
+
+**Key files:**
+
+- `site/terrazzo.config.mjs` — Output filename changed to `tokens.css`
+- `site/src/tokens/generate-fluid-tokens.js` — Appends to `tokens.css` instead of writing separate file
+- `site/package.json` — Single `tokens` script replaces three

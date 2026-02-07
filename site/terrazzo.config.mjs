@@ -6,11 +6,11 @@ export default defineConfig({
     css({
       filename: "tokens.css",
       exclude: [
-        "_fluid-tokens.*",
-        "_theme-declarations.*",
-        "space-primitives.*",
-        "type-primitives.Font size*",
-        "type-primitives.Line height*",
+        "Space primitives.*",
+        "Type primitives.Font size*",
+        "Type primitives.Line height*",
+        "Fluid tokens.*",
+        "Utopia.*",
       ],
     }),
   ],

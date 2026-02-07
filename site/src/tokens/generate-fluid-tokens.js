@@ -5,7 +5,7 @@
  * using utopia-core for space and type scale calculations.
  */
 
-import { appendFileSync,readFileSync } from "node:fs";
+import { appendFileSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -23,20 +23,14 @@ const tokensPath = join(__dirname, "design.tokens.json");
 const tokens = JSON.parse(readFileSync(tokensPath, "utf-8"));
 
 // Extract config from tokens
-const themeDeclarations = tokens["_theme-declarations"];
+const utopiaConfig = tokens["Utopia"];
 
 // Viewport config
-const minWidth = parseInt(
-  themeDeclarations.Viewport["Min width"]["$value"],
-  10,
-);
-const maxWidth = parseInt(
-  themeDeclarations.Viewport["Max width"]["$value"],
-  10,
-);
+const minWidth = parseInt(utopiaConfig.Viewport["Min width"]["$value"], 10);
+const maxWidth = parseInt(utopiaConfig.Viewport["Max width"]["$value"], 10);
 
 // Space config
-const spaceConfig = themeDeclarations["Space Boundaries"];
+const spaceConfig = utopiaConfig["Space"];
 const minSize = parseFloat(spaceConfig["Min size"]["$value"]);
 const maxSize = parseFloat(spaceConfig["Max size"]["$value"]);
 const positiveSpaces = spaceConfig["Positive spaces"]["$value"]
@@ -74,7 +68,7 @@ for (const pair of spaceScale.oneUpPairs) {
 }
 
 // Type config
-const typeConfig = themeDeclarations["Type Boundaries"];
+const typeConfig = utopiaConfig["Type"];
 const typeScale = calculateTypeScale({
   minWidth,
   maxWidth,
@@ -125,23 +119,22 @@ for (const step of typeScale) {
 }
 
 // Line heights
-const typePrimitives = tokens["type-primitives"];
-const fluidTokens = tokens["_fluid-tokens"];
+const typePrimitives = tokens["Type primitives"];
+const fluidTokens = tokens["Fluid tokens"];
 
 function parsePixelValue(token) {
   return parseFloat(token["$value"].replace("px", ""));
 }
 
 function formatStepName(key) {
-  // "step 8" → "step-8", "step -1" → "step--1"
-  return key.replace("step ", "step-");
+  // "Step 8" → "step-8", "Step -1" → "step--1"
+  return key.replace("Step ", "step-");
 }
 
 function generateLineHeights(group, maxGroup, prefix) {
   let output = "";
   for (const key of Object.keys(group)) {
-    // Map "step 8" → "Step 8", "step -1" → "Step -1"
-    const primitiveKey = "Step " + key.replace("step ", "");
+    const primitiveKey = key;
     const minVal = parsePixelValue(
       typePrimitives["Line height @min"][primitiveKey],
     );
@@ -160,7 +153,7 @@ function generateLineHeights(group, maxGroup, prefix) {
 css += "\n";
 css += "  /* Line heights - body */\n";
 css += generateLineHeights(
-  fluidTokens["line-height-body"],
+  fluidTokens["Line height body"],
   "Line height body @max",
   "lh-body",
 );
@@ -168,7 +161,7 @@ css += generateLineHeights(
 css += "\n";
 css += "  /* Line heights - heading */\n";
 css += generateLineHeights(
-  fluidTokens["line-height-heading"],
+  fluidTokens["Line height heading"],
   "Line height heading @max",
   "lh-heading",
 );

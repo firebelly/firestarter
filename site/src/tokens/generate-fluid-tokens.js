@@ -23,34 +23,90 @@ const tokensPath = join(__dirname, "design.tokens.json");
 const tokens = JSON.parse(readFileSync(tokensPath, "utf-8"));
 
 // Extract config from tokens
-const utopiaConfig = tokens["Utopia"];
+const utopia = tokens["Utopia"];
 
 // Viewport config
-const minWidth = parseInt(utopiaConfig.Viewport["Min width"]["$value"], 10);
-const maxWidth = parseInt(utopiaConfig.Viewport["Max width"]["$value"], 10);
+const viewportConfig = {
+  minWidth: parseInt(utopia.Viewport["Min width"]["$value"], 10),
+  maxWidth: parseInt(utopia.Viewport["Max width"]["$value"], 10),
+};
 
 // Space config
-const spaceConfig = utopiaConfig["Space"];
-const minSize = parseFloat(spaceConfig["Min size"]["$value"]);
-const maxSize = parseFloat(spaceConfig["Max size"]["$value"]);
-const positiveSpaces = spaceConfig["Positive spaces"]["$value"]
-  .split(",")
-  .map((s) => parseFloat(s.trim()));
-const negativeSpaces = spaceConfig["Negative spaces"]["$value"]
-  .split(",")
-  .map((s) => parseFloat(s.trim()));
+const spaceConfig = {
+  minSize: parseInt(utopia.Space["Min size"]["$value"], 10),
+  maxSize: parseInt(utopia.Space["Max size"]["$value"], 10),
+  positiveSpaces: utopia.Space["Positive spaces"]["$value"]
+    .split(",")
+    .map((s) => parseFloat(s.trim())),
+  negativeSpaces: utopia.Space["Negative spaces"]["$value"]
+    .split(",")
+    .map((s) => parseFloat(s.trim())),
+  customSpaces: utopia.Space["Custom spaces"]["$value"],
+};
 
-// Generate space scale using utopia-core
+// Type config
+const typeConfig = {
+  minSize: parseInt(utopia.Type["Min size"]["$value"], 10),
+  maxSize: parseInt(utopia.Type["Max size"]["$value"], 10),
+  positiveSteps: parseInt(utopia.Type["Positive steps"]["$value"], 10),
+  negativeSteps: parseInt(utopia.Type["Negative steps"]["$value"], 10),
+  minScale: parseFloat(utopia.Type["Min scale"]["$value"]),
+  maxScale: parseFloat(utopia.Type["Max scale"]["$value"]),
+  lineHeightMinScale: tokens["Type primitives"]["Line height @min"],
+  lineHeightBodyMaxScale: tokens["Type primitives"]["Line height body @max"],
+  lineHeightHeadingMaxScale:
+    tokens["Type primitives"]["Line height heading @max"],
+};
+
+// Set space scale
 const spaceScale = calculateSpaceScale({
-  minWidth,
-  maxWidth,
-  minSize,
-  maxSize,
-  positiveSteps: positiveSpaces,
-  negativeSteps: negativeSpaces,
+  minWidth: viewportConfig.minWidth,
+  maxWidth: viewportConfig.maxWidth,
+  minSize: spaceConfig.minSize,
+  maxSize: spaceConfig.maxSize,
+  positiveSteps: spaceConfig.positiveSpaces,
+  negativeSteps: spaceConfig.negativeSpaces,
+  customSizes: spaceConfig.customSpaces
+    .split(",")
+    .map((s) => s.trim().toLowerCase()),
 });
 
-// Format CSS output
+// Set font sizes
+const fontSizes = calculateTypeScale({
+  minWidth: viewportConfig.minWidth,
+  maxWidth: viewportConfig.maxWidth,
+  minFontSize: typeConfig.minSize,
+  maxFontSize: typeConfig.maxSize,
+  minTypeScale: typeConfig.minScale,
+  maxTypeScale: typeConfig.maxScale,
+  positiveSteps: typeConfig.positiveSteps,
+  negativeSteps: typeConfig.negativeSteps,
+});
+
+// Calculate line height
+function calculateLineHeight(minScale, maxScale) {
+  return Object.keys(minScale).map((step) => ({
+    label: parseInt(step.replace("Step ", ""), 10),
+    clamp: calculateClamp({
+      minWidth: viewportConfig.minWidth,
+      maxWidth: viewportConfig.maxWidth,
+      minSize: parseFloat(minScale[step]["$value"]),
+      maxSize: parseFloat(maxScale[step]["$value"]),
+    }),
+  }));
+}
+
+// Set line height body
+const lineHeightBody = calculateLineHeight(
+  typeConfig.lineHeightMinScale,
+  typeConfig.lineHeightBodyMaxScale,
+);
+// Set line height heading
+const lineHeightHeading = calculateLineHeight(
+  typeConfig.lineHeightMinScale,
+  typeConfig.lineHeightHeadingMaxScale,
+);
+
 let css = ":root {\n";
 
 // Space sizes
@@ -58,114 +114,36 @@ css += "  /* Space sizes */\n";
 for (const size of spaceScale.sizes) {
   css += `  --space-${size.label}: ${size.clamp};\n`;
 }
-
 css += "\n";
-
-// Space one-up pairs
+// One-up pairs
 css += "  /* Space one-up pairs */\n";
 for (const pair of spaceScale.oneUpPairs) {
   css += `  --space-${pair.label}: ${pair.clamp};\n`;
 }
-
-// Type config
-const typeConfig = utopiaConfig["Type"];
-const typeScale = calculateTypeScale({
-  minWidth,
-  maxWidth,
-  minFontSize: parseFloat(typeConfig["Min size"]["$value"]),
-  maxFontSize: parseFloat(typeConfig["Max size"]["$value"]),
-  minTypeScale: parseFloat(typeConfig["Min scale"]["$value"]),
-  maxTypeScale: parseFloat(typeConfig["Max scale"]["$value"]),
-  positiveSteps: parseInt(typeConfig["Positive steps"]["$value"], 10),
-  negativeSteps: parseInt(typeConfig["Negative steps"]["$value"], 10),
-});
-
-// Custom space pairs
-const customSpacesRaw = spaceConfig["Custom spaces"]["$value"];
-if (customSpacesRaw) {
-  css += "\n";
-  css += "  /* Space custom pairs */\n";
-
-  // Build a lookup from label to size object
-  const sizeLookup = {};
-  for (const size of spaceScale.sizes) {
-    sizeLookup[size.label.toUpperCase()] = size;
-  }
-
-  const customPairs = customSpacesRaw.split(",").map((s) => s.trim());
-  for (const pair of customPairs) {
-    const [fromLabel, toLabel] = pair.split("-").map((s) => s.trim());
-    const fromSize = sizeLookup[fromLabel.toUpperCase()];
-    const toSize = sizeLookup[toLabel.toUpperCase()];
-
-    if (fromSize && toSize) {
-      const clamp = calculateClamp({
-        minWidth,
-        maxWidth,
-        minSize: fromSize.minSize,
-        maxSize: toSize.maxSize,
-      });
-      const label = `${fromLabel.toLowerCase()}-${toLabel.toLowerCase()}`;
-      css += `  --space-${label}: ${clamp};\n`;
-    }
-  }
+css += "\n";
+// Custom pairs
+css += "  /* Space custom pairs */\n";
+for (const pair of spaceScale.customPairs) {
+  css += `  --space-${pair.label}: ${pair.clamp};\n`;
 }
-
+css += "\n";
 // Font sizes
-css += "\n";
 css += "  /* Font sizes */\n";
-for (const step of typeScale) {
-  css += `  --step-${step.step}: ${step.clamp};\n`;
+for (const size of fontSizes) {
+  css += `  --step-${size.label}: ${size.clamp};\n`;
 }
-
-// Line heights
-const typePrimitives = tokens["Type primitives"];
-const fluidTokens = tokens["Fluid tokens"];
-
-function parsePixelValue(token) {
-  return parseFloat(token["$value"].replace("px", ""));
-}
-
-function formatStepName(key) {
-  // "Step 8" → "step-8", "Step -1" → "step--1"
-  return key.replace("Step ", "step-");
-}
-
-function generateLineHeights(group, maxGroup, prefix) {
-  let output = "";
-  for (const key of Object.keys(group)) {
-    const primitiveKey = key;
-    const minVal = parsePixelValue(
-      typePrimitives["Line height @min"][primitiveKey],
-    );
-    const maxVal = parsePixelValue(typePrimitives[maxGroup][primitiveKey]);
-    const clamp = calculateClamp({
-      minWidth,
-      maxWidth,
-      minSize: minVal,
-      maxSize: maxVal,
-    });
-    output += `  --${prefix}-${formatStepName(key)}: ${clamp};\n`;
-  }
-  return output;
-}
-
 css += "\n";
+// Line height body
 css += "  /* Line heights - body */\n";
-css += generateLineHeights(
-  fluidTokens["Line height body"],
-  "Line height body @max",
-  "lh-body",
-);
-
+for (const lineHeight of lineHeightBody) {
+  css += `  --lh-body-step-${lineHeight.label}: ${lineHeight.clamp};\n`;
+}
 css += "\n";
+// Line height heading
 css += "  /* Line heights - heading */\n";
-css += generateLineHeights(
-  fluidTokens["Line height heading"],
-  "Line height heading @max",
-  "lh-heading",
-);
-
+for (const lineHeight of lineHeightHeading) {
+  css += `  --lh-heading-step-${lineHeight.label}: ${lineHeight.clamp};\n`;
+}
 css += "}\n";
 
 // Write to file

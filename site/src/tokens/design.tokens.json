@@ -267,6 +267,17 @@
               "Max": "{Fluid tokens.Space size.L}"
             }
           }
+        },
+        "XS—M": {
+          "$type": "dimension",
+          "$value": "{Fluid tokens.Space size.XS}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Min": "{Fluid tokens.Space size.XS}",
+              "Max": "{Fluid tokens.Space size.M}"
+            }
+          }
         }
       }
     },
@@ -1015,7 +1026,7 @@
       },
       "Custom spaces": {
         "$type": "string",
-        "$value": "S-L",
+        "$value": "S-L, XS-M",
         "$description": "",
         "$extensions": {
           "mode": {}
@@ -2220,7 +2231,7 @@
         "Type primitives",
         "Color Primitives"
       ],
-      "createdAt": "2026-02-07T16:56:39.508Z"
+      "createdAt": "2026-02-09T15:19:13.929Z"
     }
   }
 }

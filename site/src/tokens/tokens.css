@@ -62,6 +62,7 @@
 
   /* Space custom pairs */
   --space-s-l: clamp(0.9375rem, 0.6042rem + 1.6667vw, 2.5rem);
+  --space-xs-m: clamp(0.6875rem, 0.4342rem + 1.2667vw, 1.875rem);
 
   /* Font sizes */
   --step-8: clamp(2.8124rem, 1.5458rem + 6.3332vw, 8.7498rem);

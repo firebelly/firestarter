@@ -37,10 +37,10 @@ const spaceConfig = {
   maxSize: parseInt(utopia.Space["Max size"]["$value"], 10),
   positiveSpaces: utopia.Space["Positive spaces"]["$value"]
     .split(",")
-    .map((s) => parseFloat(s.trim())),
+    .map((s: string) => parseFloat(s.trim())),
   negativeSpaces: utopia.Space["Negative spaces"]["$value"]
     .split(",")
-    .map((s) => parseFloat(s.trim())),
+    .map((s: string) => parseFloat(s.trim())),
   customSpaces: utopia.Space["Custom spaces"]["$value"],
 };
 
@@ -68,7 +68,7 @@ const spaceScale = calculateSpaceScale({
   negativeSteps: spaceConfig.negativeSpaces,
   customSizes: spaceConfig.customSpaces
     .split(",")
-    .map((s) => s.trim().toLowerCase()),
+    .map((s: string) => s.trim().toLowerCase()),
 });
 
 // Set font sizes
@@ -84,7 +84,10 @@ const fontSizes = calculateTypeScale({
 });
 
 // Calculate line height
-function calculateLineHeight(minScale, maxScale) {
+function calculateLineHeight(
+  minScale: Record<string, { $value: string }>,
+  maxScale: Record<string, { $value: string }>,
+) {
   return Object.keys(minScale).map((step) => ({
     label: parseInt(step.replace("Step ", ""), 10),
     clamp: calculateClamp({

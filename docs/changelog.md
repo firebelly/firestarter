@@ -186,3 +186,19 @@ Converted `generate-fluid-tokens.js` to TypeScript and added a new `XS—M` cust
 - `site/src/tokens/generate-fluid-tokens.ts` — Fluid token generator (converted from JS)
 - `site/src/tokens/design.tokens.json` — Added `XS—M` custom space pair
 - `site/package.json` — Updated `tokens` script to use `npx tsx`
+
+---
+
+## 2026-02-11: Fluid Tokens Terrazzo Plugin
+
+Replaced the standalone `generate-fluid-tokens.ts` script with a custom Terrazzo plugin. Fluid `clamp()` values are now computed inside the Terrazzo build pipeline, producing a single `:root` block with proper `var()` alias resolution for downstream component tokens. The `tokens` script simplifies from two steps to `tz build`.
+
+**Design:** [docs/design-plans/2026-02-11-0928-fluid-tokens-terrazzo-plugin.md](design-plans/2026-02-11-0928-fluid-tokens-terrazzo-plugin.md)
+**Plan:** [docs/implementation-plans/2026-02-11-1009-fluid-tokens-terrazzo-plugin.md](implementation-plans/2026-02-11-1009-fluid-tokens-terrazzo-plugin.md)
+
+**Key files:**
+
+- `site/src/tokens/terrazzo-plugin-fluid.mjs` — Custom Terrazzo plugin for fluid token computation
+- `site/terrazzo.config.mjs` — Updated with plugin, `variableName()`, and revised exclude list
+- `site/package.json` — Simplified `tokens` script to `tz build`
+- `site/src/tokens/generate-fluid-tokens.ts` — Deleted

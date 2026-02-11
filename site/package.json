@@ -9,7 +9,7 @@
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "tokens": "tz build && npx tsx src/tokens/generate-fluid-tokens.ts"
+    "tokens": "tz build"
   },
   "dependencies": {
     "next": "16.1.4",

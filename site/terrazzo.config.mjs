@@ -1,6 +1,6 @@
 import { defineConfig } from "@terrazzo/cli";
 import css from "@terrazzo/plugin-css";
-import fluidTokensPlugin from "./src/tokens/terrazzo-plugin-fluid.ts";
+import fluidTokensPlugin from "./src/tokens/terrazzo-plugin-fluid.mjs";
 
 export default defineConfig({
   tokens: ["./src/tokens/design.tokens.json"],

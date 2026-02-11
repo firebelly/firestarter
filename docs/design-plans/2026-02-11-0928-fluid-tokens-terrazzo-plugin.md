@@ -121,11 +121,11 @@ Terrazzo resolves token aliases to the target's default mode regardless of the r
 
 _Filled in during `/build` phase_
 
-| Date       | Task   | Files                                              | Notes                                                                                                                                                                                       |
-| ---------- | ------ | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-02-11 | Task 1 | site/src/tokens/terrazzo-plugin-fluid.ts           | Deviated: Used inline types instead of importing from @terrazzo/parser (not directly accessible via pnpm). Dimension $value is { value, unit } not number/string — dimValue() handles both. |
-| 2026-02-11 | Task 2 | site/terrazzo.config.mjs, site/package.json        | No deviations. Single :root block, all 67 fluid values match reference.                                                                                                                     |
-| 2026-02-11 | Task 3 | site/src/tokens/generate-fluid-tokens.ts (deleted) | No deviations. Remaining references are all in docs (historical) and .zed/debug.json (untracked IDE config).                                                                                |
+| Date       | Task   | Files                                              | Notes                                                                                                                                                                                                                  |
+| ---------- | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-02-11 | Task 1 | site/src/tokens/terrazzo-plugin-fluid.mjs          | Deviated: Plugin is .mjs not .ts — Terrazzo CLI runs plain Node.js, can't import .ts files. Also used inline types initially but removed when converting to JS. Dimension $value is { value, unit } not number/string. |
+| 2026-02-11 | Task 2 | site/terrazzo.config.mjs, site/package.json        | No deviations. Single :root block, all 67 fluid values match reference.                                                                                                                                                |
+| 2026-02-11 | Task 3 | site/src/tokens/generate-fluid-tokens.ts (deleted) | No deviations. Remaining references are all in docs (historical) and .zed/debug.json (untracked IDE config).                                                                                                           |
 
 ---
 

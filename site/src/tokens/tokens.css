@@ -26,89 +26,75 @@
   --color-primitives-teal-402: hsl(178 85% 66%);
   --color-primitives-teal-403: hsl(187 72% 37%);
   --color-primitives-teal-404: hsl(186 90% 19%);
-  --type-primitives-font-family-body: Inter;
-  --type-primitives-font-family-heading: Platform;
-  --type-primitives-font-weight-bold: Bold;
-  --type-primitives-font-weight-medium: Medium;
-}
-
-:root {
-  /* Space sizes */
-  --space-3xs: clamp(0.25rem, 0.2367rem + 0.0667vw, 0.3125rem);
-  --space-2xs: clamp(0.5rem, 0.4733rem + 0.1333vw, 0.625rem);
-  --space-xs: clamp(0.6875rem, 0.6342rem + 0.2667vw, 0.9375rem);
-  --space-s: clamp(0.9375rem, 0.8708rem + 0.3333vw, 1.25rem);
-  --space-m: clamp(1.4375rem, 1.3442rem + 0.4667vw, 1.875rem);
-  --space-l: clamp(1.875rem, 1.7417rem + 0.6667vw, 2.5rem);
-  --space-xl: clamp(2.8125rem, 2.6125rem + 1vw, 3.75rem);
-  --space-2xl: clamp(3.75rem, 3.4833rem + 1.3333vw, 5rem);
-  --space-3xl: clamp(5.625rem, 5.225rem + 2vw, 7.5rem);
-  --space-4xl: clamp(7.5rem, 6.9667rem + 2.6667vw, 10rem);
-  --space-5xl: clamp(9.375rem, 8.7083rem + 3.3333vw, 12.5rem);
-  --space-6xl: clamp(11.25rem, 10.45rem + 4vw, 15rem);
-
-  /* Space one-up pairs */
-  --space-3xs-2xs: clamp(0.25rem, 0.17rem + 0.4vw, 0.625rem);
-  --space-2xs-xs: clamp(0.5rem, 0.4067rem + 0.4667vw, 0.9375rem);
-  --space-xs-s: clamp(0.6875rem, 0.5675rem + 0.6vw, 1.25rem);
-  --space-s-m: clamp(0.9375rem, 0.7375rem + 1vw, 1.875rem);
-  --space-m-l: clamp(1.4375rem, 1.2108rem + 1.1333vw, 2.5rem);
-  --space-l-xl: clamp(1.875rem, 1.475rem + 2vw, 3.75rem);
-  --space-xl-2xl: clamp(2.8125rem, 2.3458rem + 2.3333vw, 5rem);
-  --space-2xl-3xl: clamp(3.75rem, 2.95rem + 4vw, 7.5rem);
-  --space-3xl-4xl: clamp(5.625rem, 4.6917rem + 4.6667vw, 10rem);
-  --space-4xl-5xl: clamp(7.5rem, 6.4333rem + 5.3333vw, 12.5rem);
-  --space-5xl-6xl: clamp(9.375rem, 8.175rem + 6vw, 15rem);
-
-  /* Space custom pairs */
-  --space-s-l: clamp(0.9375rem, 0.6042rem + 1.6667vw, 2.5rem);
-  --space-xs-m: clamp(0.6875rem, 0.4342rem + 1.2667vw, 1.875rem);
-
-  /* Font sizes */
-  --step-8: clamp(2.8124rem, 1.5458rem + 6.3332vw, 8.7498rem);
-  --step-7: clamp(2.4516rem, 1.511rem + 4.703vw, 6.8606rem);
-  --step-6: clamp(2.137rem, 1.4453rem + 3.4585vw, 5.3793rem);
-  --step-5: clamp(1.8628rem, 1.3604rem + 2.512vw, 4.2178rem);
-  --step-4: clamp(1.6238rem, 1.2647rem + 1.7956vw, 3.3072rem);
-  --step-3: clamp(1.4154rem, 1.1642rem + 1.2562vw, 2.5931rem);
-  --step-2: clamp(1.2338rem, 1.0633rem + 0.8527vw, 2.0332rem);
-  --step-1: clamp(1.0755rem, 0.9648rem + 0.5533vw, 1.5942rem);
-  --step-0: clamp(0.9375rem, 0.8708rem + 0.3333vw, 1.25rem);
-  --step--1: clamp(0.8172rem, 0.7825rem + 0.1738vw, 0.9801rem);
-  --step--2: clamp(0.7123rem, 0.7004rem + 0.0599vw, 0.7685rem);
-  --step--3: clamp(0.6026rem, 0.6249rem + -0.0196vw, 0.6209rem);
-  --step--4: clamp(0.4725rem, 0.556rem + -0.0734vw, 0.5413rem);
-  --step--5: clamp(0.3704rem, 0.4934rem + -0.1081vw, 0.4718rem);
-
-  /* Line heights - body */
-  --lh-body-step-8: clamp(2.4056rem, 1.1188rem + 6.434vw, 8.4375rem);
-  --lh-body-step-7: clamp(2.5412rem, 1.5919rem + 4.7467vw, 6.9913rem);
-  --lh-body-step-6: clamp(2.2963rem, 1.5503rem + 3.73vw, 5.7931rem);
-  --lh-body-step-5: clamp(2.075rem, 1.4937rem + 2.9067vw, 4.8rem);
-  --lh-body-step-4: clamp(1.875rem, 1.4265rem + 2.2427vw, 3.9775rem);
-  --lh-body-step-3: clamp(1.6944rem, 1.3528rem + 1.708vw, 3.2956rem);
-  --lh-body-step-2: clamp(1.5306rem, 1.2746rem + 1.28vw, 2.7306rem);
-  --lh-body-step-1: clamp(1.3831rem, 1.1954rem + 0.9387vw, 2.2631rem);
-  --lh-body-step-0: clamp(1.25rem, 1.1167rem + 0.6667vw, 1.875rem);
   --lh-body-step--1: clamp(1.1294rem, 1.0388rem + 0.4527vw, 1.5538rem);
   --lh-body-step--2: clamp(1.0206rem, 0.9637rem + 0.2847vw, 1.2875rem);
   --lh-body-step--3: clamp(0.9225rem, 0.8917rem + 0.154vw, 1.0669rem);
   --lh-body-step--4: clamp(0.8331rem, 0.8223rem + 0.054vw, 0.8838rem);
   --lh-body-step--5: clamp(0.7325rem, 0.7575rem + -0.022vw, 0.7531rem);
-
-  /* Line heights - heading */
-  --lh-heading-step-8: clamp(2.4056rem, 1.1588rem + 6.234vw, 8.25rem);
-  --lh-heading-step-7: clamp(2.5412rem, 1.6766rem + 4.3233vw, 6.5944rem);
-  --lh-heading-step-6: clamp(2.2963rem, 1.6616rem + 3.1733vw, 5.2712rem);
-  --lh-heading-step-5: clamp(2.075rem, 1.6189rem + 2.2807vw, 4.2131rem);
-  --lh-heading-step-4: clamp(1.875rem, 1.5565rem + 1.5927vw, 3.3681rem);
-  --lh-heading-step-3: clamp(1.6944rem, 1.4816rem + 1.064vw, 2.6919rem);
-  --lh-heading-step-2: clamp(1.5306rem, 1.3981rem + 0.6627vw, 2.1519rem);
-  --lh-heading-step-1: clamp(1.3831rem, 1.3113rem + 0.3593vw, 1.72rem);
-  --lh-heading-step-0: clamp(1.25rem, 1.2233rem + 0.1333vw, 1.375rem);
+  --lh-body-step-0: clamp(1.25rem, 1.1167rem + 0.6667vw, 1.875rem);
+  --lh-body-step-1: clamp(1.3831rem, 1.1954rem + 0.9387vw, 2.2631rem);
+  --lh-body-step-2: clamp(1.5306rem, 1.2746rem + 1.28vw, 2.7306rem);
+  --lh-body-step-3: clamp(1.6944rem, 1.3528rem + 1.708vw, 3.2956rem);
+  --lh-body-step-4: clamp(1.875rem, 1.4265rem + 2.2427vw, 3.9775rem);
+  --lh-body-step-5: clamp(2.075rem, 1.4937rem + 2.9067vw, 4.8rem);
+  --lh-body-step-6: clamp(2.2963rem, 1.5503rem + 3.73vw, 5.7931rem);
+  --lh-body-step-7: clamp(2.5412rem, 1.5919rem + 4.7467vw, 6.9913rem);
+  --lh-body-step-8: clamp(2.4056rem, 1.1188rem + 6.434vw, 8.4375rem);
   --lh-heading-step--1: clamp(1.0994rem, 1.1358rem + -0.032vw, 1.1294rem);
   --lh-heading-step--2: clamp(0.8788rem, 1.0509rem + -0.1513vw, 1.0206rem);
   --lh-heading-step--3: clamp(0.7025rem, 0.9694rem + -0.2347vw, 0.9225rem);
   --lh-heading-step--4: clamp(0.5613rem, 0.8911rem + -0.29vw, 0.8331rem);
   --lh-heading-step--5: clamp(0.4488rem, 0.8181rem + -0.3247vw, 0.7531rem);
+  --lh-heading-step-0: clamp(1.25rem, 1.2233rem + 0.1333vw, 1.375rem);
+  --lh-heading-step-1: clamp(1.3831rem, 1.3113rem + 0.3593vw, 1.72rem);
+  --lh-heading-step-2: clamp(1.5306rem, 1.3981rem + 0.6627vw, 2.1519rem);
+  --lh-heading-step-3: clamp(1.6944rem, 1.4816rem + 1.064vw, 2.6919rem);
+  --lh-heading-step-4: clamp(1.875rem, 1.5565rem + 1.5927vw, 3.3681rem);
+  --lh-heading-step-5: clamp(2.075rem, 1.6189rem + 2.2807vw, 4.2131rem);
+  --lh-heading-step-6: clamp(2.2963rem, 1.6616rem + 3.1733vw, 5.2712rem);
+  --lh-heading-step-7: clamp(2.5412rem, 1.6766rem + 4.3233vw, 6.5944rem);
+  --lh-heading-step-8: clamp(2.4056rem, 1.1588rem + 6.234vw, 8.25rem);
+  --space-2xl: clamp(3.75rem, 3.4833rem + 1.3333vw, 5rem);
+  --space-2xl-3xl: clamp(3.75rem, 2.95rem + 4vw, 7.5rem);
+  --space-2xs: clamp(0.5rem, 0.4733rem + 0.1333vw, 0.625rem);
+  --space-2xs-xs: clamp(0.5rem, 0.4067rem + 0.4667vw, 0.9375rem);
+  --space-3xl: clamp(5.625rem, 5.225rem + 2vw, 7.5rem);
+  --space-3xl-4xl: clamp(5.625rem, 4.6917rem + 4.6667vw, 10rem);
+  --space-3xs: clamp(0.25rem, 0.2367rem + 0.0667vw, 0.3125rem);
+  --space-3xs-2xs: clamp(0.25rem, 0.17rem + 0.4vw, 0.625rem);
+  --space-4xl: clamp(7.5rem, 6.9667rem + 2.6667vw, 10rem);
+  --space-4xl-5xl: clamp(7.5rem, 6.4333rem + 5.3333vw, 12.5rem);
+  --space-5xl: clamp(9.375rem, 8.7083rem + 3.3333vw, 12.5rem);
+  --space-5xl-6xl: clamp(9.375rem, 8.175rem + 6vw, 15rem);
+  --space-6xl: clamp(11.25rem, 10.45rem + 4vw, 15rem);
+  --space-l: clamp(1.875rem, 1.7417rem + 0.6667vw, 2.5rem);
+  --space-l-xl: clamp(1.875rem, 1.475rem + 2vw, 3.75rem);
+  --space-m: clamp(1.4375rem, 1.3442rem + 0.4667vw, 1.875rem);
+  --space-m-l: clamp(1.4375rem, 1.2108rem + 1.1333vw, 2.5rem);
+  --space-s: clamp(0.9375rem, 0.8708rem + 0.3333vw, 1.25rem);
+  --space-s-l: clamp(0.9375rem, 0.6042rem + 1.6667vw, 2.5rem);
+  --space-s-m: clamp(0.9375rem, 0.7375rem + 1vw, 1.875rem);
+  --space-xl: clamp(2.8125rem, 2.6125rem + 1vw, 3.75rem);
+  --space-xl-2xl: clamp(2.8125rem, 2.3458rem + 2.3333vw, 5rem);
+  --space-xs: clamp(0.6875rem, 0.6342rem + 0.2667vw, 0.9375rem);
+  --space-xs-m: clamp(0.6875rem, 0.4342rem + 1.2667vw, 1.875rem);
+  --space-xs-s: clamp(0.6875rem, 0.5675rem + 0.6vw, 1.25rem);
+  --step--1: clamp(0.8172rem, 0.7825rem + 0.1738vw, 0.9801rem);
+  --step--2: clamp(0.7123rem, 0.7004rem + 0.0599vw, 0.7685rem);
+  --step--3: clamp(0.6026rem, 0.6249rem + -0.0196vw, 0.6209rem);
+  --step--4: clamp(0.4725rem, 0.556rem + -0.0734vw, 0.5413rem);
+  --step--5: clamp(0.3704rem, 0.4934rem + -0.1081vw, 0.4718rem);
+  --step-0: clamp(0.9375rem, 0.8708rem + 0.3333vw, 1.25rem);
+  --step-1: clamp(1.0755rem, 0.9648rem + 0.5533vw, 1.5942rem);
+  --step-2: clamp(1.2338rem, 1.0633rem + 0.8527vw, 2.0332rem);
+  --step-3: clamp(1.4154rem, 1.1642rem + 1.2562vw, 2.5931rem);
+  --step-4: clamp(1.6238rem, 1.2647rem + 1.7956vw, 3.3072rem);
+  --step-5: clamp(1.8628rem, 1.3604rem + 2.512vw, 4.2178rem);
+  --step-6: clamp(2.137rem, 1.4453rem + 3.4585vw, 5.3793rem);
+  --step-7: clamp(2.4516rem, 1.511rem + 4.703vw, 6.8606rem);
+  --step-8: clamp(2.8124rem, 1.5458rem + 6.3332vw, 8.7498rem);
+  --type-primitives-font-family-body: Inter;
+  --type-primitives-font-family-heading: Platform;
+  --type-primitives-font-weight-bold: Bold;
+  --type-primitives-font-weight-medium: Medium;
 }

@@ -4,47 +4,18 @@ import {
   calculateTypeScale,
 } from "utopia-core";
 
-/** Minimal Terrazzo plugin types (avoids importing transitive @terrazzo/parser) */
-interface SetTransformParams {
-  format: string;
-  localID?: string;
-  value: string | Record<string, string>;
-  mode?: string;
-}
-
-interface TransformHookOptions {
-  tokens: Record<string, TokenLike>;
-  setTransform(id: string, params: SetTransformParams): void;
-}
-
-interface TokenLike {
-  $value: unknown;
-  mode: Record<string, { $value: unknown }>;
-}
-
-interface Plugin {
-  name: string;
-  enforce?: "pre" | "post";
-  transform?(options: TransformHookOptions): Promise<void>;
-}
-
-export default function fluidTokensPlugin(): Plugin {
+export default function fluidTokensPlugin() {
   return {
     name: "terrazzo-plugin-fluid",
     enforce: "post",
     async transform({ tokens, setTransform }) {
-      // Helper to read string token values (Utopia config tokens are $type: "string")
-      const str = (id: string): string => tokens[id].$value as string;
-
-      // Extract numeric value from normalized dimension tokens ({ value: number, unit: string })
-      const dimValue = (val: unknown): number =>
-        (val as { value: number }).value;
+      const str = (id) => tokens[id].$value;
+      const dimValue = (val) => val.value;
 
       // 1. Read Utopia config from tokens map
       const minWidth = parseInt(str("Utopia.Viewport.Min width"), 10);
       const maxWidth = parseInt(str("Utopia.Viewport.Max width"), 10);
 
-      // Space config
       const spaceMinSize = parseInt(str("Utopia.Space.Min size"), 10);
       const spaceMaxSize = parseInt(str("Utopia.Space.Max size"), 10);
       const positiveSpaces = str("Utopia.Space.Positive spaces")
@@ -57,7 +28,6 @@ export default function fluidTokensPlugin(): Plugin {
         .split(",")
         .map((s) => s.trim().toLowerCase());
 
-      // Type config
       const typeMinSize = parseInt(str("Utopia.Type.Min size"), 10);
       const typeMaxSize = parseInt(str("Utopia.Type.Max size"), 10);
       const minScale = parseFloat(str("Utopia.Type.Min scale"));

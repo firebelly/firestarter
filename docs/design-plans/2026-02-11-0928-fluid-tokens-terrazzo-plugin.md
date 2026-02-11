@@ -2,7 +2,7 @@
 
 **Created:** 2026-02-11
 **Status:** Design
-**Implementation Plan Doc:** TBD
+**Implementation Plan Doc:** `docs/implementation-plans/2026-02-11-1009-fluid-tokens-terrazzo-plugin.md`
 
 ---
 

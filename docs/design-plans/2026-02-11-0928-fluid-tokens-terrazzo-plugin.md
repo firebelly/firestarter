@@ -121,9 +121,9 @@ Terrazzo resolves token aliases to the target's default mode regardless of the r
 
 _Filled in during `/build` phase_
 
-| Date | Task | Files | Notes |
-| ---- | ---- | ----- | ----- |
-|      |      |       |       |
+| Date       | Task   | Files                                    | Notes                                                                                                                                                                                       |
+| ---------- | ------ | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-02-11 | Task 1 | site/src/tokens/terrazzo-plugin-fluid.ts | Deviated: Used inline types instead of importing from @terrazzo/parser (not directly accessible via pnpm). Dimension $value is { value, unit } not number/string — dimValue() handles both. |
 
 ---
 

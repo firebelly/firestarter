@@ -232,11 +232,11 @@ css({
 
 ## Acceptance Criteria
 
-- [ ] `pnpm run tokens` (now just `tz build`) produces `tokens.css` with a single `:root` block
-- [ ] All fluid CSS custom properties (`--space-*`, `--step-*`, `--lh-body-step-*`, `--lh-heading-step-*`) have identical names and `clamp()` values as the current output
-- [ ] Non-fluid tokens (colors, font-family, font-weight) are unchanged
-- [ ] `generate-fluid-tokens.ts` is deleted and no longer referenced
-- [ ] Adding a component token (e.g., `Button.Vertical Padding`) that aliases a fluid token produces a `var()` reference in the CSS output (manual test if time allows)
+- [x] `pnpm run tokens` (now just `tz build`) produces `tokens.css` with a single `:root` block
+- [x] All fluid CSS custom properties (`--space-*`, `--step-*`, `--lh-body-step-*`, `--lh-heading-step-*`) have identical names and `clamp()` values as the current output
+- [x] Non-fluid tokens (colors, font-family, font-weight) are unchanged
+- [x] `generate-fluid-tokens.ts` is deleted and no longer referenced
+- [x] Adding a component token (e.g., `Button.Vertical Padding`) that aliases a fluid token produces a `var()` reference in the CSS output (manual test if time allows)
 
 ---
 

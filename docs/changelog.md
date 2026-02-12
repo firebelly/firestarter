@@ -202,3 +202,17 @@ Replaced the standalone `generate-fluid-tokens.ts` script with a custom Terrazzo
 - `site/terrazzo.config.mjs` — Updated with plugin, `variableName()`, and revised exclude list
 - `site/package.json` — Simplified `tokens` script to `tz build`
 - `site/src/tokens/generate-fluid-tokens.ts` — Deleted
+
+---
+
+## 2026-02-12: Fluid Token Modes
+
+Refactored the Terrazzo fluid tokens plugin to unify all token categories (space, type, line heights) on a single mode-based approach using only `calculateClamp()`. Replaced the `variableName` if/startsWith chain with ordered regex patterns. Plugin reduced from ~100 lines (3 strategies, 3 utopia-core functions) to ~43 lines (1 loop, 1 function).
+
+**Design:** [docs/design-plans/2026-02-12-1317-fluid-token-modes.md](design-plans/2026-02-12-1317-fluid-token-modes.md)
+**Plan:** [docs/implementation-plans/2026-02-12-1327-fluid-token-modes.md](implementation-plans/2026-02-12-1327-fluid-token-modes.md)
+
+**Key files:**
+
+- `site/src/tokens/terrazzo-plugin-fluid.mjs` — Rewritten to unified mode-based loop
+- `site/terrazzo.config.mjs` — `variableName` replaced with ordered regex patterns

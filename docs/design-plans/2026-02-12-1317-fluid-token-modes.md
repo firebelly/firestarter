@@ -2,7 +2,7 @@
 
 **Created:** 2026-02-12
 **Status:** Design
-**Implementation Plan Doc:** _TBD — created during `/plan` phase_
+**Implementation Plan Doc:** `docs/implementation-plans/2026-02-12-1327-fluid-token-modes.md`
 **Research Doc:** `docs/research/2026-02-11-universal-fluid-tokens.md`
 
 ---

@@ -145,13 +145,13 @@ variableName(token) {
 
 ## Acceptance Criteria
 
-- [ ] `pnpm run tokens` produces identical CSS output for all space, type, and line height tokens (≤0.01px rounding improvement allowed on type steps)
-- [ ] Plugin imports only `calculateClamp` from utopia-core (no `calculateSpaceScale`, `calculateTypeScale`)
-- [ ] Plugin reads no Utopia config tokens beyond `Utopia.Viewport.Min width` and `Max width`
-- [ ] Each pair token's clamp uses the "from" token's Min mode value and the "to" token's Max mode value
-- [ ] `variableName` produces identical CSS variable names for all token categories
-- [ ] `enforce: "post"` has a comment explaining why it's required
-- [ ] Key decision points in the plugin loop are commented (pair branching logic)
+- [x] `pnpm run tokens` produces identical CSS output for all space, type, and line height tokens (≤0.01px rounding improvement allowed on type steps)
+- [x] Plugin imports only `calculateClamp` from utopia-core (no `calculateSpaceScale`, `calculateTypeScale`)
+- [x] Plugin reads no Utopia config tokens beyond `Utopia.Viewport.Min width` and `Max width`
+- [x] Each pair token's clamp uses the "from" token's Min mode value and the "to" token's Max mode value
+- [x] `variableName` produces identical CSS variable names for all token categories
+- [x] `enforce: "post"` has a comment explaining why it's required
+- [x] Key decision points in the plugin loop are commented (pair branching logic)
 
 ---
 

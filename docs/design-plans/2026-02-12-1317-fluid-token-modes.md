@@ -122,8 +122,9 @@ site/terrazzo.config.mjs                   # Replace variableName with regex pat
 
 _Filled in during `/build` phase_
 
-| Date | Task | Files | Notes |
-| ---- | ---- | ----- | ----- |
+| Date       | Task   | Files                                     | Notes                                                                   |
+| ---------- | ------ | ----------------------------------------- | ----------------------------------------------------------------------- |
+| 2026-02-12 | Task 1 | site/src/tokens/terrazzo-plugin-fluid.mjs | No deviations. 4 type step values improved by ≤0.0001rem (Figma-exact). |
 
 ---
 

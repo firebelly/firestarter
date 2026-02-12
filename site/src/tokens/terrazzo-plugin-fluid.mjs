@@ -1,97 +1,40 @@
-import {
-  calculateClamp,
-  calculateSpaceScale,
-  calculateTypeScale,
-} from "utopia-core";
+import { calculateClamp } from "utopia-core";
 
 export default function fluidTokensPlugin() {
   return {
     name: "terrazzo-plugin-fluid",
+    // enforce: "post" ensures this runs after Terrazzo resolves
+    // token references and modes to concrete values
     enforce: "post",
     async transform({ tokens, setTransform }) {
-      const str = (id) => tokens[id].$value;
-      const dimValue = (val) => val.value;
+      const px = (val) => val.value;
+      const minWidth = parseInt(tokens["Utopia.Viewport.Min width"].$value, 10);
+      const maxWidth = parseInt(tokens["Utopia.Viewport.Max width"].$value, 10);
 
-      // 1. Read Utopia config from tokens map
-      const minWidth = parseInt(str("Utopia.Viewport.Min width"), 10);
-      const maxWidth = parseInt(str("Utopia.Viewport.Max width"), 10);
-
-      const spaceMinSize = parseInt(str("Utopia.Space.Min size"), 10);
-      const spaceMaxSize = parseInt(str("Utopia.Space.Max size"), 10);
-      const positiveSpaces = str("Utopia.Space.Positive spaces")
-        .split(",")
-        .map((s) => parseFloat(s.trim()));
-      const negativeSpaces = str("Utopia.Space.Negative spaces")
-        .split(",")
-        .map((s) => parseFloat(s.trim()));
-      const customSpaces = str("Utopia.Space.Custom spaces")
-        .split(",")
-        .map((s) => s.trim().toLowerCase());
-
-      const typeMinSize = parseInt(str("Utopia.Type.Min size"), 10);
-      const typeMaxSize = parseInt(str("Utopia.Type.Max size"), 10);
-      const minScale = parseFloat(str("Utopia.Type.Min scale"));
-      const maxScale = parseFloat(str("Utopia.Type.Max scale"));
-      const positiveSteps = parseInt(str("Utopia.Type.Positive steps"), 10);
-      const negativeSteps = parseInt(str("Utopia.Type.Negative steps"), 10);
-
-      // 2. Compute space scale
-      const spaceScale = calculateSpaceScale({
-        minWidth,
-        maxWidth,
-        minSize: spaceMinSize,
-        maxSize: spaceMaxSize,
-        positiveSteps: positiveSpaces,
-        negativeSteps: negativeSpaces,
-        customSizes: customSpaces,
-      });
-
-      for (const size of spaceScale.sizes) {
-        const tokenId = `Fluid tokens.Space size.${size.label.toUpperCase()}`;
-        setTransform(tokenId, { format: "css", value: size.clamp });
-      }
-
-      for (const pair of spaceScale.oneUpPairs) {
-        const parts = pair.label.split("-");
-        const tokenLabel = parts.map((p) => p.toUpperCase()).join("\u2014");
-        const tokenId = `Fluid tokens.Space size pairs.${tokenLabel}`;
-        setTransform(tokenId, { format: "css", value: pair.clamp });
-      }
-
-      for (const pair of spaceScale.customPairs) {
-        const parts = pair.label.split("-");
-        const tokenLabel = parts.map((p) => p.toUpperCase()).join("\u2014");
-        const tokenId = `Fluid tokens.Space size pairs.Custom pairs.${tokenLabel}`;
-        setTransform(tokenId, { format: "css", value: pair.clamp });
-      }
-
-      // 3. Compute type scale
-      const typeScale = calculateTypeScale({
-        minWidth,
-        maxWidth,
-        minFontSize: typeMinSize,
-        maxFontSize: typeMaxSize,
-        minTypeScale: minScale,
-        maxTypeScale: maxScale,
-        positiveSteps,
-        negativeSteps,
-      });
-
-      for (const step of typeScale) {
-        const tokenId = `Fluid tokens.Font size.Step ${step.step}`;
-        setTransform(tokenId, { format: "css", value: step.clamp });
-      }
-
-      // 4. Compute line heights from Min/Max mode values
       for (const [id, token] of Object.entries(tokens)) {
         if (
-          !id.startsWith("Fluid tokens.Line height body.") &&
-          !id.startsWith("Fluid tokens.Line height heading.")
-        ) {
+          !id.startsWith("Fluid tokens.") ||
+          id.startsWith("Fluid tokens.Grid.")
+        )
           continue;
+
+        let minSize, maxSize;
+
+        if (id.startsWith("Fluid tokens.Space size pairs.")) {
+          // Pair tokens: use "from" token's Min mode, "to" token's Max mode
+          const label = id.split(".").pop();
+          const [fromLabel, toLabel] = label.split("\u2014");
+          minSize = px(
+            tokens[`Fluid tokens.Space size.${fromLabel}`].mode["Min"].$value,
+          );
+          maxSize = px(
+            tokens[`Fluid tokens.Space size.${toLabel}`].mode["Max"].$value,
+          );
+        } else {
+          minSize = px(token.mode["Min"].$value);
+          maxSize = px(token.mode["Max"].$value);
         }
-        const minSize = dimValue(token.mode["Min"].$value);
-        const maxSize = dimValue(token.mode["Max"].$value);
+
         const clamp = calculateClamp({ minWidth, maxWidth, minSize, maxSize });
         setTransform(id, { format: "css", value: clamp });
       }

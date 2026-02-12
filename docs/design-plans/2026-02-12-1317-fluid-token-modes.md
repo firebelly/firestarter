@@ -1,7 +1,7 @@
 # Fluid Token Modes
 
 **Created:** 2026-02-12
-**Status:** Design
+**Status:** Complete
 **Implementation Plan Doc:** `docs/implementation-plans/2026-02-12-1327-fluid-token-modes.md`
 **Research Doc:** `docs/research/2026-02-11-universal-fluid-tokens.md`
 
@@ -21,13 +21,13 @@
 
 ### Must Have
 
-- [ ] Single loop over all `Fluid tokens.*` entries using `calculateClamp()` only
-- [ ] Pair tokens resolve correctly: "from" token's Min mode, "to" token's Max mode
-- [ ] `variableName` in config uses ordered regex pattern array (most specific first)
-- [ ] `dimValue` renamed to `px`
-- [ ] Comment explaining `enforce: "post"` rationale
-- [ ] Comments at key decision points in the plugin (not every line)
-- [ ] Output parity with current build (allowing ≤0.01px type step rounding improvement)
+- [x] Single loop over all `Fluid tokens.*` entries using `calculateClamp()` only
+- [x] Pair tokens resolve correctly: "from" token's Min mode, "to" token's Max mode
+- [x] `variableName` in config uses ordered regex pattern array (most specific first)
+- [x] `dimValue` renamed to `px`
+- [x] Comment explaining `enforce: "post"` rationale
+- [x] Comments at key decision points in the plugin (not every line)
+- [x] Output parity with current build (allowing ≤0.01px type step rounding improvement)
 
 ### Nice to Have
 
@@ -99,13 +99,13 @@ Uniform transform: `prefix + capture.toLowerCase().replace("—", "-")`
 
 ## Acceptance Criteria
 
-- [ ] `pnpm run tokens` produces identical CSS output for all space, type, and line height tokens (allowing ≤0.01px rounding improvement on type steps where mode-based values match Figma exactly)
-- [ ] Plugin imports only `calculateClamp` from utopia-core (no `calculateSpaceScale`, `calculateTypeScale`)
-- [ ] Plugin reads no Utopia config tokens beyond `Utopia.Viewport.Min width` and `Max width`
-- [ ] Each pair token's clamp uses the "from" token's Min mode value and the "to" token's Max mode value
-- [ ] `variableName` produces identical CSS variable names for all token categories
-- [ ] `enforce: "post"` has a comment explaining why it's required
-- [ ] Key decision points in the plugin loop are commented (pair branching logic)
+- [x] `pnpm run tokens` produces identical CSS output for all space, type, and line height tokens (allowing ≤0.01px rounding improvement on type steps where mode-based values match Figma exactly)
+- [x] Plugin imports only `calculateClamp` from utopia-core (no `calculateSpaceScale`, `calculateTypeScale`)
+- [x] Plugin reads no Utopia config tokens beyond `Utopia.Viewport.Min width` and `Max width`
+- [x] Each pair token's clamp uses the "from" token's Min mode value and the "to" token's Max mode value
+- [x] `variableName` produces identical CSS variable names for all token categories
+- [x] `enforce: "post"` has a comment explaining why it's required
+- [x] Key decision points in the plugin loop are commented (pair branching logic)
 
 ---
 

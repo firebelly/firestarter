@@ -42,7 +42,7 @@ export function ColorSwatches({ tokens }: ColorSwatchesProps) {
               backgroundColor: `var(${token.cssVar})`,
             }}
           />
-          <span style={label}>{token.cssVar}</span>
+          <span style={label}>{token.label}</span>
           <span style={secondary}>{token.hsl}</span>
         </div>
       ))}

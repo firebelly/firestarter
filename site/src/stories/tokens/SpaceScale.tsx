@@ -14,7 +14,7 @@ export function SpaceScale({ tokens }: SpaceScaleProps) {
         {tokens.map((token) => (
           <tr key={token.cssVar}>
             <td style={{ ...td, width: "160px" }}>
-              <div style={label}>{token.cssVar}</div>
+              <div style={label}>{token.label}</div>
               <div style={secondary}>
                 {token.minPx}px &ndash; {token.maxPx}px
               </div>

@@ -1,7 +1,7 @@
 # Storybook Token Display
 
 **Created:** 2026-02-12
-**Status:** Design
+**Status:** Complete
 **Implementation Plan Doc:** docs/implementation-plans/2026-02-12-1743-storybook-token-display.md
 
 ---

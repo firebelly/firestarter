@@ -1,6 +1,5 @@
 import { Meta } from "@storybook/addon-docs/blocks";
-import { SpaceSizes } from "./SpaceSizes";
-import { SpacePairs } from "./SpacePairs";
+import { SpaceScale } from "./SpaceScale";
 import { spaceSizes, spacePairs } from "./token-data";
 
 <Meta title="Tokens/Spacing" />
@@ -9,8 +8,8 @@ import { spaceSizes, spacePairs } from "./token-data";
 
 ## Space Sizes
 
-<SpaceSizes sizes={spaceSizes} />
+<SpaceScale tokens={spaceSizes} />
 
 ## Space Pairs
 
-<SpacePairs pairs={spacePairs} />
+<SpaceScale tokens={spacePairs} />

@@ -1,42 +1,35 @@
 import type { ColorToken } from "./token-data";
+import { useTokenStyles } from "./useTokenStyles";
 
 interface ColorSwatchesProps {
-  colors: ColorToken[];
+  tokens: ColorToken[];
 }
 
-const styles = {
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
-    gap: "1rem",
-  },
-  swatch: {
-    display: "flex",
-    flexDirection: "column" as const,
-    gap: "0.25rem",
-  },
-  color: {
-    width: "100%",
-    aspectRatio: "1",
-    borderRadius: "6px",
-    border: "1px solid hsl(0 0% 0% / 0.1)",
-  },
-  label: {
-    fontSize: "13px",
-    fontFamily: "monospace",
-    color: "#333",
-  },
-  hsl: {
-    fontSize: "11px",
-    fontFamily: "monospace",
-    color: "#666",
-  },
-};
+export function ColorSwatches({ tokens }: ColorSwatchesProps) {
+  const { theme, label, secondary } = useTokenStyles();
 
-export function ColorSwatches({ colors }: ColorSwatchesProps) {
+  const styles = {
+    grid: {
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
+      gap: "1rem",
+    },
+    swatch: {
+      display: "flex",
+      flexDirection: "column" as const,
+      gap: "0.25rem",
+    },
+    color: {
+      width: "100%",
+      aspectRatio: "1",
+      borderRadius: "6px",
+      border: `1px solid ${theme.appBorderColor}`,
+    },
+  };
+
   return (
     <div style={styles.grid}>
-      {colors.map((token) => (
+      {tokens.map((token) => (
         <div key={token.cssVar} style={styles.swatch}>
           <div
             style={{
@@ -44,8 +37,8 @@ export function ColorSwatches({ colors }: ColorSwatchesProps) {
               backgroundColor: `var(${token.cssVar})`,
             }}
           />
-          <span style={styles.label}>{token.cssVar}</span>
-          <span style={styles.hsl}>{token.hsl}</span>
+          <span style={label}>{token.cssVar}</span>
+          <span style={secondary}>{token.hsl}</span>
         </div>
       ))}
     </div>

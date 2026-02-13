@@ -239,3 +239,20 @@ Custom React viewer components displayed via MDX pages in Storybook for browsing
 - `site/src/stories/tokens/Typography.mdx` — Typography tokens page
 - `site/src/stories/tokens/Spacing.mdx` — Spacing tokens page
 - `site/.storybook/preview.ts` — Added `tokens.css` import
+
+---
+
+## 2026-02-13: Refactor Token Viewer Components
+
+Refactored the Storybook token viewer components: replaced all hardcoded colors with Storybook theme values, merged duplicate components (SpaceSizes + SpacePairs → SpaceScale, TypeScale + LineHeightScale → FluidScale), extracted shared styles into a `useTokenStyles` hook, and standardized all components to use a `tokens` prop.
+
+**Key files:**
+
+- `site/src/stories/tokens/useTokenStyles.ts` — New shared styles hook
+- `site/src/stories/tokens/SpaceScale.tsx` — New (replaces SpaceSizes + SpacePairs)
+- `site/src/stories/tokens/FluidScale.tsx` — New (replaces TypeScale + LineHeightScale)
+- `site/src/stories/tokens/ColorSwatches.tsx` — Refactored (theme + prop rename)
+- `site/src/stories/tokens/FontSpecimen.tsx` — Refactored (theme + prop rename)
+- `site/src/stories/tokens/Typography.mdx` — Updated imports and props
+- `site/src/stories/tokens/Spacing.mdx` — Updated imports and props
+- `site/src/stories/tokens/Color.mdx` — Updated props

@@ -15,7 +15,7 @@ export function FontSpecimen({ tokens, property }: FontSpecimenProps) {
         {tokens.map((token) => (
           <tr key={token.cssVar}>
             <td style={td}>
-              <div style={label}>{token.cssVar}</div>
+              <div style={label}>{token.label}</div>
               <div style={secondary}>{token.value}</div>
             </td>
             <td style={td}>

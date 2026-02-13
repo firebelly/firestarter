@@ -7,20 +7,19 @@ interface SpaceScaleProps {
 
 export function SpaceScale({ tokens }: SpaceScaleProps) {
   const { theme, table, td, label, secondary } = useTokenStyles();
-  const tdMiddle = { ...td, verticalAlign: "middle" as const };
 
   return (
     <table style={table}>
       <tbody>
         {tokens.map((token) => (
           <tr key={token.cssVar}>
-            <td style={{ ...tdMiddle, width: "160px" }}>
-              <div style={label}>{token.cssVar}</div>
+            <td style={{ ...td, width: "160px" }}>
+              <div style={label}>{token.label}</div>
               <div style={secondary}>
                 {token.minPx}px &ndash; {token.maxPx}px
               </div>
             </td>
-            <td style={tdMiddle}>
+            <td style={td}>
               <div
                 style={{
                   height: "16px",

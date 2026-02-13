@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import type { ColorToken } from "./token-data";
 import { useTokenStyles } from "./useTokenStyles";
 
@@ -8,24 +10,27 @@ interface ColorSwatchesProps {
 export function ColorSwatches({ tokens }: ColorSwatchesProps) {
   const { theme, label, secondary } = useTokenStyles();
 
-  const styles = {
-    grid: {
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
-      gap: "1rem",
-    },
-    swatch: {
-      display: "flex",
-      flexDirection: "column" as const,
-      gap: "0.25rem",
-    },
-    color: {
-      width: "100%",
-      aspectRatio: "1",
-      borderRadius: "6px",
-      border: `1px solid ${theme.appBorderColor}`,
-    },
-  };
+  const styles = useMemo(
+    () => ({
+      grid: {
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
+        gap: "1rem",
+      },
+      swatch: {
+        display: "flex",
+        flexDirection: "column" as const,
+        gap: "0.25rem",
+      },
+      color: {
+        width: "100%",
+        aspectRatio: "1",
+        borderRadius: "6px",
+        border: `1px solid ${theme.appBorderColor}`,
+      },
+    }),
+    [theme.appBorderColor],
+  );
 
   return (
     <div style={styles.grid}>
@@ -37,7 +42,7 @@ export function ColorSwatches({ tokens }: ColorSwatchesProps) {
               backgroundColor: `var(${token.cssVar})`,
             }}
           />
-          <span style={label}>{token.cssVar}</span>
+          <span style={label}>{token.label}</span>
           <span style={secondary}>{token.hsl}</span>
         </div>
       ))}

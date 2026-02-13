@@ -1,50 +1,27 @@
 import type { FontToken } from "./token-data";
+import { useTokenStyles } from "./useTokenStyles";
 
 interface FontSpecimenProps {
-  fonts: FontToken[];
+  tokens: FontToken[];
   property: "fontFamily" | "fontWeight";
 }
 
-const styles = {
-  table: {
-    width: "100%",
-    borderCollapse: "collapse" as const,
-  },
-  td: {
-    padding: "0.75rem 1rem",
-    borderBottom: "1px solid #eee",
-    verticalAlign: "baseline" as const,
-  },
-  label: {
-    fontSize: "13px",
-    fontFamily: "monospace",
-    color: "#333",
-    whiteSpace: "nowrap" as const,
-  },
-  value: {
-    fontSize: "11px",
-    fontFamily: "monospace",
-    color: "#666",
-  },
-  sample: {
-    fontSize: "24px",
-  },
-};
+export function FontSpecimen({ tokens, property }: FontSpecimenProps) {
+  const { table, td, label, secondary } = useTokenStyles();
 
-export function FontSpecimen({ fonts, property }: FontSpecimenProps) {
   return (
-    <table style={styles.table}>
+    <table style={table}>
       <tbody>
-        {fonts.map((token) => (
+        {tokens.map((token) => (
           <tr key={token.cssVar}>
-            <td style={styles.td}>
-              <div style={styles.label}>{token.cssVar}</div>
-              <div style={styles.value}>{token.value}</div>
+            <td style={td}>
+              <div style={label}>{token.cssVar}</div>
+              <div style={secondary}>{token.value}</div>
             </td>
-            <td style={styles.td}>
+            <td style={td}>
               <div
                 style={{
-                  ...styles.sample,
+                  fontSize: "24px",
                   [property]: `var(${token.cssVar})`,
                 }}
               >

@@ -256,3 +256,18 @@ Refactored the Storybook token viewer components: replaced all hardcoded colors 
 - `site/src/stories/tokens/Typography.mdx` — Updated imports and props
 - `site/src/stories/tokens/Spacing.mdx` — Updated imports and props
 - `site/src/stories/tokens/Color.mdx` — Updated props
+
+---
+
+## 2026-02-13: Polish Token Viewer Components
+
+Memoized style objects across token viewer components with `useMemo` to avoid unnecessary re-creation on every render. Removed redundant `tdMiddle` style object in SpaceScale. Switched displayed token names from CSS variable names to human-friendly labels (e.g., "3XS" instead of `--space-3xs`). Fixed typo in Typography MDX sidebar title.
+
+**Key files:**
+
+- `site/src/stories/tokens/useTokenStyles.ts` — Memoized shared styles on theme values
+- `site/src/stories/tokens/ColorSwatches.tsx` — Memoized local styles, display `token.label`
+- `site/src/stories/tokens/FluidScale.tsx` — Display `token.label`
+- `site/src/stories/tokens/FontSpecimen.tsx` — Display `token.label`
+- `site/src/stories/tokens/SpaceScale.tsx` — Display `token.label`
+- `site/src/stories/tokens/Typography.mdx` — Fixed "Typographhy" typo in Meta title

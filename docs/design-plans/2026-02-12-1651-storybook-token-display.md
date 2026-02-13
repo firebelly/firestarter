@@ -139,8 +139,9 @@ None.
 
 _Filled in during `/build` phase_
 
-| Date | Task | Files | Notes |
-| ---- | ---- | ----- | ----- |
+| Date       | Task   | Files                                                                 | Notes                                                                                                                 |
+| ---------- | ------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| 2026-02-12 | Task 1 | `site/src/stories/tokens/token-data.ts`, `site/.storybook/preview.ts` | Created token metadata; added tokens.css import to preview (deviation from "Modify: None" — approved during planning) |
 
 ---
 

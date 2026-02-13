@@ -139,10 +139,11 @@ None.
 
 _Filled in during `/build` phase_
 
-| Date       | Task   | Files                                                                            | Notes                                                                                                                 |
-| ---------- | ------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| 2026-02-12 | Task 1 | `site/src/stories/tokens/token-data.ts`, `site/.storybook/preview.ts`            | Created token metadata; added tokens.css import to preview (deviation from "Modify: None" — approved during planning) |
-| 2026-02-12 | Task 2 | `site/src/stories/tokens/ColorSwatches.tsx`, `site/src/stories/tokens/Color.mdx` | Color swatch grid component + MDX page with 5 hue groups                                                              |
+| Date       | Task   | Files                                                                            | Notes                                                                                                                                                       |
+| ---------- | ------ | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-02-12 | Task 1 | `site/src/stories/tokens/token-data.ts`, `site/.storybook/preview.ts`            | Created token metadata; added tokens.css import to preview (deviation from "Modify: None" — approved during planning)                                       |
+| 2026-02-12 | Task 2 | `site/src/stories/tokens/ColorSwatches.tsx`, `site/src/stories/tokens/Color.mdx` | Color swatch grid component + MDX page with 5 hue groups. Deviation: changed `@storybook/blocks` to `@storybook/addon-docs/blocks` to match project pattern |
+| 2026-02-12 | Task 3 | `FontSpecimen.tsx`, `TypeScale.tsx`, `LineHeightScale.tsx`, `Typography.mdx`     | Three typography viewer components + MDX page with 5 sections. Used `@storybook/addon-docs/blocks` per Task 2 fix                                           |
 
 ---
 

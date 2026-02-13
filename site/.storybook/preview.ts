@@ -1,3 +1,5 @@
+import "../src/tokens/tokens.css";
+
 import type { Preview } from "@storybook/nextjs-vite";
 
 const preview: Preview = {

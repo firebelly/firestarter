@@ -1,0 +1,35 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { FontSpecimen } from "./FontSpecimen";
+import { TypeScale } from "./TypeScale";
+import { LineHeightScale } from "./LineHeightScale";
+import {
+  fontFamilies,
+  fontWeights,
+  typeSteps,
+  lineHeightBodySteps,
+  lineHeightHeadingSteps,
+} from "./token-data";
+
+<Meta title="Tokens/Typography" />
+
+# Typography
+
+## Font Families
+
+<FontSpecimen fonts={fontFamilies} property="fontFamily" />
+
+## Font Weights
+
+<FontSpecimen fonts={fontWeights} property="fontWeight" />
+
+## Type Scale
+
+<TypeScale steps={typeSteps} />
+
+## Line Height — Body
+
+<LineHeightScale steps={lineHeightBodySteps} fontSizeSteps={typeSteps} />
+
+## Line Height — Heading
+
+<LineHeightScale steps={lineHeightHeadingSteps} fontSizeSteps={typeSteps} />

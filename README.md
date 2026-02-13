@@ -128,7 +128,9 @@ This pattern keeps related files together and ensures Storybook documents the ac
 
 ## Design Tokens
 
-Design tokens from Figma live in `/site/src/tokens/`. These are consumed by components and available in Storybook.
+Design tokens from Figma live in `/site/src/tokens/`. Run `pnpm tokens` from `/site` to regenerate `tokens.css` from the Figma export (`design.tokens.json`).
+
+Storybook includes token browsing pages under **Tokens** in the sidebar (Color, Typography, Spacing). Fluid tokens (space scale, type scale, line heights) display min/max px values and scale live with the viewport.
 
 ## Craft + Next.js Integration
 

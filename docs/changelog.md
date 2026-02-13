@@ -216,3 +216,26 @@ Refactored the Terrazzo fluid tokens plugin to unify all token categories (space
 
 - `site/src/tokens/terrazzo-plugin-fluid.mjs` — Rewritten to unified mode-based loop
 - `site/terrazzo.config.mjs` — `variableName` replaced with ordered regex patterns
+
+---
+
+## 2026-02-12: Storybook Token Display
+
+Custom React viewer components displayed via MDX pages in Storybook for browsing design tokens (colors, typography, spacing). Six focused viewer components composed by three MDX pages under a "Tokens" sidebar group. Hand-authored `token-data.ts` provides metadata with min/max px values. All fluid viewers use CSS vars and respond to viewport resizing.
+
+**Design:** [docs/design-plans/2026-02-12-1651-storybook-token-display.md](design-plans/2026-02-12-1651-storybook-token-display.md)
+**Plan:** [docs/implementation-plans/2026-02-12-1743-storybook-token-display.md](implementation-plans/2026-02-12-1743-storybook-token-display.md)
+
+**Key files:**
+
+- `site/src/stories/tokens/token-data.ts` — Hand-authored token metadata (names, groups, min/max values)
+- `site/src/stories/tokens/ColorSwatches.tsx` — Color swatch grid component
+- `site/src/stories/tokens/FontSpecimen.tsx` — Font family/weight specimen renderer
+- `site/src/stories/tokens/TypeScale.tsx` — Fluid type scale renderer
+- `site/src/stories/tokens/LineHeightScale.tsx` — Fluid line height renderer
+- `site/src/stories/tokens/SpaceSizes.tsx` — Fluid space size bar renderer
+- `site/src/stories/tokens/SpacePairs.tsx` — Fluid space pair bar renderer
+- `site/src/stories/tokens/Color.mdx` — Color tokens page
+- `site/src/stories/tokens/Typography.mdx` — Typography tokens page
+- `site/src/stories/tokens/Spacing.mdx` — Spacing tokens page
+- `site/.storybook/preview.ts` — Added `tokens.css` import

@@ -150,9 +150,12 @@ _Filled in during `/build` phase_
 
 ## Completion
 
-**Completed:** _TBD_
-**Final Status:** _TBD_
+**Completed:** 2026-02-12
+**Final Status:** Complete
 
-**Summary:** _TBD_
+**Summary:** All 4 tasks completed. 10 files created, 1 file modified. Six viewer components (ColorSwatches, FontSpecimen, TypeScale, LineHeightScale, SpaceSizes, SpacePairs) composed by three MDX pages (Color, Typography, Spacing) under a Tokens sidebar group. Hand-authored token-data.ts provides metadata. All 12 acceptance criteria passed.
 
-**Deviations from Plan:** _TBD_
+**Deviations from Plan:**
+
+- `preview.ts` modified to import `tokens.css` (approved during planning, design doc said "Modify: None")
+- MDX `Meta` import changed from `@storybook/blocks` to `@storybook/addon-docs/blocks` to match existing project pattern

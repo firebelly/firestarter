@@ -247,18 +247,18 @@ interface SpacePairsProps {
 
 ## Acceptance Criteria
 
-- [ ] Storybook sidebar shows **Tokens** group with three entries: Color, Typography, Spacing
-- [ ] Color page renders swatches grouped by hue (Gray, Blue, Magenta, Lemon, Teal), each showing token name and HSL value
-- [ ] Typography page renders font family specimens with sample text
-- [ ] Typography page renders font weight specimens with sample text
-- [ ] Typography page renders type scale — each step shows token name, min/max px, and sample text rendered at that step's fluid size
-- [ ] Typography page renders body line height scale — each step shows token name, min/max px, and multi-line sample text with the line height applied
-- [ ] Typography page renders heading line height scale — same as body
-- [ ] Spacing page renders space sizes (3XS–6XL) as fluid visual bars with token name and min/max px
-- [ ] Spacing page renders space pairs as fluid visual bars with token name and min/max px
-- [ ] Resizing the Storybook viewport causes all fluid elements (bars, text) to scale visibly
-- [ ] No new npm dependencies introduced
-- [ ] `tokens.css` is unchanged
+- [x] Storybook sidebar shows **Tokens** group with three entries: Color, Typography, Spacing
+- [x] Color page renders swatches grouped by hue (Gray, Blue, Magenta, Lemon, Teal), each showing token name and HSL value
+- [x] Typography page renders font family specimens with sample text
+- [x] Typography page renders font weight specimens with sample text
+- [x] Typography page renders type scale — each step shows token name, min/max px, and sample text rendered at that step's fluid size
+- [x] Typography page renders body line height scale — each step shows token name, min/max px, and multi-line sample text with the line height applied
+- [x] Typography page renders heading line height scale — same as body
+- [x] Spacing page renders space sizes (3XS–6XL) as fluid visual bars with token name and min/max px
+- [x] Spacing page renders space pairs as fluid visual bars with token name and min/max px
+- [x] Resizing the Storybook viewport causes all fluid elements (bars, text) to scale visibly
+- [x] No new npm dependencies introduced
+- [x] `tokens.css` is unchanged
 
 ---
 

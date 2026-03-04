@@ -1,28 +1,5 @@
 # CLAUDE.md
 
-## Workflow
-
-This project uses a phased workflow with slash commands. Each phase runs in its own session, with docs as the handoff.
-
-| Phase | Command | Output |
-|-------|---------|--------|
-| 1. Design | `/design` | `docs/design-plans/YYYY-MM-DD-feature-name.md` |
-| 2. Plan | `/plan` | `docs/implementation-plans/YYYY-MM-DD-feature-name.md` |
-| 3. Build | `/build` | Code + Build Log in design doc |
-| 4. Document | `/document` | Completed docs, changelog update |
-
-**Commands:** `.claude/commands/`
-**Templates:** `docs/templates/`
-
-### Documentation Structure
-
-- `docs/design-plans/` — Design documents
-- `docs/implementation-plans/` — Implementation plans
-- `docs/templates/` — Templates for design docs and implementation plans
-- `docs/journal.md` — Project journal
-
----
-
 ## Firestarter
 
 Firestarter is a duplicatable starter system for mid-tier client projects. It bridges the gap between full custom Craft CMS builds and Squarespace/Framer sites.

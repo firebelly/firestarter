@@ -113,8 +113,9 @@ Tests use mock token objects matching the `{ value, unit }` dimension shape.
 
 _Filled in during `/build` phase_
 
-| Date | Task | Files | Notes |
-| ---- | ---- | ----- | ----- |
+| Date       | Task   | Files                 | Notes                                                          |
+| ---------- | ------ | --------------------- | -------------------------------------------------------------- |
+| 2026-03-05 | Task 1 | site/vitest.config.ts | Added "unit" project; Vitest recognizes it (no test files yet) |
 
 ---
 

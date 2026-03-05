@@ -3,8 +3,8 @@
 **Created:** 2026-03-04
 **Implementation Plans:** This design produces two separate plans:
 
-- **Plan A:** Unit tests (includes plugin refactor)
-- **Plan B:** Integration tests
+- **Plan A:** Unit tests (includes plugin refactor) — docs/implementation-plans/2026-03-05-1223-terrazzo-plugin-unit-tests.md
+- **Plan B:** Integration tests — docs/implementation-plans/2026-03-05-1223-terrazzo-plugin-integration-tests.md
 
 ---
 

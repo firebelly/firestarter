@@ -1,0 +1,135 @@
+# Implementation Plan A: Terrazzo Plugin Unit Tests
+
+**Created:** 2026-03-05
+**Type:** Feature
+**Overview:** Refactor the fluid token plugin to extract testable helper functions, then add unit tests for each helper.
+**Design Spec:** docs/design-specs/2026-03-04-1942-terrazzo-plugin-testing.md
+
+---
+
+## Summary
+
+Extract three pure helper functions (`parseViewportConfig`, `splitPairLabel`, `resolveMinMax`) from the Terrazzo fluid token plugin and add unit tests for each. The plugin becomes a thin orchestrator; the helpers are independently testable. A new "unit" Vitest project is added alongside the existing "storybook" project.
+
+---
+
+## Codebase Verification
+
+- [x] Plugin exists at `site/src/tokens/terrazzo-plugin-fluid.mjs` (43 lines, single `transform` hook) - Verified
+- [x] Vitest config at `site/vitest.config.ts` has `storybook` project, ready for `unit` addition - Verified
+- [x] No `__tests__` directory exists yet under `site/src/tokens/` - Verified
+- [x] Dependencies present: `vitest`, `@terrazzo/cli`, `utopia-core` - Verified
+- [x] `package.json` lacks `"type": "module"` — plugin uses `.mjs` for ESM; test files use `.ts` via Vitest - Verified
+
+**Patterns to leverage:**
+
+- Existing Vitest workspace config with named projects
+
+**Discrepancies found:**
+
+- None
+
+---
+
+## Tasks
+
+### Task 1: Add "unit" test project to Vitest config
+
+**Description:** Add a `"unit"` test project to the Vitest config that matches `.test.ts` files under `src/`.
+
+**Files:**
+
+- `site/vitest.config.ts` - modify
+
+**Code example:**
+
+```ts
+{
+  test: {
+    name: "unit",
+    include: ["src/**/*.test.ts"],
+  },
+},
+```
+
+**Done when:** `pnpm vitest --project unit` runs successfully (0 tests found is fine)
+
+**Commit:** `Add unit test project to Vitest config`
+
+---
+
+### Task 2: Refactor plugin to extract testable helpers
+
+**Description:** Extract three named exports from the plugin:
+
+- `parseViewportConfig(tokens)` — returns `{ minWidth, maxWidth }` as numbers
+- `splitPairLabel(label)` — splits on em-dash, returns `[fromLabel, toLabel]`
+- `resolveMinMax(id, token, tokens)` — returns `{ minSize, maxSize }` using mode lookup (handles both regular and pair tokens)
+
+The default export becomes a thin orchestrator calling these helpers. No behavior change.
+
+**Files:**
+
+- `site/src/tokens/terrazzo-plugin-fluid.mjs` - modify
+
+**Done when:** `pnpm run tokens` produces identical CSS output (diff the before/after `tokens.css`)
+
+**Commit:** `Refactor fluid plugin to extract testable helpers`
+
+---
+
+### Task 3: Write unit tests for extracted helpers
+
+**Description:** Create unit tests covering:
+
+- `parseViewportConfig` — returns correct `{ minWidth, maxWidth }` from mock viewport tokens
+- `splitPairLabel("S\u2014M")` — returns `["S", "M"]`
+- `resolveMinMax` — correct `{ minSize, maxSize }` for regular tokens (reads Min/Max modes)
+- `resolveMinMax` — correct `{ minSize, maxSize }` for pair tokens (cross-references from/to tokens)
+
+Tests use mock token objects matching the `{ value, unit }` dimension shape.
+
+**Files:**
+
+- `site/src/tokens/__tests__/terrazzo-plugin-fluid.test.ts` - create
+
+**Done when:** `pnpm vitest --project unit` passes all tests
+
+**Commit:** `Add unit tests for fluid plugin helpers`
+
+---
+
+## Acceptance Criteria
+
+- [ ] `parseViewportConfig(tokens)` returns `{ minWidth, maxWidth }` as numbers from viewport tokens
+- [ ] `splitPairLabel("S\u2014M")` returns `["S", "M"]` (splits on em-dash)
+- [ ] `resolveMinMax` returns correct `{ minSize, maxSize }` for regular tokens (reads Min/Max modes)
+- [ ] `resolveMinMax` returns correct `{ minSize, maxSize }` for pair tokens (cross-references from/to tokens)
+- [ ] `pnpm vitest --project unit` runs and passes
+
+---
+
+## Build Log
+
+_Filled in during `/build` phase_
+
+| Date | Task | Files | Notes |
+| ---- | ---- | ----- | ----- |
+
+---
+
+## Completion
+
+**Completed:** [Date]
+**Final Status:** [Complete | Partial | Abandoned]
+
+**Summary:** [Brief description of what was actually built]
+
+**Deviations from Plan:** [Any significant changes from original design]
+
+---
+
+## Notes
+
+- Plugin source stays `.mjs` (Terrazzo CLI constraint); test files use `.ts` (Vitest handles ESM natively)
+- Plan B (integration tests) should be completed after this plan to verify the refactor didn't break output

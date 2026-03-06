@@ -24,6 +24,7 @@
     "@storybook/addon-vitest": "^10.2.0",
     "@storybook/nextjs-vite": "^10.2.0",
     "@terrazzo/cli": "^0.10.5",
+    "@terrazzo/parser": "^0.10.5",
     "@terrazzo/plugin-css": "^0.10.4",
     "@types/node": "^20",
     "@types/react": "^19",

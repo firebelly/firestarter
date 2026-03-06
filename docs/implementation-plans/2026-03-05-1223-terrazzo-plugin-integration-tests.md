@@ -90,9 +90,10 @@ Create a minimal fixture token file with representative tokens, a test-specific 
 
 _Filled in during `/build` phase_
 
-| Date       | Task   | Files                                               | Notes                                                                                 |
-| ---------- | ------ | --------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| 2026-03-05 | Task 1 | site/src/tokens/**tests**/fixtures/test.tokens.json | Fixture with viewport, space S/M, pair S—M, font Step 0, grid Columns, color gray.500 |
+| Date       | Task   | Files                                                                   | Notes                                                                                 |
+| ---------- | ------ | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| 2026-03-05 | Task 1 | site/src/tokens/**tests**/fixtures/test.tokens.json                     | Fixture with viewport, space S/M, pair S—M, font Step 0, grid Columns, color gray.500 |
+| 2026-03-05 | Task 2 | fixtures/terrazzo.config.mjs, terrazzo-plugin-fluid.integration.test.ts | 6 integration tests, all passing (20 total with unit tests)                           |
 
 ---
 

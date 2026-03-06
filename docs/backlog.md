@@ -38,3 +38,13 @@ A setup script would automate this process, making "clone and go" truly seamless
 
 - knip.dev
 - Declutter your JavaScript & TypeScript projects
+
+---
+
+## Site-level tests
+
+Vitest is configured and Terrazzo plugin tests exist. Site code isn't complex enough to benefit from tests yet. Revisit when:
+
+- **Preview strategy is finalized** — Current `preview.ts` uses a query-param approach documented as interim (`docs/learnings/2026-01-26-preview-mode-patterns.md`). If migrating to Draft Mode, the file gets replaced. Test after the approach is settled.
+- **GraphQL client grows** — `client.ts` is a thin fetch wrapper. Worth testing once it has query helpers, response transforms, or retry logic.
+- **Components gain logic** — Button and similar components are too simple now. Test once they have conditional rendering, state, or accessibility behavior.

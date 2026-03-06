@@ -1,0 +1,96 @@
+{
+  "Fluid tokens": {
+    "Space size": {
+      "S": {
+        "$type": "dimension",
+        "$value": "15px",
+        "$description": "",
+        "$extensions": {
+          "mode": {
+            "Min": "15px",
+            "Max": "20px"
+          }
+        }
+      },
+      "M": {
+        "$type": "dimension",
+        "$value": "23px",
+        "$description": "",
+        "$extensions": {
+          "mode": {
+            "Min": "23px",
+            "Max": "30px"
+          }
+        }
+      }
+    },
+    "Space size pairs": {
+      "S—M": {
+        "$type": "dimension",
+        "$value": "15px",
+        "$description": "",
+        "$extensions": {
+          "mode": {
+            "Min": "{Fluid tokens.Space size.S}",
+            "Max": "{Fluid tokens.Space size.M}"
+          }
+        }
+      }
+    },
+    "Font size": {
+      "Step 0": {
+        "$type": "dimension",
+        "$value": "15px",
+        "$description": "",
+        "$extensions": {
+          "mode": {
+            "Min": "15px",
+            "Max": "20px"
+          }
+        }
+      }
+    },
+    "Grid": {
+      "Columns": {
+        "$type": "dimension",
+        "$value": "12px",
+        "$description": "",
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    }
+  },
+  "Utopia": {
+    "Viewport": {
+      "Min width": {
+        "$type": "string",
+        "$value": "320",
+        "$description": "",
+        "$extensions": {
+          "mode": {}
+        }
+      },
+      "Max width": {
+        "$type": "string",
+        "$value": "1820",
+        "$description": "",
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    }
+  },
+  "Color Primitives": {
+    "gray": {
+      "500": {
+        "$type": "color",
+        "$value": "hsla(0, 0%, 50%, 1)",
+        "$description": "",
+        "$extensions": {
+          "mode": {}
+        }
+      }
+    }
+  }
+}

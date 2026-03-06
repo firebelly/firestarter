@@ -113,11 +113,12 @@ Tests use mock token objects matching the `{ value, unit }` dimension shape.
 
 _Filled in during `/build` phase_
 
-| Date       | Task   | Files                                                   | Notes                                                          |
-| ---------- | ------ | ------------------------------------------------------- | -------------------------------------------------------------- |
-| 2026-03-05 | Task 1 | site/vitest.config.ts                                   | Added "unit" project; Vitest recognizes it (no test files yet) |
-| 2026-03-05 | Task 2 | site/src/tokens/terrazzo-plugin-fluid.mjs               | Extracted 3 helpers; tokens.css output identical               |
-| 2026-03-05 | Task 3 | site/src/tokens/**tests**/terrazzo-plugin-fluid.test.ts | 5 tests, all passing                                           |
+| Date       | Task       | Files                                                   | Notes                                                                                              |
+| ---------- | ---------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| 2026-03-05 | Task 1     | site/vitest.config.ts                                   | Added "unit" project; Vitest recognizes it (no test files yet)                                     |
+| 2026-03-05 | Task 2     | site/src/tokens/terrazzo-plugin-fluid.mjs               | Extracted 3 helpers; tokens.css output identical                                                   |
+| 2026-03-05 | Task 3     | site/src/tokens/**tests**/terrazzo-plugin-fluid.test.ts | 5 tests, all passing                                                                               |
+| 2026-03-05 | Review fix | plugin + test file                                      | Deviated: Extracted shouldProcess() allowlist helper; added 9 shouldProcess tests (14 tests total) |
 
 ---
 

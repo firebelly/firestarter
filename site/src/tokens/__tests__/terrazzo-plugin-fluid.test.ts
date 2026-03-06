@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   parseViewportConfig,
   resolveMinMax,
+  shouldProcess,
   splitPairLabel,
 } from "../terrazzo-plugin-fluid.mjs";
 
@@ -22,11 +23,11 @@ describe("parseViewportConfig", () => {
 
 describe("splitPairLabel", () => {
   it("splits on em-dash", () => {
-    expect(splitPairLabel("S\u2014M")).toEqual(["S", "M"]);
+    expect(splitPairLabel("S—M")).toEqual(["S", "M"]);
   });
 
   it("splits multi-character labels", () => {
-    expect(splitPairLabel("2XL\u20143XL")).toEqual(["2XL", "3XL"]);
+    expect(splitPairLabel("2XL—3XL")).toEqual(["2XL", "3XL"]);
   });
 });
 
@@ -47,7 +48,7 @@ describe("resolveMinMax", () => {
   });
 
   it("returns minSize and maxSize for pair tokens", () => {
-    const id = "Fluid tokens.Space size pairs.S\u2014M";
+    const id = "Fluid tokens.Space size pairs.S—M";
     const token = {}; // pair tokens don't use their own modes
     const tokens = {
       "Fluid tokens.Space size.S": {
@@ -68,5 +69,29 @@ describe("resolveMinMax", () => {
       minSize: 8,
       maxSize: 24,
     });
+  });
+});
+
+describe("shouldProcess", () => {
+  it.each([
+    "Fluid tokens.Space size.M",
+    "Fluid tokens.Space size pairs.S—M",
+    "Fluid tokens.Font size.Step 0",
+    "Fluid tokens.Line height body.Step 0",
+    "Fluid tokens.Line height heading.Step 0",
+  ])("returns true for fluid token: %s", (id) => {
+    expect(shouldProcess(id)).toBe(true);
+  });
+
+  it.each([
+    "Fluid tokens.Grid.Columns",
+    "Fluid tokens.Viewport.Min width",
+    "Fluid tokens.Type.Base size",
+  ])("returns false for non-fluid config token: %s", (id) => {
+    expect(shouldProcess(id)).toBe(false);
+  });
+
+  it("returns false for non-fluid tokens", () => {
+    expect(shouldProcess("Color.gray.50")).toBe(false);
   });
 });

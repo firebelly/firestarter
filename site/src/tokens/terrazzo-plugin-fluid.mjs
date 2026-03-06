@@ -7,7 +7,7 @@ export function parseViewportConfig(tokens) {
 }
 
 export function splitPairLabel(label) {
-  return label.split("\u2014");
+  return label.split("—");
 }
 
 export function resolveMinMax(id, token, tokens) {
@@ -30,6 +30,18 @@ export function resolveMinMax(id, token, tokens) {
   return { minSize, maxSize };
 }
 
+const fluidPrefixes = [
+  "Fluid tokens.Space size.",
+  "Fluid tokens.Space size pairs.",
+  "Fluid tokens.Font size.",
+  "Fluid tokens.Line height body.",
+  "Fluid tokens.Line height heading.",
+];
+
+export function shouldProcess(id) {
+  return fluidPrefixes.some((prefix) => id.startsWith(prefix));
+}
+
 export default function fluidTokensPlugin() {
   return {
     name: "terrazzo-plugin-fluid",
@@ -40,11 +52,7 @@ export default function fluidTokensPlugin() {
       const { minWidth, maxWidth } = parseViewportConfig(tokens);
 
       for (const [id, token] of Object.entries(tokens)) {
-        if (
-          !id.startsWith("Fluid tokens.") ||
-          id.startsWith("Fluid tokens.Grid.")
-        )
-          continue;
+        if (!shouldProcess(id)) continue;
 
         const { minSize, maxSize } = resolveMinMax(id, token, tokens);
         const clamp = calculateClamp({ minWidth, maxWidth, minSize, maxSize });

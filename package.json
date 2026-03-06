@@ -4,6 +4,8 @@
   "scripts": {
     "dev": "pnpm --filter site dev",
     "build": "pnpm --filter site build",
+    "storybook": "pnpm --filter site storybook",
+    "tokens": "pnpm --filter site tokens",
     "lint": "pnpm --filter site lint",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

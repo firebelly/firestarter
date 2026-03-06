@@ -32,6 +32,12 @@ export default defineConfig({
           setupFiles: [".storybook/vitest.setup.ts"],
         },
       },
+      {
+        test: {
+          name: "tokens",
+          include: ["src/**/*.test.ts"],
+        },
+      },
     ],
   },
 });

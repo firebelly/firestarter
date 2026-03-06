@@ -236,6 +236,26 @@ To bypass hooks temporarily (use sparingly):
 git commit --no-verify -m "message"
 ```
 
+## Testing
+
+Vitest is configured with two test projects:
+
+| Project       | Matches                       | Purpose                                     |
+| ------------- | ----------------------------- | ------------------------------------------- |
+| **tokens**    | `src/**/*.test.ts`            | Unit and integration tests for token plugin |
+| **storybook** | `src/**/*.stories.?(m)[jt]s*` | Storybook interaction tests                 |
+
+```bash
+cd site
+
+# Run all tests
+pnpm vitest
+
+# Run a specific project
+pnpm test:tokens
+pnpm vitest --project storybook
+```
+
 ## Key Principles
 
 - **Client safety** — CMS structured so clients can manage content without breaking layouts

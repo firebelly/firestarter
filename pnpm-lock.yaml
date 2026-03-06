@@ -48,6 +48,9 @@ importers:
       '@terrazzo/cli':
         specifier: ^0.10.5
         version: 0.10.5(hono@4.11.7)
+      '@terrazzo/parser':
+        specifier: ^0.10.5
+        version: 0.10.5
       '@terrazzo/plugin-css':
         specifier: ^0.10.4
         version: 0.10.4(@terrazzo/cli@0.10.5(hono@4.11.7))

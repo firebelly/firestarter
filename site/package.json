@@ -9,7 +9,8 @@
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "tokens": "tz build"
+    "tokens": "tz build",
+    "test:tokens": "vitest --project tokens --run"
   },
   "dependencies": {
     "next": "16.1.4",
@@ -24,6 +25,7 @@
     "@storybook/addon-vitest": "^10.2.0",
     "@storybook/nextjs-vite": "^10.2.0",
     "@terrazzo/cli": "^0.10.5",
+    "@terrazzo/parser": "^0.10.5",
     "@terrazzo/plugin-css": "^0.10.4",
     "@types/node": "^20",
     "@types/react": "^19",

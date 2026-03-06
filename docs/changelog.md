@@ -271,3 +271,18 @@ Memoized style objects across token viewer components with `useMemo` to avoid un
 - `site/src/stories/tokens/FontSpecimen.tsx` — Display `token.label`
 - `site/src/stories/tokens/SpaceScale.tsx` — Display `token.label`
 - `site/src/stories/tokens/Typography.mdx` — Fixed "Typographhy" typo in Meta title
+
+---
+
+## 2026-03-05: Terrazzo Plugin Unit Tests
+
+Refactored the fluid token plugin to extract testable helper functions, then added unit tests for each. Extracted 4 helpers (`parseViewportConfig`, `splitPairLabel`, `resolveMinMax`, `shouldProcess`) and wrote 14 unit tests via a new Vitest "unit" project. Also replaced the blocklist filter with an explicit allowlist guard (`shouldProcess`).
+
+**Design:** [docs/design-specs/2026-03-04-1942-terrazzo-plugin-testing.md](../design-specs/2026-03-04-1942-terrazzo-plugin-testing.md)
+**Plan:** [docs/implementation-plans/2026-03-05-1223-terrazzo-plugin-unit-tests.md](implementation-plans/2026-03-05-1223-terrazzo-plugin-unit-tests.md)
+
+**Key files:**
+
+- `site/src/tokens/terrazzo-plugin-fluid.mjs` — Refactored plugin with 4 exported helpers
+- `site/src/tokens/__tests__/terrazzo-plugin-fluid.test.ts` — 14 unit tests
+- `site/vitest.config.ts` — Added "unit" test project

@@ -240,10 +240,10 @@ git commit --no-verify -m "message"
 
 Vitest is configured with two test projects:
 
-| Project       | Matches                       | Purpose                          |
-| ------------- | ----------------------------- | -------------------------------- |
-| **unit**      | `src/**/*.test.ts`            | Unit tests for utilities/plugins |
-| **storybook** | `src/**/*.stories.?(m)[jt]s*` | Storybook interaction tests      |
+| Project       | Matches                       | Purpose                                     |
+| ------------- | ----------------------------- | ------------------------------------------- |
+| **tokens**    | `src/**/*.test.ts`            | Unit and integration tests for token plugin |
+| **storybook** | `src/**/*.stories.?(m)[jt]s*` | Storybook interaction tests                 |
 
 ```bash
 cd site
@@ -252,7 +252,7 @@ cd site
 pnpm vitest
 
 # Run a specific project
-pnpm vitest --project unit
+pnpm test:tokens
 pnpm vitest --project storybook
 ```
 

@@ -286,3 +286,20 @@ Refactored the fluid token plugin to extract testable helper functions, then add
 - `site/src/tokens/terrazzo-plugin-fluid.mjs` — Refactored plugin with 4 exported helpers
 - `site/src/tokens/__tests__/terrazzo-plugin-fluid.test.ts` — 14 unit tests
 - `site/vitest.config.ts` — Added "unit" test project
+
+---
+
+## 2026-03-06: Terrazzo Plugin Integration Tests
+
+Added integration tests that run `tz build` against a fixture token file and assert the CSS output contains correct `clamp()` values, excludes grid/config tokens, and is valid CSS. Six integration tests complement the existing 14 unit tests. Renamed the Vitest project from "unit" to "tokens" and added a `test:tokens` script.
+
+**Design:** [docs/design-specs/2026-03-04-1942-terrazzo-plugin-testing.md](../design-specs/2026-03-04-1942-terrazzo-plugin-testing.md)
+**Plan:** [docs/implementation-plans/2026-03-05-1223-terrazzo-plugin-integration-tests.md](implementation-plans/2026-03-05-1223-terrazzo-plugin-integration-tests.md)
+
+**Key files:**
+
+- `site/src/tokens/__tests__/fixtures/test.tokens.json` — Fixture token file with representative tokens
+- `site/src/tokens/__tests__/fixtures/terrazzo.config.mjs` — Test-specific Terrazzo config
+- `site/src/tokens/__tests__/terrazzo-plugin-fluid.integration.test.ts` — 6 integration tests
+- `site/vitest.config.ts` — Renamed project "unit" → "tokens"
+- `site/package.json` — Added `test:tokens` script, `@terrazzo/parser` dev dependency

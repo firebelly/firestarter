@@ -101,11 +101,11 @@ Tests use mock token objects matching the `{ value, unit }` dimension shape.
 
 ## Acceptance Criteria
 
-- [ ] `parseViewportConfig(tokens)` returns `{ minWidth, maxWidth }` as numbers from viewport tokens
-- [ ] `splitPairLabel("S\u2014M")` returns `["S", "M"]` (splits on em-dash)
-- [ ] `resolveMinMax` returns correct `{ minSize, maxSize }` for regular tokens (reads Min/Max modes)
-- [ ] `resolveMinMax` returns correct `{ minSize, maxSize }` for pair tokens (cross-references from/to tokens)
-- [ ] `pnpm vitest --project unit` runs and passes
+- [x] `parseViewportConfig(tokens)` returns `{ minWidth, maxWidth }` as numbers from viewport tokens
+- [x] `splitPairLabel("S—M")` returns `["S", "M"]` (splits on em-dash)
+- [x] `resolveMinMax` returns correct `{ minSize, maxSize }` for regular tokens (reads Min/Max modes)
+- [x] `resolveMinMax` returns correct `{ minSize, maxSize }` for pair tokens (cross-references from/to tokens)
+- [x] `pnpm vitest --project unit` runs and passes
 
 ---
 
@@ -124,12 +124,12 @@ _Filled in during `/build` phase_
 
 ## Completion
 
-**Completed:** [Date]
-**Final Status:** [Complete | Partial | Abandoned]
+**Completed:** 2026-03-05
+**Final Status:** Complete
 
-**Summary:** [Brief description of what was actually built]
+**Summary:** Extracted 4 testable helpers (parseViewportConfig, splitPairLabel, resolveMinMax, shouldProcess) from the fluid token plugin and added 14 unit tests via a new Vitest "unit" project.
 
-**Deviations from Plan:** [Any significant changes from original design]
+**Deviations from Plan:** Added shouldProcess() allowlist helper (review finding) — replaced blocklist filter with explicit allowlist of 5 fluid token groups.
 
 ---
 

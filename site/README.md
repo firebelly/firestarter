@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend
 
-## Getting Started
+Next.js + Storybook frontend. Components are built and documented in Storybook, then assembled into pages that pull content from Craft CMS via GraphQL.
 
-First, run the development server:
+## Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Create local env file from example env (Add the Craft URL
+# to CRAFT_URL)
+cp .env.example .env.local
+
+# Start Next.js at localhost:3000
 pnpm dev
-# or
-bun dev
+
+# Start Storybook at localhost:6006
+pnpm storybook
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> **Note:** Common commands (`dev`, `storybook`, `tokens`) also work from the repo root — root-level scripts proxy to this workspace via `pnpm --filter site`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Component Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Components live in `src/components/` with co-located files:
 
-## Learn More
+```
+src/components/Button/
+├── Button.tsx              # Component
+├── Button.stories.tsx      # Storybook story
+└── Button.module.css       # Styles
+```
 
-To learn more about Next.js, take a look at the following resources:
+This pattern keeps related files together and ensures Storybook documents the actual production components.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design Tokens
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Design tokens from Figma live in `src/tokens/`. Run `pnpm tokens` to regenerate `tokens.css` from the Figma export (`design.tokens.json`).
 
-## Deploy on Vercel
+Storybook includes token browsing pages under **Tokens** in the sidebar (Color, Typography, Spacing). Fluid tokens (space scale, type scale, line heights) display min/max px values and scale live with the viewport.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Testing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vitest is configured with two test projects:
+
+| Project       | Matches                       | Purpose                                     |
+| ------------- | ----------------------------- | ------------------------------------------- |
+| **tokens**    | `src/**/*.test.ts`            | Unit and integration tests for token plugin |
+| **storybook** | `src/**/*.stories.?(m)[jt]s*` | Storybook interaction tests                 |
+
+```bash
+# Run all tests
+pnpm vitest
+
+# Run a specific project
+pnpm vitest --project tokens
+pnpm vitest --project storybook
+```

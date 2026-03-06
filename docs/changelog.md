@@ -303,3 +303,16 @@ Added integration tests that run `tz build` against a fixture token file and ass
 - `site/src/tokens/__tests__/terrazzo-plugin-fluid.integration.test.ts` — 6 integration tests
 - `site/vitest.config.ts` — Renamed project "unit" → "tokens"
 - `site/package.json` — Added `test:tokens` script, `@terrazzo/parser` dev dependency
+
+---
+
+## 2026-03-06: README Reorganization & Fixes
+
+Split the root README into three files: root (project-level overview), `cms/README.md` (CMS setup), and `site/README.md` (frontend setup, components, tokens, testing). Added a Documentation section to the root README with links to changelog, backlog, design specs, and implementation plans. Also added missing `storybook` and `tokens` proxy scripts to root `package.json`, fixed the directory tree (removed nonexistent `cms/modules/`, added missing `src/stories/`), and made `site/README.md` accurate about proxied commands and test examples.
+
+**Key files:**
+
+- `README.md` — Slimmed to project-level content with pointers to sub-READMEs, fixed directory tree, documented all proxy commands
+- `cms/README.md` — New; Craft CMS intro, setup instructions, license key section
+- `site/README.md` — Full rewrite; frontend setup, component structure, design tokens, testing, accurate proxy and test docs
+- `package.json` — Added `storybook` and `tokens` proxy scripts

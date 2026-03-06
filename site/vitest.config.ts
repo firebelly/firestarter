@@ -34,7 +34,7 @@ export default defineConfig({
       },
       {
         test: {
-          name: "unit",
+          name: "tokens",
           include: ["src/**/*.test.ts"],
         },
       },

@@ -77,12 +77,12 @@ Create a minimal fixture token file with representative tokens, a test-specific 
 
 ## Acceptance Criteria
 
-- [ ] Fixture token file contains representative tokens: viewport config, regular space, regular type, space pair, non-fluid token, grid token
-- [ ] Test-specific Terrazzo config points at fixture file with temp output path
-- [ ] `tz build` against fixtures produces output containing valid `clamp()` values for fluid tokens
-- [ ] Output does NOT contain entries for grid tokens or non-fluid tokens that are excluded
-- [ ] Output is valid CSS (parseable)
-- [ ] Temp output is cleaned up after test run
+- [x] Fixture token file contains representative tokens: viewport config, regular space, regular type, space pair, non-fluid token, grid token
+- [x] Test-specific Terrazzo config points at fixture file with temp output path
+- [x] `tz build` against fixtures produces output containing valid `clamp()` values for fluid tokens
+- [x] Output does NOT contain entries for grid tokens or non-fluid tokens that are excluded
+- [x] Output is valid CSS (parseable)
+- [x] Temp output is cleaned up after test run
 
 ---
 
@@ -100,12 +100,12 @@ _Filled in during `/build` phase_
 
 ## Completion
 
-**Completed:** [Date]
-**Final Status:** [Complete | Partial | Abandoned]
+**Completed:** 2026-03-06
+**Final Status:** Complete
 
-**Summary:** [Brief description of what was actually built]
+**Summary:** Integration test that runs `tz build` against a fixture token file and asserts CSS output contains correct `clamp()` values, excludes grid/config tokens, and is valid CSS. Added `@terrazzo/parser` as dev dependency for proper Logger usage. Renamed Vitest project from "unit" to "tokens" and added `test:tokens` script.
 
-**Deviations from Plan:** [Any significant changes from original design]
+**Deviations from Plan:** Renamed Vitest project "unit" → "tokens" to reflect both unit and integration tests. Added `test:tokens` script to package.json. Added `@terrazzo/parser` as dev dependency.
 
 ---
 

@@ -1,6 +1,6 @@
 # Implementation Plan: Next.js Craft Integration
 
-**Design Doc:** `docs/design-plans/2026-01-25-craft-nextjs-integration.md`
+**Design Spec:** `docs/design-plans/2026-01-25-craft-nextjs-integration.md`
 **Created:** 2026-01-26
 
 ---
@@ -15,7 +15,7 @@ This is **Plan 2 of 2** for the Craft + Next.js integration. Plan 1 (Craft CMS c
 
 ## Codebase Verification
 
-_Confirmed assumptions from design doc match actual codebase_
+_Confirmed assumptions from design spec match actual codebase_
 
 - [x] Next.js App Router in use — Verified: `site/src/app/` exists
 - [x] No existing GraphQL client — Verified: Clean slate
@@ -602,7 +602,7 @@ REVALIDATION_SECRET="<same shared secret>"
 
 - **CKEditor HTML:** The `body` field returns HTML from CKEditor. We use `dangerouslySetInnerHTML` for now; a proper HTML sanitizer or MDX approach can be added later.
 
-- **No `generateStaticParams`:** Per design doc, we're not pre-generating pages. ISR handles caching.
+- **No `generateStaticParams`:** Per design spec, we're not pre-generating pages. ISR handles caching.
 
 - **Webhook debugging:** Check Craft CP → Utilities → Webhooks for logs if revalidation isn't working.
 
@@ -614,5 +614,5 @@ After completing this plan:
 
 1. Commit all changes
 2. Verify all acceptance criteria pass
-3. Update design doc Build Log with completion notes
+3. Update design spec Build Log with completion notes
 4. Run `/document` to update project documentation

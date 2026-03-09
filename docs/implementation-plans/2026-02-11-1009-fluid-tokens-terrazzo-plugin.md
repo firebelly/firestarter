@@ -1,6 +1,6 @@
 # Implementation Plan: Fluid Tokens Terrazzo Plugin
 
-**Design Doc:** `docs/design-plans/2026-02-11-0928-fluid-tokens-terrazzo-plugin.md`
+**Design Spec:** `docs/design-plans/2026-02-11-0928-fluid-tokens-terrazzo-plugin.md`
 **Created:** 2026-02-11
 
 ---
@@ -18,7 +18,7 @@ Replace the standalone `generate-fluid-tokens.ts` script with a custom Terrazzo 
 - [x] CSS plugin exports `FORMAT_ID = "css"` — Verified: yes
 - [x] CSS plugin accepts `variableName(token)` returning full `--`-prefixed name — Verified: yes (`makeCSSVar` returns `--`-prefixed names)
 - [x] `token.mode["."]` always exists for default value access — Verified: yes (docs confirm)
-- [x] `token.mode["Min"].$value` / `token.mode["Max"].$value` resolve correctly for line height tokens — Verified: yes (design doc confirms, these reference `@min`/`@max` primitives directly)
+- [x] `token.mode["Min"].$value` / `token.mode["Max"].$value` resolve correctly for line height tokens — Verified: yes (design spec confirms, these reference `@min`/`@max` primitives directly)
 - [x] Utopia config tokens (`Utopia.*`) are `$type: "string"` with parseable numeric values — Verified: yes
 - [x] `utopia-core` is already a devDependency — Verified: yes (`^1.6.0`)
 - [x] Current exclude list has `"Fluid tokens.*"` and `"Utopia.*"` — Verified: yes
@@ -32,7 +32,7 @@ Replace the standalone `generate-fluid-tokens.ts` script with a custom Terrazzo 
 
 **Discrepancies found:**
 
-- None — all design doc assumptions match the codebase
+- None — all design spec assumptions match the codebase
 
 ---
 
@@ -245,6 +245,6 @@ css({
 - **`setTransform` dedup:** The Terrazzo docs confirm that calling `setTransform` with the same `tokenId+format` overwrites the previous value. Our `enforce: "post"` plugin relies on this to replace the CSS plugin's resolved px values with `clamp()` expressions.
 - **Line height approach:** Uses `token.mode["Min"].$value` / `token.mode["Max"].$value` instead of reading primitive tokens directly. This is cleaner and "Terrazzo-native." Safe because line height modes reference `@min`/`@max` primitives directly (no cross-mode resolution bug).
 - **Space/type approach:** Must use `calculateSpaceScale()` / `calculateTypeScale()` from the Utopia config (not resolved mode values) because pair tokens have incorrect cross-mode alias resolution in Terrazzo.
-- **Grid tokens:** Explicitly excluded (`Fluid tokens.Grid.*`) — out of scope per design doc.
+- **Grid tokens:** Explicitly excluded (`Fluid tokens.Grid.*`) — out of scope per design spec.
 - **`variableName()` is the single control point** for both CSS output names and `var()` alias references in downstream tokens. This is what enables `Button.Vertical Padding → var(--space-2xs-xs)`.
 - **Dimension `$value` format:** Normalized dimension tokens may expose `$value` as a number or string. Implementation should handle both via `parseFloat(String(value))`.

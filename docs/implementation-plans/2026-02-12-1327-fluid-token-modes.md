@@ -1,6 +1,6 @@
 # Implementation Plan: Fluid Token Modes
 
-**Design Doc:** `docs/design-plans/2026-02-12-1317-fluid-token-modes.md`
+**Design Spec:** `docs/design-plans/2026-02-12-1317-fluid-token-modes.md`
 **Created:** 2026-02-12
 
 ---
@@ -28,7 +28,7 @@ Refactor the Terrazzo fluid tokens plugin to unify all token categories (space, 
 
 **Discrepancies found:**
 
-- None. Codebase matches all design doc assumptions.
+- None. Codebase matches all design spec assumptions.
 
 ---
 
@@ -157,6 +157,6 @@ variableName(token) {
 
 ## Notes
 
-- The test script `test-fluid-modes.mjs` does not exist; formalizing it is out of scope per the design doc.
+- The test script `test-fluid-modes.mjs` does not exist; formalizing it is out of scope per the design spec.
 - Grid tokens (`Fluid tokens.Grid.*`) remain excluded via the combined guard clause and the existing CSS plugin exclude list.
 - Task 1 should be verified before starting Task 2, since both tasks change how tokens build and independent verification is cleaner.

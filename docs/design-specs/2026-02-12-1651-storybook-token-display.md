@@ -157,5 +157,5 @@ _Filled in during `/build` phase_
 
 **Deviations from Plan:**
 
-- `preview.ts` modified to import `tokens.css` (approved during planning, design doc said "Modify: None")
+- `preview.ts` modified to import `tokens.css` (approved during planning, design spec said "Modify: None")
 - MDX `Meta` import changed from `@storybook/blocks` to `@storybook/addon-docs/blocks` to match existing project pattern

@@ -344,4 +344,4 @@ This design was too large. Ten tasks spanning Craft CMS configuration and Next.j
 2. **Cross-session continuity** — Without running `/document` between plans, assumptions in Plan 2 (e.g., `CRAFT_PREVIEW_TOKEN`) were based on Plan 1's _design_ rather than its _actual outcome_.
 3. **10-step builds are fragile** — Each deviation compounds; by Task 9, multiple docs were out of sync.
 
-**Recommendation for future designs:** Keep designs to 5 tasks max. If a feature naturally splits (like "Craft setup" + "Next.js code"), treat them as separate design docs with their own `/document` phases. The documentation phase is what catches drift — skipping it between related work is risky.
+**Recommendation for future designs:** Keep designs to 5 tasks max. If a feature naturally splits (like "Craft setup" + "Next.js code"), treat them as separate design specs with their own `/document` phases. The documentation phase is what catches drift — skipping it between related work is risky.

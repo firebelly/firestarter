@@ -1,6 +1,6 @@
 # Implementation Plan: ESLint Import Sorting
 
-**Design Doc:** docs/design-plans/2026-01-28-1200-eslint-import-sorting.md
+**Design Spec:** docs/design-plans/2026-01-28-1200-eslint-import-sorting.md
 **Created:** 2026-01-28
 
 ---
@@ -93,4 +93,4 @@ import simpleImportSort from "eslint-plugin-simple-import-sort";
 ## Notes
 
 - `prettierConfig` must remain the last entry in the ESLint config array — the new plugin config should be inserted before it.
-- The plugin's default grouping is used intentionally (per design doc "Out of Scope" — no custom group ordering).
+- The plugin's default grouping is used intentionally (per design spec "Out of Scope" — no custom group ordering).

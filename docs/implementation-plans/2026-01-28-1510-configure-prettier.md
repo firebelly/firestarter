@@ -1,6 +1,6 @@
 # Implementation Plan: Configure Prettier
 
-**Design Doc:** docs/design-plans/2026-01-28-1510-configure-prettier.md
+**Design Spec:** docs/design-plans/2026-01-28-1510-configure-prettier.md
 **Created:** 2026-01-28
 
 ---
@@ -192,4 +192,4 @@ pre-commit:
 
 - Prettier is installed at the repo root (not `/site`) since it's a repo-wide tool like Lefthook. The Lefthook prettier job runs from repo root by default (no `root:` override), which is where the binary lives.
 - `eslint-config-prettier` is installed in `/site` where ESLint lives
-- No Prettier plugins are included — starting vanilla per design doc
+- No Prettier plugins are included — starting vanilla per design spec

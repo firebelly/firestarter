@@ -1,6 +1,6 @@
 # Implementation Plan: Fluid Token Modes
 
-**Design Spec:** `docs/design-plans/2026-02-12-1317-fluid-token-modes.md`
+**Design Spec:** `docs/design-specs/2026-02-12-1317-fluid-token-modes.md`
 **Created:** 2026-02-12
 
 ---

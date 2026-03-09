@@ -1,6 +1,6 @@
 # Implementation Plan: Repo Architecture
 
-**Design Spec:** `docs/design-plans/2026-01-24-repo-architecture.md`
+**Design Spec:** `docs/design-specs/2026-01-24-repo-architecture.md`
 **Created:** 2026-01-24
 
 ---

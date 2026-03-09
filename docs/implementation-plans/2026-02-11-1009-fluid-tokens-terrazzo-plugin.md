@@ -1,6 +1,6 @@
 # Implementation Plan: Fluid Tokens Terrazzo Plugin
 
-**Design Spec:** `docs/design-plans/2026-02-11-0928-fluid-tokens-terrazzo-plugin.md`
+**Design Spec:** `docs/design-specs/2026-02-11-0928-fluid-tokens-terrazzo-plugin.md`
 **Created:** 2026-02-11
 
 ---

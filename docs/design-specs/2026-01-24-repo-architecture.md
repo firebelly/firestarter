@@ -161,7 +161,7 @@
 │   └── craft                 # CLI executable
 │
 ├── /docs                     # Documentation
-│   ├── design-plans/
+│   ├── design-specs/
 │   ├── implementation-plans/
 │   ├── templates/
 │   └── journal.md

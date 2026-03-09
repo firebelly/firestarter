@@ -1,6 +1,6 @@
 # Implementation Plan: Storybook Token Display
 
-**Design Spec:** docs/design-plans/2026-02-12-1651-storybook-token-display.md
+**Design Spec:** docs/design-specs/2026-02-12-1651-storybook-token-display.md
 **Created:** 2026-02-12
 
 ---

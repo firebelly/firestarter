@@ -1,6 +1,6 @@
 # Implementation Plan: ESLint Import Sorting
 
-**Design Spec:** docs/design-plans/2026-01-28-1200-eslint-import-sorting.md
+**Design Spec:** docs/design-specs/2026-01-28-1200-eslint-import-sorting.md
 **Created:** 2026-01-28
 
 ---

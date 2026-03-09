@@ -1,6 +1,6 @@
 # Implementation Plan: Design Tokens Pipeline
 
-**Design Spec:** docs/design-plans/2026-02-04-1332-design-tokens-pipeline.md
+**Design Spec:** docs/design-specs/2026-02-04-1332-design-tokens-pipeline.md
 **Created:** 2026-02-04
 
 ---

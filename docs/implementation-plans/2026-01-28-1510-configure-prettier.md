@@ -1,6 +1,6 @@
 # Implementation Plan: Configure Prettier
 
-**Design Spec:** docs/design-plans/2026-01-28-1510-configure-prettier.md
+**Design Spec:** docs/design-specs/2026-01-28-1510-configure-prettier.md
 **Created:** 2026-01-28
 
 ---

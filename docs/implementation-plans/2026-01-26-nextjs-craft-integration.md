@@ -1,6 +1,6 @@
 # Implementation Plan: Next.js Craft Integration
 
-**Design Spec:** `docs/design-plans/2026-01-25-craft-nextjs-integration.md`
+**Design Spec:** `docs/design-specs/2026-01-25-craft-nextjs-integration.md`
 **Created:** 2026-01-26
 
 ---

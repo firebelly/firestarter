@@ -1,6 +1,6 @@
 # Implementation Plan: Lefthook Pre-commit Hooks
 
-**Design Spec:** `docs/design-plans/2026-01-27-lefthook-precommit.md`
+**Design Spec:** `docs/design-specs/2026-01-27-lefthook-precommit.md`
 **Created:** 2026-01-27
 
 ---

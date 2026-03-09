@@ -1,6 +1,6 @@
 # Implementation Plan: Consolidate Token Output
 
-**Design Doc:** docs/design-plans/2026-02-05-1102-consolidate-token-output.md
+**Design Spec:** docs/design-specs/2026-02-05-1102-consolidate-token-output.md
 **Created:** 2026-02-05
 
 ---

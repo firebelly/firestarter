@@ -8,7 +8,7 @@ Project history organized by feature completion.
 
 Established the foundational monorepo structure for Firestarter with a Next.js + Storybook frontend (`/site`) and Craft CMS backend (`/cms`).
 
-**Design:** [docs/design-plans/2026-01-24-repo-architecture.md](design-plans/2026-01-24-repo-architecture.md)
+**Design:** [docs/design-specs/2026-01-24-repo-architecture.md](design-specs/2026-01-24-repo-architecture.md)
 **Plan:** [docs/implementation-plans/2026-01-24-repo-architecture.md](implementation-plans/2026-01-24-repo-architecture.md)
 
 **Key files:**
@@ -27,7 +27,7 @@ Configured Craft CMS for headless operation with Next.js. Created Homepage singl
 
 This is **Plan 1 of 2** for the Craft + Next.js integration. Plan 2 (Next.js frontend code) will follow.
 
-**Design:** [docs/design-plans/2026-01-25-craft-nextjs-integration.md](design-plans/2026-01-25-craft-nextjs-integration.md)
+**Design:** [docs/design-specs/2026-01-25-craft-nextjs-integration.md](design-specs/2026-01-25-craft-nextjs-integration.md)
 **Plan:** [docs/implementation-plans/2026-01-25-craft-cms-content-setup.md](implementation-plans/2026-01-25-craft-cms-content-setup.md)
 
 **Key files:**
@@ -51,7 +51,7 @@ Connected the Next.js frontend to Craft CMS via GraphQL, completing the end-to-e
 
 This is **Plan 2 of 2** for the Craft + Next.js integration, completing the feature.
 
-**Design:** [docs/design-plans/2026-01-25-craft-nextjs-integration.md](design-plans/2026-01-25-craft-nextjs-integration.md)
+**Design:** [docs/design-specs/2026-01-25-craft-nextjs-integration.md](design-specs/2026-01-25-craft-nextjs-integration.md)
 **Plan:** [docs/implementation-plans/2026-01-26-nextjs-craft-integration.md](implementation-plans/2026-01-26-nextjs-craft-integration.md)
 
 **Key files:**
@@ -76,7 +76,7 @@ This is **Plan 2 of 2** for the Craft + Next.js integration, completing the feat
 
 Added Lefthook v2 pre-commit hooks for TypeScript type checking and ESLint. Hooks use piped execution (fail-fast): TypeScript runs first on the full project; if it passes, ESLint runs on staged files only. Non-code commits skip checks entirely (~0.08s).
 
-**Design:** [docs/design-plans/2026-01-27-lefthook-precommit.md](design-plans/2026-01-27-lefthook-precommit.md)
+**Design:** [docs/design-specs/2026-01-27-lefthook-precommit.md](design-specs/2026-01-27-lefthook-precommit.md)
 **Plan:** [docs/implementation-plans/2026-01-27-lefthook-precommit.md](implementation-plans/2026-01-27-lefthook-precommit.md)
 
 **Key files:**
@@ -95,7 +95,7 @@ Added Lefthook v2 pre-commit hooks for TypeScript type checking and ESLint. Hook
 
 Added Prettier as a repo-wide code formatter with explicit config defaults. Integrated into the Lefthook pre-commit pipeline so all code is auto-formatted on commit. Added `eslint-config-prettier` to prevent ESLint/Prettier rule conflicts.
 
-**Design:** [docs/design-plans/2026-01-28-1510-configure-prettier.md](design-plans/2026-01-28-1510-configure-prettier.md)
+**Design:** [docs/design-specs/2026-01-28-1510-configure-prettier.md](design-specs/2026-01-28-1510-configure-prettier.md)
 **Plan:** [docs/implementation-plans/2026-01-28-1510-configure-prettier.md](implementation-plans/2026-01-28-1510-configure-prettier.md)
 
 **Key files:**
@@ -112,7 +112,7 @@ Added Prettier as a repo-wide code formatter with explicit config defaults. Inte
 
 Added `eslint-plugin-simple-import-sort` to enforce consistent, auto-fixable import/export ordering across the `site/` codebase. Both rules set to `"error"` so violations fail CI. Auto-fixed 12 existing files.
 
-**Design:** [docs/design-plans/2026-01-28-1200-eslint-import-sorting.md](design-plans/2026-01-28-1200-eslint-import-sorting.md)
+**Design:** [docs/design-specs/2026-01-28-1200-eslint-import-sorting.md](design-specs/2026-01-28-1200-eslint-import-sorting.md)
 **Plan:** [docs/implementation-plans/2026-01-28-1200-eslint-import-sorting.md](implementation-plans/2026-01-28-1200-eslint-import-sorting.md)
 
 **Key files:**
@@ -126,7 +126,7 @@ Added `eslint-plugin-simple-import-sort` to enforce consistent, auto-fixable imp
 
 Installed utopia-core and Terrazzo (@terrazzo/cli + @terrazzo/plugin-css), then built a fluid token pipeline that generates CSS custom properties from Figma design tokens. Uses utopia-core for fluid space scale, type scale, and line heights. Terrazzo handles color and font tokens separately. Two parallel builds unified under `npm run tokens`.
 
-**Design:** [docs/design-plans/2026-02-04-1332-design-tokens-pipeline.md](design-plans/2026-02-04-1332-design-tokens-pipeline.md)
+**Design:** [docs/design-specs/2026-02-04-1332-design-tokens-pipeline.md](design-specs/2026-02-04-1332-design-tokens-pipeline.md)
 **Plan:** [docs/implementation-plans/2026-02-04-2051-design-tokens-pipeline.md](implementation-plans/2026-02-04-2051-design-tokens-pipeline.md)
 
 **Key files:**
@@ -153,7 +153,7 @@ Updated the ESLint pre-commit hook to auto-fix lint issues and re-stage correcte
 
 Merged the two token pipeline outputs (`fluid-tokens.css` and `terrazzo-tokens.css`) into a single `tokens.css` file. Terrazzo writes first, then the fluid token generator appends. Three npm scripts consolidated into one.
 
-**Design:** [docs/design-plans/2026-02-05-1102-consolidate-token-output.md](design-plans/2026-02-05-1102-consolidate-token-output.md)
+**Design:** [docs/design-specs/2026-02-05-1102-consolidate-token-output.md](design-specs/2026-02-05-1102-consolidate-token-output.md)
 **Plan:** [docs/implementation-plans/2026-02-05-1107-consolidate-token-output.md](implementation-plans/2026-02-05-1107-consolidate-token-output.md)
 
 **Key files:**
@@ -193,7 +193,7 @@ Converted `generate-fluid-tokens.js` to TypeScript and added a new `XS—M` cust
 
 Replaced the standalone `generate-fluid-tokens.ts` script with a custom Terrazzo plugin. Fluid `clamp()` values are now computed inside the Terrazzo build pipeline, producing a single `:root` block with proper `var()` alias resolution for downstream component tokens. The `tokens` script simplifies from two steps to `tz build`.
 
-**Design:** [docs/design-plans/2026-02-11-0928-fluid-tokens-terrazzo-plugin.md](design-plans/2026-02-11-0928-fluid-tokens-terrazzo-plugin.md)
+**Design:** [docs/design-specs/2026-02-11-0928-fluid-tokens-terrazzo-plugin.md](design-specs/2026-02-11-0928-fluid-tokens-terrazzo-plugin.md)
 **Plan:** [docs/implementation-plans/2026-02-11-1009-fluid-tokens-terrazzo-plugin.md](implementation-plans/2026-02-11-1009-fluid-tokens-terrazzo-plugin.md)
 
 **Key files:**
@@ -209,7 +209,7 @@ Replaced the standalone `generate-fluid-tokens.ts` script with a custom Terrazzo
 
 Refactored the Terrazzo fluid tokens plugin to unify all token categories (space, type, line heights) on a single mode-based approach using only `calculateClamp()`. Replaced the `variableName` if/startsWith chain with ordered regex patterns. Plugin reduced from ~100 lines (3 strategies, 3 utopia-core functions) to ~43 lines (1 loop, 1 function).
 
-**Design:** [docs/design-plans/2026-02-12-1317-fluid-token-modes.md](design-plans/2026-02-12-1317-fluid-token-modes.md)
+**Design:** [docs/design-specs/2026-02-12-1317-fluid-token-modes.md](design-specs/2026-02-12-1317-fluid-token-modes.md)
 **Plan:** [docs/implementation-plans/2026-02-12-1327-fluid-token-modes.md](implementation-plans/2026-02-12-1327-fluid-token-modes.md)
 
 **Key files:**
@@ -223,7 +223,7 @@ Refactored the Terrazzo fluid tokens plugin to unify all token categories (space
 
 Custom React viewer components displayed via MDX pages in Storybook for browsing design tokens (colors, typography, spacing). Six focused viewer components composed by three MDX pages under a "Tokens" sidebar group. Hand-authored `token-data.ts` provides metadata with min/max px values. All fluid viewers use CSS vars and respond to viewport resizing.
 
-**Design:** [docs/design-plans/2026-02-12-1651-storybook-token-display.md](design-plans/2026-02-12-1651-storybook-token-display.md)
+**Design:** [docs/design-specs/2026-02-12-1651-storybook-token-display.md](design-specs/2026-02-12-1651-storybook-token-display.md)
 **Plan:** [docs/implementation-plans/2026-02-12-1743-storybook-token-display.md](implementation-plans/2026-02-12-1743-storybook-token-display.md)
 
 **Key files:**

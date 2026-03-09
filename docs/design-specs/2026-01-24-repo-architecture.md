@@ -161,7 +161,7 @@
 │   └── craft                 # CLI executable
 │
 ├── /docs                     # Documentation
-│   ├── design-plans/
+│   ├── design-specs/
 │   ├── implementation-plans/
 │   ├── templates/
 │   └── journal.md
@@ -191,20 +191,20 @@ The structure is correct when:
 
 ## Structure Reference
 
-| Path                   | Purpose                                      |
-| ---------------------- | -------------------------------------------- |
-| `/site`                | Next.js + Storybook (frontend)               |
-| `/site/.storybook`     | Storybook configuration                      |
-| `/site/app`            | Next.js App Router pages and API routes      |
-| `/site/src/components` | Shared components with co-located stories    |
-| `/site/src/tokens`     | Design tokens from Figma                     |
-| `/site/src/lib`        | Utilities, API helpers                       |
-| `/cms`                 | Craft CMS (headless)                         |
-| `/cms/config`          | Craft configuration and project config       |
-| `/cms/modules`         | Custom Craft modules                         |
-| `/cms/templates`       | Twig templates (minimal for headless)        |
-| `/docs`                | Design docs, implementation plans, templates |
-| `/.claude`             | Claude workflow commands                     |
+| Path                   | Purpose                                       |
+| ---------------------- | --------------------------------------------- |
+| `/site`                | Next.js + Storybook (frontend)                |
+| `/site/.storybook`     | Storybook configuration                       |
+| `/site/app`            | Next.js App Router pages and API routes       |
+| `/site/src/components` | Shared components with co-located stories     |
+| `/site/src/tokens`     | Design tokens from Figma                      |
+| `/site/src/lib`        | Utilities, API helpers                        |
+| `/cms`                 | Craft CMS (headless)                          |
+| `/cms/config`          | Craft configuration and project config        |
+| `/cms/modules`         | Custom Craft modules                          |
+| `/cms/templates`       | Twig templates (minimal for headless)         |
+| `/docs`                | Design specs, implementation plans, templates |
+| `/.claude`             | Claude workflow commands                      |
 
 ---
 

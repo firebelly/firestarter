@@ -1,6 +1,6 @@
 # Implementation Plan: Storybook Token Display
 
-**Design Doc:** docs/design-plans/2026-02-12-1651-storybook-token-display.md
+**Design Spec:** docs/design-specs/2026-02-12-1651-storybook-token-display.md
 **Created:** 2026-02-12
 
 ---
@@ -18,7 +18,7 @@ Create custom React viewer components displayed via MDX pages in Storybook for b
 - [x] Storybook story glob (`../src/**/*.mdx`) will pick up files in `site/src/stories/tokens/` — Verified
 - [x] No existing token viewer components — Verified
 - [x] Storybook v10 with `@storybook/nextjs-vite` framework — Verified
-- [x] Color hue groups match design doc (Gray, Blue, Magenta, Lemon, Teal) — Verified
+- [x] Color hue groups match design spec (Gray, Blue, Magenta, Lemon, Teal) — Verified
 
 **Patterns to leverage:**
 
@@ -27,7 +27,7 @@ Create custom React viewer components displayed via MDX pages in Storybook for b
 
 **Discrepancies found:**
 
-- Design doc says "Modify: None" but `preview.ts` needs a `tokens.css` import for CSS vars to be available at render time. One-line addition. Approved during planning.
+- Design spec says "Modify: None" but `preview.ts` needs a `tokens.css` import for CSS vars to be available at render time. One-line addition. Approved during planning.
 
 ---
 
@@ -264,6 +264,6 @@ interface SpacePairsProps {
 
 ## Notes
 
-- `preview.ts` modification (one import line) was not in the design doc's "Modify: None" section but is necessary for CSS vars to be available. Approved during planning.
+- `preview.ts` modification (one import line) was not in the design spec's "Modify: None" section but is necessary for CSS vars to be available. Approved during planning.
 - Min/max px values are manually transcribed from `design.tokens.json` primitive groups. If values look wrong, cross-reference the JSON source.
 - Font files (Inter, Platform) must be available in the Storybook environment for font specimens to render correctly. If fonts aren't loaded, specimens will fall back to system fonts.

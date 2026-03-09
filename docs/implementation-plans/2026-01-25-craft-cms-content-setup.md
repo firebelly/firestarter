@@ -1,6 +1,6 @@
 # Implementation Plan: Craft CMS Content Setup
 
-**Design Doc:** `docs/design-plans/2026-01-25-craft-nextjs-integration.md`
+**Design Spec:** `docs/design-specs/2026-01-25-craft-nextjs-integration.md`
 **Created:** 2026-01-25
 
 ---
@@ -15,7 +15,7 @@ This is **Plan 1 of 2** for the Craft + Next.js integration. All tasks are manua
 
 ## Codebase Verification
 
-_Confirm assumptions from design doc match actual codebase_
+_Confirm assumptions from design spec match actual codebase_
 
 - [x] Craft CMS 5 installed in `/cms` directory - Verified: Yes
 - [x] DDEV configured for local development - Verified: Yes
@@ -402,5 +402,5 @@ After completing this plan:
 
 1. Commit all Craft Project Config changes
 2. Start a new Claude Code session
-3. Run `/plan` with reference to this plan and the design doc
+3. Run `/plan` with reference to this plan and the design spec
 4. Create **Plan 2: Next.js Craft Integration**

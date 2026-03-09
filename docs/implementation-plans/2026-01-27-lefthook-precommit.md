@@ -1,6 +1,6 @@
 # Implementation Plan: Lefthook Pre-commit Hooks
 
-**Design Doc:** `docs/design-plans/2026-01-27-lefthook-precommit.md`
+**Design Spec:** `docs/design-specs/2026-01-27-lefthook-precommit.md`
 **Created:** 2026-01-27
 
 ---
@@ -13,7 +13,7 @@ Add Lefthook to run TypeScript type checking and ESLint on pre-commit. TypeScrip
 
 ## Codebase Verification
 
-_Confirmed assumptions from design doc match actual codebase_
+_Confirmed assumptions from design spec match actual codebase_
 
 - [x] No root `package.json` exists - Verified: yes
 - [x] No `lefthook.yml` exists - Verified: yes

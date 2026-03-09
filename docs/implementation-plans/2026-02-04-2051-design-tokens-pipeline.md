@@ -1,6 +1,6 @@
 # Implementation Plan: Design Tokens Pipeline
 
-**Design Doc:** docs/design-plans/2026-02-04-1332-design-tokens-pipeline.md
+**Design Spec:** docs/design-specs/2026-02-04-1332-design-tokens-pipeline.md
 **Created:** 2026-02-04
 
 ---
@@ -182,6 +182,6 @@ Build a token pipeline that generates fluid CSS custom properties from Figma des
 
 - The generator reads config values from `design.tokens.json` so changes in Figma automatically affect output
 - Line heights are handled differently from type/space - they iterate explicit token definitions rather than using scale calculation
-- Grid tokens are out of scope for this phase (noted as future design in design doc)
+- Grid tokens are out of scope for this phase (noted as future design in design spec)
 - Terrazzo plugin approach (single orchestrated build) is noted as future evolution
-- **Figma rename (post-build):** After the pipeline is working, Figma variables should be renamed to match utopia output conventions (see design doc for full specification). This is required for Terrazzo to correctly resolve references when higher-level tokens reference fluid tokens (e.g., a `button-padding` token referencing `{_fluid-tokens.space-size.s}` needs Terrazzo to output `var(--space-s)`). Not a build blocker for this phase, but needed before component-level tokens are added.
+- **Figma rename (post-build):** After the pipeline is working, Figma variables should be renamed to match utopia output conventions (see design spec for full specification). This is required for Terrazzo to correctly resolve references when higher-level tokens reference fluid tokens (e.g., a `button-padding` token referencing `{_fluid-tokens.space-size.s}` needs Terrazzo to output `var(--space-s)`). Not a build blocker for this phase, but needed before component-level tokens are added.

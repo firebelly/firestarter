@@ -1,6 +1,6 @@
 # Implementation Plan: Repo Architecture
 
-**Design Doc:** `docs/design-plans/2026-01-24-repo-architecture.md`
+**Design Spec:** `docs/design-specs/2026-01-24-repo-architecture.md`
 **Created:** 2026-01-24
 
 ---
@@ -24,8 +24,8 @@ Set up the foundational monorepo structure for Firestarter: a Next.js + Storyboo
 **Discrepancies found:**
 
 - `/docs/implementation-plans/` did not exist (created with this plan)
-- Root `.gitignore` needs `.env` added per design doc
-- Design doc shows `app/` at root level, but we're using `src/app/` (standard Next.js `src/` convention)
+- Root `.gitignore` needs `.env` added per design spec
+- Design spec shows `app/` at root level, but we're using `src/app/` (standard Next.js `src/` convention)
 
 ---
 
@@ -271,7 +271,7 @@ Note: This is scaffolding only. Headless configuration (disabling front-end rout
 
 ## Deferred
 
-The following items from the design doc are intentionally deferred to future implementation:
+The following items from the design spec are intentionally deferred to future implementation:
 
 - **API routes for Craft preview** (`src/app/api/preview/`, `src/app/api/exit-preview/`) — requires Craft integration work
 - **Craft headless configuration** — CORS, disabled front-end routing, etc.

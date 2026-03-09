@@ -1,6 +1,8 @@
 # Firestarter
 
-A duplicatable starter system for mid-tier client projects. Bridges the gap between full custom Craft CMS builds and Squarespace/Framer sites.
+Firestarter is a pre-built design system, CMS, and frontend for low to mid-tier client projects. It bridges the gap between bespoke builds and Squarespace/Framer sites for clients who deserve a real CMS and higher design quality.
+
+The system ships a complete set of flexible components and page layouts designed and built to Firebelly’s internal standards. Duplicate the repo, customize design tokens (colors, type, spacing), add any unique components or page templates, and deploy.
 
 ## Tech Stack
 

@@ -316,3 +316,14 @@ Split the root README into three files: root (project-level overview), `cms/READ
 - `cms/README.md` — New; Craft CMS intro, setup instructions, license key section
 - `site/README.md` — Full rewrite; frontend setup, component structure, design tokens, testing, accurate proxy and test docs
 - `package.json` — Added `storybook` and `tokens` proxy scripts
+
+---
+
+## 2026-03-08: Fix Lefthook Hooks in GitHub Desktop
+
+Added `lefthook.rc` to load nvm before hook execution, fixing pre-commit hooks failing in GUI Git clients (e.g., GitHub Desktop) that don't source shell profiles. Updated `lefthook.yml` to reference the rc file.
+
+**Key files:**
+
+- `lefthook.rc`
+- `lefthook.yml`

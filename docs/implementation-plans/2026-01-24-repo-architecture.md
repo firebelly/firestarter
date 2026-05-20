@@ -42,7 +42,7 @@ Set up the foundational monorepo structure for Firestarter: a Next.js + Storyboo
 **Commands:**
 
 ```bash
-cd /Users/tylernford/Sites/_firebelly/firestarter
+cd craft-nextjs-starter
 pnpm create next-app site --typescript --app --use-pnpm --src-dir
 ```
 
@@ -74,7 +74,7 @@ Note: When prompted, use these options:
 **Commands:**
 
 ```bash
-cd /Users/tylernford/Sites/_firebelly/firestarter/site
+cd craft-nextjs-starter/site
 pnpm dlx storybook@latest init --type nextjs
 ```
 
@@ -214,7 +214,7 @@ export {};
 **Commands:**
 
 ```bash
-cd /Users/tylernford/Sites/_firebelly/firestarter
+cd craft-nextjs-starter
 composer create-project craftcms/craft cms
 ```
 

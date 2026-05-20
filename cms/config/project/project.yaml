@@ -1,6 +1,6 @@
 dateModified: 1769538656
 email:
-  fromEmail: developer@firebellydesign.com
+  fromEmail: tylernford@gmail.com
   fromName: Firestarter
   transportType: craft\mail\transportadapters\Sendmail
 meta:
